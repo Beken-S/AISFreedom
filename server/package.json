@@ -3,8 +3,8 @@
   "name": "AISFreedom-server",
   "version": "0.1.0",
   "scripts": {
-    "start": "node index.js",
-    "start:dev": "nodemon index.js",
+    "start": "node server",
+    "start:dev": "nodemon server dev",
     "lint": "eslint src --ext .js --ext .ts"
   },
   "devDependencies": {
@@ -14,5 +14,10 @@
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-prettier": "^4.2.1",
     "prettier": "^2.7.1"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "minimist": "^1.2.6"
   }
 }
