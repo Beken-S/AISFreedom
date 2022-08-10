@@ -3,8 +3,8 @@
   "name": "AISFreedom-server",
   "version": "0.1.0",
   "scripts": {
-    "start": "node server",
-    "start:dev": "nodemon server dev",
+    "start": "node src/server",
+    "start:dev": "nodemon src/server dev",
     "lint": "eslint src --ext .js --ext .ts"
   },
   "devDependencies": {
