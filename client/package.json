@@ -39,11 +39,6 @@
           }
         }
       ]
-    },
-    "settings": {
-      "import/resolver": {
-        "typescript": {}
-      }
     }
   },
   "browserslist": {
