@@ -3,12 +3,12 @@ const path = require('path');
 
 const morgan = require('morgan');
 
-const { logsPath, accessLogFileName } = require('../config');
+const { logs } = require('../config');
 
 function logRequests(toFile = false) {
   const stream = toFile
     ? fs.createWriteStream(
-        path.resolve(process.cwd(), logsPath, accessLogFileName),
+        path.resolve(process.cwd(), logs.path, logs.requestsLogFileName),
         { flags: 'a' }
       )
     : null;
