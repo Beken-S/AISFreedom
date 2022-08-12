@@ -1,5 +1,5 @@
 function addConnection(connection) {
-  return (request, response, next) => {
+  return async (request, response, next) => {
     request.connection = connection;
     next();
   };
