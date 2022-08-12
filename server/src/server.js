@@ -6,10 +6,13 @@ const { addConnection } = require('./middlewares/addConnection');
 const { errorHandler } = require('./middlewares/errorHandler');
 const { logErrors } = require('./middlewares/logErrors');
 const { logRequests } = require('./middlewares/logRequests');
+const { security } = require('./middlewares/security');
 const { createConnection } = require('./services/createConnection');
 
 const app = express();
 const connection = createConnection(db);
+
+security(app);
 
 app.use(addConnection(connection));
 

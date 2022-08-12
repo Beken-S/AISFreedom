@@ -10,7 +10,7 @@ module.exports = {
   mode: isDevMode() ? Mods.DEV : Mods.PROD,
   port: process.env.PORT || 3001,
   logs: {
-    write: Boolean(process.env.WRITE_LOG) || false,
+    write: Boolean(process.env.WRITE_LOG),
     path: process.env.LOGS_PATH || '',
     requestsLogFileName: process.env.REQUESTS_LOG_FILE_NAME || 'access.log',
     errorsLogFileName: process.env.ERRORS_LOG_FILE_NAME || 'errors.log',
