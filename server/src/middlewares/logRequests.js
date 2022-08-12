@@ -5,7 +5,7 @@ const morgan = require('morgan');
 
 const { logsPath, accessLogFileName } = require('../config');
 
-function requestsLog(toFile = false) {
+function logRequests(toFile = false) {
   const stream = toFile
     ? fs.createWriteStream(
         path.resolve(process.cwd(), logsPath, accessLogFileName),
@@ -18,4 +18,4 @@ function requestsLog(toFile = false) {
   });
 }
 
-module.exports = { requestsLog };
+module.exports = { logRequests };

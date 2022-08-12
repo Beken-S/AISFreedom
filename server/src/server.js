@@ -3,7 +3,7 @@ const express = require('express');
 const { port, dbConfig, isWriteLogs } = require('./config');
 const pingController = require('./controllers/pingController');
 const { addConnection } = require('./middlewares/addConnection');
-const { requestsLog } = require('./middlewares/requestsLog');
+const { logRequests } = require('./middlewares/logRequests');
 const { createConnection } = require('./services/createConnection');
 
 const app = express();
@@ -13,8 +13,8 @@ app.use(addConnection(connection));
 
 app.use(express.json());
 
-app.use(requestsLog());
-app.use(requestsLog(isWriteLogs));
+app.use(logRequests());
+app.use(logRequests(isWriteLogs));
 
 app.get('/ping', pingController.ping);
 
