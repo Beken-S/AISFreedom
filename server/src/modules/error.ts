@@ -1,5 +1,7 @@
 class BaseError extends Error {
-  constructor(status, message) {
+  public status: number;
+
+  constructor(status: number, message?: string) {
     super(message);
 
     this.status = status;
@@ -7,18 +9,15 @@ class BaseError extends Error {
 }
 
 class BadRequestError extends BaseError {
-  constructor(message) {
+  constructor(message?: string) {
     super(400, message);
   }
 }
 
 class NotFoundError extends BaseError {
-  constructor(message) {
+  constructor(message?: string) {
     super(404, message);
   }
 }
 
-module.exports = {
-  BadRequestError,
-  NotFoundError,
-};
+export { BaseError, BadRequestError, NotFoundError };
