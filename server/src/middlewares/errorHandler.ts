@@ -11,7 +11,7 @@ async function errorHandler(
 ): Promise<void> {
   response.status(error.status || 500).send({
     status: 'error',
-    message: error.message,
+    message: 'Ошибка. Попробуйте еще раз через несколько минут.',
   });
 }
 
