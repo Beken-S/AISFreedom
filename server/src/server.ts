@@ -7,6 +7,7 @@ import { errorHandler } from './middlewares/errorHandler';
 import { logErrors } from './middlewares/logErrors';
 import { logRequests } from './middlewares/logRequests';
 import { security } from './middlewares/security';
+import { programsRouter } from './routers/programsRouter';
 import { createConnection } from './services/createConnection';
 
 const app = express();
@@ -21,6 +22,8 @@ app.use(logRequests());
 app.use(logRequests(config.logs.write));
 
 app.get('/ping', pingController.ping);
+
+app.use('/programs', programsRouter);
 
 app.use(logErrors());
 app.use(logErrors(config.logs.write));
