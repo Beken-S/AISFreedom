@@ -1,0 +1,33 @@
+.wrap {
+  width: 1140px;
+  margin: 0 auto;
+}
+
+.headerSystemName {
+  height: 140px;
+  background-image: url("../../assets/img/background.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-color: #F4F4F4;
+  border-bottom: 3px solid rgb(50, 129, 226);
+}
+
+.headerSystemNameWrap {
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 1140px;
+  margin: 0 auto;
+}
+
+.headerSystemName a {
+  margin-top: 10px;
+}
+
+.systemNameText {
+  margin: 0 auto;
+  font-size: 28px;
+  color: black;
+}

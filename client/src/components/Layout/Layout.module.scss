@@ -1,0 +1,21 @@
+@import "../../scss/variables";
+
+.wrapper {
+  display: flex;
+  align-items: flex-start;
+
+  &__sidebar {
+    background-color: $darkBlue;
+    width: 190px;
+    // padding-left: 20px;
+    line-height: 17px;
+    color: $colorText;
+    height: 768px;
+    overflow: hidden;
+  }
+
+  &__content {
+    width: $withHeader;
+    flex: 1 1;
+  }
+}

@@ -1,0 +1,55 @@
+.mainService {
+  padding: 0 16px;
+  width: 760px;
+  margin: 0 auto;
+}
+
+.mainService h2 {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.mainService h3 {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.mainServiceForm {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 30px;
+}
+
+.formField {
+  width: 400px;
+  height: 30px;
+  padding: 12px 16px;
+  border-radius: 10px;
+  background-color: rgb(222, 231, 242);
+  border: none;
+}
+
+.serviceFormSubmit {
+  padding: 16px 0;
+  width: 432px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.formSubmit {
+  width: 120px;
+  height: 40px;
+  color: white;
+  background-color: rgb(75, 185, 248);
+  border-radius: 5px;
+  border-color: black;
+  border: none;
+}
+
+.formSubmit:hover {
+  cursor: pointer;
+  background-color: rgb(50, 129, 226);
+  transition-duration: 0.5s;
+}
