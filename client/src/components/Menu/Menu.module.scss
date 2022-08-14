@@ -1,0 +1,234 @@
+@import "../../scss/variables";
+
+#root {
+  background: rgba(242, 243, 245, 1) !important;
+}
+
+.header {
+  font-family: Roboto;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 60px;
+  background: #ffffff;
+  &__container {
+    max-width: 1600px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &__burger {
+      display: none;
+      position: absolute;
+      top: 16px;
+      left: 34px;
+      width: 36px;
+      height: 30px;
+    }
+
+    &__inner {
+      display: flex;
+      align-items: center;
+      width: 100%;
+    }
+  }
+
+  &__title {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 24px;
+    // color: #2c2c59;
+    margin-right: 50px;
+    max-width: 305px;
+    width: 100%;
+    white-space: nowrap;
+    &__link {
+      text-decoration: none;
+    }
+  }
+
+  &__menu {
+    display: flex;
+    width: 100%;
+    z-index: 100;
+    &__item {
+      display: flex;
+      align-items: center;
+      padding: 0 24px;
+      text-decoration: none;
+      border-bottom: 4px solid transparent;
+      box-sizing: border-box;
+      font-size: 16px;
+      text-decoration: none;
+      line-height: 60px;
+      outline: 1px solid rgb(50, 129, 226);
+      background-color: rgb(222, 231, 242);
+      &:hover {
+        border-left: 3px solid rgb(50, 129, 226);
+      }
+      &__active {
+        //border-left: 3px solid rgb(50, 129, 226);
+      }
+    }
+  }
+  &__lk {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-grow: 10;
+
+    &__exit {
+      margin: 0 10px 0 21px;
+      a {
+        font-style: normal;
+        text-decoration: none;
+        font-weight: normal;
+        font-size: 18px;
+        line-height: 16px;
+      }
+    }
+  }
+  .new {
+    &__users,
+    &__requests {
+      position: relative;
+      bottom: 5px;
+      left: 5px;
+      font-family: Roboto;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 10px;
+      line-height: 16px;
+      color: $int-red;
+    }
+  }
+}
+
+@media (max-width: 1500px) {
+  .header {
+    &__title {
+      margin-right: 25px;
+    }
+
+    &__menu {
+      &__item {
+        padding: 0 15px;
+      }
+    }
+  }
+}
+
+@media (max-width: 1300px) {
+  .header {
+    &__title {
+      display: none;
+    }
+  }
+}
+
+@media (max-width: 976px) {
+  .header {
+    height: 48px;
+    position: relative;
+    &__title,
+    &__lk-photo {
+      display: none;
+    }
+    &__container {
+      height: 48px;
+
+      display: flex;
+      &__burger {
+        display: block;
+        z-index: 9999;
+      }
+      &__item,
+      &__item::before,
+      &__item::after {
+        position: relative;
+        width: 26px;
+        height: 2px;
+        background-color: $int-white;
+      }
+      &__item {
+        &::before {
+          content: "";
+          top: 8px;
+        }
+        &::after {
+          content: "";
+          top: 16px;
+        }
+      }
+      &__inner {
+        display: flex;
+        align-items: center;
+        position: absolute;
+        top: 50px;
+        left: 30px;
+        background: $text-purple;
+        border-radius: 6px;
+        width: auto;
+        z-index: 150;
+      }
+    }
+    &__menu {
+      flex-direction: column;
+      position: absolute;
+      top: 50px;
+      left: 20px;
+      max-width: 220px;
+    }
+    .burger__non__active {
+      display: none;
+    }
+    &__lk {
+      justify-content: flex-start;
+      &-exit {
+        margin-left: 15px;
+      }
+    }
+    .menu {
+      &__item {
+        &__active {
+          border-bottom: none;
+        }
+      }
+    }
+    &__menu-item,
+    &__lk-exit a {
+      color: $text-white;
+      font-family: Roboto;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 14px;
+      line-height: 24px;
+      height: 30px;
+    }
+  }
+}
+
+.burger__item__line {
+  display: block;
+  width: 100%;
+  height: 4px;
+  background-color: $text-purple;
+  position: absolute;
+  left: 0;
+  cursor: pointer;
+}
+
+.burger__item__line__first {
+  top: 0;
+}
+
+.burger__item__line__second {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.burger__item__line__third {
+  bottom: 0;
+}

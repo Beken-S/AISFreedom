@@ -1,0 +1,42 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.contentWrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.topContent {
+  flex-grow: 1;
+}
+
+.services {
+  padding: 20px 0;
+}
+
+.servicesWrap {
+  display: flex;
+ flex-direction: column;
+  width: 1140px;
+  gap: 50px;
+   margin: 0 auto;
+}
+
+.mainService {
+  padding: 0 16px;
+  width: 760px;
+  margin: 0 auto;
+}
+
+.mainService h2 {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.mainService h3 {
+  text-align: center;
+  margin-bottom: 24px;
+}
