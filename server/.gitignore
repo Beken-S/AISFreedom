@@ -1,1 +1,6 @@
 /node_modules
+/build
+/logs
+/src/secrets
+*.log
+*.logs

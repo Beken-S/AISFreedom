@@ -2,18 +2,40 @@
   "private": true,
   "name": "AISFreedom-server",
   "version": "0.1.0",
-  "type": "module",
   "scripts": {
-    "start": "node index.js",
-    "start:dev": "nodemon index.js",
+    "start": "npm run clean && npm run build && npm run serve",
+    "build": "tsc --build",
+    "clean": "tsc --build --clean",
+    "serve": "node build/server",
+    "dev": "npm run clean && npm run build && concurrently -k -r -g npm:dev:*",
+    "dev:build": "tsc -p tsconfig-dev.json",
+    "dev:serve": "nodemon build/server dev",
     "lint": "eslint src --ext .js --ext .ts"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.12",
+    "@types/express": "^4.17.13",
+    "@types/minimist": "^1.2.2",
+    "@types/morgan": "^1.9.3",
+    "@types/node": "^18.7.2",
+    "@typescript-eslint/eslint-plugin": "^5.33.0",
+    "@typescript-eslint/parser": "^5.33.0",
+    "concurrently": "^7.3.0",
     "eslint": "^8.21.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-import-resolver-typescript": "^3.4.0",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-prettier": "^4.2.1",
-    "prettier": "^2.7.1"
+    "prettier": "^2.7.1",
+    "typescript": "^4.7.4"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "helmet": "^5.1.1",
+    "minimist": "^1.2.6",
+    "morgan": "^1.10.0",
+    "mysql2": "^2.3.3"
   }
 }

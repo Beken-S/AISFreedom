@@ -95,6 +95,7 @@ module.exports = {
     'selector-list-comma-space-before': 'never',
 
     'selector-class-pattern': '^[a-zA-Z]+[a-zA-Z0-9-_]+$',
+    'keyframes-name-pattern': '^[a-zA-Z]+[a-zA-Z0-9-_]+$',
 
     'rule-empty-line-before': [
       'always',
