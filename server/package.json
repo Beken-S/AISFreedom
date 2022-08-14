@@ -3,10 +3,11 @@
   "name": "AISFreedom-server",
   "version": "0.1.0",
   "scripts": {
-    "start": "concurrently 'npm:start:build' 'npm:start:serve'",
-    "start:build": "tsc --build",
-    "start:serve": "node build/server",
-    "dev": "concurrently -k -r 'npm:dev:serve' 'npm:dev:build'",
+    "start": "npm run clean && npm run build && npm run serve",
+    "build": "tsc --build",
+    "clean": "tsc --build --clean",
+    "serve": "node build/server",
+    "dev": "npm run clean && npm run build && concurrently -k -r -g npm:dev:*",
     "dev:build": "tsc -p tsconfig-dev.json",
     "dev:serve": "nodemon build/server dev",
     "lint": "eslint src --ext .js --ext .ts"
