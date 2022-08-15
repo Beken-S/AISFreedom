@@ -1,4 +1,5 @@
 import React from "react";
+import { Pagination } from "../pagination/pagination";
 import style from "./analogs.module.scss";
 
 export const Analogs = ({ filtered }) => {
@@ -17,7 +18,9 @@ export const Analogs = ({ filtered }) => {
             </li>
           </a>;
         })}
-      </ul> </>
+      </ul>
+      {filtered.length !==0 && <Pagination />}
+    </>
   );
 };
 
