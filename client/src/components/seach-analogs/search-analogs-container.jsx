@@ -1,12 +1,21 @@
 import React from "react";
 import { connect } from "react-redux";
 import { SearchAnalogs } from "./search-analogs";
-import { searchAnalogs } from "../../store/actions/search-actions";
+import { searchAnalogs, resetSearch } from "../../store/actions/search-actions";
 
-const SearchAnalogsContainer = ({ filtered, searchAnalogs, paidSoft }) => {
-
+const SearchAnalogsContainer = ({
+  filtered,
+  searchAnalogs,
+  paidSoft,
+  resetSearch,
+}) => {
   return (
-    <SearchAnalogs filtered={filtered} paidSoft={paidSoft} searchAnalogs={searchAnalogs} />
+    <SearchAnalogs
+      filtered={filtered}
+      paidSoft={paidSoft}
+      searchAnalogs={searchAnalogs}
+      resetSearch={resetSearch}
+    />
   );
 };
 const mapStateToProps = (state) => ({
@@ -15,4 +24,4 @@ const mapStateToProps = (state) => ({
   filtered: state.soft.filtered,
 });
 
-export default connect(mapStateToProps, { searchAnalogs })(SearchAnalogsContainer);
+export default connect(mapStateToProps, { searchAnalogs, resetSearch })(SearchAnalogsContainer);
