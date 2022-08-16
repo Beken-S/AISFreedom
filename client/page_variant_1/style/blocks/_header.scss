@@ -1,0 +1,45 @@
+.header {
+    padding: 10px;
+    height: 70px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: #222222;
+    border-bottom: 3px solid $contour-color;
+    display: flex;
+    align-items: center;
+}
+
+.header-wrap {
+    @include flex-position();
+}
+
+.header-icon {
+    text-decoration: none;
+    color: $main-color;
+    border-left: 4px solid $main-color;
+}
+
+.freedom {
+    font-size: 30px;
+    padding-left: 5px;
+    height: 35px;
+    line-height: 35px;
+}
+
+.header-menu {
+    @include flex-position();
+    width: 620px;
+}
+
+.header-service {
+    text-decoration: none;
+    color: $contour-color;
+    font-family: 'services', Arial, Helvetica, sans-serif;
+
+
+    &:hover {
+        color: $main-color;
+        transition-duration: 0.6s;
+        text-decoration: underline;
+    }
+}

@@ -1,0 +1,236 @@
+.services {
+    padding: 20px 0;
+    height: auto;
+    background-image: url(../pic/background_night_light.webp);
+    background-color: #4770AE;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    border-bottom: 3px solid $contour-color;
+}
+
+// .service-background {
+//     background-color: #4770AE;
+// }
+
+.services-wrap {
+    @include flex-direction-column();
+
+
+    & h1 {
+        color: $contour-color;
+        font-family: 'services', Arial, Helvetica, sans-serif;
+        padding-bottom: 40px;
+    }
+}
+
+.service-form {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    padding-bottom: 30px;
+}
+
+.form-field {
+    width: 500px;
+    height: 30px;
+    padding: 12px 20px;
+    border-radius: 10px 0 0 10px;
+    background-color: rgb(222, 231, 242);
+    border: black;
+}
+
+.form-submit {
+    width: 140px;
+    color: white;
+    background-color: $main-color;
+    border-radius: 0 10px 10px 0;
+    border: none;
+    font-size: 18px;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+
+    &:hover {
+        cursor: pointer;
+        background-color: $color-hover;
+        transition-duration: 0.5s;
+    }
+}
+
+.form-field-icon {
+    width: 570px;
+    height: 30px;
+    padding: 12px 20px;
+    border-radius: 10px 0 0 10px;
+    background-color: rgb(222, 231, 242);
+    border: black;
+}
+
+.input-icon {
+    display: flex;
+    align-items: stretch;
+    padding-bottom: 30px;
+}
+
+.input-icon .fa-align-justify {
+    background-color: $main-color;
+    border-radius: 0 10px 10px 0;
+    color: white;
+    width: 70px;
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:hover {
+        cursor: pointer;
+        background-color: $color-hover;
+        transition-duration: 0.5s;
+    }
+
+}
+
+.program-change-item {
+    background-color: black;
+    padding-top: 40px;
+    padding-bottom: 30px;
+}
+
+.programs-list {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.program-link {
+    text-decoration: none;
+    color: black;
+
+    .program-item {
+        padding: 15px;
+        width: 450px;
+        height: 220px;
+        background-color: #2d2d2d;
+        padding-bottom: 10px;
+        text-decoration: none;
+        color: #ffffff;
+        border-radius: 20px;
+        @include flex-position();
+        outline: 1px solid $contour-color;
+
+        position: relative;
+    }
+}
+
+// 
+
+.screen-overlay {
+    background-color: rgba(58, 56, 56, 0.86);
+    // outline: 1px solid $contour-color;
+    position: absolute;
+    width: 310px;
+    height: 200px;
+    border-radius: 20px;
+    @include flex-position(center);
+    margin-bottom: 20px; //если убирается то в паре с "margin-bottom: 20px;" у  .program-img 
+
+    transition-duration: 1s;
+    opacity: 0;
+
+    &:hover {
+        opacity: 1;
+    }
+}
+
+.item-btn {
+    padding: 16px;
+    font-size: 14px;
+    line-height: 17px;
+    color: #fff;
+    fill: $main-color;
+    background-color: transparent;
+    border: 1px solid $main-color;
+    @include flex-position(center);
+    transition-duration: 0.3s;
+
+    &:hover {
+        fill: $main-color;
+        transform: scale(1.2);
+    }
+}
+
+.text-btn {
+    margin-left: 8px;
+}
+
+
+.program-img {
+    border-radius: 20px;
+    margin-bottom: 20px;
+    width: 310px;
+    height: 200px;
+}
+
+.program-info {
+    padding: 0 10px;
+    text-align: center;
+
+    & h2 {
+        font-size: 22px;
+        margin-bottom: 16px;
+    }
+
+    & p {
+        font-size: 14px;
+    }
+}
+
+.pagination-alignment {
+    @include flex-position(center);
+    padding-top: 50px;
+}
+
+.pagination {
+    width: 200px;
+    height: 44px;
+    list-style: none;
+    padding: 5px 0;
+    border-radius: 5px;
+    gap: 8px;
+    @include flex-position();
+}
+
+.pag-link {
+    text-decoration: none;
+    font-style: normal;
+    font-size: 20px;
+    line-height: 19px;
+    fill: $contour-color;
+
+    &:hover {
+        text-decoration: underline;
+        fill: $contour-color;
+        background-color: $contour-color;
+        border-radius: 50%;
+        @include flex-position(center);
+        transition-duration: 0.3s;
+    }
+}
+
+.pag-link-active {
+    text-decoration: none;
+    font-style: normal;
+    font-size: 26px;
+    line-height: 19px;
+    fill: $contour-color;
+    background-color: $contour-color;
+    border-radius: 50%;
+    @include flex-position(center);
+}
+
+.arrows {
+    font-size: 20px;
+    color: $contour-color;
+}

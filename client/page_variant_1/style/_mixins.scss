@@ -1,0 +1,14 @@
+// примись выравнивания контента с переменным параметром по горизонтали
+// по умолчаниею выравнивание justify-content: space-between  
+@mixin flex-position($justify-content: space-between) {
+    display: flex;
+    align-items: center;
+    justify-content: $justify-content; 
+}
+
+// Выравнивание в клонну
+@mixin flex-direction-column {
+    display: flex;
+    align-items: center;
+    flex-direction: column; 
+}
