@@ -1,7 +1,7 @@
 import { RowDataPacket } from 'mysql2';
 
-function getPageCount(limit: number, count_rows: RowDataPacket[]): number {
-  const count_row = count_rows[0];
+function getPageCount(itemsOnPage: number, countRows: RowDataPacket[]): number {
+  const count_row = countRows[0];
 
   if (count_row == null) throw new Error('count = null');
 
@@ -11,7 +11,7 @@ function getPageCount(limit: number, count_rows: RowDataPacket[]): number {
 
   const itemsCount = count_row[key];
 
-  return Math.ceil(itemsCount / limit);
+  return Math.ceil(itemsCount / itemsOnPage);
 }
 
 export { getPageCount };
