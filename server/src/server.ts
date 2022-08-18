@@ -23,7 +23,7 @@ app.use(logRequests(config.logs.write));
 
 app.get('/ping', pingController.ping);
 
-app.use('api/programs', programsRouter);
+app.use('/api/programs', programsRouter);
 
 app.use(logErrors());
 app.use(logErrors(config.logs.write));
