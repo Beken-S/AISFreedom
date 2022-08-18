@@ -5,17 +5,18 @@
   align-items: flex-start;
 
   &__sidebar {
-    background-color: $darkBlue;
     width: 190px;
-    // padding-left: 20px;
-    line-height: 17px;
-    color: $colorText;
     height: 768px;
+
+    // padding-left: 20px;
     overflow: hidden;
+    color: $colorText;
+    line-height: 17px;
+    background-color: $darkBlue;
   }
 
   &__content {
-    width: $withHeader;
     flex: 1 1;
+    width: $withHeader;
   }
 }
