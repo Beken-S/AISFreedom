@@ -1,10 +1,9 @@
-import React, { useState } from "react";
-import { useEffect } from "react";
-import { useRef } from "react";
-import style from "./search-analogs.module.css";
+import React, { useState, useEffect, useRef } from 'react';
+
+import style from './SearchAnalogs.module.scss';
 
 export const SearchAnalogs = ({ searchAnalogs, paidSoft, resetSearch }) => {
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState('');
   const ref = useRef();
   const handleOnChange = (e) => {
     setValue(e.target.value);
@@ -15,13 +14,13 @@ export const SearchAnalogs = ({ searchAnalogs, paidSoft, resetSearch }) => {
 
   const onReset = () => {
     resetSearch();
-    setValue("");
+    setValue('');
     ref.current.focus();
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (value !== "") {
+    if (value !== '') {
       paidSoft.forEach((el) => {
         if (el.name.toLowerCase().includes(value.toLowerCase())) {
           searchAnalogs(el.type);

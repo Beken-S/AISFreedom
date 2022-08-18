@@ -1,7 +1,8 @@
-import React from "react";
-import { connect } from "react-redux";
-import { SearchAnalogs } from "./search-analogs";
-import { searchAnalogs, resetSearch } from "../../store/actions/search-actions";
+import React from 'react';
+import { connect } from 'react-redux';
+
+import { SearchAnalogs } from '../../components/SearchAnalogs/SearchAnalogs';
+import { searchAnalogs, resetSearch } from '../../store/actions/search-actions';
 
 const SearchAnalogsContainer = ({
   filtered,
@@ -24,4 +25,6 @@ const mapStateToProps = (state) => ({
   filtered: state.soft.filtered,
 });
 
-export default connect(mapStateToProps, { searchAnalogs, resetSearch })(SearchAnalogsContainer);
+export default connect(mapStateToProps, { searchAnalogs, resetSearch })(
+  SearchAnalogsContainer
+);

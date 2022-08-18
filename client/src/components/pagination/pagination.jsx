@@ -1,5 +1,6 @@
-import React, { useState } from "react";
-import style from "./pagination.module.scss"
+import React, { useState } from 'react';
+
+import style from './Pagination.module.scss';
 
 export const Pagination = ({ pages = 10 }) => {
   const [currentPage, setCurrentPage] = useState(1);

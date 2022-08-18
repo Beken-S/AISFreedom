@@ -1,7 +1,7 @@
-import Analogs from "@components/analogs/analogs-container";
-import SearchAnalogs from "@components/seach-analogs/search-analogs-container";
+import Analogs from '@containers/AnalogsContainer/AnalogsContainer';
+import SearchAnalogs from '@containers/SearchAnalogsContainer/SearchAnalogsContainer';
 
-import styles from "./SeachAnalogs.module.scss";
+import styles from './SeachAnalogs.module.scss';
 
 const SeachAnalogs = () => {
   return (

@@ -1,1 +1,1 @@
-export { default } from  './SeachAnalogs';
+export { default } from './SeachAnalogs';
