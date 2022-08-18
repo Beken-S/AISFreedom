@@ -1,40 +1,40 @@
 .pageFooter {
-  background-color: rgb(222, 231, 242);
+  background-color: #dee7f2;
 }
 
 .footerWrap {
-  padding: 12px 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-family: "Roboto", sans-serif;
-  font-size: 14px;
-  font-weight: 400;
   width: 1140px;
   margin: 0 auto;
+  padding: 12px 0;
+  font-weight: 400;
+  font-size: 14px;
+  font-family: "Roboto", sans-serif;
 }
 
 .footerNav {
-  width: 150px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 150px;
 }
 
 .socialNetwork {
-  text-decoration: none;
-  background-color: rgb(75, 185, 248);
-  border-radius: 8px;
-  color: white;
-  width: 32px;
-  height: 32px;
-  font-size: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 32px;
+  height: 32px;
+  color: #ffffff;
+  font-size: 20px;
+  text-decoration: none;
+  background-color: #4bb9f8;
+  border-radius: 8px;
 }
 
 .socialNetwork:hover {
-  background-color: rgb(50, 129, 226);
+  background-color: #3281e2;
   transition-duration: 0.5s;
 }

@@ -4,9 +4,9 @@
 }
 
 .contentWrapper {
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
 }
 
 .topContent {
@@ -19,24 +19,24 @@
 
 .servicesWrap {
   display: flex;
- flex-direction: column;
-  width: 1140px;
+  flex-direction: column;
   gap: 50px;
-   margin: 0 auto;
-}
-
-.mainService {
-  padding: 0 16px;
-  width: 760px;
+  width: 1140px;
   margin: 0 auto;
 }
 
+.mainService {
+  width: 760px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
 .mainService h2 {
-  text-align: center;
   margin-bottom: 24px;
+  text-align: center;
 }
 
 .mainService h3 {
-  text-align: center;
   margin-bottom: 24px;
+  text-align: center;
 }
