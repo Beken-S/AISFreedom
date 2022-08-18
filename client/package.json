@@ -55,6 +55,12 @@
     },
     "settings": {
       "import/resolver": {
+        "node": {
+          "extensions": [
+            ".js",
+            ".jsx"
+          ]
+        },
         "alias": {
           "map": [
             [
