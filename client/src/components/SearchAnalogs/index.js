@@ -1,4 +1,5 @@
+import SearchAnalogsContainer from '../../containers/SearchAnalogsContainer/SearchAnalogsContainer';
+
 import SearchAnalogs from './SearchAnalogs.jsx';
-import SearchAnalogsContainer from './SearchAnalogsContainer.jsx';
 
 export { SearchAnalogs, SearchAnalogsContainer };

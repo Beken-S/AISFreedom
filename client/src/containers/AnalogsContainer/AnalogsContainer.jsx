@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import Analogs from './Analogs';
+import Analogs from '../../components/Analogs/Analogs';
 
 const AnalogsContainer = ({ filtered }) => {
   return <Analogs filtered={filtered} />;

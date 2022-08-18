@@ -1,5 +1,5 @@
 import { AnalogsContainer } from '@components/Analogs';
-import { SearchAnalogsContainer } from '@components/SearchAnalogs';
+import SearchAnalogsContainer from '@containers/SearchAnalogsContainer/SearchAnalogsContainer';
 // import styles from './SearchAnalogsPage.module.scss';
 
 const SearchAnalogsPage = () => {

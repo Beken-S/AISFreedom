@@ -1,13 +1,11 @@
 import React from 'react';
 
-import style from './Analogs.module.scss';
-
 import Pagination from '@components/Pagination';
+import style from './Analogs.module.scss';
 
 const Analogs = ({ filtered }) => {
   return (
     <>
-      <h3>ВЫБЕРИТЕ АЛЬТЕРНАТИВУ</h3>
       <ul className={style.programsList}>
         {filtered.length > 0 &&
           filtered.map((el, i) => {

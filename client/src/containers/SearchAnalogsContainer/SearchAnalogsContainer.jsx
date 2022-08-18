@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import SearchAnalogs from './SearchAnalogs';
+import SearchAnalogs from '../../components/SearchAnalogs/SearchAnalogs';
 
 import { searchAnalogs, resetSearch } from '@store/actions/searchActions';
 
