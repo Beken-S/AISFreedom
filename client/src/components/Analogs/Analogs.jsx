@@ -7,7 +7,6 @@ import Pagination from '@components/Pagination';
 const Analogs = ({ filtered }) => {
   return (
     <>
-      <h3>ВЫБЕРИТЕ АЛЬТЕРНАТИВУ</h3>
       <ul className={style.programsList}>
         {filtered.length > 0 &&
           filtered.map((el, i) => {
