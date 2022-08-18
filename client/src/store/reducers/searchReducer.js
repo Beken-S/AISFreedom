@@ -1,8 +1,8 @@
-import { RESET_SEARCH, SEARCH_ANALOGS } from '../actions/search-actions';
 import gimp from '@assets/img/GIMP.jpg';
-import paint from '@assets/img/paint_net.jpg';
 import krita from '@assets/img/Krita.jpg';
+import paint from '@assets/img/paint_net.jpg';
 import pinta from '@assets/img/pinta.jpg';
+import { RESET_SEARCH, SEARCH_ANALOGS } from '@store/actions/searchActions';
 
 const initialState = {
   paidSoft: [
@@ -51,7 +51,7 @@ const initialState = {
   filtered: [],
 };
 
-export const searchReducer = (state = initialState, action) => {
+const searchReducer = (state = initialState, action) => {
   switch (action.type) {
     case SEARCH_ANALOGS:
       return {
@@ -67,3 +67,5 @@ export const searchReducer = (state = initialState, action) => {
       return state;
   }
 };
+
+export default searchReducer;

@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 
 import style from './SearchAnalogs.module.scss';
 
-export const SearchAnalogs = ({ searchAnalogs, paidSoft, resetSearch }) => {
+const SearchAnalogs = ({ searchAnalogs, paidSoft, resetSearch }) => {
   const [value, setValue] = useState('');
   const ref = useRef();
   const handleOnChange = (e) => {
@@ -53,3 +53,5 @@ export const SearchAnalogs = ({ searchAnalogs, paidSoft, resetSearch }) => {
     </>
   );
 };
+
+export default SearchAnalogs;

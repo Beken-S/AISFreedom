@@ -1,29 +1,29 @@
 .programsList {
-  list-style: none;
   display: flex;
-  justify-content: space-between;
   flex-wrap: wrap;
   gap: 20px;
+  justify-content: space-between;
+  list-style: none;
 }
 
 .programLink {
+  color: #000000;
   text-decoration: none;
-  color: black;
 }
 
 .programLink .programItem {
   width: 160px;
   height: 200px;
-  background-color: rgb(222, 231, 242);
   padding-bottom: 10px;
-  outline: 1px solid rgb(50, 129, 226);
   text-decoration: none;
+  background-color: #dee7f2;
+  outline: 1px solid #3281e2;
 }
 
 .programImg {
-  margin-bottom: 20px;
   width: 160px;
   height: 110px;
+  margin-bottom: 20px;
 }
 
 .programInfo {
@@ -32,8 +32,8 @@
 }
 
 .programInfo h4 {
-  font-size: 22px;
   margin-bottom: 16px;
+  font-size: 22px;
 }
 
 .programInfo p {

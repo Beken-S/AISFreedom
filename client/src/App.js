@@ -1,11 +1,11 @@
 import { Route, Routes } from 'react-router-dom';
 
-import AboutProject from '@pages/AboutProject';
-import Catalog from '@pages/Catalog';
-import SeachAnalogs from '@pages/SeachAnalogs';
-import ReferenceSection from '@pages/ReferenceSection';
-import AcceptanceOfApplications from '@pages/AcceptanceOfApplications';
 import Layout from '@components/Layout';
+import AboutProjectPage from '@pages/AboutProjectPage';
+import AcceptanceOfApplicationsPage from '@pages/AcceptanceOfApplicationsPage';
+import CatalogPage from '@pages/CatalogPage';
+import ReferenceSectionPage from '@pages/ReferenceSectionPage';
+import SearchAnalogsPage from '@pages/SearchAnalogsPage';
 
 import './App.scss';
 
@@ -14,11 +14,14 @@ function App() {
     <div>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={<AboutProject />} />
-          <Route path="/analog" element={<Catalog />} />
-          <Route path="/analogs" element={<SeachAnalogs />} />
-          <Route path="/reference" element={<ReferenceSection/>} />
-          <Route path="/applications" element={<AcceptanceOfApplications />} />
+          <Route index element={<AboutProjectPage />} />
+          <Route path="/analog" element={<CatalogPage />} />
+          <Route path="/analogs" element={<SearchAnalogsPage />} />
+          <Route path="/reference" element={<ReferenceSectionPage />} />
+          <Route
+            path="/applications"
+            element={<AcceptanceOfApplicationsPage />}
+          />
           <Route path="*" element={<p>404</p>} />
         </Route>
       </Routes>
@@ -27,4 +30,3 @@ function App() {
 }
 
 export default App;
-

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import style from './Pagination.module.scss';
 
-export const Pagination = ({ pages = 10 }) => {
+const Pagination = ({ pages = 10 }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const numberOfPages = [];
   for (let i = 1; i <= pages; i++) {
@@ -24,3 +24,5 @@ export const Pagination = ({ pages = 10 }) => {
     </div>
   );
 };
+
+export default Pagination;

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Pagination } from '../Pagination/Pagination';
+import Pagination from '../Pagination';
 
 import style from './Catalog.module.scss';
 

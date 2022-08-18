@@ -1,10 +1,9 @@
 import React from 'react';
 
-import { Pagination } from '../Pagination/Pagination';
-
+import Pagination from '@components/Pagination';
 import style from './Analogs.module.scss';
 
-export const Analogs = ({ filtered }) => {
+const Analogs = ({ filtered }) => {
   return (
     <>
       <ul className={style.programsList}>
@@ -34,3 +33,5 @@ export const Analogs = ({ filtered }) => {
     </>
   );
 };
+
+export default Analogs;
