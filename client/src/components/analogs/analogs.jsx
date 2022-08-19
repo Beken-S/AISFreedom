@@ -1,8 +1,7 @@
 import React from 'react';
 
-import style from './Analogs.module.scss';
-
 import Pagination from '@components/Pagination';
+import style from './Analogs.module.scss';
 
 const Analogs = ({ filtered }) => {
   return (
