@@ -1,6 +1,7 @@
 /node_modules
 /build
 /logs
-/src/secrets
+/secrets
+/docker
 *.log
 *.logs

@@ -1,3 +1,5 @@
+import path = require('path');
+
 import dotenv = require('dotenv');
 
 import { isDevMode } from '../utils/isDevMode';
@@ -49,8 +51,8 @@ interface IConfig {
   database: IDataBaseConfig;
 }
 
-dotenv.config({ path: './src/config/.env' });
-dotenv.config({ path: './src/secrets/db.env' });
+dotenv.config({ path: path.resolve(__dirname, '.env') });
+dotenv.config({ path: path.resolve(__dirname, '../../secrets/db.env') });
 
 const serverConfig: IServerConfig = {
   mode: isDevMode() ? Mods.Dev : Mods.Prod,
