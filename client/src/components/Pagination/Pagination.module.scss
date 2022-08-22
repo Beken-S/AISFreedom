@@ -1,19 +1,52 @@
 .pagination {
   display: flex;
+  align-items: center;
   justify-content: center;
-  margin: 20px;
+  padding-top: 40px;
+  &__wrap{
+    width: 180px;
+      height: 30px;
+      list-style: none;
+      padding: 5px 0;
+      border-radius: 5px;
+      gap: 5px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+  }
+  &__arrow{
+        font-size: 20px;
+          color: rgb(75, 185, 248);
+          cursor: pointer;
+  }
 }
 
 .pagination button {
-  padding: 10px;
   border: none;
-  border-radius: 20px;
+  background: transparent;
+}
+.page {
+      font-style: normal;
+      font-size: 20px;
+      line-height: 19px;
+      fill: rgb(75, 185, 248);
+      cursor: pointer;
+}
+.page:hover svg{
+      text-decoration: underline;
+        fill: rgb(75, 185, 248);
+        background-color: rgb(75, 185, 248);
+        border-radius: 50%;
+        transition-duration: 0.3s;
 }
 
-.active {
-  padding: 10px;
-  color: #ffffff;
-  background-color: #3281e2;
-  border: none;
-  border-radius: 20px;
+.active svg {
+text-decoration: none;
+  font-style: normal;
+  font-size: 26px;
+  line-height: 19px;
+  fill: rgb(75, 185, 248);
+  background-color: rgb(75, 185, 248);
+  border-radius: 50%;
+  cursor: pointer;
 }

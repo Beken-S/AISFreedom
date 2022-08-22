@@ -5,7 +5,6 @@ import AboutProjectPage from '@pages/AboutProjectPage';
 import AcceptanceOfApplicationsPage from '@pages/AcceptanceOfApplicationsPage';
 import CatalogPage from '@pages/CatalogPage';
 import ReferenceSectionPage from '@pages/ReferenceSectionPage';
-import SearchAnalogsPage from '@pages/SearchAnalogsPage';
 
 import './App.scss';
 
@@ -16,7 +15,6 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<AboutProjectPage />} />
           <Route path="/analog" element={<CatalogPage />} />
-          <Route path="/analogs" element={<SearchAnalogsPage />} />
           <Route path="/reference" element={<ReferenceSectionPage />} />
           <Route
             path="/applications"

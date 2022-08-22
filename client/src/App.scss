@@ -3,6 +3,12 @@
   padding: 0;
 }
 
+@font-face {
+  font-family: 'services';
+  src: //local('services'),
+    url(./assets/fonts/Spectral/Spectral-Medium.ttf) format('truetype');
+}
+
 .contentWrapper {
   display: flex;
   flex-direction: column;
@@ -19,16 +25,18 @@
 
 .servicesWrap {
   display: flex;
+  align-items: center;
   flex-direction: column;
-  gap: 50px;
   width: 1140px;
   margin: 0 auto;
 }
 
 .mainService {
-  width: 760px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 1140px;
   margin: 0 auto;
-  padding: 0 16px;
 }
 
 .mainService h2 {

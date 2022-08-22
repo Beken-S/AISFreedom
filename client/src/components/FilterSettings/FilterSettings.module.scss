@@ -1,0 +1,11 @@
+ .FilterSettings {
+   padding: 10px;
+   display: flex;
+   flex-direction: column;
+
+   &__classes {
+     display: flex;
+     flex-direction: column;
+   }
+
+ }

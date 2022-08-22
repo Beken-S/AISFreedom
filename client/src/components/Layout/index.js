@@ -12,7 +12,6 @@ const Layout = () => {
         <Header />
         <section className="services">
           <div className="servicesWrap">
-            <Menu />
             <div className="mainService">
               <Outlet />
               {/* <SearchAnalogs />

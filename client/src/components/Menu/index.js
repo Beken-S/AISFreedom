@@ -10,6 +10,11 @@ const Menu = () => {
   const handleBtnClick = () => setMenuItemsToggle(!menuItemsToggle);
   const closeActiveBlock = () => setMenuItemsToggle(false);
   const ref = useOnclickOutside(() => closeActiveBlock());
+  const styleActive = {
+    color: 'rgb(50, 129, 226)',
+    transitionDuration: '0.6s',
+    textDecoration: 'underline',
+  };
 
   return (
     <div className={style.container}>
@@ -55,9 +60,9 @@ const Menu = () => {
               <NavLink
                 to="/"
                 style={({ isActive }) => ({
-                  color: isActive ? '#3281e2' : '',
-                  borderLeft: isActive ? 'solid 3.5px #3281e2' : '',
-                  background: isActive ? '#fcfcfc' : '',
+                  color: isActive ? 'rgb(50, 129, 226)' : '',
+                  transitionDuration: isActive ? '0.6s' : '',
+                  textDecoration: isActive ? 'underline' : '',
                 })}
                 className={
                   window.location.pathname.indexOf('/', 0) === -1
@@ -70,13 +75,13 @@ const Menu = () => {
               >
                 О ПРОЕКТЕ
               </NavLink>
-
+              <span>/</span>
               <NavLink
                 to="/analog"
                 style={({ isActive }) => ({
-                  color: isActive ? '#3281e2' : '',
-                  borderLeft: isActive ? 'solid 3.5px #3281e2' : '',
-                  background: isActive ? '#fcfcfc' : '',
+                  color: isActive ? 'rgb(50, 129, 226)' : '',
+                  transitionDuration: isActive ? '0.6s' : '',
+                  textDecoration: isActive ? 'underline' : '',
                 })}
                 className={
                   window.location.pathname.indexOf('/analog', 0) === -1
@@ -89,30 +94,13 @@ const Menu = () => {
               >
                 КАТАЛОГ
               </NavLink>
-              <NavLink
-                to="/analogs"
-                style={({ isActive }) => ({
-                  color: isActive ? '#3281e2' : '',
-                  borderLeft: isActive ? 'solid 3.5px #3281e2' : '',
-                  background: isActive ? '#fcfcfc' : '',
-                })}
-                className={
-                  window.location.pathname.indexOf('/analogs', 0) === -1
-                    ? style.header__menu__item
-                    : cn(
-                        style.header__menu__item,
-                        style.header__menu__item__active
-                      )
-                }
-              >
-                ПОИСК АЛЬТЕРНАТИВ
-              </NavLink>
+              <span>/</span>
               <NavLink
                 to="/reference"
                 style={({ isActive }) => ({
-                  color: isActive ? '#3281e2' : '',
-                  borderLeft: isActive ? 'solid 3.5px #3281e2' : '',
-                  background: isActive ? '#fcfcfc' : '',
+                  color: isActive ? 'rgb(50, 129, 226)' : '',
+                  transitionDuration: isActive ? '0.6s' : '',
+                  textDecoration: isActive ? 'underline' : '',
                 })}
                 className={
                   window.location.pathname.indexOf('/reference', 0) === -1
@@ -125,12 +113,13 @@ const Menu = () => {
               >
                 СПРАВОЧНЫЙ РАЗДЕЛ
               </NavLink>
+              <span>/</span>
               <NavLink
                 to="/applications"
                 style={({ isActive }) => ({
-                  color: isActive ? '#3281e2' : '',
-                  borderLeft: isActive ? 'solid 3.5px #3281e2' : '',
-                  background: isActive ? '#fcfcfc' : '',
+                  color: isActive ? 'rgb(50, 129, 226)' : '',
+                  transitionDuration: isActive ? '0.6s' : '',
+                  textDecoration: isActive ? 'underline' : '',
                 })}
                 className={
                   window.location.pathname.indexOf('/applications', 0) === -1

@@ -3,15 +3,15 @@
 }
 
 .footerWrap {
+  padding: 12px 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
   width: 1140px;
   margin: 0 auto;
-  padding: 12px 0;
-  font-weight: 400;
-  font-size: 14px;
-  font-family: "Roboto", sans-serif;
 }
 
 .footerNav {
