@@ -5,20 +5,20 @@
 
 .headerSystemName {
   height: 140px;
-  background-color: #f5f5f5;
   background-image: url("../../assets/img/background.jpg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  border-bottom: 3px solid #3281e2;
+  background-color: #F4F4F4;
+  border-bottom: 1px solid rgb(75, 185, 248);
 }
 
 .headerSystemNameWrap {
+  height: 140px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 1140px;
-  height: 140px;
   margin: 0 auto;
 }
 

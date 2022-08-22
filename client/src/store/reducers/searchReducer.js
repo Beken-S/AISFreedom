@@ -1,8 +1,14 @@
-import gimp from '@assets/img/GIMP.jpg';
-import krita from '@assets/img/Krita.jpg';
-import paint from '@assets/img/paint_net.jpg';
-import pinta from '@assets/img/pinta.jpg';
+import zip from '@assets/icon/7-zip_icon.png';
+import gimp from '@assets/icon/gimp_icon.png';
+import krita from '@assets/icon/krita_icon.png';
+import paint from '@assets/icon/paint-net_icon.png';
+import peazip from '@assets/icon/peazip_icon.png';
+import pinta from '@assets/icon/pinta_icon.png';
+import libreoffice from '@assets/icon/libreoffice_Writer_icon.png';
+import openoffice from '@assets/icon/openoffice_Writer_icon.png';
+
 import { RESET_SEARCH, SEARCH_ANALOGS } from '@store/actions/searchActions';
+import { FILTER_SEARCH } from '../actions/searchActions';
 
 const initialState = {
   paidSoft: [
@@ -16,41 +22,121 @@ const initialState = {
       type: 'Редакторы графики',
       img: gimp,
       os: 'Windows, Linux',
-      downloads: '54',
+      raiting: '☆ ☆ ☆ ☆',
     },
     {
       name: 'Pinta',
       type: 'Редакторы графики',
       img: pinta,
       os: 'Windows, Linux',
-      downloads: '20',
+      raiting: '☆ ☆ ☆ ☆',
     },
     {
       name: 'Paint.NET',
       type: 'Редакторы графики',
       img: paint,
       os: 'Windows',
-      downloads: '37',
+      raiting: '☆ ☆ ☆',
     },
     {
       name: 'Krita',
       type: 'Редакторы графики',
       img: krita,
       os: 'Windows, Linux',
-      downloads: '10',
+      raiting: '☆ ☆ ☆ ☆',
     },
-    { name: '7-Zip', type: 'Архиваторы файлов' },
-    { name: 'PeaZip', type: 'Архиваторы файлов' },
+    { name: '7-Zip', img: zip, type: 'Архиваторы файлов', raiting: '☆ ☆ ☆ ☆' },
+    {
+      name: 'PeaZip',
+      img: peazip,
+      type: 'Архиваторы файлов',
+      os: 'Windows, Linux',
+      raiting: '☆ ☆ ☆ ☆',
+    },
     { name: 'Bandizip', type: 'Архиваторы файлов' },
     { name: 'Hamster ZIP', type: 'Архиваторы файлов' },
     { name: 'IZArc', type: 'Архиваторы файлов' },
-    { name: 'LibreOffice Writer', type: 'Текстовые редакторы' },
-    { name: 'OpenOffice Writer', type: 'Текстовые редакторы' },
+    {
+      name: 'LibreOffice',
+      img: libreoffice,
+      type: 'Текстовые редакторы',
+      os: 'Windows, Linux',
+      raiting: '☆ ☆ ☆ ☆ ☆',
+    },
+    {
+      name: 'OpenOffice',
+      type: 'Текстовые редакторы',
+      img: openoffice,
+      os: 'Windows, Linux',
+      raiting: '☆ ☆ ☆',
+    },
+  ],
+  filtered: [
+    {
+      name: 'GIMP',
+      type: 'Редакторы графики',
+      img: gimp,
+      os: 'Windows, Linux',
+      raiting: '☆ ☆ ☆ ☆',
+    },
+    {
+      name: 'Pinta',
+      type: 'Редакторы графики',
+      img: pinta,
+      os: 'Windows, Linux',
+      raiting: '☆ ☆ ☆ ☆',
+    },
+    {
+      name: 'Paint.NET',
+      type: 'Редакторы графики',
+      img: paint,
+      os: 'Windows',
+      raiting: '☆ ☆ ☆',
+    },
+    {
+      name: 'Krita',
+      type: 'Редакторы графики',
+      img: krita,
+      os: 'Windows, Linux',
+      raiting: '☆ ☆ ☆ ☆',
+    },
+    { name: '7-Zip', img: zip, type: 'Архиваторы файлов', raiting: '☆ ☆ ☆ ☆' },
+    {
+      name: 'PeaZip',
+      img: peazip,
+      type: 'Архиваторы файлов',
+      os: 'Windows, Linux',
+      raiting: '☆ ☆ ☆ ☆',
+    },
+    { name: 'Bandizip', type: 'Архиваторы файлов' },
+    { name: 'Hamster ZIP', type: 'Архиваторы файлов' },
+    { name: 'IZArc', type: 'Архиваторы файлов' },
+    {
+      name: 'LibreOffice',
+      img: libreoffice,
+      type: 'Текстовые редакторы',
+      os: 'Windows, Linux',
+      raiting: '☆ ☆ ☆ ☆ ☆',
+    },
+    {
+      name: 'OpenOffice',
+      type: 'Текстовые редакторы',
+      img: openoffice,
+      os: 'Windows, Linux',
+      raiting: '☆ ☆ ☆',
+    },
     { name: 'Microsoft Word', type: 'Текстовые редакторы' },
   ],
-  filtered: [],
 };
-
+const f = (freesoft, filters) => {
+  const filt = [];
+  filters.map((elem) => {
+    let der = freesoft.filter((el) => el.type === elem.type);
+    filt.push(...der);
+    der = [];
+  });
+  return filt;
+};
 const searchReducer = (state = initialState, action) => {
   switch (action.type) {
     case SEARCH_ANALOGS:
@@ -61,7 +147,12 @@ const searchReducer = (state = initialState, action) => {
     case RESET_SEARCH:
       return {
         ...state,
-        filtered: [],
+        filtered: [...state.freeSoft],
+      };
+    case FILTER_SEARCH:
+      return {
+        ...state,
+        filtered: f(state.freeSoft, action.payload),
       };
     default:
       return state;

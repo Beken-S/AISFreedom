@@ -4,13 +4,13 @@ import Pagination from '../Pagination';
 
 import style from './Catalog.module.scss';
 
-export const Catalog = ({ freeSoft }) => {
+export const Catalog = ({ freeSoft, filtered }) => {
   return (
     <>
       <ul className={style.programsList}>
-        {freeSoft.map((el, i) => {
+        {filtered.map((el, i) => {
           return (
-            <a key={i} href="#0" className={style.programLink}>
+            <a href="!#" key={i} className={style.programLink}>
               <li className={style.programItem}>
                 <img
                   src={el.img}
@@ -18,11 +18,9 @@ export const Catalog = ({ freeSoft }) => {
                   className={style.programImg}
                 />
                 <div className={style.programInfo}>
-                  <h4 className={style.programName}>{el.name}</h4>
-                  <p>
-                    {el.os}
-                    <span> {el.downloads}&darr;</span>{' '}
-                  </p>
+                  <h2 className={style.programName}>{el.name}</h2>
+                  <p className={style.programOs}>{el.os}</p>
+                  <p className={style.programRaiting}>{el.raiting}</p>
                 </div>
               </li>
             </a>

@@ -1,0 +1,22 @@
+.About {
+  display: flex;
+  outline: 2px solid rgb(222, 231, 242);
+  border-radius: 10px;
+  padding: 10px;
+
+  &__image {
+    height: 400px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+  }
+
+  &__info {
+    background-color: rgb(222, 231, 242);
+    border-radius: 10px;
+    padding: 10px 20px;
+    text-align: justify;
+    font-size: 20px;
+    font-family: auto;
+  }
+}

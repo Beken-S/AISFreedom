@@ -1,5 +1,7 @@
 import React from 'react';
 
+import Menu from '../Menu';
+
 import style from './Header.module.scss';
 
 import logo from '@assets/img/Logo.png';
@@ -11,9 +13,7 @@ const Header = () => {
         <a href="index.html">
           <img src={logo} alt="logo" />
         </a>
-        <h1 className={style.systemNameText}>
-          АВТОМАТИЗИРОВАННАЯ ИНФОРМАЦИОННАЯ СИСТЕМА
-        </h1>
+        <Menu />
       </div>
     </header>
   );

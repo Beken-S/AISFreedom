@@ -1,0 +1,52 @@
+.form {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  &__Filter {
+    position: relative;
+  }
+
+  &__field {
+    width: 500px;
+    height: 30px;
+    padding: 12px 30px 12px 16px;
+    border-radius: 10px;
+    background-color: rgb(222, 231, 242);
+    border: none;
+    font-size: 16px;
+  }
+
+  &__settings {
+    position: absolute;
+    fill: rgb(75, 185, 248);
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
+  }
+  &__checkbox{
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.buttons {
+  padding: 16px 0;
+  width: 530px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+  &__submit {
+    width: 120px;
+    height: 40px;
+    color: white;
+    font-size: 16px;
+    font-weight: 400;
+    background-color: rgb(75, 185, 248);
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+  }
+}

@@ -1,9 +1,14 @@
-// import styles from './AboutProjectPage.module.scss';
+import React from 'react';
+
+import About from '../../components/About';
+
+import styles from './AboutProjectPage.module.scss';
 
 const AboutProjectPage = () => {
   return (
     <>
-      <p>О ПРОЕКТЕ</p>
+      <h1 className={styles.About__heading}>О ПРОЕКТЕ</h1>
+      <About />
     </>
   );
 };
