@@ -1,7 +1,6 @@
+import { Catalog } from '@components/Catalog/Catalog';
 import React from 'react';
 import { connect } from 'react-redux';
-
-import { Catalog } from '@components/Catalog/Catalog';
 
 const CatalogContainer = ({ freeSoft, filtered }) => {
   return <Catalog freeSoft={freeSoft} filtered={filtered} />;
