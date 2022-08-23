@@ -1,4 +1,5 @@
-import AnalogsContainer from '../../containers/AnalogsContainer/AnalogsContainer.jsx';
+import Analogs from './Analogs';
 
-import Analogs from './Analogs.jsx';
+import AnalogsContainer from '@containers/AnalogsContainer/AnalogsContainer';
+
 export { Analogs, AnalogsContainer };

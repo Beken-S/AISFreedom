@@ -1,7 +1,8 @@
-import FilterSettingsContainer from '@containers/FilterSettingsContainer/FilterSettingsContainer';
 import React, { useEffect, useRef, useState } from 'react';
 
 import style from './Form.module.scss';
+
+import FilterSettingsContainer from '@containers/FilterSettingsContainer/FilterSettingsContainer';
 
 const Form = ({ filtered, searchAnalogs, paidSoft, resetSearch }) => {
   const [value, setValue] = useState('');
