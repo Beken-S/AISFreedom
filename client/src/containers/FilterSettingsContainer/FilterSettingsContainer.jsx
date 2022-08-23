@@ -1,9 +1,12 @@
-import { searchAnalogs, resetSearch } from '@store/actions/searchActions';
 import React from 'react';
 import { connect } from 'react-redux';
 
-import FilterSettings from '../../components/FilterSettings';
-import { onFilter } from '../../store/actions/searchActions';
+import FilterSettings from '@components/FilterSettings';
+import {
+  searchAnalogs,
+  resetSearch,
+  onFilter,
+} from '@store/actions/searchActions';
 
 const FilterSettingsContainer = ({
   searchAnalogs,

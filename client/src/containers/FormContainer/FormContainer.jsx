@@ -1,7 +1,8 @@
-import Form from '@components/Form';
-import { searchAnalogs, resetSearch } from '@store/actions/searchActions';
 import React from 'react';
 import { connect } from 'react-redux';
+
+import Form from '@components/Form';
+import { searchAnalogs, resetSearch } from '@store/actions/searchActions';
 
 const FormContainer = ({ filtered, searchAnalogs, paidSoft, resetSearch }) => {
   return (

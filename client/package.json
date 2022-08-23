@@ -133,6 +133,10 @@
               "@modules",
               "./src/modules"
             ]
+          ],
+          "extensions": [
+            ".js",
+            ".jsx"
           ]
         }
       }
