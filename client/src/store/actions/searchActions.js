@@ -13,7 +13,7 @@ const resetSearch = () => ({
 
 const onFilter = (payload) => ({
   type: FILTER_SEARCH,
-  payload
+  payload,
 });
 
 export {

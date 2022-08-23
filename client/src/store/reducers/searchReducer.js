@@ -1,13 +1,13 @@
 import zip from '@assets/icon/7-zip_icon.png';
 import gimp from '@assets/icon/gimp_icon.png';
 import krita from '@assets/icon/krita_icon.png';
+import libreoffice from '@assets/icon/libreoffice_Writer_icon.png';
+import openoffice from '@assets/icon/openoffice_Writer_icon.png';
 import paint from '@assets/icon/paint-net_icon.png';
 import peazip from '@assets/icon/peazip_icon.png';
 import pinta from '@assets/icon/pinta_icon.png';
-import libreoffice from '@assets/icon/libreoffice_Writer_icon.png';
-import openoffice from '@assets/icon/openoffice_Writer_icon.png';
-
 import { RESET_SEARCH, SEARCH_ANALOGS } from '@store/actions/searchActions';
+
 import { FILTER_SEARCH } from '../actions/searchActions';
 import { filterOfChecked } from '../helpers/filterOfClasses&os';
 

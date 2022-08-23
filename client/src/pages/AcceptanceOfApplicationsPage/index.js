@@ -1,10 +1,12 @@
-// import styles from './AcceptanceOfApplications.module.scss';
+import React from 'react';
+
+import styles from './AcceptanceOfApplicationsPage.module.scss';
 
 const AcceptanceOfApplicationsPage = () => {
   return (
-    <>
-      <div>ПРИЕМ ЗАЯВОК</div>
-    </>
+    <div className={styles.AcceptanceOfApplicationsPage}>
+      <h2>ПРИЕМ ЗАЯВОК</h2>
+    </div>
   );
 };
 
