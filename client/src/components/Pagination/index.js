@@ -13,7 +13,6 @@ const Pagination = ({ pages = 5 }) => {
   for (let i = 1; i <= pages; i++) {
     numberOfPages.push(page);
   }
-  console.log(currentPage);
   return (
     <nav className={style.pagination}>
       <div className={style.pagination__wrap}>

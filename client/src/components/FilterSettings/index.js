@@ -2,10 +2,13 @@ import React, { useEffect, useState } from 'react';
 
 import style from './FilterSettings.module.scss';
 
-const FilterSettings = ({ onFilter, resetSearch }) => {
+const FilterSettings = ({ onFilter }) => {
   const [isGraphic, setIsGraphic] = useState(false);
   const [isArchiver, setIsArchiver] = useState(false);
   const [isText, setIsText] = useState(false);
+  const [isLinux, setIsLinux] = useState(true);
+  const [isWindows, setIsWindows] = useState(true);
+
   let filters = [];
   const onCheckGraphic = (e) => {
     setIsGraphic(e.target.checked);
@@ -17,6 +20,12 @@ const FilterSettings = ({ onFilter, resetSearch }) => {
 
   const onCheckText = (e) => {
     setIsText(e.target.checked);
+  };
+  const onCheckLinux = (e) => {
+    setIsLinux(e.target.checked);
+  };
+  const onCheckWindows = (e) => {
+    setIsWindows(e.target.checked);
   };
 
   useEffect(() => {
@@ -35,17 +44,27 @@ const FilterSettings = ({ onFilter, resetSearch }) => {
         filters = [];
       }, 1000);
     }
-  }, [isGraphic, isArchiver, isText]);
+  }, [isGraphic, isArchiver, isText, isLinux, isWindows]);
 
   return (
     <div className={style.FilterSettings}>
       <div>
         Выберите OS:
         <label>
-          <input type="checkbox" checked /> Linux
+          <input
+            type="checkbox"
+            onChange={onCheckLinux}
+            defaultChecked={isLinux}
+          />{' '}
+          Linux
         </label>
         <label>
-          <input type="checkbox" checked /> Windows
+          <input
+            type="checkbox"
+            onChange={onCheckWindows}
+            defaultChecked={isWindows}
+          />{' '}
+          Windows
         </label>
       </div>
       <div className={style.FilterSettings__classes}>

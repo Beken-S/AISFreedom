@@ -9,6 +9,7 @@ import openoffice from '@assets/icon/openoffice_Writer_icon.png';
 
 import { RESET_SEARCH, SEARCH_ANALOGS } from '@store/actions/searchActions';
 import { FILTER_SEARCH } from '../actions/searchActions';
+import { filterOfChecked } from '../helpers/filterOfClasses&os';
 
 const initialState = {
   paidSoft: [
@@ -128,15 +129,6 @@ const initialState = {
     { name: 'Microsoft Word', type: 'Текстовые редакторы' },
   ],
 };
-const f = (freesoft, filters) => {
-  const filt = [];
-  filters.map((elem) => {
-    let der = freesoft.filter((el) => el.type === elem.type);
-    filt.push(...der);
-    der = [];
-  });
-  return filt;
-};
 const searchReducer = (state = initialState, action) => {
   switch (action.type) {
     case SEARCH_ANALOGS:
@@ -152,7 +144,7 @@ const searchReducer = (state = initialState, action) => {
     case FILTER_SEARCH:
       return {
         ...state,
-        filtered: f(state.freeSoft, action.payload),
+        filtered: filterOfChecked(state.freeSoft, action.payload),
       };
     default:
       return state;
