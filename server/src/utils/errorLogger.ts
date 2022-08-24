@@ -2,22 +2,20 @@ import fs from 'fs';
 
 import { Request, Response, NextFunction, ErrorRequestHandler } from 'express';
 
-function errorLogger(
-  stream: fs.WriteStream | null = null
-): ErrorRequestHandler {
+function errorLogger(stream?: fs.WriteStream): ErrorRequestHandler {
   return async (
-    error: Error,
-    request: Request,
-    response: Response,
+    err: Error,
+    req: Request,
+    res: Response,
     next: NextFunction
   ) => {
     const errorTime = new Date().toISOString();
 
-    if (stream != null) stream.write(`${errorTime} - ${error.stack}\n`);
-    else console.error(`${errorTime} -`, error);
+    if (stream != null) stream.write(`${errorTime} - ${err.stack}\n`);
+    else console.error(`${errorTime} -`, err);
 
-    next(error);
+    next(err);
   };
 }
 
-export { errorLogger };
+export default errorLogger;

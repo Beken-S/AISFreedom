@@ -1,11 +1,14 @@
 import express = require('express');
 
-import * as programsController from '../controllers/programsController';
+import { programsController } from '../controllers';
 
 const programsRouter = express.Router();
 
-programsRouter.get('/', programsController.getAll);
-programsRouter.get('/', programsController.get);
-programsRouter.get('/search', programsController.search);
+programsRouter.post('/programs', programsController.create);
+programsRouter.get('/programs', programsController.getAll);
+programsRouter.get('/programs/search', programsController.search);
+programsRouter.get('/programs/:id', programsController.getById);
+programsRouter.put('/programs', programsController.update);
+programsRouter.delete('/programs/:id', programsController.destroy);
 
-export { programsRouter };
+export default programsRouter;

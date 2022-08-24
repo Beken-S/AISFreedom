@@ -4,12 +4,13 @@
   "version": "0.1.0",
   "scripts": {
     "start": "npm run clean && npm run build && npm run serve",
-    "build": "tsc --build",
+    "build": "mkdir -p build/config && cp -f ./src/config/.env ./build/config && tsc --build",
     "clean": "tsc --build --clean",
     "serve": "node build/server",
     "dev": "npm run clean && npm run build && concurrently -k -r -g npm:dev:*",
     "dev:build": "tsc -p tsconfig-dev.json",
     "dev:serve": "nodemon build/server dev",
+    "cli": "node build",
     "lint": "eslint src --ext .js --ext .ts"
   },
   "devDependencies": {
@@ -17,7 +18,8 @@
     "@types/express": "^4.17.13",
     "@types/minimist": "^1.2.2",
     "@types/morgan": "^1.9.3",
-    "@types/node": "^18.7.2",
+    "@types/node": "^18.7.8",
+    "@types/validator": "^13.7.5",
     "@typescript-eslint/eslint-plugin": "^5.33.0",
     "@typescript-eslint/parser": "^5.33.0",
     "concurrently": "^7.3.0",
@@ -36,6 +38,8 @@
     "helmet": "^5.1.1",
     "minimist": "^1.2.6",
     "morgan": "^1.10.0",
-    "mysql2": "^2.3.3"
+    "mysql2": "^2.3.3",
+    "runtypes": "^6.6.0",
+    "sequelize": "^6.21.4"
   }
 }

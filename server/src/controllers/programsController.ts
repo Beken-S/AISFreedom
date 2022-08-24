@@ -1,93 +1,113 @@
-import { NextFunction, Response } from 'express';
+import { NextFunction, Request, Response } from 'express';
 
-import { IDatabaseRequest } from '../middlewares/addConnection';
-import { BadRequestError } from '../modules/error';
-import { isParams, isSearchParams } from '../modules/params';
-import * as programsServices from '../services/programsServices';
-import { getConnection } from '../utils/getConnection';
-import { getPageCount } from '../utils/getPageCount';
+import { ProgramAttributes, ProgramCreationAttributes } from '../models';
+import {
+  getPaginationFilter,
+  getProgramSearchOption,
+} from '../modules/filters';
+import { programsService } from '../services';
+import { getId } from '../utils';
 
-async function getAll(
-  request: IDatabaseRequest,
-  response: Response,
+async function create(
+  req: Request,
+  res: Response,
   next: NextFunction
-) {
+): Promise<void> {
   try {
-    if (Object.keys(request.query).length == 0) {
-      const connection = getConnection(request, 'programsController.getAll');
-      const [result_rows] = await programsServices.getAll(connection);
+    const attributes = ProgramCreationAttributes.check(req.body);
+    const createdProgram = await programsService.create(attributes);
 
-      response.send(result_rows);
-    } else {
-      next();
-    }
-  } catch (error) {
-    next(error);
+    res.json(createdProgram);
+  } catch (err) {
+    next(err);
   }
 }
 
-async function get(
-  request: IDatabaseRequest,
-  response: Response,
+async function getAll(
+  req: Request,
+  res: Response,
   next: NextFunction
-) {
+): Promise<void> {
   try {
-    const connection = getConnection(request, 'programsController.get');
-    const params: unknown = request.query;
+    const filter = getPaginationFilter(req);
 
-    if (!isParams(params)) {
-      throw new BadRequestError('Неверные параметры.');
-    }
+    const programs =
+      filter != null
+        ? await programsService.getAll(filter)
+        : await programsService.getAll();
 
-    const [[count_rows], [result_rows]] = await Promise.all([
-      programsServices.getCount(connection),
-      programsServices.get(connection, params),
-    ]);
+    res.json(programs);
+  } catch (err) {
+    next(err);
+  }
+}
 
-    const page_count = getPageCount(Number(params.items_on_page), count_rows);
+async function getById(
+  req: Request,
+  res: Response,
+  next: NextFunction
+): Promise<void> {
+  try {
+    const id = getId(req);
+    const program = await programsService.getById(id);
 
-    response.send({
-      items: result_rows,
-      page_count,
-    });
-  } catch (error) {
-    next(error);
+    res.json(program);
+  } catch (err) {
+    next(err);
   }
 }
 
 async function search(
-  request: IDatabaseRequest,
-  response: Response,
+  req: Request,
+  res: Response,
   next: NextFunction
-) {
+): Promise<void> {
   try {
-    const connection = getConnection(request, 'programsController.search');
-    const params: unknown = request.query;
+    const options = getProgramSearchOption(req);
+    const filter = getPaginationFilter(req);
+    const programs =
+      filter != null
+        ? await programsService.search(options, filter)
+        : await programsService.search(options);
 
-    if (!isSearchParams(params)) {
-      throw new BadRequestError('Неверные параметры поиска');
-    }
-
-    if (params.page != null && params.items_on_page != null) {
-      const [[count_rows], [result_rows]] = await Promise.all([
-        programsServices.getSearchCount(connection, params),
-        programsServices.search(connection, params),
-      ]);
-
-      const page_count = getPageCount(Number(params.items_on_page), count_rows);
-
-      response.send({
-        items: result_rows,
-        page_count,
-      });
-    } else {
-      const [result_rows] = await programsServices.search(connection, params);
-
-      response.send(result_rows);
-    }
-  } catch (error) {
-    next(error);
+    res.json(programs);
+  } catch (err) {
+    next(err);
   }
 }
 
-export { getAll, get, search };
+async function update(
+  req: Request,
+  res: Response,
+  next: NextFunction
+): Promise<void> {
+  try {
+    const attributes = ProgramAttributes.check(req.body);
+    const modifiedPrograms = await programsService.update(attributes);
+
+    res.json(modifiedPrograms);
+  } catch (err) {
+    next(err);
+  }
+}
+
+async function destroy(
+  req: Request,
+  res: Response,
+  next: NextFunction
+): Promise<void> {
+  try {
+    const id = getId(req);
+    const isDeleted = await programsService.destroy(id);
+
+    if (isDeleted) {
+      res.json({
+        message: 'Запись была успешно уделена.',
+      });
+    }
+  } catch (err) {
+    next(err);
+  }
+}
+
+export { create, getAll, getById, update, destroy, search };
