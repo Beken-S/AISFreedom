@@ -1,23 +1,13 @@
 // Переменные
 
-//Цвета
+// Цвета
 $font-color: #222222;
-// $main-color: rgb(50, 129, 226);
-
 $btn-color: rgb(75, 185, 248);
-//  $contour-color: #00bea4;
-// $contour-color: white; 
+$background-color: rgb(222, 231, 242);
+$color-hover: rgb(50, 129, 226);
 
-$background-color:rgb(222, 231, 242);
-
-$color-hover:rgb(50, 129, 226);
-// $color-hover:#00bea4;
-
-
-//Tень
-
-$shadow: 10px 5px 5px rgb(50, 129, 226, 0.21);
-
+// Tень
+$shadow: 10px 5px 5px rgb(50, 129, 226, 21%);
 
 // breack-point (десктопный, планшетный, мобильный)
 $desktop-width: 1140px;
@@ -26,5 +16,3 @@ $mobile-width: 375px;
 
 $tablet-breakpoint: 1172px;
 $mobile-breakpoint: 767px;
-
-
