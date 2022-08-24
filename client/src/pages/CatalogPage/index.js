@@ -1,9 +1,9 @@
-import CatalogContainer from '@containers/CatalogContainer/CatalogContainer';
 import React from 'react';
 
-import FormContainer from '../../containers/FormContainer/FormContainer';
-
 import styles from './CatalogPage.module.scss';
+
+import CatalogContainer from '@containers/CatalogContainer/CatalogContainer';
+import FormContainer from '@containers/FormContainer/FormContainer';
 
 const CatalogPage = () => {
   return (

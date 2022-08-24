@@ -1,4 +1,3 @@
-import FilterSettingsContainer from '@containers/FilterSettingsContainer/FilterSettingsContainer';
 import React, { useEffect, useRef, useState } from 'react';
 
 import style from './Form.module.scss';

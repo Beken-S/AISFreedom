@@ -1,4 +1,3 @@
-import { searchAnalogs, resetSearch } from '@store/actions/searchActions';
 import React from 'react';
 import { connect } from 'react-redux';
 
