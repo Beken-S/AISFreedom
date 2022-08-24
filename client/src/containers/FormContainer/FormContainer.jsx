@@ -3,10 +3,9 @@ import { searchAnalogs, resetSearch } from '@store/actions/searchActions';
 import React from 'react';
 import { connect } from 'react-redux';
 
-const FormContainer = ({ filtered, searchAnalogs, paidSoft, resetSearch }) => {
+const FormContainer = ({ searchAnalogs, paidSoft, resetSearch }) => {
   return (
     <Form
-      filtered={filtered}
       paidSoft={paidSoft}
       searchAnalogs={searchAnalogs}
       resetSearch={resetSearch}
@@ -16,7 +15,6 @@ const FormContainer = ({ filtered, searchAnalogs, paidSoft, resetSearch }) => {
 const mapStateToProps = (state) => ({
   paidSoft: state.soft.paidSoft,
   freeSoft: state.soft.freeSoft,
-  filtered: state.soft.filtered,
 });
 
 export default connect(mapStateToProps, { searchAnalogs, resetSearch })(

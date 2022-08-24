@@ -31,19 +31,19 @@ const Menu = () => {
               )}
             >
               <span
-                class={cn(
+                className={cn(
                   style.burger__item__line,
                   style.burger__item__line__first
                 )}
               ></span>
               <span
-                class={cn(
+                className={cn(
                   style.burger__item__line,
                   style.burger__item__line__second
                 )}
               ></span>
               <span
-                class={cn(
+                className={cn(
                   style.burger__item__line,
                   style.burger__item__line__third
                 )}

@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from 'react';
 
 import style from './Form.module.scss';
 
-const Form = ({ filtered, searchAnalogs, paidSoft, resetSearch }) => {
+const Form = ({ searchAnalogs, paidSoft, resetSearch }) => {
   const [value, setValue] = useState('');
   const [filter, setFilter] = useState(false);
   const ref = useRef();
@@ -22,15 +22,10 @@ const Form = ({ filtered, searchAnalogs, paidSoft, resetSearch }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    debugger;
     if (value !== '') {
-      debugger;
       paidSoft.forEach((el) => {
-        debugger;
         if (el.name.toLowerCase().includes(value.toLowerCase())) {
-          debugger;
           searchAnalogs(el.type);
-          debugger;
         }
       });
     }

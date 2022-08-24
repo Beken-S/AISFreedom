@@ -1,15 +1,22 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 
 import style from './FilterSettings.module.scss';
 
-const FilterSettings = ({ onFilter }) => {
-  const [isGraphic, setIsGraphic] = useState(false);
-  const [isArchiver, setIsArchiver] = useState(false);
-  const [isText, setIsText] = useState(false);
-  const [isLinux, setIsLinux] = useState(true);
-  const [isWindows, setIsWindows] = useState(true);
-
-  let filters = [];
+const FilterSettings = ({
+  onFilter,
+  isGraphic,
+  setIsGraphic,
+  isArchiver,
+  isLinux,
+  isWindows,
+  setIsArchiver,
+  isText,
+  setIsText,
+  setIsWindows,
+  setIsLinux,
+}) => {
+  let filtersOfType = [];
+  let filtersOfOs = [];
   const onCheckGraphic = (e) => {
     setIsGraphic(e.target.checked);
   };
@@ -29,19 +36,28 @@ const FilterSettings = ({ onFilter }) => {
   };
 
   useEffect(() => {
+    debugger;
     if (isGraphic) {
-      filters.push({ type: 'Редакторы графики' });
+      filtersOfType.push({ type: 'Редакторы графики' });
     }
     if (isArchiver) {
-      filters.push({ type: 'Архиваторы файлов' });
+      filtersOfType.push({ type: 'Архиваторы файлов' });
     }
     if (isText) {
-      filters.push({ type: 'Текстовые редакторы' });
+      filtersOfType.push({ type: 'Текстовые редакторы' });
     }
-    if (filters.length > 0) {
+    if (isLinux) {
+      filtersOfOs = [];
+      filtersOfOs.push({ os: 'Linux' });
+    }
+    if (isWindows) {
+      filtersOfOs = [];
+      filtersOfOs.push({ os: 'Windows' });
+    }
+    if (filtersOfOs.length >= 0) {
       setTimeout(() => {
-        onFilter(filters);
-        filters = [];
+        onFilter(filtersOfType, filtersOfOs);
+        filtersOfType = [];
       }, 1000);
     }
   }, [isGraphic, isArchiver, isText, isLinux, isWindows]);
