@@ -1,3 +1,5 @@
+import { connect } from 'react-redux';
+
 import Form from '@components/Form';
 import { searchAnalogs, resetSearch } from '@store/actions/searchActions';
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import FilterSettings from '../../components/FilterSettings';
+import FilterSettings from '@components/FilterSettings';
 import {
   onFilter,
   setIsArchiver,
@@ -9,7 +9,9 @@ import {
   setIsLinux,
   setIsText,
   setIsWindows,
-} from '../../store/actions/searchActions';
+  searchAnalogs,
+  resetSearch,
+} from '@store/actions/searchActions';
 
 const FilterSettingsContainer = ({
   searchAnalogs,
