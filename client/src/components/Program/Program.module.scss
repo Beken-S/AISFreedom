@@ -1,0 +1,25 @@
+.Program {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.Program img {
+  width: 400px;
+  height: 400px;
+}
+
+.programInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.programInfo h2 {
+  font-family: "services";
+  font-size: 30px;
+  margin-bottom: 10px;
+}
