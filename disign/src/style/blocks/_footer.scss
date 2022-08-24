@@ -1,0 +1,41 @@
+.page-footer {
+  background-color: rgb(222, 231, 242);
+}
+
+.footer-wrap {
+  padding: 12px 0;
+  font-weight: 400;
+  font-size: 14px;
+  font-family: "Roboto", sans-serif;
+
+  @include flex-position;
+}
+
+.team {
+  @media (max-width: $mobile-breakpoint) {
+    display: none;
+  }
+}
+
+.footer-nav {
+  width: 150px;
+
+  @include flex-position;
+}
+
+.social-network {
+  width: 32px;
+  height: 32px;
+  color: white;
+  font-size: 20px;
+  text-decoration: none;
+  background-color: rgb(75, 185, 248);
+  border-radius: 8px;
+
+  @include flex-position(center);
+
+  &:hover {
+    background-color: $color-hover;
+    transition-duration: 0.5s;
+  }
+}

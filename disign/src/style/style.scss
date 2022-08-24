@@ -1,0 +1,26 @@
+// Переменные
+@import "vars";
+
+// Примеси
+@import "mixins";
+
+// Общие настройки
+@import "main";
+
+// Шапка сайта
+@import "blocks/header";
+
+// Описание системы
+@import "blocks/system-info";
+
+// Блок поиска
+@import "blocks/services";
+
+// Аналоги и пагинация
+@import "blocks/programs-items";
+
+// Описание атернативы
+@import "blocks/description";
+
+// Подвал
+@import "blocks/footer";
