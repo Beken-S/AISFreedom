@@ -1,3 +1,13 @@
+import {
+  FILTER_SEARCH,
+  SET_IS_ARCHIVER,
+  SET_IS_GRAPHIC,
+  SET_IS_LINUX,
+  SET_IS_TEXT,
+  SET_IS_WINDOWS,
+  RESET_SEARCH,
+  SEARCH_ANALOGS,
+} from '../actions/searchActions';
 import { filterOfChecked } from '../helpers/filterOfClasses&os';
 
 import zip from '@assets/icon/7-zip_icon.png';
@@ -8,11 +18,6 @@ import openoffice from '@assets/icon/openoffice_Writer_icon.png';
 import paint from '@assets/icon/paint-net_icon.png';
 import peazip from '@assets/icon/peazip_icon.png';
 import pinta from '@assets/icon/pinta_icon.png';
-import {
-  RESET_SEARCH,
-  SEARCH_ANALOGS,
-  FILTER_SEARCH,
-} from '@store/actions/searchActions';
 
 const initialState = {
   paidSoft: [
@@ -131,6 +136,11 @@ const initialState = {
     },
     { name: 'Microsoft Word', type: 'Текстовые редакторы' },
   ],
+  isGraphic: false,
+  isArchiver: false,
+  isText: false,
+  isLinux: true,
+  isWindows: true,
 };
 const searchReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -143,11 +153,45 @@ const searchReducer = (state = initialState, action) => {
       return {
         ...state,
         filtered: [...state.freeSoft],
+        isGraphic: false,
+        isArchiver: false,
+        isText: false,
+        isLinux: true,
+        isWindows: true,
       };
     case FILTER_SEARCH:
       return {
         ...state,
-        filtered: filterOfChecked(state.freeSoft, action.payload),
+        filtered: filterOfChecked(
+          state.freeSoft,
+          action.filtersOfType,
+          action.filtersOfOs
+        ),
+      };
+    case SET_IS_GRAPHIC:
+      return {
+        ...state,
+        isGraphic: action.check,
+      };
+    case SET_IS_ARCHIVER:
+      return {
+        ...state,
+        isArchiver: action.check,
+      };
+    case SET_IS_TEXT:
+      return {
+        ...state,
+        isText: action.check,
+      };
+    case SET_IS_LINUX:
+      return {
+        ...state,
+        isLinux: action.check,
+      };
+    case SET_IS_WINDOWS:
+      return {
+        ...state,
+        isWindows: action.check,
       };
     default:
       return state;

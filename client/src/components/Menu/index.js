@@ -10,11 +10,6 @@ const Menu = () => {
   const handleBtnClick = () => setMenuItemsToggle(!menuItemsToggle);
   const closeActiveBlock = () => setMenuItemsToggle(false);
   const ref = useOnclickOutside(() => closeActiveBlock());
-  const styleActive = {
-    color: 'rgb(50, 129, 226)',
-    transitionDuration: '0.6s',
-    textDecoration: 'underline',
-  };
 
   return (
     <div className={style.container}>
@@ -31,19 +26,19 @@ const Menu = () => {
               )}
             >
               <span
-                class={cn(
+                className={cn(
                   style.burger__item__line,
                   style.burger__item__line__first
                 )}
               ></span>
               <span
-                class={cn(
+                className={cn(
                   style.burger__item__line,
                   style.burger__item__line__second
                 )}
               ></span>
               <span
-                class={cn(
+                className={cn(
                   style.burger__item__line,
                   style.burger__item__line__third
                 )}

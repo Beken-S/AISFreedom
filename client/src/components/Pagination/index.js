@@ -22,7 +22,7 @@ const Pagination = ({ pages = 5 }) => {
             setCurrentPage((prev) => (prev === 1 ? prev : prev - 1))
           }
         >
-          <i class="fas fa-angle-left" aria-hidden="true"></i>
+          <i className="fas fa-angle-left" aria-hidden="true"></i>
         </button>
         {numberOfPages.map((page, index) => {
           return (
@@ -41,7 +41,7 @@ const Pagination = ({ pages = 5 }) => {
             setCurrentPage((prev) => (prev === pages ? prev : prev + 1))
           }
         >
-          <i class="fas fa-angle-right" aria-hidden="true"></i>
+          <i className="fas fa-angle-right" aria-hidden="true"></i>
         </button>
       </div>
     </nav>
