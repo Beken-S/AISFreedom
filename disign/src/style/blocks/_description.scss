@@ -1,0 +1,63 @@
+.description {
+    padding: 20px 0;
+}
+
+.description-wrap {
+    @include flex-direction-column();
+    // outline: 1px solid red;
+
+}
+
+.description-title {
+    padding-bottom: 50px;
+    @include flex-position();
+
+
+    & h1 {
+        font-family: 'services', Arial, Helvetica, sans-serif;
+        color: $font-color;
+        font-size: 30px;
+        margin: 0 10px;
+    }
+
+    & svg {
+        fill: rgb(188, 190, 192);
+    }
+}
+
+.description-header {
+    list-style: none;
+    padding-bottom: 25px;
+}
+
+.article {
+    font-size: 18px;
+    font-family: 'services';
+}
+
+.description-screenshot {
+    width: 100%;
+    border-radius: 20px;
+    padding-bottom: 20px;
+}
+
+.description-text {
+    font-size: 18px;
+    text-align: justify;
+    text-indent: 30px;
+    padding-bottom: 20px;
+}
+
+.platform {
+    @include flex-direction-column;
+    padding-right: 10px;
+}
+
+.flex {
+    @include flex-position();
+
+}
+
+.manual {
+    padding-left: 10px;
+}

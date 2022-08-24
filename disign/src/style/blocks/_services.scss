@@ -1,0 +1,81 @@
+.services {
+    padding: 20px 0;
+}
+
+.services-wrap {
+    @include flex-direction-column();
+
+    & h1 {
+        font-family: 'services', Arial, Helvetica, sans-serif;
+        color: $font-color;
+        padding-bottom: 30px;
+        font-size: 30px;
+    }
+}
+
+.service-form {
+    @include flex-direction-column;
+}
+
+.form-field {
+    width: 500px;
+    height: 30px;
+    padding: 12px 30px 12px 16px;
+    border-radius: 10px;
+    background-color: $background-color;
+    border: none;
+    font-size: 16px;
+
+    @media (max-width: $mobile-breakpoint) {
+        width: 300px;
+    }
+
+
+}
+
+.sevice-filter {
+    position: relative;
+
+    @media (max-width: $mobile-breakpoint) {
+        @include flex-direction-column;
+    }
+}
+
+.settings {
+    position: absolute;
+    fill: $btn-color;
+    right: 10px;
+    top: 10px;
+
+    &:hover {
+        cursor: pointer;
+        fill: $color-hover;
+        transition-duration: 0.5s;
+    }
+
+    @media (max-width: $mobile-breakpoint) {
+        right: 10px;
+    }
+
+}
+
+.service-form-submit {
+    padding: 16px 0;
+    width: 530px;
+    @include flex-position(space-around);
+
+    @media (max-width: $mobile-breakpoint) {
+        width: 100%;
+    }
+}
+
+
+.form-submit {
+    @include btn;
+
+    &:hover {
+        cursor: pointer;
+        background-color: $color-hover;
+        transition-duration: 0.5s;
+    }
+}

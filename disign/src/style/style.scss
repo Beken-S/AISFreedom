@@ -1,0 +1,27 @@
+// Переменные
+@import "_vars.scss";
+
+// Примеси
+@import "_mixins.scss";
+
+// Общие настройки
+@import "_main.scss";
+
+// Шапка сайта
+@import "blocks/header.scss";
+
+// Описание системы
+@import "blocks/system-info";
+
+// Блок поиска
+@import "blocks/services.scss";
+
+// Аналоги и пагинация
+@import "blocks/programs-items.scss";
+
+// Описание атернативы
+@import "blocks/description.scss";
+
+// Подвал
+@import "blocks/footer.scss";
+

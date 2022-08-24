@@ -1,0 +1,40 @@
+.page-footer {
+    background-color: rgb(222, 231, 242);
+}
+
+.footer-wrap {
+    padding: 12px 0;
+
+    @include flex-position();
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.team {
+    @media (max-width: $mobile-breakpoint) {
+        display: none;
+    }
+}
+
+.footer-nav {
+    width: 150px;
+    @include flex-position();
+}
+
+.social-network {
+    text-decoration: none;
+    background-color: rgb(75, 185, 248);
+    border-radius: 8px;
+    color: white;
+    ;
+    width: 32px;
+    height: 32px;
+    font-size: 20px;
+    @include flex-position(center);
+
+    &:hover {
+        background-color: $color-hover;
+        transition-duration: 0.5s;
+    }
+}
