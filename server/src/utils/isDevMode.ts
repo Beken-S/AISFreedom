@@ -7,4 +7,4 @@ function isDevMode(): boolean {
   return argv._.includes(Mods.Dev);
 }
 
-export { isDevMode };
+export default isDevMode;

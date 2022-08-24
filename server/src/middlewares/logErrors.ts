@@ -1,23 +1,26 @@
 import fs = require('fs');
 import path = require('path');
 
-import { ErrorRequestHandler } from 'express';
+import { Express } from 'express';
 
-import { config } from '../config';
-import { errorLogger } from '../utils/errorLogger';
+import config from '../config';
+import { errorLogger } from '../utils';
 
-function logErrors(toFile = false): ErrorRequestHandler {
-  const stream = toFile
-    ? fs.createWriteStream(
-        path.resolve(
-          process.cwd(),
-          config.logs.path,
-          config.logs.fileName.errors
-        ),
-        { flags: 'a' }
-      )
-    : null;
-  return errorLogger(stream);
+function logErrors(app: Express): void {
+  if (config.server.logs.write) {
+    const stream = fs.createWriteStream(
+      path.resolve(
+        process.cwd(),
+        config.server.logs.path,
+        config.server.logs.fileName.errors
+      ),
+      { flags: 'a' }
+    );
+
+    app.use(errorLogger(stream));
+  }
+
+  app.use(errorLogger());
 }
 
-export { logErrors };
+export default logErrors;

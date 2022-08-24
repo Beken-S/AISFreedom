@@ -2,7 +2,7 @@ import cors = require('cors');
 import { Express } from 'express';
 import helmet = require('helmet');
 
-import { config, Mods } from '../config';
+import config, { Mods } from '../config';
 
 function security(app: Express): void {
   if (config.server.mode === Mods.Dev) app.use(cors());
@@ -12,4 +12,4 @@ function security(app: Express): void {
   app.use(helmet.default());
 }
 
-export { security };
+export default security;
