@@ -4,7 +4,7 @@
   "version": "0.1.0",
   "scripts": {
     "start": "npm run clean && npm run build && npm run serve",
-    "build": "mkdir -p build/config && cp -f ./src/config/.env ./build/config && tsc --build",
+    "build": "node ./scripts/build && tsc --build",
     "clean": "tsc --build --clean",
     "serve": "node build/server",
     "dev": "npm run clean && npm run build && concurrently -k -r -g npm:dev:*",
