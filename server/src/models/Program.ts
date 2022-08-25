@@ -41,7 +41,7 @@ const Program: ProgramModelDefined = Database.define(
     name: {
       type: DataTypes.STRING,
       allowNull: false,
-      unique: true,
+      unique: 'name',
     },
     description: {
       type: DataTypes.TEXT,

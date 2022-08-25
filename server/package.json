@@ -8,9 +8,9 @@
     "clean": "tsc --build --clean",
     "serve": "node build/server",
     "start": "npm run preparation && npm run clean && npm run build && npm run serve",
-    "dev": "npm run preparation && npm run clean && concurrently -k -r -g npm:dev:*",
+    "dev": "npm run preparation && npm run clean && npm run build && concurrently -k -c 'blue,green' --names 'TS,API' -p '[{name}]' npm:dev:build npm:dev:serve",
     "dev:build": "tsc -p tsconfig-dev.json",
-    "dev:serve": "nodemon build/server dev",
+    "dev:serve": "nodemon ./build/server development",
     "lint": "eslint src --ext .js --ext .ts"
   },
   "devDependencies": {
@@ -29,6 +29,7 @@
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-prettier": "^4.2.1",
     "prettier": "^2.7.1",
+    "sql-log-prettifier": "^0.1.2",
     "typescript": "^4.7.4"
   },
   "dependencies": {
