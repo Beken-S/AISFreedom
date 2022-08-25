@@ -1,50 +1,29 @@
+@import "./scss/vars";
+
 * {
   margin: 0;
   padding: 0;
 }
 
 @font-face {
-  font-family: 'services';
-  src: //local('services'),
-    url(./assets/fonts/Spectral/Spectral-Medium.ttf) format('truetype');
+  font-family: "services";
+  src: url("./assets/fonts/Spectral/Spectral-Medium.ttf") format("truetype");
 }
 
-.contentWrapper {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-
-.topContent {
-  flex-grow: 1;
-}
-
-.services {
-  padding: 20px 0;
-}
-
-.servicesWrap {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
+//  Центровщик
+.wrap {
   width: 1140px;
   margin: 0 auto;
 }
 
-.mainService {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  width: 1140px;
-  margin: 0 auto;
+@media (max-width: $tablet-breakpoint) {
+  .wrap {
+    width: $tablet-width;
+  }
 }
 
-.mainService h2 {
-  margin-bottom: 24px;
-  text-align: center;
-}
-
-.mainService h3 {
-  margin-bottom: 24px;
-  text-align: center;
+@media (max-width: $mobile-breakpoint) {
+  .wrap {
+    width: $mobile-width;
+  }
 }

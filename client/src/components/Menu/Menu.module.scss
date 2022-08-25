@@ -1,4 +1,6 @@
 @import "../../scss/variables";
+@import "../../scss/mixins";
+@import "../../scss/vars";
 
 // Нужен ли этот important?
 /* stylelint-disable-next-line selector-max-id */
@@ -55,26 +57,30 @@
   }
 
   &__menu {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    @include flex-position;
+
     width: 740px;
-    font-size: 20px;
     font-weight: bold;
+    font-size: 20px;
+
+    @media (max-width: $tablet-breakpoint) {
+      width: 480px;
+      font-size: 14px;
+    }
+
+    @media (max-width: $mobile-breakpoint) {
+      display: none;
+    }
 
     &__item {
+      color: $font-color;
+      font-family: "services", "Arial", "Helvetica", sans-serif;
       text-decoration: none;
-      color: #222222;
-      font-family: "services", Arial, Helvetica, sans-serif;
 
       &:hover {
-        color: rgb(50, 129, 226);
-        transition-duration: 0.6s;
+        color: $color-hover;
         text-decoration: underline;
-      }
-
-      &__active {
-        //
+        transition-duration: 0.6s;
       }
     }
   }
@@ -99,7 +105,6 @@
   }
 
   .new {
-
     &__users,
     &__requests {
       position: relative;

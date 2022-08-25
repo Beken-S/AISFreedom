@@ -21,7 +21,8 @@ $width-site-sml: 736px;
 $max-width: 1366px;
 $max-width-channel: 1196px;
 $gap-grid: 20px;
-$content-col4: ($width-site - 2 * $gap-grid) / 3;
+$content-col4: (
+  $width-site - 2 * $gap-grid) / 3;
 
 // сделать комментарий
 $text-white: #ffffff;

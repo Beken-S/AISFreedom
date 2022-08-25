@@ -1,3 +1,4 @@
+import cn from 'classnames';
 import React from 'react';
 
 import style from './Footer.module.scss';
@@ -6,10 +7,9 @@ import '@src/App.scss';
 const Footer = () => {
   return (
     <footer className={style.pageFooter}>
-      <div className={style.footerWrap}>
+      <div className={cn(style.footerWrap, 'wrap')}>
         <span>© 2022. АИС "Свобода"</span>
         <span className={style.team}>
-          {' '}
           Created by: Geekbrains students team.
         </span>
         <nav className={style.footerNav}>

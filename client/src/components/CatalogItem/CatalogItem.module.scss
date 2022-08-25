@@ -1,12 +1,5 @@
-.programsList {
-  list-style: none;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 60px;
-  padding-top: 40px;
-  padding-bottom: 20px;
-}
+@import "../../scss/vars";
+@import "../../scss/mixins";
 
 .programLink {
   text-decoration: none;
@@ -14,55 +7,70 @@
 }
 
 .programItem {
-  padding: 15px 15px 0 15px;
   width: 200px;
   height: 280px;
-  background-color: rgb(222, 231, 242);
+  padding: 15px 15px 0;
+  color: $font-color;
   text-decoration: none;
-  color: #222222;
+  background-color: $background-color;
   border-radius: 20px;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  outline: 1px solid rgb(75, 185, 248);
+  outline: 1px solid $btn-color;
   transition-duration: 0.3s;
-}
 
-.programItem:hover {
-  transform: scale(1.05);
-  cursor: pointer;
-  box-shadow: 10px 5px 5px rgb(50 129 226 / 21%);
+  @include flex-direction-column;
+
+  &:hover {
+    box-shadow: $shadow;
+    transform: scale(1.05);
+    cursor: pointer;
+  }
 }
 
 .programImg {
-  border-radius: 20px;
-  background-color: rgb(176, 194, 214);
   width: 150px;
   height: 150px;
+  background-color: rgb(176, 194, 214);
+  border-radius: 20px;
 }
 
 .programInfo {
-  padding: 15px 0 10px 0;
+  padding: 15px 0 10px;
   text-align: center;
 }
 
 .programInfo h2 {
-  font-family: "services";
-  font-size: 30px;
   margin-bottom: 10px;
+  font-size: 30px;
+  font-family: "services";
 }
 
 .programInfo p {
-  font-size: 14px;
   margin-bottom: 10px;
+  font-size: 14px;
 }
 
 .programRaiting {
-  font-weight: bold;
   color: rgb(176, 194, 214);
+  font-weight: bold;
 }
 
 .programOs {
-  font-size: 14px;
   margin-bottom: 10px;
+  font-size: 14px;
+}
+
+@media (max-width: $tablet-breakpoint) {
+  .programsList {
+    gap: 20px;
+  }
+}
+
+@media (max-width: $mobile-breakpoint) {
+  .programItem {
+    flex-direction: row;
+    justify-content: space-around;
+    width: 300px;
+    height: 220px;
+    padding-top: 0;
+  }
 }

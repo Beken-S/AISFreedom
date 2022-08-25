@@ -1,25 +1,20 @@
-.wrap {
-  width: 1140px;
-  margin: 0 auto;
-}
+@import "../../scss/mixins";
+@import "../../scss/vars";
 
 .headerSystemName {
   height: 140px;
+  background-color: #F4F4F4;
   background-image: url("../../assets/img/background.jpg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  background-color: #F4F4F4;
   border-bottom: 1px solid rgb(75, 185, 248);
 }
 
 .headerSystemNameWrap {
   height: 140px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 1140px;
-  margin: 0 auto;
+
+  @include flex-position;
 }
 
 .headerSystemName a {
@@ -30,4 +25,16 @@
   margin: 0 auto;
   color: #000000;
   font-size: 28px;
+}
+
+@media (max-width: $tablet-breakpoint) {
+  .logo {
+    width: 200px;
+  }
+}
+
+@media (max-width: $mobile-breakpoint) {
+  .headerSystemNameWrap {
+    @include flex-position(center);
+  }
 }

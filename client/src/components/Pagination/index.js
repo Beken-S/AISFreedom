@@ -1,5 +1,7 @@
+import cn from 'classnames';
 import React, { useState } from 'react';
 
+import '../../App.scss';
 import style from './Pagination.module.scss';
 
 const Pagination = ({ pages = 5 }) => {
@@ -15,7 +17,7 @@ const Pagination = ({ pages = 5 }) => {
   }
   return (
     <nav className={style.pagination}>
-      <div className={style.pagination__wrap}>
+      <div className={cn(style.pagination__wrap, 'wrap')}>
         <button
           className={style.pagination__arrow}
           onClick={() =>
