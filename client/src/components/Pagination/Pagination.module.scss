@@ -1,52 +1,62 @@
+@import "../../scss/mixins";
+@import "../../scss/vars";
+
 .pagination {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   padding-top: 40px;
-  &__wrap{
+
+  @include flex-position(center);
+
+  &__wrap {
+    gap: 5px;
     width: 180px;
-      height: 30px;
-      list-style: none;
-      padding: 5px 0;
-      border-radius: 5px;
-      gap: 5px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+    height: 30px;
+    padding: 5px 0;
+    list-style: none;
+    border-radius: 5px;
+
+    @include flex-position;
   }
-  &__arrow{
-        font-size: 20px;
-          color: rgb(75, 185, 248);
-          cursor: pointer;
+
+  &__arrow {
+    color: $btn-color;
+    font-size: 20px;
+    cursor: pointer;
   }
 }
 
 .pagination button {
-  border: none;
   background: transparent;
+  border: none;
 }
+
 .page {
-      font-style: normal;
-      font-size: 20px;
-      line-height: 19px;
-      fill: rgb(75, 185, 248);
-      cursor: pointer;
+  font-size: 20px;
+  font-style: normal;
+  line-height: 19px;
+  text-decoration: none;
+  cursor: pointer;
+  fill: $btn-color;
 }
-.page:hover svg{
-      text-decoration: underline;
-        fill: rgb(75, 185, 248);
-        background-color: rgb(75, 185, 248);
-        border-radius: 50%;
-        transition-duration: 0.3s;
+
+.page:hover svg {
+  text-decoration: underline;
+  background-color: $btn-color;
+  border-radius: 50%;
+  transition-duration: 0.3s;
+  fill: $btn-color;
+
+  @include flex-position(center);
 }
 
 .active svg {
-text-decoration: none;
-  font-style: normal;
   font-size: 26px;
+  font-style: normal;
   line-height: 19px;
-  fill: rgb(75, 185, 248);
+  text-decoration: none;
   background-color: rgb(75, 185, 248);
   border-radius: 50%;
   cursor: pointer;
+  fill: rgb(75, 185, 248);
+
+  @include flex-position(center);
 }

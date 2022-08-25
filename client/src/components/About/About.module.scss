@@ -1,8 +1,10 @@
+@import "../../scss/vars";
+
 .About {
   display: flex;
-  outline: 2px solid rgb(222, 231, 242);
-  border-radius: 10px;
   padding: 10px;
+  border-radius: 10px;
+  outline: 2px solid $background-color;
 
   &__image {
     height: 400px;
@@ -12,11 +14,11 @@
   }
 
   &__info {
-    background-color: rgb(222, 231, 242);
-    border-radius: 10px;
     padding: 10px 20px;
-    text-align: justify;
     font-size: 20px;
     font-family: auto;
+    text-align: justify;
+    background-color: $background-color;
+    border-radius: 10px;
   }
 }

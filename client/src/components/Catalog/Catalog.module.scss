@@ -1,68 +1,12 @@
-.programsList {
-  list-style: none;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 60px;
+.Catalog {
   padding-top: 40px;
   padding-bottom: 20px;
 }
 
-.programLink {
-  text-decoration: none;
-  color: #222222;
-}
-
-.programItem {
-  padding: 15px 15px 0 15px;
-  width: 200px;
-  height: 280px;
-  background-color: rgb(222, 231, 242);
-  text-decoration: none;
-  color: #222222;
-  border-radius: 20px;
+.programsList {
   display: flex;
-  align-items: center;
-  flex-direction: column;
-  outline: 1px solid rgb(75, 185, 248);
-  transition-duration: 0.3s;
-}
-
-.programItem:hover {
-  transform: scale(1.05);
-  cursor: pointer;
-  box-shadow: 10px 5px 5px rgb(50 129 226 / 21%);
-}
-
-.programImg {
-  border-radius: 20px;
-  background-color: rgb(176, 194, 214);
-  width: 150px;
-  height: 150px;
-}
-
-.programInfo {
-  padding: 15px 0 10px 0;
-  text-align: center;
-}
-
-.programInfo h2 {
-  font-family: "services";
-  font-size: 30px;
-  margin-bottom: 10px;
-}
-
-.programInfo p {
-  font-size: 14px;
-  margin-bottom: 10px;
-}
-
-.programRaiting {
-  font-weight: bold;
-  color: rgb(176, 194, 214);
-}
-
-.programOs {
-  font-size: 14px;
-  margin-bottom: 10px;
+  flex-wrap: wrap;
+  gap: 60px;
+  justify-content: center;
+  list-style: none;
 }
