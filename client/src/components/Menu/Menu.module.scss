@@ -9,17 +9,15 @@
 
 .header {
   display: flex;
-  justify-content: center;
-  width: 100%;
+  justify-content: space-between;
+  // width: 100%;
   height: 60px;
   font-family: "Roboto", sans-serif;
-
   &__container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    max-width: 1600px;
+    // display: flex;
+    // align-items: center;
+    // width: 100%;
+    max-width: $with-header;
 
     &__burger {
       position: absolute;
@@ -99,7 +97,6 @@
   }
 
   .new {
-
     &__users,
     &__requests {
       position: relative;
@@ -131,9 +128,9 @@
   }
 }
 
-@media (max-width: 976px) {
+@media (max-width: 1140px) {
   .header {
-    position: relative;
+    //position: relative;
     height: 48px;
 
     &__title,
@@ -190,6 +187,10 @@
       left: 20px;
       flex-direction: column;
       max-width: 220px;
+      background-color: $btn-color;
+      z-index: 999;
+      align-items: start;
+      padding: 20px;
     }
 
     .burger__non__active {

@@ -6,13 +6,15 @@ import Layout from '@components/Layout';
 import AboutProjectPage from '@pages/AboutProjectPage';
 import AcceptanceOfApplicationsPage from '@pages/AcceptanceOfApplicationsPage';
 import CatalogPage from '@pages/CatalogPage';
+import LoginPage from '@pages/LoginPage';
 import ReferenceSectionPage from '@pages/ReferenceSectionPage';
+import RegistrationPage from '@pages/RegistrationPage';
 
 import './App.scss';
 
 function App() {
   return (
-    <div>
+    <div className="container__main">
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<AboutProjectPage />} />
@@ -25,6 +27,8 @@ function App() {
           />
           <Route path="*" element={<p>404</p>} />
         </Route>
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/registration" element={<RegistrationPage />} />
       </Routes>
     </div>
   );

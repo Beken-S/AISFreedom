@@ -1,22 +1,11 @@
 @import "../../scss/variables";
 
-.wrapper {
+.content__wrapper {
+  min-height: 100vh;
   display: flex;
-  align-items: flex-start;
+  flex-direction: column;
+}
 
-  &__sidebar {
-    width: 190px;
-    height: 768px;
-
-    // padding-left: 20px;
-    overflow: hidden;
-    color: $colorText;
-    line-height: 17px;
-    background-color: $darkBlue;
-  }
-
-  &__content {
-    flex: 1 1;
-    width: $withHeader;
-  }
+.top__content {
+  flex-grow: 1;
 }
