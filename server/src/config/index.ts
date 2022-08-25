@@ -2,12 +2,13 @@ import path = require('path');
 
 import dotenv = require('dotenv');
 import { Dialect, Options } from 'sequelize';
+import { prettify } from 'sql-log-prettifier';
 
 import { isDevMode } from '../utils';
 
 enum Mods {
-  Dev = 'dev',
-  Prod = 'prod',
+  Dev = 'development',
+  Prod = 'production',
 }
 
 enum Envs {
@@ -72,6 +73,28 @@ const serverConfig: IServerConfig = {
   logs: serverLogsConfig,
 };
 
+const prettifySettings = {
+  format: true,
+  noColors: false,
+  settings: {
+    functions: {
+      color: '#b23733',
+    },
+    keywords: {
+      color: '#b23733',
+    },
+    operators: {
+      color: '#91B859',
+    },
+    strings: {
+      color: '#202c69',
+    },
+    numbers: {
+      color: '#50fa7b',
+    },
+  },
+};
+
 const databaseConfig: IDataBaseConfig = {
   name: process.env[Envs.DB] || '',
   user: process.env[Envs.DB_USER] || '',
@@ -86,6 +109,10 @@ const databaseConfig: IDataBaseConfig = {
       acquire: 30000,
       idle: 10000,
     },
+    logging:
+      serverConfig.mode === Mods.Dev
+        ? (msg) => console.log(prettify(msg, prettifySettings), '\n')
+        : false,
   },
 };
 
