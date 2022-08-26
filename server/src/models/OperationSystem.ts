@@ -37,7 +37,7 @@ const OperationSystem: OperationSystemModelDefined = Database.define(
     name: {
       type: DataTypes.STRING,
       allowNull: false,
-      unique: true,
+      unique: 'name',
       set(value: string) {
         this.setDataValue('name', value.toLocaleLowerCase());
       },
