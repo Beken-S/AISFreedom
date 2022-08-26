@@ -120,6 +120,10 @@
   }
 }
 
+.slash {
+  margin-top: 10px;
+}
+
 @media (max-width: 1500px) {
   .header {
     &__title {
@@ -191,10 +195,20 @@
 
     &__menu {
       position: absolute;
-      top: 50px;
-      left: 20px;
+      top: 53px;
+      left: -206px;
+      z-index: 10;
+      display: flex;
       flex-direction: column;
       max-width: 220px;
+      padding-bottom: 30px;
+      background: #ffffff;
+      border: 1px solid #babbbb;
+      border-radius: 9px;
+    }
+
+    .slash {
+      display: none;
     }
 
     .burger__non__active {

@@ -1,6 +1,5 @@
 import cn from 'classnames';
 import React, { useState } from 'react';
-import useOnclickOutside from 'react-cool-onclickoutside';
 import { NavLink } from 'react-router-dom';
 
 import style from './Menu.module.scss';
@@ -9,7 +8,6 @@ const Menu = () => {
   const [menuItemsToggle, setMenuItemsToggle] = useState(false);
   const handleBtnClick = () => setMenuItemsToggle(!menuItemsToggle);
   const closeActiveBlock = () => setMenuItemsToggle(false);
-  const ref = useOnclickOutside(() => closeActiveBlock());
 
   return (
     <div className={style.container}>
@@ -46,7 +44,6 @@ const Menu = () => {
             </div>
           </div>
           <div
-            ref={ref}
             className={`style.header__container__inner ${
               !menuItemsToggle ? style.burger__non__active : ''
             }`}
@@ -70,7 +67,7 @@ const Menu = () => {
               >
                 О ПРОЕКТЕ
               </NavLink>
-              <span>/</span>
+              <span className={style.slash}>/</span>
               <NavLink
                 to="/analog"
                 style={({ isActive }) => ({
@@ -89,7 +86,7 @@ const Menu = () => {
               >
                 КАТАЛОГ
               </NavLink>
-              <span>/</span>
+              <span className={style.slash}>/</span>
               <NavLink
                 to="/reference"
                 style={({ isActive }) => ({
@@ -108,7 +105,7 @@ const Menu = () => {
               >
                 СПРАВОЧНЫЙ РАЗДЕЛ
               </NavLink>
-              <span>/</span>
+              <span className={style.slash}>/</span>
               <NavLink
                 to="/applications"
                 style={({ isActive }) => ({
@@ -136,14 +133,3 @@ const Menu = () => {
 };
 
 export default Menu;
-
-// {
-//   /* <div className={style.servicesMenu}>
-//       <h3>МЕНЮ</h3>
-//       <a href="#1" className={style.changeServicesMenu}> О ПРОЕКТЕ </a>
-//       <a href="#2" className={style.changeServicesMenu}> КАТАЛОГ </a>
-//       <a href="#3" className={style.changeServicesMenu}> ПОИСК АЛЬТЕРНАТИВ </a>
-//       <a href="#4" className={style.changeServicesMenu}> СПРАВОЧНЫЙ РАЗДЕЛ </a>
-//       <a href="#5" className={style.changeServicesMenu}> ПРИЕМ ЗАЯВОК </a>
-//     </div> */
-// }
