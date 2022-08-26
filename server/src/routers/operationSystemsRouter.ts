@@ -4,10 +4,25 @@ import { operationSystemsController } from '../controllers';
 
 const operationSystemsRouter = express.Router();
 
-operationSystemsRouter.post('/os', operationSystemsController.create);
-operationSystemsRouter.get('/os', operationSystemsController.getAll);
-operationSystemsRouter.get('/os/:id', operationSystemsController.getById);
-operationSystemsRouter.put('/os', operationSystemsController.update);
-operationSystemsRouter.delete('/os/:id', operationSystemsController.destroy);
+operationSystemsRouter.post(
+  '/operation_systems',
+  operationSystemsController.create
+);
+operationSystemsRouter.get(
+  '/operation_systems',
+  operationSystemsController.getAll
+);
+operationSystemsRouter.get(
+  '/operation_systems/:id',
+  operationSystemsController.getById
+);
+operationSystemsRouter.put(
+  '/operation_systems',
+  operationSystemsController.update
+);
+operationSystemsRouter.delete(
+  '/operation_systems/:id',
+  operationSystemsController.destroy
+);
 
 export default operationSystemsRouter;
