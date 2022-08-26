@@ -1,5 +1,6 @@
 import cn from 'classnames';
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 import Menu from '../Menu';
 
@@ -12,9 +13,9 @@ const Header = () => {
   return (
     <header className={style.headerSystemName}>
       <div className={cn(style.headerSystemNameWrap, 'wrap')}>
-        <a href="index.html">
+        <NavLink to="/">
           <img className={style.logo} src={logo} alt="logo" />
-        </a>
+        </NavLink>
         <Menu />
       </div>
     </header>

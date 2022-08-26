@@ -16,8 +16,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<AboutProjectPage />} />
-          <Route path="/analog" element={<CatalogPage />} />
-          <Route path="/analog/:id" element={<ProgramContainer />} />
+          <Route path="/catalog" element={<CatalogPage />} />
+          <Route path="/catalog/:id" element={<ProgramContainer />} />
           <Route path="/reference" element={<ReferenceSectionPage />} />
           <Route
             path="/applications"

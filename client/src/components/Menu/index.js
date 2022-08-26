@@ -69,7 +69,7 @@ const Menu = () => {
               </NavLink>
               <span className={style.slash}>/</span>
               <NavLink
-                to="/analog"
+                to="/catalog"
                 style={({ isActive }) => ({
                   color: isActive ? 'rgb(50, 129, 226)' : '',
                   transitionDuration: isActive ? '0.6s' : '',
