@@ -10,7 +10,7 @@ export const CatalogItem = ({ program }) => {
         <li className={style.programItem}>
           <img
             src={program.img}
-            alt="screenshot"
+            alt="logo_program"
             className={style.programImg}
           />
           <div className={style.programInfo}>
