@@ -4,10 +4,10 @@ import { licensesController } from '../controllers';
 
 const licensesRouter = express.Router();
 
-licensesRouter.post('/license', licensesController.create);
-licensesRouter.get('/license', licensesController.getAll);
-licensesRouter.get('/license/:id', licensesController.getById);
-licensesRouter.put('/license', licensesController.update);
-licensesRouter.delete('/license/:id', licensesController.destroy);
+licensesRouter.post('/licenses', licensesController.create);
+licensesRouter.get('/licenses', licensesController.getAll);
+licensesRouter.get('/licenses/:id', licensesController.getById);
+licensesRouter.put('/licenses', licensesController.update);
+licensesRouter.delete('/licenses/:id', licensesController.destroy);
 
 export default licensesRouter;
