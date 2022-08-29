@@ -7,7 +7,7 @@ const SourceAttributes = Record({
   id: Number,
   program_id: Number,
   operation_system_id: Number,
-  distrib_url: String,
+  distrib_url: String.withConstraint((str) => str != ''),
 });
 
 type SourceAttributes = Static<typeof SourceAttributes>;

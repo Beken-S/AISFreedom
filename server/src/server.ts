@@ -1,4 +1,7 @@
+import path = require('path');
+
 import express = require('express');
+import fileUpload from 'express-fileupload';
 
 import config from './config';
 import { pingController } from './controllers';
@@ -17,6 +20,7 @@ import {
   programTypesRouter,
   sourcesRouter,
 } from './routers';
+import { clearTemp } from './utils';
 
 const app = express();
 
@@ -27,6 +31,7 @@ const start = async () => {
     app.listen(config.server.port, () => {
       console.log(`Server started on port ${config.server.port}.`);
     });
+    clearTemp.start();
   } catch (err) {
     console.log(err);
   }
@@ -35,7 +40,12 @@ const start = async () => {
 security(app);
 
 app.use(express.json());
-
+app.use(
+  fileUpload({
+    useTempFiles: true,
+    tempFileDir: config.database.filesPath.temp,
+  })
+);
 logRequests(app);
 
 app.get('/ping', pingController.ping);

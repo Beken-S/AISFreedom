@@ -5,7 +5,7 @@ import Database from './Database';
 
 const ProgramTypeAttributes = Record({
   id: Number,
-  name: String,
+  name: String.withConstraint((str) => str != ''),
 });
 
 type ProgramTypeAttributes = Static<typeof ProgramTypeAttributes>;

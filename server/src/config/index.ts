@@ -48,6 +48,11 @@ interface IDataBaseConfig {
   user: string;
   password: string;
   options: Options;
+  filesPath: {
+    temp: string;
+    images: string;
+    logos: string;
+  };
 }
 
 interface IConfig {
@@ -113,6 +118,11 @@ const databaseConfig: IDataBaseConfig = {
       serverConfig.mode === Mods.Dev
         ? (msg) => console.log(prettify(msg, prettifySettings), '\n')
         : false,
+  },
+  filesPath: {
+    temp: path.resolve(__dirname, '../../db/temp'),
+    images: path.resolve(__dirname, '../../db/images'),
+    logos: path.resolve(__dirname, '../../db/logos'),
   },
 };
 

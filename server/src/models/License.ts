@@ -1,14 +1,14 @@
-import { Record, Number, String, Static } from 'runtypes';
+import { Record, Number, String, Static, Null } from 'runtypes';
 import { DataTypes, Model, ModelDefined, Op } from 'sequelize';
 
 import Database from './Database';
 
 const LicenseAttributes = Record({
   id: Number,
-  acronym: String.optional(),
-  name: String.optional(),
-  text_url_eng: String,
-  text_url_ru: String.optional(),
+  acronym: String.Or(Null).withConstraint((str) => str != ''),
+  name: String.Or(Null).withConstraint((str) => str != ''),
+  text_url_eng: String.withConstraint((str) => str != ''),
+  text_url_ru: String.Or(Null).withConstraint((str) => str != ''),
 });
 
 type LicenseAttributes = Static<typeof LicenseAttributes>;

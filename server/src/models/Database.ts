@@ -41,6 +41,14 @@ License.hasMany(Program, {
   },
 });
 Program.hasMany(Source, {
+  as: 'sources',
+  foreignKey: {
+    name: 'program_id',
+    allowNull: false,
+  },
+});
+Program.hasMany(Source, {
+  as: 'filter',
   foreignKey: {
     name: 'program_id',
     allowNull: false,
