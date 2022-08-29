@@ -1,4 +1,4 @@
-import { Array, Record, Number, String, Static } from 'runtypes';
+import { Array, Record, Number, String, Static, Null } from 'runtypes';
 import { DataTypes, Model, ModelDefined } from 'sequelize';
 
 import Database from './Database';
@@ -6,15 +6,17 @@ import Database from './Database';
 const ProgramAttributes = Record({
   id: Number,
   program_type_id: Number,
-  license_id: Number.optional(),
-  name: String,
-  description: String.optional(),
-  developer: String.optional(),
-  home_page_url: String.optional(),
-  proprietary_counterparts: Array(String).optional(),
-  logo: String.optional(),
-  images: Array(String).optional(),
-  manual_url: String.optional(),
+  license_id: Number.Or(Null),
+  name: String.withConstraint((str) => str != ''),
+  description: String.Or(Null).withConstraint((str) => str != ''),
+  developer: String.Or(Null).withConstraint((str) => str != ''),
+  home_page_url: String.Or(Null).withConstraint((str) => str != ''),
+  proprietary_counterparts: Array(String).withConstraint(
+    (array) => !array.includes('')
+  ),
+  logo: String.Or(Null).withConstraint((str) => str != ''),
+  images: Array(String).withConstraint((array) => !array.includes('')),
+  manual_url: String.Or(Null).withConstraint((str) => str != ''),
 });
 
 type ProgramAttributes = Static<typeof ProgramAttributes>;
@@ -57,12 +59,16 @@ const Program: ProgramModelDefined = Database.define(
     },
     proprietary_counterparts: {
       type: DataTypes.JSON,
+      allowNull: false,
+      defaultValue: [],
     },
     logo: {
       type: DataTypes.STRING,
     },
     images: {
       type: DataTypes.JSON,
+      allowNull: false,
+      defaultValue: [],
     },
     manual_url: {
       type: DataTypes.STRING(2083),

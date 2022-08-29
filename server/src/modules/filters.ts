@@ -1,8 +1,15 @@
 import { Request } from 'express';
-import { Record, String, Array as RuneArray, Union } from 'runtypes';
-import { Op, FindOptions, Attributes } from 'sequelize';
+import { Record, String, Array as RuneArray, Union, Literal } from 'runtypes';
+import {
+  Op,
+  FindOptions,
+  Attributes,
+  IncludeOptions,
+  WhereOptions,
+} from 'sequelize';
 
 import { Database, Source, ProgramModel } from '../models';
+import { isNumberString } from '../utils';
 
 import { BadRequestError } from './error';
 
@@ -10,74 +17,42 @@ interface IPaginationFilter {
   limit: number;
   offset: number;
 }
+const PaginationOptions = Record({
+  page: String.withConstraint(isNumberString).optional(),
+  items_on_page: String.withConstraint(isNumberString).optional(),
+});
 
 function getPaginationFilter({ query }: Request): IPaginationFilter | null {
-  let page: number | null = null;
-  let itemsOnPage: number | null = null;
+  try {
+    const { page, items_on_page } = PaginationOptions.check(query);
 
-  for (const key in query) {
-    if (key === 'page') page = Number(query[key]);
-    if (key === 'items_on_page') itemsOnPage = Number(query[key]);
-  }
+    if (page == null && items_on_page == null) return null;
+    if ((page == null) != (items_on_page == null)) {
+      throw new BadRequestError('Неверно заданы параметры пагинации.');
+    }
 
-  if (page == null && itemsOnPage == null) return null;
-
-  if (
-    page == null ||
-    itemsOnPage == null ||
-    isNaN(page) ||
-    isNaN(itemsOnPage)
-  ) {
+    return {
+      limit: Number(items_on_page),
+      offset: Number(items_on_page) * (Number(page) - 1),
+    };
+  } catch (err) {
     throw new BadRequestError('Неверно заданы параметры пагинации.');
   }
-
-  return {
-    limit: itemsOnPage,
-    offset: itemsOnPage * (page - 1),
-  };
 }
 
-type SearchInOptions = 'name' | 'description' | 'counterparts';
-
-function isSearchInOptions(
-  value: unknown
-): value is SearchInOptions | SearchInOptions[] {
-  if (Array.isArray(value)) {
-    const uniqueArray = [...new Set(value)];
-
-    if (value.length > uniqueArray.length) return false;
-
-    for (const item of value) {
-      if (
-        item !== 'name' &&
-        item !== 'description' &&
-        item !== 'proprietary_counterparts'
-      ) {
-        return false;
-      }
-    }
-    return true;
-  } else {
-    return (
-      value == 'name' ||
-      value == 'description' ||
-      value == 'proprietary_counterparts'
-    );
-  }
-}
-
-type WhereOption = {
-  key: string;
-  value: string | number;
-};
+const SearchInOptions = Union(
+  Literal('name'),
+  Literal('description'),
+  Literal('proprietary_counterparts')
+);
 
 type ProgramSearchOptions = FindOptions<Attributes<ProgramModel>>;
 
 const SearchProgramQuery = Record({
   q: String,
-  _in: Union(RuneArray(String), String).optional(),
-  operation_system_id: String.optional(),
-  program_type_id: String.optional(),
+  _in: Union(RuneArray(SearchInOptions), SearchInOptions).optional(),
+  operation_system_id: String.withConstraint(isNumberString).optional(),
+  program_type_id: String.withConstraint(isNumberString).optional(),
 });
 
 function getProgramSearchOption(req: Request): ProgramSearchOptions {
@@ -89,80 +64,61 @@ function getProgramSearchOption(req: Request): ProgramSearchOptions {
   const programTypeId =
     query.program_type_id != null ? Number(query.program_type_id) : null;
 
-  if (
-    (query._in != null && !isSearchInOptions(query._in)) ||
-    (operationSystemId != null && isNaN(operationSystemId)) ||
-    (programTypeId != null && isNaN(programTypeId))
-  ) {
-    throw new BadRequestError('Неверные параметры поиска.');
-  }
-
-  const whereOrOptions: WhereOption[] = [];
-  const whereAndOptions: WhereOption[] = [];
-  const includeWhereOptions: WhereOption[] = [];
+  const whereOrOptions: WhereOptions = [];
+  const whereAndOptions: WhereOptions = [];
+  const includeOptions: IncludeOptions[] = [
+    {
+      model: Source,
+      as: 'sources',
+      attributes: ['distrib_url', 'operation_system_id'],
+      separate: true,
+    },
+  ];
 
   if (operationSystemId != null) {
-    includeWhereOptions.push({
-      key: 'operation_system_id',
-      value: operationSystemId,
+    includeOptions.push({
+      model: Source,
+      as: 'filter',
+      where: { operation_system_id: operationSystemId },
+      required: true,
+      attributes: [],
     });
   }
 
   if (programTypeId != null) {
     whereAndOptions.push({
-      key: 'program_type_id',
-      value: programTypeId,
+      program_type_id: programTypeId,
     });
   }
 
-  if (query._in != null) {
-    if (Array.isArray(query._in)) {
-      query._in.forEach((key) => whereOrOptions.push({ key, value: query.q }));
-    } else {
-      whereOrOptions.push({ key: query._in, value: query.q });
-    }
+  if (query._in == null) {
+    whereOrOptions.push({
+      name: { [Op.like]: `%${query.q}%` },
+    });
+  } else if (Array.isArray(query._in)) {
+    query._in.forEach((key) => {
+      if (key === 'proprietary_counterparts') {
+        whereOrOptions.push(
+          Database.where(Database.col(key), Op.like, `%${query.q}%`)
+        );
+      } else {
+        whereOrOptions.push({
+          [key]: { [Op.like]: `%${query.q}%` },
+        });
+      }
+    });
   } else {
-    whereOrOptions.push({ key: 'name', value: query.q });
+    whereOrOptions.push({
+      [query._in]: { [Op.like]: `%${query.q}%` },
+    });
   }
 
   return {
     order: ['id'],
-    include:
-      includeWhereOptions.length > 0
-        ? {
-            model: Source,
-            where: {
-              [Op.or]: includeWhereOptions.map(({ key, value }) => ({
-                [key]: value,
-              })),
-            },
-            attributes: [],
-          }
-        : undefined,
+    include: includeOptions,
     where: {
-      [Op.or]:
-        whereOrOptions.length > 0
-          ? whereOrOptions.map(({ key, value }) => {
-              switch (key) {
-                case 'proprietary_counterparts': {
-                  return Database.where(
-                    Database.col(key),
-                    Op.like,
-                    `%${value}%`
-                  );
-                }
-                default: {
-                  return { [key]: { [Op.like]: `%${value}%` } };
-                }
-              }
-            })
-          : [],
-      [Op.and]:
-        whereAndOptions.length > 0
-          ? whereAndOptions.map(({ key, value }) => {
-              return { [key]: value };
-            })
-          : [],
+      [Op.or]: [...whereOrOptions],
+      [Op.and]: [...whereAndOptions],
     },
   };
 }

@@ -82,6 +82,16 @@ DB_DIALECT = mysql
   manual_url: string | null;
   rating: number | null;
   license_id: number | null;
+  sources: Sources[];
+}
+```
+
+где `Sources:`
+
+```typescript
+{
+  distrib_url: string;
+  operation_system_id: number;
 }
 ```
 
@@ -155,25 +165,40 @@ Program;
 
 #### Тело запроса
 
+JSON строка
+
 ```
 {
-  "program_type_id": number, // обязательное поле
-  "name": string, // обязательное поле
-  "license_id": number,
-  "description": string,
-  "developer": string,
-  "home_page_url": string,
+  "program_type_id": number,
+  "name": string,
+  "license_id": number | null,
+  "description": string | null,
+  "developer": string | null,
+  "home_page_url": string | null,
   "proprietary_counterparts": string[],
-  "logo": string,
+  "logo": string | null,
   "images": string[],
-  "manual_url": string,
+  "manual_url": string | null,
 }
 ```
 
 #### Ответ
 
 ```typescript
-Program;
+{
+  id: number;
+  name: string;
+  program_type_id: number;
+  description: string | null;
+  developer: string | null;
+  home_page_url: string | null;
+  proprietary_counterparts: string[] | null;
+  logo: string | null;
+  images: string[] | null;
+  manual_url: string | null;
+  rating: number | null;
+  license_id: number | null;
+}
 ```
 
 ### Обновление программы
@@ -186,26 +211,41 @@ Program;
 
 #### Тело запроса
 
+JSON строка
+
 ```
 {
-  "id": number, //обязательное поле
-  "program_type_id": number, // обязательное поле
-  "name": string, // обязательное поле
-  "license_id": number,
-  "description": string,
-  "developer": string,
-  "home_page_url": string,
+  "id": number,
+  "program_type_id": number,
+  "name": string,
+  "license_id": number | null,
+  "description": string | null,
+  "developer": string | null,
+  "home_page_url": string | null,
   "proprietary_counterparts": string[],
-  "logo": string,
+  "logo": string | null,
   "images": string[],
-  "manual_url": string,
+  "manual_url": string | null,
 }
 ```
 
 #### Ответ
 
 ```typescript
-Program;
+{
+  id: number;
+  name: string;
+  program_type_id: number;
+  description: string | null;
+  developer: string | null;
+  home_page_url: string | null;
+  proprietary_counterparts: string[] | null;
+  logo: string | null;
+  images: string[] | null;
+  manual_url: string | null;
+  rating: number | null;
+  license_id: number | null;
+}
 ```
 
 ### Удаление программы
@@ -231,6 +271,62 @@ Program;
   "message": "Запись была успешно уделена."
 }
 ```
+
+### Получение логотипов
+
+#### Запрос
+
+| Метод | URI                              |
+| ----- | -------------------------------- |
+| `GET` | `/api/programs/logos/:file_name` |
+
+#### Параметры
+
+| Параметр     | Значение | Описание  |
+| ------------ | -------- | --------- |
+| `:file_name` | `string` | имя файла |
+
+> Пример: `https://localhost:3000/api/programs/logos/1.png`
+
+#### Ответ
+
+Файл изображения.
+
+### Получение скриншотов
+
+#### Запрос
+
+| Метод | URI                               |
+| ----- | --------------------------------- |
+| `GET` | `/api/programs/images/:file_name` |
+
+#### Параметры
+
+| Параметр     | Значение | Описание  |
+| ------------ | -------- | --------- |
+| `:file_name` | `string` | имя файла |
+
+> Пример: `https://localhost:3000/api/programs/images/1.png`
+
+#### Ответ
+
+Файл изображения.
+
+### Загрузка изображений для программы
+
+#### Запрос
+
+| Метод  | URI                     |
+| ------ | ----------------------- |
+| `POST` | `/api/programs/images/` |
+
+#### Тело запроса
+
+`FormData` c ключом `images`.
+
+#### Ответ
+
+Строка или массив строк с именами файлов на сервере.
 
 ## Program Type
 
@@ -291,9 +387,11 @@ ProgramType;
 
 #### Тело запроса
 
+JSON строка
+
 ```
 {
-  "name": string, // обязательное поле
+  "name": string,
 }
 ```
 
@@ -313,10 +411,12 @@ ProgramType;
 
 #### Тело запроса
 
+JSON строка
+
 ```
 {
-  "id": number, //обязательное поле
-  "name": string, // обязательное поле
+  "id": number,
+  "name": string,
 }
 ```
 
@@ -373,10 +473,10 @@ ProgramType;
 ```typescript
 {
   id: number;
-  acronym: string,
-  name: string;
+  acronym: string | null,
+  name: string | null;
   text_url_eng: string,
-  text_url_ru: string
+  text_url_ru: string | null
 }
 ```
 
@@ -412,12 +512,14 @@ License;
 
 #### Тело запроса
 
+JSON строка
+
 ```
 {
-  "acronym": string,
-  "name": string,
-  "text_url_eng": string, // обязательное поле
-  "text_url_ru": string,
+  "acronym": string | null,
+  "name": string | null,
+  "text_url_eng": string,
+  "text_url_ru": string | null,
 }
 ```
 
@@ -437,13 +539,15 @@ License;
 
 #### Тело запроса
 
+JSON строка
+
 ```
 {
-  "id": number, //обязательное поле
-  "acronym": string,
-  "name": string,
-  "text_url_eng": string, // обязательное поле
-  "text_url_ru": string,
+  "id": number,
+  "acronym": string | null,
+  "name": string | null,
+  "text_url_eng": string,
+  "text_url_ru": string | null,
 }
 ```
 
@@ -536,9 +640,11 @@ OperationSystem;
 
 #### Тело запроса
 
+JSON строка
+
 ```
 {
-  "name": string, // обязательное поле
+  "name": string,
 }
 ```
 
@@ -558,10 +664,12 @@ OperationSystem;
 
 #### Тело запроса
 
+JSON строка
+
 ```
 {
-  "id": number, //обязательное поле
-  "name": string, // обязательное поле
+  "id": number,
+  "name": string,
 }
 ```
 
@@ -656,11 +764,13 @@ Source;
 
 #### Тело запроса
 
+JSON строка
+
 ```
 {
-  "distrib_url": string, // обязательное поле
-  "program_id": number, // обязательное поле
-  "operation_system_id": number, // обязательное поле
+  "distrib_url": string,
+  "program_id": number,
+  "operation_system_id": number,
 }
 ```
 
@@ -680,12 +790,14 @@ Source;
 
 #### Тело запроса
 
+JSON строка
+
 ```
 {
-  "id": number, //обязательное поле
-  "distrib_url": string, // обязательное поле
-  "program_id": number, // обязательное поле
-  "operation_system_id": number, // обязательное поле
+  "id": number,
+  "distrib_url": string,
+  "program_id": number,
+  "operation_system_id": number,
 }
 ```
 

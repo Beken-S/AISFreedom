@@ -1,11 +1,13 @@
 import { NextFunction, Request, Response } from 'express';
 
+import config from '../config';
 import { ProgramAttributes, ProgramCreationAttributes } from '../models';
+import { BadRequestError } from '../modules/error';
 import {
   getPaginationFilter,
   getProgramSearchOption,
 } from '../modules/filters';
-import { programsService } from '../services';
+import { programsService, imagesService } from '../services';
 import { getId } from '../utils';
 
 async function create(
@@ -110,4 +112,21 @@ async function destroy(
   }
 }
 
-export { create, getAll, getById, update, destroy, search };
+async function saveImages(req: Request, res: Response, next: NextFunction) {
+  try {
+    if (req.files == null || req.files['images'] == null) {
+      throw new BadRequestError('Неверное тело запроса.');
+    }
+
+    const imagesNames = await imagesService.save(
+      config.database.filesPath.temp,
+      req.files['images']
+    );
+
+    res.json(imagesNames);
+  } catch (err) {
+    next(err);
+  }
+}
+
+export { create, getAll, getById, update, destroy, search, saveImages };

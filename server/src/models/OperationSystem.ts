@@ -5,7 +5,7 @@ import Database from './Database';
 
 const OperationSystemAttributes = Record({
   id: Number,
-  name: String,
+  name: String.withConstraint((str) => str != ''),
 });
 
 type OperationSystemAttributes = Static<typeof OperationSystemAttributes>;

@@ -3,5 +3,6 @@
 /logs
 /secrets
 /docker
+/db
 *.log
 *.logs

@@ -13,7 +13,7 @@ async function validationErrorHandler(
   res: Response,
   next: NextFunction
 ): Promise<void> {
-  if (err instanceof ValidationError) {
+  if (err instanceof ValidationError || err instanceof SyntaxError) {
     next(new BadRequestError('Неверные атрибуты в теле запроса.'));
   }
 
