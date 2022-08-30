@@ -10,7 +10,8 @@ export const getProgram = () => async (dispatch, getState) => {
 export const getItem = (id) => async (dispatch, getState) => {
   const response = await fetch(`/api/programs/${id}`);
   const result = await response.json();
-  dispatch(setItem(result));
+  const res = await fetch(`/api/programs/images/${result.images[0]}`);
+  dispatch(setItem(result, res.url));
 };
 
 export const getCurrentPage = (page) => async (dispatch, getState) => {
