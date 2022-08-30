@@ -1,13 +1,19 @@
+import { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
 import { Program } from '@components/Program';
-const ProgramContainer = ({ freeSoft }) => {
+import { getItem } from '@store/thunks/searchThunk';
+const ProgramContainer = ({ item, getItem }) => {
   const { id } = useParams();
-  let item = freeSoft.filter((el) => el.id === Number(id));
+
+  useEffect(() => {
+    getItem(id);
+  }, [id]);
+
   return <Program item={item} />;
 };
 const mapStateToProps = (state) => ({
-  freeSoft: state.soft.freeSoft,
+  item: state.soft.item,
 });
-export default connect(mapStateToProps, {})(ProgramContainer);
+export default connect(mapStateToProps, { getItem })(ProgramContainer);
