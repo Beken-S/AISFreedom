@@ -173,6 +173,7 @@ const initialState = {
   ],
   programs: [],
   item: {},
+  img: null,
   currentPage: 1,
   totalCountPages: null,
   isGraphic: false,
@@ -244,6 +245,7 @@ const searchReducer = (state = initialState, action) => {
       return {
         ...state,
         item: action.item,
+        img: action.img,
       };
     default:
       return state;

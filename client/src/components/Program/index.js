@@ -2,11 +2,11 @@ import React from 'react';
 
 import style from './Program.module.scss';
 
-export const Program = ({ item }) => {
+export const Program = ({ item, img }) => {
   return (
     <>
       <div key={item.id} className={style.Program}>
-        <img src={item.img} alt="screenshot" className={style.programImg} />
+        <img src={img} alt="screenshot" className={style.programImg} />
         <div className={style.programInfo}>
           <h2 className={style.programName}>{item.name}</h2>
           <p className={style.programOs}>Разработчик: {item.developer}</p>

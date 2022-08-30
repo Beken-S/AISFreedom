@@ -55,7 +55,8 @@ export const setProgram = (programs, totalCountPages, currentPage) => ({
   currentPage,
 });
 
-export const setItem = (item) => ({
+export const setItem = (item, img) => ({
   type: SET_ITEM,
   item,
+  img,
 });
