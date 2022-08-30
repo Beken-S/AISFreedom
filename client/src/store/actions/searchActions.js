@@ -8,6 +8,7 @@ export const SET_IS_LINUX = 'SOFT::SET_IS_LINUX';
 export const SET_IS_WINDOWS = 'SOFT::SET_IS_WINDOWS';
 export const SET_PROGRAM = 'SOFT::SET_PROGRAM';
 export const SET_ITEM = 'SOFT::SET_ITEM';
+export const IS_LOADING = 'SOFT::IS_LOADING';
 
 export const searchAnalogs = (type) => ({
   type: SEARCH_ANALOGS,
@@ -55,8 +56,12 @@ export const setProgram = (programs, totalCountPages, currentPage) => ({
   currentPage,
 });
 
-export const setItem = (item, img) => ({
+export const setItem = (item) => ({
   type: SET_ITEM,
   item,
-  img,
+});
+
+export const isLoading = (isLoading) => ({
+  type: IS_LOADING,
+  isLoading,
 });
