@@ -9,7 +9,7 @@ export const CatalogItem = ({ program }) => {
       <NavLink to={`${program.id}`} className={style.programLink}>
         <li className={style.programItem}>
           <img
-            src={program.img}
+            src={`http://localhost:3000/api/programs/logos/${program.logo}`}
             alt="logo_program"
             className={style.programImg}
           />
