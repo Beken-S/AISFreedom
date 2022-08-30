@@ -6,6 +6,8 @@ export const SET_IS_ARCHIVER = 'SOFT::SET_IS_ARCHIVER';
 export const SET_IS_TEXT = 'SOFT::SET_IS_TEXT';
 export const SET_IS_LINUX = 'SOFT::SET_IS_LINUX';
 export const SET_IS_WINDOWS = 'SOFT::SET_IS_WINDOWS';
+export const SET_PROGRAM = 'SOFT::SET_PROGRAM';
+export const SET_ITEM = 'SOFT::SET_ITEM';
 
 export const searchAnalogs = (type) => ({
   type: SEARCH_ANALOGS,
@@ -44,4 +46,16 @@ export const setIsLinux = (check) => ({
 export const setIsWindows = (check) => ({
   type: SET_IS_WINDOWS,
   check,
+});
+
+export const setProgram = (programs, totalCountPages, currentPage) => ({
+  type: SET_PROGRAM,
+  programs,
+  totalCountPages,
+  currentPage,
+});
+
+export const setItem = (item) => ({
+  type: SET_ITEM,
+  item,
 });

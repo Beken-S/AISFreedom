@@ -7,6 +7,8 @@ import {
   SET_IS_WINDOWS,
   RESET_SEARCH,
   SEARCH_ANALOGS,
+  SET_PROGRAM,
+  SET_ITEM,
 } from '../actions/searchActions';
 import { filterOfChecked } from '../helpers/filterOfClasses&os';
 
@@ -169,6 +171,10 @@ const initialState = {
       raiting: '☆ ☆ ☆',
     },
   ],
+  programs: [],
+  item: {},
+  currentPage: 1,
+  totalCountPages: null,
   isGraphic: false,
   isArchiver: false,
   isText: false,
@@ -180,12 +186,12 @@ const searchReducer = (state = initialState, action) => {
     case SEARCH_ANALOGS:
       return {
         ...state,
-        filtered: state.freeSoft.filter((f) => f.type === action.payload),
+        filtered: state.programs.filter((f) => f.type === action.payload),
       };
     case RESET_SEARCH:
       return {
         ...state,
-        filtered: [...state.freeSoft],
+        filtered: [...state.programs],
         isGraphic: false,
         isArchiver: false,
         isText: false,
@@ -225,6 +231,19 @@ const searchReducer = (state = initialState, action) => {
       return {
         ...state,
         isWindows: action.check,
+      };
+    case SET_PROGRAM:
+      return {
+        ...state,
+        programs: action.programs,
+        filtered: action.programs,
+        totalCountPages: action.totalCountPages,
+        currentPage: action.currentPage,
+      };
+    case SET_ITEM:
+      return {
+        ...state,
+        item: action.item,
       };
     default:
       return state;

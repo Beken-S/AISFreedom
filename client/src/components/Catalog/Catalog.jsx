@@ -5,15 +5,15 @@ import Pagination from '../Pagination';
 
 import style from './Catalog.module.scss';
 
-export const Catalog = ({ filtered }) => {
+export const Catalog = ({ programs, totalCountPages, getCurrentPage }) => {
   return (
     <section className={style.Catalog}>
       <ul className={style.programsList}>
-        {filtered.map((el, i) => {
+        {programs.map((el, i) => {
           return <CatalogItem program={el} key={i} />;
         })}
       </ul>
-      <Pagination />
+      <Pagination pages={totalCountPages} getCurrentPage={getCurrentPage} />
     </section>
   );
 };
