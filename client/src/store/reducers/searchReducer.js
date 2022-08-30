@@ -9,6 +9,7 @@ import {
   SEARCH_ANALOGS,
   SET_PROGRAM,
   SET_ITEM,
+  IS_LOADING,
 } from '../actions/searchActions';
 import { filterOfChecked } from '../helpers/filterOfClasses&os';
 
@@ -173,7 +174,7 @@ const initialState = {
   ],
   programs: [],
   item: {},
-  img: null,
+  isLoading: false,
   currentPage: 1,
   totalCountPages: null,
   isGraphic: false,
@@ -245,7 +246,11 @@ const searchReducer = (state = initialState, action) => {
       return {
         ...state,
         item: action.item,
-        img: action.img,
+      };
+    case IS_LOADING:
+      return {
+        ...state,
+        isLoading: action.isLoading,
       };
     default:
       return state;
