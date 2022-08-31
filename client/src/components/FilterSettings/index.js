@@ -38,7 +38,7 @@ const FilterSettings = ({
   };
 
   useEffect(() => {
-    debugger;
+    //debugger;
     if (isGraphic) {
       filtersOfType.push({ type: 'Редакторы графики' });
     }
@@ -67,7 +67,7 @@ const FilterSettings = ({
   return (
     <div className={style.FilterSettings}>
       <div>
-        Выберите OS:
+        <div className={style.FilterSettings__title}>Выберите OS:</div>
         <label>
           <Checbox onChange={onCheckLinux} checked={isLinux} text={'Linux'} />
         </label>
@@ -80,7 +80,10 @@ const FilterSettings = ({
         </label>
       </div>
       <div className={style.FilterSettings__classes}>
-        Выберите класс программы:
+        <div className={style.FilterSettings__title}>
+          Выберите класс программы:
+        </div>
+
         <label>
           <Checbox
             onChange={onCheckGraphic}
@@ -102,6 +105,10 @@ const FilterSettings = ({
             text={'Текстовые редакторы'}
           />
         </label>
+      </div>
+      <div className={style.FilterSettings__buttons}>
+        <div className={style.FilterSettings__buttons__close}>ЗАКРЫТЬ</div>
+        <div className={style.FilterSettings__buttons__close}>ОК</div>
       </div>
     </div>
   );

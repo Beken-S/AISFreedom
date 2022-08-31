@@ -2,9 +2,41 @@
   display: flex;
   flex-direction: column;
   padding: 10px;
+  border-radius: 7px;
+  max-width: 500px;
+  width: 100%;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 
   &__classes {
     display: flex;
     flex-direction: column;
+  }
+
+  &__title {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 19px;
+    color: rgba(0, 0, 0);
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: space-around;
+    box-sizing: border-box;
+    padding: 15px 30px;
+    display: flex;
+    flex-direction: row;
+    border-top: 1px solid rgba(0, 0, 0, 0.12);
+    &__close {
+      font-family: Roboto;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 16px;
+      text-align: center;
+      letter-spacing: 0.0357143em;
+      cursor: pointer;
+    }
   }
 }
