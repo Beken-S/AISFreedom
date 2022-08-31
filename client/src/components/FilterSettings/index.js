@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react';
 
+import Checbox from '../../UI/Checbox';
+
 import style from './FilterSettings.module.scss';
 
 const FilterSettings = ({
@@ -36,7 +38,7 @@ const FilterSettings = ({
   };
 
   useEffect(() => {
-    debugger;
+    //debugger;
     if (isGraphic) {
       filtersOfType.push({ type: 'Редакторы графики' });
     }
@@ -65,50 +67,48 @@ const FilterSettings = ({
   return (
     <div className={style.FilterSettings}>
       <div>
-        Выберите OS:
+        <div className={style.FilterSettings__title}>Выберите OS:</div>
         <label>
-          <input
-            type="checkbox"
-            onChange={onCheckLinux}
-            defaultChecked={isLinux}
-          />{' '}
-          Linux
+          <Checbox onChange={onCheckLinux} checked={isLinux} text={'Linux'} />
         </label>
         <label>
-          <input
-            type="checkbox"
+          <Checbox
             onChange={onCheckWindows}
-            defaultChecked={isWindows}
-          />{' '}
-          Windows
+            checked={isWindows}
+            text={'Windows'}
+          />
         </label>
       </div>
       <div className={style.FilterSettings__classes}>
-        Выберите класс программы:
+        <div className={style.FilterSettings__title}>
+          Выберите класс программы:
+        </div>
+
         <label>
-          <input
-            type="checkbox"
+          <Checbox
             onChange={onCheckGraphic}
-            defaultChecked={isGraphic}
-          />{' '}
-          Редакторы графики
+            checked={isGraphic}
+            text={'Редакторы графики'}
+          />
         </label>
         <label>
-          <input
-            type="checkbox"
+          <Checbox
             onChange={onCheckArchiver}
-            defaultChecked={isArchiver}
-          />{' '}
-          Архиваторы файлов
+            checked={isArchiver}
+            text={'Архиваторы файлов'}
+          />
         </label>
         <label>
-          <input
-            type="checkbox"
+          <Checbox
             onChange={onCheckText}
-            defaultChecked={isText}
-          />{' '}
-          Текстовые редакторы
+            checked={isText}
+            text={'Текстовые редакторы'}
+          />
         </label>
+      </div>
+      <div className={style.FilterSettings__buttons}>
+        <div className={style.FilterSettings__buttons__close}>ЗАКРЫТЬ</div>
+        <div className={style.FilterSettings__buttons__close}>ОК</div>
       </div>
     </div>
   );
