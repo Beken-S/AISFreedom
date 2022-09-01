@@ -1,10 +1,9 @@
-import path = require('path');
-
 import express = require('express');
 import fileUpload from 'express-fileupload';
 
 import config from './config';
-import { pingController } from './controllers';
+// import { pingController } from './controllers';
+import database, { initDatabase } from './database';
 import {
   errorHandler,
   logErrors,
@@ -12,7 +11,6 @@ import {
   security,
   validationErrorHandler,
 } from './middlewares';
-import { Database, initDatabase } from './models';
 import {
   licensesRouter,
   operationSystemsRouter,
@@ -26,8 +24,8 @@ const app = express();
 
 const start = async () => {
   try {
-    await Database.authenticate();
-    await initDatabase(Database);
+    await database.authenticate();
+    await initDatabase(database);
     app.listen(config.server.port, () => {
       console.log(`Server started on port ${config.server.port}.`);
     });
@@ -48,7 +46,7 @@ app.use(
 );
 logRequests(app);
 
-app.get('/ping', pingController.ping);
+// app.get('/ping', pingController.ping);
 app.use('/api', programsRouter);
 app.use('/api', programTypesRouter);
 app.use('/api', operationSystemsRouter);

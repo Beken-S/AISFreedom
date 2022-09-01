@@ -1,7 +1,8 @@
 import path = require('path');
 
 import dotenv = require('dotenv');
-import { Dialect, Options } from 'sequelize';
+import { Dialect } from 'sequelize';
+import { SequelizeOptions } from 'sequelize-typescript';
 import { prettify } from 'sql-log-prettifier';
 
 import { isDevMode } from '../utils';
@@ -47,7 +48,7 @@ interface IDataBaseConfig {
   name: string;
   user: string;
   password: string;
-  options: Options;
+  options: SequelizeOptions;
   filesPath: {
     temp: string;
     images: string;
@@ -99,7 +100,6 @@ const prettifySettings = {
     },
   },
 };
-
 const databaseConfig: IDataBaseConfig = {
   name: process.env[Envs.DB] || '',
   user: process.env[Envs.DB_USER] || '',
@@ -118,6 +118,11 @@ const databaseConfig: IDataBaseConfig = {
       serverConfig.mode === Mods.Dev
         ? (msg) => console.log(prettify(msg, prettifySettings), '\n')
         : false,
+    define: {
+      charset: 'utf8',
+      collate: 'utf8_general_ci',
+    },
+    models: [path.resolve(__dirname, '../models') + '/*.model.js'],
   },
   filesPath: {
     temp: path.resolve(__dirname, '../../db/temp'),

@@ -20,4 +20,10 @@ class NotFoundError extends BaseError {
   }
 }
 
-export { BaseError, BadRequestError, NotFoundError };
+class UnprocessableEntityError extends BaseError {
+  constructor(message?: string) {
+    super(422, message);
+  }
+}
+
+export { BaseError, BadRequestError, NotFoundError, UnprocessableEntityError };
