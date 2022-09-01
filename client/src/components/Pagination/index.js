@@ -1,35 +1,52 @@
 import cn from 'classnames';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 import '../../App.scss';
 import style from './Pagination.module.scss';
 
-const Pagination = ({ pages = 5, getCurrentPage }) => {
+const Pagination = ({ pages = 1, changePage }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const numberOfPages = [];
   for (let i = 1; i <= pages; i++) {
     numberOfPages.push(i);
   }
-  useEffect(() => {
-    getCurrentPage(currentPage);
-  }, [currentPage]);
+
+  const onChangePage = (page) => {
+    setCurrentPage(page);
+    changePage(page);
+  };
+  const onChangePageBack = () => {
+    let page;
+    if (currentPage === 1) {
+      page = currentPage;
+    } else {
+      page = currentPage - 1;
+      changePage(page);
+    }
+    setCurrentPage(page);
+  };
+  const onChangePageForward = () => {
+    let page;
+    if (currentPage === pages) {
+      page = currentPage;
+    } else {
+      page = currentPage + 1;
+      changePage(page);
+    }
+    setCurrentPage(page);
+  };
 
   return (
     <nav className={style.pagination}>
       <div className={cn(style.pagination__wrap, 'wrap')}>
-        <button
-          className={style.pagination__arrow}
-          onClick={() =>
-            setCurrentPage((prev) => (prev === 1 ? prev : prev - 1))
-          }
-        >
+        <button className={style.pagination__arrow} onClick={onChangePageBack}>
           <i className="fas fa-angle-left" aria-hidden="true"></i>
         </button>
         {numberOfPages.map((page, index) => {
           return (
             <button
               className={currentPage === page ? style.active : style.page}
-              onClick={() => setCurrentPage(page)}
+              onClick={() => onChangePage(page)}
               key={index}
             >
               {page}
@@ -38,9 +55,7 @@ const Pagination = ({ pages = 5, getCurrentPage }) => {
         })}
         <button
           className={style.pagination__arrow}
-          onClick={() =>
-            setCurrentPage((prev) => (prev === pages ? prev : prev + 1))
-          }
+          onClick={onChangePageForward}
         >
           <i className="fas fa-angle-right" aria-hidden="true"></i>
         </button>

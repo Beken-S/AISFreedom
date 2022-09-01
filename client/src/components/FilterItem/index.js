@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
 
 import filter_img from '../../assets/img/filter.png';
-
-import { filter } from './filter';
 import Checbox from '../../UI/Checbox';
 
+import { filter } from './filter';
 import style from './FilterItem.module.scss';
 
 export default function FilterItem({ type, state }) {

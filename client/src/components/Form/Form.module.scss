@@ -4,6 +4,9 @@
 .form {
   @include flex-direction-column;
 
+  &__control {
+    height: 50px;
+  }
   &__Filter {
     position: relative;
   }

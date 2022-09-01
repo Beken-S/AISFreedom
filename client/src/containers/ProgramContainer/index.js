@@ -2,16 +2,18 @@ import { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
+import { getProgram } from '../../store/thunks/Catalog-thunks';
+
 import { Loader } from '@components/Loader';
 import { Program } from '@components/Program';
-import { getItem } from '@store/thunks/searchThunk';
 
-const ProgramContainer = ({ item, getItem, isLoading }) => {
+const ProgramContainer = ({ item, getProgram, isLoading }) => {
   const { id } = useParams();
 
   useEffect(() => {
-    getItem(id);
+    getProgram(id);
   }, [id]);
+
   if (isLoading) {
     return <Loader />;
   } else {
@@ -19,7 +21,7 @@ const ProgramContainer = ({ item, getItem, isLoading }) => {
   }
 };
 const mapStateToProps = (state) => ({
-  item: state.soft.item,
-  isLoading: state.soft.isLoading,
+  item: state.catalog.item,
+  isLoading: state.catalog.isLoading,
 });
-export default connect(mapStateToProps, { getItem })(ProgramContainer);
+export default connect(mapStateToProps, { getProgram })(ProgramContainer);

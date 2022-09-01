@@ -1,71 +1,75 @@
+import cn from 'classnames';
 import React, { useEffect, useRef, useState } from 'react';
 
 import style from './Form.module.scss';
+import './Bootstrap.scss';
+import '../../App.scss';
 
 import FilterSettingsContainer from '@containers/FilterSettingsContainer/FilterSettingsContainer';
 
-const Form = ({ searchAnalogs, paidSoft, resetSearch }) => {
-  const [value, setValue] = useState('');
-  const [filter, setFilter] = useState(false);
+const Form = ({ search, filter }) => {
+  const [isCheckedPO, setCheckedPO] = useState(true);
+  const [isCheckedAnalog, setCheckedAnalog] = useState(false);
+  const [isFilter, setFilter] = useState(false);
+
   const ref = useRef();
-  const handleOnChange = (e) => {
-    setValue(e.target.value);
-  };
+
   useEffect(() => {
     ref.current.focus();
-  }, []);
+  });
 
-  const onReset = () => {
-    resetSearch();
-    setValue('');
-    ref.current.focus();
+  const onSearch = () => {
+    search(ref.current.value);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (value !== '') {
-      paidSoft.forEach((el) => {
-        if (el.name.toLowerCase().includes(value.toLowerCase())) {
-          searchAnalogs(el.type);
-        }
-      });
-    }
-    ref.current.focus();
+    const fields = Array.prototype.slice
+      .call(e.target)
+      .filter((el) => el.name)
+      .reduce(
+        (form, el) => ({
+          ...form,
+          [el.name]: el.value,
+          PO: isCheckedPO,
+          Analog: isCheckedAnalog,
+        }),
+        {}
+      );
+    filter(fields);
   };
 
   return (
-    <form onSubmit={handleSubmit} className={style.form}>
-      <div className={style.form__Filter}>
-        <input
-          type="text"
-          value={value}
-          onChange={handleOnChange}
-          ref={ref}
-          className={style.form__field}
-          placeholder="Введите название свободной программы"
-        ></input>
-        <svg
-          onClick={() => setFilter((prev) => !prev)}
-          xmlns="http://www.w3.org/2000/svg"
-          className={style.form__settings}
-          width="12"
-          viewBox="0 0 192 512"
-        >
-          <path d="M96 184c39.8 0 72 32.2 72 72s-32.2 72-72 72-72-32.2-72-72 32.2-72 72-72zM24 80c0 39.8 32.2 72 72 72s72-32.2 72-72S135.8 8 96 8 24 40.2 24 80zm0 352c0 39.8 32.2 72 72 72s72-32.2 72-72-32.2-72-72-72-72 32.2-72 72z"></path>
-        </svg>
-        {filter && <FilterSettingsContainer />}
-      </div>
-      <div className={style.buttons}>
-        <button className={style.buttons__submit} type="submit">
-          Применить
-        </button>
-        <button
-          onClick={onReset}
-          type="reset"
-          className={style.buttons__submit}
-        >
-          Сбросить
-        </button>
+    <form id="formDataf" onSubmit={handleSubmit} className={cn(style.form)}>
+      <div className={cn('wrap')}>
+        <div className={style.form__Filter}>
+          <div className="input-group">
+            <input
+              ref={ref}
+              type="text"
+              name="text"
+              className="form-control"
+              placeholder="Введите название программы"
+            />
+            <span
+              className="input-group-text"
+              onClick={() => setFilter((prev) => !prev)}
+            >
+              <span className="material-symbols-outlined"> tune </span>
+            </span>
+            <span className="input-group-text" onClick={onSearch}>
+              <span className="material-symbols-outlined"> search </span>
+            </span>
+          </div>
+          {isFilter && (
+            <FilterSettingsContainer
+              isCheckedPO={isCheckedPO}
+              setCheckedPO={setCheckedPO}
+              isCheckedAnalog={isCheckedAnalog}
+              setCheckedAnalog={setCheckedAnalog}
+            />
+          )}
+        </div>
       </div>
     </form>
   );
