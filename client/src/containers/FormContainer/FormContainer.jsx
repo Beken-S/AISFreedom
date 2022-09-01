@@ -1,22 +1,37 @@
 import { connect } from 'react-redux';
 
-import Form from '@components/Form';
-import { searchAnalogs, resetSearch } from '@store/actions/searchActions';
+import {
+  setFilterData,
+  setSearchText,
+} from '../../store/actions/Catalog-actions';
+import { filterProgramsThunk, search } from '../../store/thunks/Catalog-thunks';
 
-const FormContainer = ({ searchAnalogs, paidSoft, resetSearch }) => {
-  return (
-    <Form
-      paidSoft={paidSoft}
-      searchAnalogs={searchAnalogs}
-      resetSearch={resetSearch}
-    />
-  );
+import Form from '@components/Form';
+
+const FormContainer = ({
+  search,
+  filterProgramsThunk,
+  setFilterData,
+  setSearchText,
+}) => {
+  const filter = (formData) => {
+    setFilterData(formData);
+    filterProgramsThunk();
+  };
+  const onSearch = (text) => {
+    setSearchText(text);
+    search();
+  };
+
+  return <Form search={onSearch} filter={filter} />;
 };
 const mapStateToProps = (state) => ({
-  paidSoft: state.soft.paidSoft,
-  freeSoft: state.soft.freeSoft,
+  //
 });
 
-export default connect(mapStateToProps, { searchAnalogs, resetSearch })(
-  FormContainer
-);
+export default connect(mapStateToProps, {
+  search,
+  filterProgramsThunk,
+  setSearchText,
+  setFilterData,
+})(FormContainer);

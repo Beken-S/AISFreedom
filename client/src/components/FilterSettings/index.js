@@ -1,116 +1,89 @@
-import React, { useEffect } from 'react';
-
-import Checbox from '../../UI/Checbox';
+import React from 'react';
 
 import style from './FilterSettings.module.scss';
+import '../../App.scss';
+import './Bootstrap.scss';
 
 const FilterSettings = ({
-  onFilter,
-  isGraphic,
-  setIsGraphic,
-  isArchiver,
-  isLinux,
-  isWindows,
-  setIsArchiver,
-  isText,
-  setIsText,
-  setIsWindows,
-  setIsLinux,
+  isCheckedPO,
+  setCheckedPO,
+  isCheckedAnalog,
+  setCheckedAnalog,
+  resetSearch,
+  error,
 }) => {
-  let filtersOfType = [];
-  let filtersOfOs = [];
-  const onCheckGraphic = (e) => {
-    setIsGraphic(e.target.checked);
-  };
-
-  const onCheckArchiver = (e) => {
-    setIsArchiver(e.target.checked);
-  };
-
-  const onCheckText = (e) => {
-    setIsText(e.target.checked);
-  };
-  const onCheckLinux = (e) => {
-    setIsLinux(e.target.checked);
-  };
-  const onCheckWindows = (e) => {
-    setIsWindows(e.target.checked);
-  };
-
-  useEffect(() => {
-    //debugger;
-    if (isGraphic) {
-      filtersOfType.push({ type: 'Редакторы графики' });
-    }
-    if (isArchiver) {
-      filtersOfType.push({ type: 'Архиваторы файлов' });
-    }
-    if (isText) {
-      filtersOfType.push({ type: 'Текстовые редакторы' });
-    }
-    if (isLinux) {
-      filtersOfOs = [];
-      filtersOfOs.push({ os: 'Linux' });
-    }
-    if (isWindows) {
-      filtersOfOs = [];
-      filtersOfOs.push({ os: 'Windows' });
-    }
-    if (filtersOfOs.length >= 0) {
-      setTimeout(() => {
-        onFilter(filtersOfType, filtersOfOs);
-        filtersOfType = [];
-      }, 1000);
-    }
-  }, [isGraphic, isArchiver, isText, isLinux, isWindows]);
-
   return (
-    <div className={style.FilterSettings}>
-      <div>
-        <div className={style.FilterSettings__title}>Выберите OS:</div>
-        <label>
-          <Checbox onChange={onCheckLinux} checked={isLinux} text={'Linux'} />
-        </label>
-        <label>
-          <Checbox
-            onChange={onCheckWindows}
-            checked={isWindows}
-            text={'Windows'}
+    <>
+      <div className="checkbox">
+        <div className="form-check form-switch">
+          <input
+            className="form-check-input"
+            type="checkbox"
+            role="switch"
+            id="flexSwitchCheckChecked"
+            defaultChecked={isCheckedPO}
+            onChange={() => setCheckedPO((prev) => !prev)}
           />
-        </label>
-      </div>
-      <div className={style.FilterSettings__classes}>
-        <div className={style.FilterSettings__title}>
-          Выберите класс программы:
+          <label className="form-check-label" htmlFor="flexSwitchCheckChecked">
+            Поиск по номенклатуре свободного ПО
+          </label>
         </div>
+        <div className="form-check form-switch">
+          <input
+            className="form-check-input"
+            type="checkbox"
+            role="switch"
+            id="flexSwitchCheckDefault"
+            defaultChecked={isCheckedAnalog}
+            onChange={() => setCheckedAnalog((prev) => !prev)}
+          />
+          <label className="form-check-label" htmlFor="flexSwitchCheckDefault">
+            Поиск по номенклатуре альтернатив
+          </label>
+        </div>
+      </div>
 
-        <label>
-          <Checbox
-            onChange={onCheckGraphic}
-            checked={isGraphic}
-            text={'Редакторы графики'}
-          />
-        </label>
-        <label>
-          <Checbox
-            onChange={onCheckArchiver}
-            checked={isArchiver}
-            text={'Архиваторы файлов'}
-          />
-        </label>
-        <label>
-          <Checbox
-            onChange={onCheckText}
-            checked={isText}
-            text={'Текстовые редакторы'}
-          />
-        </label>
+      <select className="form-select" name="class">
+        <option value="">Выберете класс программного обеспечения</option>
+        <option defaultValue="1" value="1">
+          Редакторы мультимедиа (редакторы графики)
+        </option>
+        <option defaultValue="2" value="2">
+          Текстовые редакторы
+        </option>
+        <option defaultValue="3" value="3">
+          Архиваторы файлов
+        </option>
+      </select>
+
+      <select className="form-select" name="os">
+        <option defaultValue="selected" value="">
+          Выберите операционную систему
+        </option>
+        <option defaultValue="1" value="1">
+          Windows 32-bit (x86)
+        </option>
+        <option defaultValue="2" value="2">
+          Windows 64-bit (x64)
+        </option>
+        <option defaultValue="3" value="3">
+          Windows (x86-x64)
+        </option>
+        <option defaultValue="4" value="4">
+          Linux
+        </option>
+      </select>
+      {error && <div className={style.error}>{error}</div>}
+      <div className="service-form-submit">
+        <input type="submit" className="form-submit" value="Применить" />
+        <input
+          onClick={resetSearch}
+          type="reset"
+          className="form-submit"
+          value="Сбросить"
+        />
       </div>
-      <div className={style.FilterSettings__buttons}>
-        <div className={style.FilterSettings__buttons__close}>ЗАКРЫТЬ</div>
-        <div className={style.FilterSettings__buttons__close}>ОК</div>
-      </div>
-    </div>
+    </>
   );
 };
 

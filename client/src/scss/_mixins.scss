@@ -1,5 +1,4 @@
-// примись выравнивания контента с переменным параметром по горизонтали
-// по умолчаниею выравнивание justify-content: space-between
+// Выравнивание по горизонтали
 @mixin flex-position($justify-content: space-between) {
   display: flex;
   align-items: center;
@@ -15,13 +14,42 @@
 
 // кнопка
 @mixin btn {
-  width: 120px;
-  height: 40px;
-  color: white;
-  font-weight: 400;
-  font-size: 16px;
+  display: inline-block;
+  margin: 10px 20px 15px;
+  padding: 15px 80px;
+  color: #ffffff;
+  font-size: 13px;
+  text-align: center;
+  text-transform: uppercase;
+  text-decoration: none;
   background-color: $btn-color;
   border: none;
   border-radius: 5px;
-  cursor: pointer;
+  box-shadow: 0 10px 30px 0 #5fbae966;
+
+  &:hover {
+    background-color: #39ace7;
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+}
+
+// заголовок h1
+@mixin h1 {
+  color: $font-color;
+  font-size: 30px;
+  font-family: "services", "Georgia", serif;
+}
+
+// заголовок h2
+@mixin h2 {
+  color: $font-color;
+  font-size: 24px;
+  font-family: "services", "Georgia", serif;
+}
+
+@mixin p {
+  font-family: "Rubik", "Helvetica", sans-serif;
 }

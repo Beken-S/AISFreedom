@@ -2,8 +2,6 @@ import cn from 'classnames';
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
-
-
 import style from './Menu.module.scss';
 
 const Menu = () => {
