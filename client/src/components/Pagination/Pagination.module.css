@@ -1,0 +1,19 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+}
+
+.pagination button {
+  padding: 10px;
+  border: none;
+  border-radius: 20px;
+}
+
+.active {
+  padding: 10px;
+  color: #ffffff;
+  background-color: #3281e2;
+  border: none;
+  border-radius: 20px;
+}/*# sourceMappingURL=Pagination.module.css.map */

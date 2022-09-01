@@ -33,23 +33,10 @@
     transform: scale(1.05);
     cursor: pointer;
   }
-
-  @media (max-width: $mobile-breakpoint) {
-    width: 320px;
-    height: 200px;
-    padding: 0;
-  }
 }
 
 .program-link {
   text-decoration: none;
-
-  @media (max-width: $mobile-breakpoint) {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-around;
-  }
 }
 
 .program-img {
@@ -57,10 +44,6 @@
   height: 150px;
   background-color: #b0c2d6;
   border-radius: 20px;
-
-  @media (max-width: $mobile-breakpoint) {
-    margin-right: 20px;
-  }
 }
 
 .program-info {
@@ -73,10 +56,6 @@
   margin-bottom: 10px;
 
   @include h2;
-
-  @media (max-width: $mobile-breakpoint) {
-    font-size: 24px;
-  }
 }
 
 .os {
@@ -84,10 +63,6 @@
   font-size: 14px;
 
   @include p;
-
-  @media (max-width: $mobile-breakpoint) {
-    font-size: 12px;
-  }
 }
 
 .raiting {

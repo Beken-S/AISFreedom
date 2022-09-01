@@ -17,10 +17,6 @@
         width: 200px;
       }
     }
-
-    @media (max-width: $mobile-breakpoint) {
-      @include flex-position(center);
-    }
   }
 }
 
@@ -34,10 +30,6 @@
   @media (max-width: $tablet-breakpoint) {
     width: 480px;
     font-size: 14px;
-  }
-
-  @media (max-width: $mobile-breakpoint) {
-    display: none;
   }
 }
 

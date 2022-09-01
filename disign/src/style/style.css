@@ -26,11 +26,6 @@
     width: 735px;
   }
 }
-@media (max-width: 767px) {
-  .wrap {
-    width: 375px;
-  }
-}
 
 .header {
   height: 140px;
@@ -52,13 +47,6 @@
     width: 200px;
   }
 }
-@media (max-width: 767px) {
-  .header-wrap {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-}
 
 .header-menu {
   width: 740px;
@@ -72,11 +60,6 @@
   .header-menu {
     width: 480px;
     font-size: 14px;
-  }
-}
-@media (max-width: 767px) {
-  .header-menu {
-    display: none;
   }
 }
 
@@ -178,11 +161,6 @@
   align-items: center;
   justify-content: space-around;
 }
-@media (max-width: 767px) {
-  .service-form-submit {
-    width: 100%;
-  }
-}
 
 .form-submit {
   display: inline-block;
@@ -195,19 +173,14 @@
   text-decoration: none;
   background-color: #56baed;
   border: none;
-  box-shadow: 0 10px 30px 0 rgba(95, 186, 233, 0.4);
-  -webkit-box-shadow: 0 10px 30px 0 rgba(95, 186, 233, 0.4);
   border-radius: 5px;
+  box-shadow: 0 10px 30px 0 rgba(95, 186, 233, 0.4);
 }
 .form-submit:hover {
   background-color: #39ace7;
 }
 .form-submit:active {
   transform: scale(0.95);
-  -webkit-transform: scale(0.95);
-  -o-transform: scale(0.95);
-  -ms-transform: scale(0.95);
-  -moz-transform: scale(0.95);
 }
 
 .programs-items {
@@ -247,24 +220,9 @@
   transform: scale(1.05);
   cursor: pointer;
 }
-@media (max-width: 767px) {
-  .program-item {
-    width: 320px;
-    height: 200px;
-    padding: 0;
-  }
-}
 
 .program-link {
   text-decoration: none;
-}
-@media (max-width: 767px) {
-  .program-link {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-around;
-  }
 }
 
 .program-img {
@@ -272,11 +230,6 @@
   height: 150px;
   background-color: #b0c2d6;
   border-radius: 20px;
-}
-@media (max-width: 767px) {
-  .program-img {
-    margin-right: 20px;
-  }
 }
 
 .program-info {
@@ -291,21 +244,11 @@
   font-size: 24px;
   font-family: "services", "Georgia", serif;
 }
-@media (max-width: 767px) {
-  .program-name {
-    font-size: 24px;
-  }
-}
 
 .os {
   margin-bottom: 5px;
   font-size: 14px;
   font-family: "Rubik", "Helvetica", sans-serif;
-}
-@media (max-width: 767px) {
-  .os {
-    font-size: 12px;
-  }
 }
 
 .raiting {
@@ -444,12 +387,6 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-}
-
-@media (max-width: 767px) {
-  .team {
-    display: none;
-  }
 }
 
 .footer-nav {

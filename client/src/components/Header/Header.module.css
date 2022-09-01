@@ -1,0 +1,33 @@
+.wrap {
+  width: 1140px;
+  margin: 0 auto;
+}
+
+.headerSystemName {
+  height: 140px;
+  background-color: #f5f5f5;
+  background-image: url("../../assets/img/background.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  border-bottom: 3px solid #3281e2;
+}
+
+.headerSystemNameWrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 1140px;
+  height: 140px;
+  margin: 0 auto;
+}
+
+.headerSystemName a {
+  margin-top: 10px;
+}
+
+.systemNameText {
+  margin: 0 auto;
+  color: #000000;
+  font-size: 28px;
+}/*# sourceMappingURL=Header.module.css.map */
