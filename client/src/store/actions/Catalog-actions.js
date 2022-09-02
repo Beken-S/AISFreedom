@@ -30,9 +30,12 @@ export const setCurrentPage = (currentPage) => ({
   currentPage,
 });
 
-export const setItem = (item) => ({
+export const setItem = (item, license, classProgram, typeOs) => ({
   type: SET_ITEM,
   item,
+  license,
+  classProgram,
+  typeOs,
 });
 
 export const isLoading = (isLoading) => ({

@@ -11,4 +11,19 @@ export const PromramsAPI = {
     const result = await response.json();
     return result;
   },
+  async getLicense(id_license) {
+    const response = await fetch(`/api/licenses/${id_license}`);
+    const result = await response.json();
+    return result;
+  },
+  async getClassProgram(id_class) {
+    const response = await fetch(`/api/program/types/${id_class}`);
+    const result = await response.json();
+    return result;
+  },
+  async getOsProgram(id_os) {
+    const response = await fetch(`/api/operation_systems/${id_os}`);
+    const result = await response.json();
+    return result;
+  },
 };
