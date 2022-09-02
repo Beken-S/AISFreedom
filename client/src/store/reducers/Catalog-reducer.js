@@ -23,6 +23,9 @@ const initialState = {
   itemsOnPage: 4,
   error: '',
   currentPage: 1,
+  license: null,
+  classProgram: null,
+  typeOs: null,
 };
 const catalogReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -48,6 +51,9 @@ const catalogReducer = (state = initialState, action) => {
       return {
         ...state,
         item: action.item,
+        license: action.license,
+        classProgram: action.classProgram,
+        typeOs: action.typeOs,
       };
     case SEARCH_PROGRAM:
       return {

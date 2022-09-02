@@ -22,8 +22,22 @@ export const getPrograms = (page) => async (dispatch, getState) => {
 
 export const getProgram = (id) => async (dispatch) => {
   dispatch(isLoading(true));
-  const data = await PromramsAPI.getProgram(id);
-  dispatch(setItem(data));
+  // получение программы
+  const program = await PromramsAPI.getProgram(id);
+  // получение лицензии
+  const license = await PromramsAPI.getLicense(program.license_id);
+  // получение класса программы
+  const classProgram = await PromramsAPI.getClassProgram(
+    program.program_type_id
+  );
+  // получение типа os
+  const os = program.sources.map((el) =>
+    PromramsAPI.getOsProgram(el.operation_system_id)
+  );
+  let typeOs = await Promise.all(os).then((values) => {
+    return values;
+  });
+  dispatch(setItem(program, license, classProgram, typeOs));
   dispatch(isLoading(false));
 };
 
@@ -53,7 +67,6 @@ export const filterProgramsThunk =
     dispatch(isLoading(true));
     const itemsOnPage = getState().catalog.itemsOnPage;
     const formData = getState().catalog.filterData;
-    debugger;
     const data = await SearchAPI.filter(
       formData.text,
       formData.Analog,
@@ -63,18 +76,14 @@ export const filterProgramsThunk =
       itemsOnPage,
       page
     );
-    debugger;
     if (typeof data === 'string') {
       dispatch(setError(data));
     } else {
-      debugger;
       dispatch(filterPrograms(data.items, data.page_count, page));
     }
     dispatch(isLoading(false));
   };
 
 export const setCurrentPageThunk = (page) => async (dispatch) => {
-  debugger;
   dispatch(setCurrentPage(page));
-  console.log(page);
 };

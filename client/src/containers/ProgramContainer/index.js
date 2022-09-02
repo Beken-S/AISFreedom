@@ -7,7 +7,14 @@ import { getProgram } from '../../store/thunks/Catalog-thunks';
 import { Loader } from '@components/Loader';
 import { Program } from '@components/Program';
 
-const ProgramContainer = ({ item, getProgram, isLoading }) => {
+const ProgramContainer = ({
+  item,
+  license,
+  classProgram,
+  typeOs,
+  getProgram,
+  isLoading,
+}) => {
   const { id } = useParams();
 
   useEffect(() => {
@@ -17,11 +24,21 @@ const ProgramContainer = ({ item, getProgram, isLoading }) => {
   if (isLoading) {
     return <Loader />;
   } else {
-    return <Program item={item} />;
+    return (
+      <Program
+        item={item}
+        license={license}
+        classProgram={classProgram}
+        typeOs={typeOs}
+      />
+    );
   }
 };
 const mapStateToProps = (state) => ({
   item: state.catalog.item,
+  license: state.catalog.license,
+  classProgram: state.catalog.classProgram,
+  typeOs: state.catalog.typeOs,
   isLoading: state.catalog.isLoading,
 });
 export default connect(mapStateToProps, { getProgram })(ProgramContainer);

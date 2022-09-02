@@ -5,7 +5,12 @@ import '../../App.scss';
 
 import style from './Program.module.scss';
 
-export const Program = ({ item }) => {
+export const Program = ({ item, license, classProgram, typeOs }) => {
+  const os = [];
+  if (typeOs) {
+    typeOs.map((el) => os.push(el.name));
+  }
+  console.log(typeOs, item);
   return (
     <>
       <section className={style.description}>
@@ -33,18 +38,17 @@ export const Program = ({ item }) => {
                   </a>
                 </li>
                 <li className={style.article}>
-                  <b>Лицензия:</b>
-                  {'-'}
+                  <b>Лицензия:</b> {license.acronym}
                 </li>
                 <li className={style.article}>
-                  <b>Класс ПО:</b> {'-'}
+                  <b>Класс ПО:</b> {classProgram.name}
                 </li>
                 <li className={style.article}>
-                  <b>Требования к OC:</b> {'-'}
+                  <b>Требования к OC:</b> {os.join(', ')}
                 </li>
                 <li className={style.article}>
                   <b>Проприетарные аналоги:</b>{' '}
-                  {item.proprietary_counterparts.join(',')}
+                  {item.proprietary_counterparts.join(', ')}
                 </li>
               </ul>
               <img
@@ -52,16 +56,20 @@ export const Program = ({ item }) => {
                 alt="screenshot"
                 className={style.description__screenshot}
               />
-              <p className={style.description__text}>
+              <span className={style.description__text}>
                 {parse(item.description + ' ')}
-              </p>
+              </span>
               <div className={style.flex}>
                 <div className={style.platform}>
                   {item.sources.map((el, i) => {
                     return (
                       <div key={i}>
                         <a href={el.distrib_url}>
-                          {el.operation_system_id === 3 ? 'Windows' : 'Linux'}
+                          {typeOs.map((type) => {
+                            return (
+                              el.operation_system_id === type.id && type.name
+                            );
+                          })}
                         </a>
                       </div>
                     );
