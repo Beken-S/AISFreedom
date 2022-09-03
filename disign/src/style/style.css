@@ -84,7 +84,7 @@
   align-items: center;
 }
 .system-info-wrap h1 {
-  padding-bottom: 50px;
+  padding-bottom: 30px;
   color: #222222;
   font-size: 30px;
   font-family: "services", "Arial", "Helvetica", sans-serif;
@@ -92,7 +92,13 @@
 
 .about {
   display: flex;
+  align-items: center;
   padding: 10px;
+}
+@media (max-width: 1172px) {
+  .about {
+    flex-direction: column;
+  }
 }
 
 .conveyer {
@@ -104,10 +110,19 @@
 
 .system-info-text {
   padding: 10px 20px;
-  font-size: 20px;
-  text-align: justify;
   background-color: #dee7f2;
   border-radius: 10px;
+  color: #222222;
+  font-size: 20px;
+  font-family: "Manrope", "Helvetica", sans-serif;
+  text-align: justify;
+  text-indent: 30px;
+}
+
+.text-center {
+  display: flex;
+  justify-content: center;
+  text-decoration: underline;
 }
 
 .services {
@@ -131,7 +146,7 @@
   border: none;
 }
 
-.input-group {
+.services-margin-bottom {
   margin-bottom: 5px;
 }
 
@@ -150,7 +165,7 @@
   justify-content: space-around;
 }
 
-.form-select {
+.form-select-service {
   margin-bottom: 20px;
   cursor: pointer;
 }
@@ -320,7 +335,7 @@
 }
 
 .description-title {
-  padding-bottom: 50px;
+  padding-bottom: 30px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -328,8 +343,9 @@
 .description-title h1 {
   margin: 0 10px;
   color: #222222;
+  color: #222222;
   font-size: 30px;
-  font-family: "services", "Arial", "Helvetica", sans-serif;
+  font-family: "services", "Georgia", serif;
 }
 .description-title svg {
   fill: #bcbec0;
@@ -347,32 +363,47 @@
 
 .description-screenshot {
   width: 100%;
-  padding-bottom: 20px;
+  margin-bottom: 20px;
   border-radius: 20px;
 }
 
 .description-text {
-  padding-bottom: 20px;
+  padding-bottom: 15px;
+  color: #222222;
   font-size: 18px;
+  font-family: "Manrope", "Helvetica", sans-serif;
   text-align: justify;
   text-indent: 30px;
 }
 
-.platform {
-  padding-right: 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.flex {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+.description-os {
+  padding: 0 100px;
 }
 
 .manual {
-  padding-left: 10px;
+  margin: 15px 0;
+  padding: 10px;
+  color: #222222;
+  font-size: 14px;
+  font-family: "Manrope", "Helvetica", sans-serif;
+  text-align: center;
+  text-decoration: none;
+  background-color: #ffffff;
+  border: 1px solid #6c757d;
+  border-radius: 10px;
+}
+.manual:hover {
+  color: #ffffff;
+  background-color: #6c757d;
+  transition-duration: 0.4s;
+}
+
+.fa-download {
+  font-size: 25px;
+}
+
+.fa-eye {
+  margin-right: 5px;
 }
 
 .page-footer {

@@ -50,6 +50,23 @@
   font-family: "services", "Georgia", serif;
 }
 
-@mixin p {
+@mixin p-item {
+  font-size: 14px;
   font-family: "Rubik", "Helvetica", sans-serif;
+}
+
+@mixin p-main-bg {
+  color: $font-color;
+  font-size: 20px;
+  font-family: "Manrope", "Helvetica", sans-serif;
+  text-align: justify;
+  text-indent: 30px;
+}
+
+@mixin p-main {
+  color: $font-color;
+  font-size: 18px;
+  font-family: "Manrope", "Helvetica", sans-serif;
+  text-align: justify;
+  text-indent: 30px;
 }

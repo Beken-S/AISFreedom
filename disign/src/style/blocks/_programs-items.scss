@@ -60,9 +60,8 @@
 
 .os {
   margin-bottom: 5px;
-  font-size: 14px;
 
-  @include p;
+  @include p-item;
 }
 
 .raiting {
