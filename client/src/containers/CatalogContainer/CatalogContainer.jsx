@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 
-// import { store } from '../../store/store';
 import { Loader } from '../../components/Loader';
+// import { store } from '../../store/store';
 import {
   filterProgramsThunk,
   getPrograms,

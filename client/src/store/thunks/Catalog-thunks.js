@@ -51,9 +51,12 @@ export const search =
   async (dispatch, getState) => {
     dispatch(isLoading(true));
     const text = getState().catalog.searchText;
-    const data = await SearchAPI.search(text, page);
-    dispatch(setSearchText(text));
-    dispatch(searchPrograms(data.items, data.page_count, 1));
+    if (text !== '') {
+      const data = await SearchAPI.search(text, page);
+      dispatch(setSearchText(text));
+      dispatch(searchPrograms(data.items, data.page_count, 1));
+      dispatch(setCurrentPage(page));
+    }
     dispatch(isLoading(false));
   };
 
@@ -63,7 +66,9 @@ export const resetSearch = () => async (dispatch, getState) => {
   const itemsOnPage = getState().catalog.itemsOnPage;
   const data = await PromramsAPI.getPrograms(itemsOnPage);
   dispatch(setCurrentPage(1));
-  dispatch(setProgram(data.items, data.page_count, 1));
+  // получение типа os
+  const os = await PromramsAPI.getAllOsProgram();
+  dispatch(setProgram(data.items, os, data.page_count, 1));
   dispatch(isLoading(false));
 };
 export const filterProgramsThunk =
