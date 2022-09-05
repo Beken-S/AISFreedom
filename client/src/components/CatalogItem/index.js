@@ -4,11 +4,14 @@ import { NavLink } from 'react-router-dom';
 import style from './CatalogItem.module.scss';
 
 export const CatalogItem = ({ program, typeOs }) => {
-  const filter = program.sources.map((source) =>
-    typeOs.filter((el) => el.id === source.operation_system_id)
-  );
   const os = [];
-  filter.map((el) => el.map((elem) => os.push(elem.name)));
+  if (Array.isArray(typeOs)) {
+    const filter = program.sources.map((source) =>
+      typeOs.filter((el) => el.id === source.operation_system_id)
+    );
+    filter.map((el) => el.map((elem) => os.push(elem.name)));
+  }
+
   return (
     <>
       <NavLink to={`${program.id}`} className={style.programLink}>
