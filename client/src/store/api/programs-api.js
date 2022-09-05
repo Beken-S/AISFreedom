@@ -26,4 +26,9 @@ export const PromramsAPI = {
     const result = await response.json();
     return result;
   },
+  async getAllOsProgram() {
+    const response = await fetch(`/api/operation_systems/`);
+    const result = await response.json();
+    return result;
+  },
 };

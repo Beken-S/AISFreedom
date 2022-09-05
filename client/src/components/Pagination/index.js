@@ -1,18 +1,16 @@
 import cn from 'classnames';
-import React, { useState } from 'react';
+import React from 'react';
 
 import '../../App.scss';
 import style from './Pagination.module.scss';
 
-const Pagination = ({ pages = 1, changePage }) => {
-  const [currentPage, setCurrentPage] = useState(1);
+const Pagination = ({ pages = 1, changePage, currentPage }) => {
   const numberOfPages = [];
   for (let i = 1; i <= pages; i++) {
     numberOfPages.push(i);
   }
 
   const onChangePage = (page) => {
-    setCurrentPage(page);
     changePage(page);
   };
   const onChangePageBack = () => {
@@ -23,7 +21,6 @@ const Pagination = ({ pages = 1, changePage }) => {
       page = currentPage - 1;
       changePage(page);
     }
-    setCurrentPage(page);
   };
   const onChangePageForward = () => {
     let page;
@@ -33,7 +30,6 @@ const Pagination = ({ pages = 1, changePage }) => {
       page = currentPage + 1;
       changePage(page);
     }
-    setCurrentPage(page);
   };
 
   return (

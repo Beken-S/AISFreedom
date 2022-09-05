@@ -44,6 +44,7 @@ const catalogReducer = (state = initialState, action) => {
       return {
         ...state,
         programs: action.programs,
+        typeOs: action.typeOs,
         totalCountPages: action.totalCountPages,
         error: '',
       };

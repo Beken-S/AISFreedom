@@ -10,7 +10,6 @@ export const Program = ({ item, license, classProgram, typeOs }) => {
   if (typeOs) {
     typeOs.map((el) => os.push(el.name));
   }
-  console.log(typeOs, item);
   return (
     <>
       <section className={style.description}>

@@ -23,6 +23,8 @@ const CatalogContainer = ({
   search,
   filterProgramsThunk,
   isLoading,
+  typeOs,
+  currentPage,
 }) => {
   // console.log(store.getState().catalog);
   useEffect(() => {
@@ -50,6 +52,8 @@ const CatalogContainer = ({
         programs={isSearch || isFilter ? filtered : programs}
         totalCountPages={totalCountPages}
         changePage={changePage}
+        typeOs={typeOs}
+        currentPage={currentPage}
       />
     );
   }
@@ -62,6 +66,8 @@ const mapStateToProps = (state) => ({
   isSearch: state.catalog.isSearch,
   isFilter: state.catalog.isFilter,
   isLoading: state.catalog.isLoading,
+  typeOs: state.catalog.typeOs,
+  currentPage: state.catalog.currentPage,
 });
 
 export default connect(mapStateToProps, {
