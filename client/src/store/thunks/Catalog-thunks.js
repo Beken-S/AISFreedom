@@ -12,13 +12,18 @@ import {
 import { PromramsAPI } from '../api/programs-api';
 import { SearchAPI } from '../api/search-api';
 
-export const getPrograms = (page) => async (dispatch, getState) => {
-  dispatch(isLoading(true));
-  const itemsOnPage = getState().catalog.itemsOnPage;
-  const data = await PromramsAPI.getPrograms(itemsOnPage, page);
-  dispatch(setProgram(data.items, data.page_count, 1));
-  dispatch(isLoading(false));
-};
+export const getPrograms =
+  (page = 1) =>
+  async (dispatch, getState) => {
+    dispatch(isLoading(true));
+    const itemsOnPage = getState().catalog.itemsOnPage;
+    const data = await PromramsAPI.getPrograms(itemsOnPage, page);
+    // получение типа os
+    const os = await PromramsAPI.getAllOsProgram();
+    dispatch(setProgram(data.items, os, data.page_count, 1));
+    dispatch(setCurrentPage(page));
+    dispatch(isLoading(false));
+  };
 
 export const getProgram = (id) => async (dispatch) => {
   dispatch(isLoading(true));

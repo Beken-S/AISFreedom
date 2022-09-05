@@ -18,9 +18,10 @@ export const setFilterData = (data) => ({
   data,
 });
 
-export const setProgram = (programs, totalCountPages, currentPage) => ({
+export const setProgram = (programs, typeOs, totalCountPages, currentPage) => ({
   type: SET_PROGRAM,
   programs,
+  typeOs,
   totalCountPages,
   currentPage,
 });

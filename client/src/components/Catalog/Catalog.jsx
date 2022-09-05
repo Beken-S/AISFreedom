@@ -5,7 +5,13 @@ import Pagination from '../Pagination';
 
 import style from './Catalog.module.scss';
 
-export const Catalog = ({ programs, totalCountPages, changePage }) => {
+export const Catalog = ({
+  programs,
+  typeOs,
+  totalCountPages,
+  changePage,
+  currentPage,
+}) => {
   return (
     <section className={style.Catalog}>
       <ul className={style.programsList}>
@@ -13,12 +19,16 @@ export const Catalog = ({ programs, totalCountPages, changePage }) => {
           <div className={style.err}>Ничего не найдено :(</div>
         ) : (
           programs.map((el, i) => {
-            return <CatalogItem program={el} key={i} />;
+            return <CatalogItem program={el} key={i} typeOs={typeOs} />;
           })
         )}
       </ul>
       {programs.length !== 0 && (
-        <Pagination pages={totalCountPages} changePage={changePage} />
+        <Pagination
+          pages={totalCountPages}
+          changePage={changePage}
+          currentPage={currentPage}
+        />
       )}
     </section>
   );
