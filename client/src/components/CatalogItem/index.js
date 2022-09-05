@@ -4,13 +4,22 @@ import { NavLink } from 'react-router-dom';
 import style from './CatalogItem.module.scss';
 
 export const CatalogItem = ({ program, typeOs }) => {
-  const os = [];
-  if (Array.isArray(typeOs)) {
-    const filter = program.sources.map((source) =>
-      typeOs.filter((el) => el.id === source.operation_system_id)
-    );
-    filter.map((el) => el.map((elem) => os.push(elem.name)));
-  }
+  const set = new Set();
+  const filter = program.sources.map((source) =>
+    typeOs.filter((el) => el.id === source.operation_system_id)
+  );
+  filter.forEach((el) =>
+    el.forEach((elem) => {
+      if (elem.name.includes('windows')) {
+        set.add('Windows');
+      }
+      if (elem.name.includes('linux')) {
+        set.add('Linux');
+      }
+    })
+  );
+
+  const os = [...set];
 
   return (
     <>

@@ -38,6 +38,7 @@ const catalogReducer = (state = initialState, action) => {
         searchText: '',
         error: '',
         currentPage: 1,
+        typeOs: null,
       };
 
     case SET_PROGRAM:
