@@ -5,12 +5,12 @@ import { getPaginationOptions } from '../utils';
 
 type LicenseAttributes = {
   id: number;
-  text_url_eng?: string | null;
-  name?: string | null;
   acronym?: string | null;
+  name?: string | null;
+  text_url_eng?: string | null;
   text_url_ru?: string | null;
   author?: string | null;
-  year_of_creation?: Date;
+  year_of_creation?: Date | null;
 };
 
 type LicenseCreationAttributes = Optional<LicenseAttributes, 'id'>;
@@ -102,7 +102,7 @@ class License extends Model<LicenseAttributes, LicenseCreationAttributes> {
       return this.getDataValue('year_of_creation')?.getFullYear().toString();
     },
   })
-  year_of_creation?: Date;
+  year_of_creation?: Date | null;
 }
 
 export default License;
