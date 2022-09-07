@@ -5,7 +5,7 @@
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  border-bottom: 1px solid rgb(75, 185, 248);
+  border-bottom: 1px solid #4bb9f8;
 
   &-wrap {
     height: 140px;
@@ -16,10 +16,6 @@
       @media (max-width: $tablet-breakpoint) {
         width: 200px;
       }
-    }
-
-    @media (max-width: $mobile-breakpoint) {
-      @include flex-position(center);
     }
   }
 }
@@ -34,10 +30,6 @@
   @media (max-width: $tablet-breakpoint) {
     width: 480px;
     font-size: 14px;
-  }
-
-  @media (max-width: $mobile-breakpoint) {
-    display: none;
   }
 }
 

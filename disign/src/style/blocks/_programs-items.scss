@@ -15,18 +15,15 @@
   }
 }
 
-.program-link {
-  text-decoration: none;
-}
-
 .program-item {
+  justify-content: center;
   width: 200px;
   height: 280px;
   padding: 15px 15px 0;
   text-decoration: none;
   background-color: $background-color;
+  border: 1px solid $btn-color;
   border-radius: 20px;
-  outline: 1px solid $btn-color;
   transition-duration: 0.3s;
 
   @include flex-direction-column;
@@ -36,97 +33,92 @@
     transform: scale(1.05);
     cursor: pointer;
   }
+}
 
-  @media (max-width: $mobile-breakpoint) {
-    width: 300px;
-    height: 220px;
-    flex-direction: row;
-    justify-content: space-around;
-    padding-top: 0;
-
-    &:hover {
-      box-shadow: $shadow;
-    }
-  }
+.program-link {
+  text-decoration: none;
 }
 
 .program-img {
   width: 150px;
   height: 150px;
-  background-color: rgb(176, 194, 214);
+  background-color: #b0c2d6;
   border-radius: 20px;
 }
 
 .program-info {
-  text-align: center;
-  padding: 15px 0 10px 0;
+  padding-top: 15px;
   color: $font-color;
+  text-align: center;
 }
 
 .program-name {
   margin-bottom: 10px;
-  font-size: 30px;
-  font-family: "services", "Arial", "Helvetica", sans-serif;
+
+  @include h2;
 }
 
 .os {
-  margin-bottom: 10px;
-  font-size: 14px;
+  margin-bottom: 5px;
+
+  @include p-item;
 }
 
 .raiting {
-  color: rgb(176, 194, 214);
+  margin: 0;
+  color: #b0c2d6;
   font-weight: bold;
 }
 
-.pagination-alignment {
-  padding-top: 40px;
+.page-center {
+  margin: 20px 0;
 
   @include flex-position(center);
 }
 
 .pagination {
-  gap: 5px;
-  width: 180px;
-  height: 30px;
-  padding: 5px 0;
+  gap: 10px;
+  height: 44px;
+  padding: 5px 15px;
   list-style: none;
   border-radius: 5px;
-
-  @include flex-position;
-}
-
-.pag-link {
-  font-size: 20px;
-  font-style: normal;
-  line-height: 19px;
-  text-decoration: none;
-  fill: $btn-color;
-
-  &:hover {
-    text-decoration: underline;
-    background-color: $btn-color;
-    border-radius: 50%;
-    transition-duration: 0.3s;
-    fill: $btn-color;
-
-    @include flex-position(center);
-  }
-}
-
-.pag-link-active {
-  font-size: 26px;
-  font-style: normal;
-  line-height: 19px;
-  text-decoration: none;
-  background-color: $btn-color;
-  border-radius: 50%;
-  fill: $btn-color;
 
   @include flex-position(center);
 }
 
-.arrows {
-  color: $btn-color;
+.pagination-link {
+  color: #c4c4c4;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  text-decoration: none;
+
+  &:hover {
+    color: $font-color;
+    text-decoration: underline;
+  }
+}
+
+.pagination-link-active {
+  color: $font-color;
+  font-weight: 400;
   font-size: 20px;
+  line-height: 19px;
+  text-decoration: none;
+}
+
+.fa-angle-left {
+  color: $font-color;
+
+  &:hover {
+    color: $color-hover;
+  }
+}
+
+.fa-angle-right {
+  color: $font-color;
+
+  &:hover {
+    color: $color-hover;
+  }
 }

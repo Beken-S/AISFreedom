@@ -1,0 +1,41 @@
+.programsList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-between;
+  list-style: none;
+}
+
+.programLink {
+  color: #000000;
+  text-decoration: none;
+}
+
+.programLink .programItem {
+  width: 160px;
+  height: 200px;
+  padding-bottom: 10px;
+  text-decoration: none;
+  background-color: #dee7f2;
+  outline: 1px solid #3281e2;
+}
+
+.programImg {
+  width: 160px;
+  height: 110px;
+  margin-bottom: 20px;
+}
+
+.programInfo {
+  padding: 0 10px;
+  text-align: center;
+}
+
+.programInfo h4 {
+  margin-bottom: 16px;
+  font-size: 22px;
+}
+
+.programInfo p {
+  font-size: 14px;
+}/*# sourceMappingURL=Analogs.module.css.map */
