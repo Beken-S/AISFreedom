@@ -26,13 +26,15 @@ type AddProgramsRequestAttributes = {
   is_rejected: boolean;
   rejection_reason?: string | null;
   is_completed: boolean;
+  creation_date: Date;
   consider_before_date: Date;
   processed_date: Date | null;
+  status: string;
 };
 
 type AddProgramsRequestCreationAttributes = Optional<
   AddProgramsRequestAttributes,
-  'id' | 'is_rejected' | 'is_completed' | 'processed_date'
+  'id' | 'is_rejected' | 'is_completed' | 'processed_date' | 'creation_date'
 >;
 
 @Scopes(() => ({

@@ -1,5 +1,56 @@
 # API AISFreedom
 
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+- [Запуск](#%D0%B7%D0%B0%D0%BF%D1%83%D1%81%D0%BA)
+  - [Первый запуск](#%D0%BF%D0%B5%D1%80%D0%B2%D1%8B%D0%B9-%D0%B7%D0%B0%D0%BF%D1%83%D1%81%D0%BA)
+  - [Команды запуска](#%D0%BA%D0%BE%D0%BC%D0%B0%D0%BD%D0%B4%D1%8B-%D0%B7%D0%B0%D0%BF%D1%83%D1%81%D0%BA%D0%B0)
+- [Программы](#%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D1%8B)
+  - [Получение всех программ](#%D0%BF%D0%BE%D0%BB%D1%83%D1%87%D0%B5%D0%BD%D0%B8%D0%B5-%D0%B2%D1%81%D0%B5%D1%85-%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC)
+  - [Получение программы по id](#%D0%BF%D0%BE%D0%BB%D1%83%D1%87%D0%B5%D0%BD%D0%B8%D0%B5-%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D1%8B-%D0%BF%D0%BE-id)
+  - [Поиск программ](#%D0%BF%D0%BE%D0%B8%D1%81%D0%BA-%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC)
+  - [Создание программы](#%D1%81%D0%BE%D0%B7%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5-%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D1%8B)
+  - [Обновление программы](#%D0%BE%D0%B1%D0%BD%D0%BE%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5-%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D1%8B)
+  - [Удаление программы](#%D1%83%D0%B4%D0%B0%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5-%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D1%8B)
+  - [Получение логотипов](#%D0%BF%D0%BE%D0%BB%D1%83%D1%87%D0%B5%D0%BD%D0%B8%D0%B5-%D0%BB%D0%BE%D0%B3%D0%BE%D1%82%D0%B8%D0%BF%D0%BE%D0%B2)
+  - [Получение скриншотов](#%D0%BF%D0%BE%D0%BB%D1%83%D1%87%D0%B5%D0%BD%D0%B8%D0%B5-%D1%81%D0%BA%D1%80%D0%B8%D0%BD%D1%88%D0%BE%D1%82%D0%BE%D0%B2)
+  - [Загрузка изображений для программы](#%D0%B7%D0%B0%D0%B3%D1%80%D1%83%D0%B7%D0%BA%D0%B0-%D0%B8%D0%B7%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%B8%D0%B9-%D0%B4%D0%BB%D1%8F-%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D1%8B)
+- [Классы программ](#%D0%BA%D0%BB%D0%B0%D1%81%D1%81%D1%8B-%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC)
+  - [Получение всех классов программ](#%D0%BF%D0%BE%D0%BB%D1%83%D1%87%D0%B5%D0%BD%D0%B8%D0%B5-%D0%B2%D1%81%D0%B5%D1%85-%D0%BA%D0%BB%D0%B0%D1%81%D1%81%D0%BE%D0%B2-%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC)
+  - [Получение одного класса программы по id](#%D0%BF%D0%BE%D0%BB%D1%83%D1%87%D0%B5%D0%BD%D0%B8%D0%B5-%D0%BE%D0%B4%D0%BD%D0%BE%D0%B3%D0%BE-%D0%BA%D0%BB%D0%B0%D1%81%D1%81%D0%B0-%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D1%8B-%D0%BF%D0%BE-id)
+  - [Создание класса программы](#%D1%81%D0%BE%D0%B7%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5-%D0%BA%D0%BB%D0%B0%D1%81%D1%81%D0%B0-%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D1%8B)
+  - [Обновление класса программы](#%D0%BE%D0%B1%D0%BD%D0%BE%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5-%D0%BA%D0%BB%D0%B0%D1%81%D1%81%D0%B0-%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D1%8B)
+  - [Удаление класса программы](#%D1%83%D0%B4%D0%B0%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5-%D0%BA%D0%BB%D0%B0%D1%81%D1%81%D0%B0-%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D1%8B)
+- [Лицензии](#%D0%BB%D0%B8%D1%86%D0%B5%D0%BD%D0%B7%D0%B8%D0%B8)
+  - [Получение всех лицензий](#%D0%BF%D0%BE%D0%BB%D1%83%D1%87%D0%B5%D0%BD%D0%B8%D0%B5-%D0%B2%D1%81%D0%B5%D1%85-%D0%BB%D0%B8%D1%86%D0%B5%D0%BD%D0%B7%D0%B8%D0%B9)
+  - [Получение одной лицензии по id](#%D0%BF%D0%BE%D0%BB%D1%83%D1%87%D0%B5%D0%BD%D0%B8%D0%B5-%D0%BE%D0%B4%D0%BD%D0%BE%D0%B9-%D0%BB%D0%B8%D1%86%D0%B5%D0%BD%D0%B7%D0%B8%D0%B8-%D0%BF%D0%BE-id)
+  - [Создание лицензии](#%D1%81%D0%BE%D0%B7%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5-%D0%BB%D0%B8%D1%86%D0%B5%D0%BD%D0%B7%D0%B8%D0%B8)
+  - [Обновление лицензии](#%D0%BE%D0%B1%D0%BD%D0%BE%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5-%D0%BB%D0%B8%D1%86%D0%B5%D0%BD%D0%B7%D0%B8%D0%B8)
+  - [Удаление лицензии](#%D1%83%D0%B4%D0%B0%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5-%D0%BB%D0%B8%D1%86%D0%B5%D0%BD%D0%B7%D0%B8%D0%B8)
+- [Операционные системы](#%D0%BE%D0%BF%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D0%BE%D0%BD%D0%BD%D1%8B%D0%B5-%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D1%8B)
+  - [Получение всех операционных систем](#%D0%BF%D0%BE%D0%BB%D1%83%D1%87%D0%B5%D0%BD%D0%B8%D0%B5-%D0%B2%D1%81%D0%B5%D1%85-%D0%BE%D0%BF%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D0%BE%D0%BD%D0%BD%D1%8B%D1%85-%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC)
+  - [Получение операционной системы по id](#%D0%BF%D0%BE%D0%BB%D1%83%D1%87%D0%B5%D0%BD%D0%B8%D0%B5-%D0%BE%D0%BF%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D0%BE%D0%BD%D0%BD%D0%BE%D0%B9-%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D1%8B-%D0%BF%D0%BE-id)
+  - [Создание операционной системы](#%D1%81%D0%BE%D0%B7%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5-%D0%BE%D0%BF%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D0%BE%D0%BD%D0%BD%D0%BE%D0%B9-%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D1%8B)
+  - [Обновление операционной системы](#%D0%BE%D0%B1%D0%BD%D0%BE%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5-%D0%BE%D0%BF%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D0%BE%D0%BD%D0%BD%D0%BE%D0%B9-%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D1%8B)
+  - [Удаление операционной системы](#%D1%83%D0%B4%D0%B0%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5-%D0%BE%D0%BF%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D0%BE%D0%BD%D0%BD%D0%BE%D0%B9-%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D1%8B)
+- [Источники](#%D0%B8%D1%81%D1%82%D0%BE%D1%87%D0%BD%D0%B8%D0%BA%D0%B8)
+  - [Получение источников программ](#%D0%BF%D0%BE%D0%BB%D1%83%D1%87%D0%B5%D0%BD%D0%B8%D0%B5-%D0%B8%D1%81%D1%82%D0%BE%D1%87%D0%BD%D0%B8%D0%BA%D0%BE%D0%B2-%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC)
+  - [Получение источника программы по id](#%D0%BF%D0%BE%D0%BB%D1%83%D1%87%D0%B5%D0%BD%D0%B8%D0%B5-%D0%B8%D1%81%D1%82%D0%BE%D1%87%D0%BD%D0%B8%D0%BA%D0%B0-%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D1%8B-%D0%BF%D0%BE-id)
+  - [Создание источника программы](#%D1%81%D0%BE%D0%B7%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5-%D0%B8%D1%81%D1%82%D0%BE%D1%87%D0%BD%D0%B8%D0%BA%D0%B0-%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D1%8B)
+  - [Обновление источника программы](#%D0%BE%D0%B1%D0%BD%D0%BE%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5-%D0%B8%D1%81%D1%82%D0%BE%D1%87%D0%BD%D0%B8%D0%BA%D0%B0-%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D1%8B)
+  - [Удаление источника программы](#%D1%83%D0%B4%D0%B0%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5-%D0%B8%D1%81%D1%82%D0%BE%D1%87%D0%BD%D0%B8%D0%BA%D0%B0-%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D1%8B)
+- [Заявки на добавление программ](#%D0%B7%D0%B0%D1%8F%D0%B2%D0%BA%D0%B8-%D0%BD%D0%B0-%D0%B4%D0%BE%D0%B1%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5-%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC)
+  - [Получение заявок](#%D0%BF%D0%BE%D0%BB%D1%83%D1%87%D0%B5%D0%BD%D0%B8%D0%B5-%D0%B7%D0%B0%D1%8F%D0%B2%D0%BE%D0%BA)
+  - [Получение заявки по id](#%D0%BF%D0%BE%D0%BB%D1%83%D1%87%D0%B5%D0%BD%D0%B8%D0%B5-%D0%B7%D0%B0%D1%8F%D0%B2%D0%BA%D0%B8-%D0%BF%D0%BE-id)
+  - [Создание заявки](#%D1%81%D0%BE%D0%B7%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5-%D0%B7%D0%B0%D1%8F%D0%B2%D0%BA%D0%B8)
+  - [Получения отфильтрованных заявок](#%D0%BF%D0%BE%D0%BB%D1%83%D1%87%D0%B5%D0%BD%D0%B8%D1%8F-%D0%BE%D1%82%D1%84%D0%B8%D0%BB%D1%8C%D1%82%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D1%8B%D1%85-%D0%B7%D0%B0%D1%8F%D0%B2%D0%BE%D0%BA)
+  - [Отметить заявку как выполненную](#%D0%BE%D1%82%D0%BC%D0%B5%D1%82%D0%B8%D1%82%D1%8C-%D0%B7%D0%B0%D1%8F%D0%B2%D0%BA%D1%83-%D0%BA%D0%B0%D0%BA-%D0%B2%D1%8B%D0%BF%D0%BE%D0%BB%D0%BD%D0%B5%D0%BD%D0%BD%D1%83%D1%8E)
+  - [Отметить заявку как отклоненную](#%D0%BE%D1%82%D0%BC%D0%B5%D1%82%D0%B8%D1%82%D1%8C-%D0%B7%D0%B0%D1%8F%D0%B2%D0%BA%D1%83-%D0%BA%D0%B0%D0%BA-%D0%BE%D1%82%D0%BA%D0%BB%D0%BE%D0%BD%D0%B5%D0%BD%D0%BD%D1%83%D1%8E)
+  - [Сбросить статус заявки](#%D1%81%D0%B1%D1%80%D0%BE%D1%81%D0%B8%D1%82%D1%8C-%D1%81%D1%82%D0%B0%D1%82%D1%83%D1%81-%D0%B7%D0%B0%D1%8F%D0%B2%D0%BA%D0%B8)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 ## Запуск
 
 ### Первый запуск
@@ -30,7 +81,7 @@ DB_DIALECT = mysql
  npm run dev # запуск сервера в режиме разработки.
 ```
 
-## Program
+## Программы
 
 ### Получение всех программ
 
@@ -42,10 +93,10 @@ DB_DIALECT = mysql
 
 #### Параметры
 
-| Параметр         | Значение | Описание                                                              |
-| ---------------- | -------- | --------------------------------------------------------------------- |
-| `?page`          | `number` | Номер страницы (не может использоваться без `items_on_page`).         |
-| `?items_on_page` | `number` | Количество программ на странице (не может использоваться без `page`). |
+| Параметр        | Значение | Описание                                                              |
+| --------------- | -------- | --------------------------------------------------------------------- |
+| `page`          | `number` | Номер страницы (не может использоваться без `items_on_page`).         |
+| `items_on_page` | `number` | Количество программ на странице (не может использоваться без `page`). |
 
 > Пример: `https://localhost:3000/api/programs/?page=1&items_on_page=10`
 
@@ -71,19 +122,19 @@ DB_DIALECT = mysql
 ```typescript
 {
   id: number;
-  name: string;
   program_type_id: number;
+  license_id: number | null;
+  name: string;
   description: string | null;
   developer: string | null;
   home_page_url: string | null;
   proprietary_counterparts: string[] | null;
   logo: string | null;
   images: string[] | null;
+  rating: number;
+  sources: Source[];
   manual_url: string | null;
-  rating: number | null;
-  license_id: number | null;
-  sources: Sources[];
-}
+};
 ```
 
 где `Sources:`
@@ -129,12 +180,12 @@ Program;
 
 | Параметр              | Значение                                          | Описание                                                              |
 | --------------------- | ------------------------------------------------- | --------------------------------------------------------------------- |
-| `?q`                  | `string`                                          | Строка для поиска (обязательный параметр)                             |
-| `?_in`                | `name`, `description`, `proprietary_counterparts` | Где осуществлять поиск (значение по умолчанию `name`)                 |
+| `q`                   | `string`                                          | Строка для поиска (обязательный параметр)                             |
+| `_in`                 | `name`, `description`, `proprietary_counterparts` | Где осуществлять поиск (значение по умолчанию `name`)                 |
 | `operation_system_id` | `number`                                          | Фильтр по `id` операционной системы                                   |
-| `program_type_id`     | number                                            | Фильтр по `id` класса программы                                       |
-| `?page`               | `number`                                          | Номер страницы (не может использоваться без `items_on_page`).         |
-| `?items_on_page`      | `number`                                          | Количество программ на странице (не может использоваться без `page`). |
+| `program_type_id`     | `number`                                          | Фильтр по `id` класса программы                                       |
+| `page`                | `number`                                          | Номер страницы (не может использоваться без `items_on_page`).         |
+| `items_on_page`       | `number`                                          | Количество программ на странице (не может использоваться без `page`). |
 
 > Пример: `http://localhost:3001/api/programs/search/?q=GIMP&_in=name&_in=description&_in=proprietary_counterparts&operation_system_id=2&program_type_id=1&page=1&items_on_page=1`
 
@@ -167,38 +218,25 @@ Program;
 
 JSON строка
 
-```
+```typescript
 {
-  "program_type_id": number,
-  "name": string,
-  "license_id": number | null,
-  "description": string | null,
-  "developer": string | null,
-  "home_page_url": string | null,
-  "proprietary_counterparts": string[],
-  "logo": string | null,
-  "images": string[],
-  "manual_url": string | null,
+  program_type_id: number;
+  license_id: number | null | undefined;
+  name: string;
+  description: string | null | undefined;
+  developer: string | null | undefined;
+  home_page_url: string | null | undefined;
+  proprietary_counterparts: string[] | null | undefined;
+  logo: string | null | undefined;
+  images: string[] | null | undefined;
+  manual_url: string | null | undefined;
 }
 ```
 
 #### Ответ
 
 ```typescript
-{
-  id: number;
-  name: string;
-  program_type_id: number;
-  description: string | null;
-  developer: string | null;
-  home_page_url: string | null;
-  proprietary_counterparts: string[] | null;
-  logo: string | null;
-  images: string[] | null;
-  manual_url: string | null;
-  rating: number | null;
-  license_id: number | null;
-}
+Program;
 ```
 
 ### Обновление программы
@@ -209,23 +247,30 @@ JSON строка
 | ----- | ---------------- |
 | `PUT` | `/api/programs/` |
 
+#### Параметры
+
+| Параметр | Значение | Описание                                   |
+| -------- | -------- | ------------------------------------------ |
+| `:id`    | `number` | `id` программы (целое положительное число) |
+
+> Пример: `https://localhost:3000/api/programs/1`
+
 #### Тело запроса
 
 JSON строка
 
-```
+```typescript
 {
-  "id": number,
-  "program_type_id": number,
-  "name": string,
-  "license_id": number | null,
-  "description": string | null,
-  "developer": string | null,
-  "home_page_url": string | null,
-  "proprietary_counterparts": string[],
-  "logo": string | null,
-  "images": string[],
-  "manual_url": string | null,
+  program_type_id: number;
+  license_id: number | null | undefined;
+  name: string;
+  description: string | null | undefined;
+  developer: string | null | undefined;
+  home_page_url: string | null | undefined;
+  proprietary_counterparts: string[] | null | undefined;
+  logo: string | null | undefined;
+  images: string[] | null | undefined;
+  manual_url: string | null | undefined;
 }
 ```
 
@@ -233,18 +278,7 @@ JSON строка
 
 ```typescript
 {
-  id: number;
-  name: string;
-  program_type_id: number;
-  description: string | null;
-  developer: string | null;
-  home_page_url: string | null;
-  proprietary_counterparts: string[] | null;
-  logo: string | null;
-  images: string[] | null;
-  manual_url: string | null;
-  rating: number | null;
-  license_id: number | null;
+  Program;
 }
 ```
 
@@ -266,9 +300,9 @@ JSON строка
 
 #### Ответ
 
-```
+```typescript
 {
-  "message": "Запись была успешно уделена."
+  message: "Программа с id=... была успешно уделена.";
 }
 ```
 
@@ -276,9 +310,9 @@ JSON строка
 
 #### Запрос
 
-| Метод | URI                              |
-| ----- | -------------------------------- |
-| `GET` | `/api/programs/logos/:file_name` |
+| Метод | URI                    |
+| ----- | ---------------------- |
+| `GET` | `/api/programs/logos/` |
 
 #### Параметры
 
@@ -296,9 +330,9 @@ JSON строка
 
 #### Запрос
 
-| Метод | URI                               |
-| ----- | --------------------------------- |
-| `GET` | `/api/programs/images/:file_name` |
+| Метод | URI                     |
+| ----- | ----------------------- |
+| `GET` | `/api/programs/images/` |
 
 #### Параметры
 
@@ -328,7 +362,7 @@ JSON строка
 
 Строка или массив строк с именами файлов на сервере.
 
-## Program Type
+## Классы программ
 
 ### Получение всех классов программ
 
@@ -389,9 +423,9 @@ ProgramType;
 
 JSON строка
 
-```
+```typescript
 {
-  "name": string,
+  name: string,
 }
 ```
 
@@ -409,14 +443,21 @@ ProgramType;
 | ----- | --------------------- |
 | `PUT` | `/api/program/types/` |
 
+#### Параметры
+
+| Параметр | Значение | Описание                                          |
+| -------- | -------- | ------------------------------------------------- |
+| `:id`    | `number` | `id` класса программы (целое положительное число) |
+
+> Пример: `https://localhost:3000/api/program/types/1`
+
 #### Тело запроса
 
 JSON строка
 
-```
+```typescript
 {
-  "id": number,
-  "name": string,
+  name: string,
 }
 ```
 
@@ -426,7 +467,7 @@ JSON строка
 ProgramType;
 ```
 
-### Удаление программы
+### Удаление класса программы
 
 #### Запрос
 
@@ -444,13 +485,13 @@ ProgramType;
 
 #### Ответ
 
-```
+```typescript
 {
-  "message": "Запись была успешно уделена."
+  message: "Класс программы с id=... был успешно уделен.";
 }
 ```
 
-## License
+## Лицензии
 
 ### Получение всех лицензий
 
@@ -473,10 +514,12 @@ ProgramType;
 ```typescript
 {
   id: number;
-  acronym: string | null,
+  acronym: string | null;
   name: string | null;
-  text_url_eng: string,
-  text_url_ru: string | null
+  text_url_eng: string | null;
+  text_url_ru: string | null;
+  author: string | null;
+  year_of_creation: Date;
 }
 ```
 
@@ -514,12 +557,14 @@ License;
 
 JSON строка
 
-```
+```typescript
 {
-  "acronym": string | null,
-  "name": string | null,
-  "text_url_eng": string,
-  "text_url_ru": string | null,
+  acronym: string | null | undefined;
+  name: string | null | undefined;
+  text_url_eng: string | null | undefined;
+  text_url_ru: string | null | undefined;
+  author: string | null | undefined;
+  year_of_creation: Date | null | undefined;
 }
 ```
 
@@ -537,17 +582,26 @@ License;
 | ----- | ---------------- |
 | `PUT` | `/api/licenses/` |
 
+#### Параметры
+
+| Параметр | Значение | Описание                                  |
+| -------- | -------- | ----------------------------------------- |
+| `:id`    | `number` | `id` лицензии (целое положительное число) |
+
+> Пример: `https://localhost:3000/api/licenses/1`
+
 #### Тело запроса
 
 JSON строка
 
-```
+```typescript
 {
-  "id": number,
-  "acronym": string | null,
-  "name": string | null,
-  "text_url_eng": string,
-  "text_url_ru": string | null,
+  acronym: string | null | undefined;
+  name: string | null | undefined;
+  text_url_eng: string | null | undefined;
+  text_url_ru: string | null | undefined;
+  author: string | null | undefined;
+  year_of_creation: Date | null | undefined;
 }
 ```
 
@@ -575,13 +629,13 @@ License;
 
 #### Ответ
 
-```
+```typescript
 {
-  "message": "Запись была успешно уделена."
+  message: "Лицензия с id=... была успешно уделена.";
 }
 ```
 
-## Operation System
+## Операционные системы
 
 ### Получение всех операционных систем
 
@@ -642,9 +696,9 @@ OperationSystem;
 
 JSON строка
 
-```
+```typescript
 {
-  "name": string,
+  name: string,
 }
 ```
 
@@ -662,14 +716,21 @@ OperationSystem;
 | ----- | ------------------------- |
 | `PUT` | `/api/operation_systems/` |
 
+#### Параметры
+
+| Параметр | Значение | Описание                                              |
+| -------- | -------- | ----------------------------------------------------- |
+| `:id`    | `number` | `id` операционной системы (целое положительное число) |
+
+> Пример: `https://localhost:3000/api/operation_systems/1`
+
 #### Тело запроса
 
 JSON строка
 
-```
+```typescript
 {
-  "id": number,
-  "name": string,
+  name: string,
 }
 ```
 
@@ -697,13 +758,13 @@ OperationSystem;
 
 #### Ответ
 
-```
+```typescript
 {
-  "message": "Запись была успешно уделена."
+  message: "Операционная система с id=... была успешно уделена.";
 }
 ```
 
-## Source
+## Источники
 
 ### Получение источников программ
 
@@ -766,11 +827,11 @@ Source;
 
 JSON строка
 
-```
+```typescript
 {
-  "distrib_url": string,
-  "program_id": number,
-  "operation_system_id": number,
+  distrib_url: string,
+  program_id: number,
+  operation_system_id: number,
 }
 ```
 
@@ -788,24 +849,30 @@ Source;
 | ----- | --------------- |
 | `PUT` | `/api/sources/` |
 
+#### Параметры
+
+| Параметр | Значение | Описание                                   |
+| -------- | -------- | ------------------------------------------ |
+| `:id`    | `number` | `id` источника (целое положительное число) |
+
+> Пример: `https://localhost:3000/api/sources/1`
+
 #### Тело запроса
 
 JSON строка
 
-```
+````typescript
 {
-  "id": number,
-  "distrib_url": string,
-  "program_id": number,
-  "operation_system_id": number,
+  distrib_url: string | undefined,
+  program_id: number | undefined,
+  operation_system_id: number | undefined,
 }
-```
 
 #### Ответ
 
 ```typescript
 Source;
-```
+````
 
 ### Удаление источника программы
 
@@ -825,8 +892,236 @@ Source;
 
 #### Ответ
 
-```
+```typescript
 {
-  "message": "Запись была успешно уделена."
+  message: "Источник с id=... был успешно уделен.";
 }
+```
+
+## Заявки на добавление программ
+
+### Получение заявок
+
+#### Запрос
+
+| Метод | URI              |
+| ----- | ---------------- |
+| `GET` | `/api/requests/` |
+
+> Пример: `https://localhost:3000/api/requests/`
+
+#### Параметры
+
+| Параметр        | Значение | Описание                                                            |
+| --------------- | -------- | ------------------------------------------------------------------- |
+| `page`          | `number` | Номер страницы (не может использоваться без `items_on_page`).       |
+| `items_on_page` | `number` | Количество заявок на странице (не может использоваться без `page`). |
+
+> Пример: `https://localhost:3000/api/requests/?page=1&items_on_page=10`
+
+#### Ответ
+
+Без параметров:
+
+```typescript
+  Request[]
+```
+
+С параметрами:
+
+```typescript
+  {
+    items: Request[],
+    page_count: number,
+  }
+```
+
+где `Request`:
+
+```typescript
+{
+  id: number;
+  department_id: number;
+  programs_names: string[];
+  adding_reason: string;
+  username: string;
+  user_position: string;
+  user_email: string;
+  user_phone: string | null;
+  is_rejected: boolean;
+  rejection_reason: string | null;
+  is_completed: boolean;
+  creation_date: Date;
+  consider_before_date: Date;
+  processed_date: Date | null;
+  status: string;
+}
+```
+
+### Получение заявки по id
+
+#### Запрос
+
+| Метод | URI              |
+| ----- | ---------------- |
+| `GET` | `/api/requests/` |
+
+#### Параметры
+
+| Параметр | Значение | Описание                                |
+| -------- | -------- | --------------------------------------- |
+| `:id`    | `number` | `id` заявки (целое положительное число) |
+
+> Пример: `https://localhost:3000/api/requests/1`
+
+#### Ответ
+
+```typescript
+Request;
+```
+
+### Создание заявки
+
+#### Запрос
+
+| Метод  | URI              |
+| ------ | ---------------- |
+| `POST` | `/api/requests/` |
+
+#### Тело запроса
+
+JSON строка
+
+```typescript
+{
+  department_id: number
+  programs_names: string[]
+  adding_reason: string
+  username: string
+  user_position: string
+  user_phone: string | null | undefined
+  user_email: string
+  consider_before_date: Date
+}
+```
+
+#### Ответ
+
+```typescript
+Request;
+```
+
+### Получения отфильтрованных заявок
+
+#### Запрос
+
+| Метод | URI                     |
+| ----- | ----------------------- |
+| `GET` | `/api/requests/filter/` |
+
+#### Параметры
+
+| Параметр         | Значение                                      | Описание                                                            |
+| ---------------- | --------------------------------------------- | ------------------------------------------------------------------- |
+| `status`         | `current`, `rejected`, `completed`, `expired` | Фильтрация по статусу заявки                                        |
+| `created_from`   | `Date`                                        | Нижняя граница даты создания (строка в формате ISO8601)             |
+| `created_to`     | `Date`                                        | Верхняя граница даты создания (строка в формате ISO8601)            |
+| `processed_from` | `Date`                                        | Нижняя граница даты обработки (строка в формате ISO8601)            |
+| `processed_to`   | `Date`                                        | Верхняя граница даты обработки (строка в формате ISO8601)           |
+| `page`           | `number`                                      | Номер страницы (не может использоваться без `items_on_page`).       |
+| `items_on_page`  | `number`                                      | Количество заявок на странице (не может использоваться без `page`). |
+
+> Пример: `http://localhost:3000/api/requests/filter/?status=current&created_from=2021-03-11&created_to=2021-10-22&processed_from=2021-01-01&processed_to=2021-11-08&page=1&items_on_page=1`
+
+#### Ответ
+
+Без параметров пагинации:
+
+```typescript
+  Request[]
+```
+
+С параметрами пагинации:
+
+```typescript
+  {
+    items: Request[],
+    page_count: number,
+  }
+```
+
+### Отметить заявку как выполненную
+
+#### Запрос
+
+| Метод | URI                          |
+| ----- | ---------------------------- |
+| `PUT` | `/api/requests/:id/complete` |
+
+#### Параметры
+
+| Параметр | Значение | Описание                                |
+| -------- | -------- | --------------------------------------- |
+| `:id`    | `number` | `id` заявки (целое положительное число) |
+
+> Пример: `http://localhost:3000/api/requests/1/complete`
+
+#### Ответ
+
+```typescript
+Request;
+```
+
+### Отметить заявку как отклоненную
+
+#### Запрос
+
+| Метод | URI                        |
+| ----- | -------------------------- |
+| `PUT` | `/api/requests/:id/reject` |
+
+#### Тело запроса
+
+JSON строка
+
+```typescript
+{
+  rejection_reason: string | null | undefined;
+}
+```
+
+#### Параметры
+
+| Параметр | Значение | Описание                                |
+| -------- | -------- | --------------------------------------- |
+| `:id`    | `number` | `id` заявки (целое положительное число) |
+
+> Пример: `http://localhost:3000/api/requests/1/reject`
+
+#### Ответ
+
+```typescript
+Request;
+```
+
+### Сбросить статус заявки
+
+#### Запрос
+
+| Метод | URI                       |
+| ----- | ------------------------- |
+| `PUT` | `/api/requests/:id/reset` |
+
+#### Параметры
+
+| Параметр | Значение | Описание                                |
+| -------- | -------- | --------------------------------------- |
+| `:id`    | `number` | `id` заявки (целое положительное число) |
+
+> Пример: `http://localhost:3000/api/requests/1/reset`
+
+#### Ответ
+
+```typescript
+Request;
 ```

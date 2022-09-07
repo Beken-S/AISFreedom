@@ -30,6 +30,7 @@ type ProgramAttributes = {
   images?: string[] | null;
   manual_url?: string | null;
   rating: number;
+  sources: Source[];
 };
 
 type ProgramCreationAttributes = Optional<ProgramAttributes, 'id' | 'rating'>;
