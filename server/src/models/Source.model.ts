@@ -6,6 +6,7 @@ import {
   DataType,
   ForeignKey,
   BelongsTo,
+  Scopes,
 } from 'sequelize-typescript';
 
 import OperationSystem from './OperationSystem.model';
@@ -20,6 +21,11 @@ type SourceAttributes = {
 
 type SourceCreationAttributes = Optional<SourceAttributes, 'id'>;
 
+@Scopes(() => ({
+  orderById: {
+    order: ['id'],
+  },
+}))
 @Table({
   tableName: 'sources',
   timestamps: false,
@@ -40,11 +46,19 @@ class Source extends Model<SourceAttributes, SourceCreationAttributes> {
   id!: number;
 
   @ForeignKey(() => Program)
-  @Column(DataType.INTEGER.UNSIGNED)
+  @Column({
+    type: DataType.INTEGER.UNSIGNED,
+    allowNull: false,
+    validate: { isInt: true, min: 1 },
+  })
   program_id!: number;
 
   @ForeignKey(() => OperationSystem)
-  @Column(DataType.INTEGER.UNSIGNED)
+  @Column({
+    type: DataType.INTEGER.UNSIGNED,
+    allowNull: false,
+    validate: { isInt: true, min: 1 },
+  })
   operation_system_id!: number;
 
   @Column({
@@ -65,59 +79,3 @@ class Source extends Model<SourceAttributes, SourceCreationAttributes> {
 
 export default Source;
 export { SourceAttributes, SourceCreationAttributes };
-// import { Number, String, Record, Static } from 'runtypes';
-// import { ModelDefined, DataTypes, Model } from 'sequelize';
-
-// import Database from './Database';
-
-// const SourceAttributes = Record({
-//   id: Number,
-//   program_id: Number,
-//   operation_system_id: Number,
-//   distrib_url: String.withConstraint((str) => str != ''),
-// });
-
-// type SourceAttributes = Static<typeof SourceAttributes>;
-
-// const SourceCreationAttributes = SourceAttributes.omit('id');
-
-// type SourceCreationAttributes = Static<typeof SourceCreationAttributes>;
-
-// type SourceModel = Model<SourceAttributes, SourceCreationAttributes>;
-
-// type SourceModelDefined = ModelDefined<
-//   SourceAttributes,
-//   SourceCreationAttributes
-// >;
-
-// const Source: SourceModelDefined = Database.define(
-//   'Source',
-//   {
-//     id: {
-//       type: DataTypes.INTEGER.UNSIGNED,
-//       autoIncrement: true,
-//       primaryKey: true,
-//     },
-//     distrib_url: {
-//       type: DataTypes.STRING(2083),
-//       allowNull: false,
-//       validate: {
-//         isUrl: true,
-//       },
-//     },
-//   },
-//   {
-//     tableName: 'sources',
-//     timestamps: false,
-//     indexes: [
-//       {
-//         name: 'source',
-//         unique: true,
-//         fields: ['operation_system_id', 'program_id'],
-//       },
-//     ],
-//   }
-// );
-
-// export default Source;
-// export { SourceAttributes, SourceCreationAttributes, SourceModel };

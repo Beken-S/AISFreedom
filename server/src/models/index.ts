@@ -1,3 +1,11 @@
+import AddProgramsRequest, {
+  AddProgramsRequestAttributes,
+  AddProgramsRequestCreationAttributes,
+} from './AddProgramRequest.model';
+import Department, {
+  DepartmentAttributes,
+  DepartmentCreationAttributes,
+} from './Department.model';
 import License, {
   LicenseAttributes,
   LicenseCreationAttributes,
@@ -20,6 +28,12 @@ import Source, {
 } from './Source.model';
 
 export {
+  AddProgramsRequest,
+  AddProgramsRequestAttributes,
+  AddProgramsRequestCreationAttributes,
+  Department,
+  DepartmentAttributes,
+  DepartmentCreationAttributes,
   License,
   LicenseAttributes,
   LicenseCreationAttributes,

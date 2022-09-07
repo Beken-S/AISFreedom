@@ -1,5 +1,5 @@
-import { DataTypes, Optional } from 'sequelize';
-import { Column, Model, Table } from 'sequelize-typescript';
+import { Optional } from 'sequelize';
+import { Column, Model, Table, DataType, Scopes } from 'sequelize-typescript';
 
 type DepartmentAttributes = {
   id: number;
@@ -8,6 +8,11 @@ type DepartmentAttributes = {
 
 type DepartmentCreationAttributes = Optional<DepartmentAttributes, 'id'>;
 
+@Scopes(() => ({
+  orderById: {
+    order: ['id'],
+  },
+}))
 @Table({
   tableName: 'departments',
   timestamps: false,
@@ -17,14 +22,14 @@ class Department extends Model<
   DepartmentCreationAttributes
 > {
   @Column({
-    type: DataTypes.INTEGER.UNSIGNED,
+    type: DataType.INTEGER.UNSIGNED,
     autoIncrement: true,
     primaryKey: true,
   })
   id!: number;
 
   @Column({
-    type: DataTypes.STRING,
+    type: DataType.STRING,
     allowNull: false,
     unique: 'name',
     validate: {
