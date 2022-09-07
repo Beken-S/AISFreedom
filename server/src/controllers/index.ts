@@ -1,15 +1,19 @@
-// import * as licensesController from './licensesController';
-// import * as operationSystemsController from './operationSystemsController';
-// import * as pingController from './pingController';
-import * as programsController from './programsController';
-// import * as programTypesController from './programTypesController';
-// import * as sourcesController from './sourcesController';
+import * as addProgramRequestController from './AddProgramRequests.controller';
+import * as departmentController from './Departments.controller';
+import * as licensesController from './Licenses.controller';
+import * as operationSystemsController from './OperationSystems.controller';
+import * as pingController from './Ping.controller';
+import * as programsController from './Programs.controller';
+import * as programTypesController from './ProgramTypes.controller';
+import * as sourcesController from './Sources.controller';
 
 export {
-  //   licensesController,
-  //   operationSystemsController,
-  //   pingController,
+  addProgramRequestController,
+  departmentController,
+  licensesController,
+  operationSystemsController,
+  pingController,
   programsController,
-  //   programTypesController,
-  //   sourcesController,
+  programTypesController,
+  sourcesController,
 };
