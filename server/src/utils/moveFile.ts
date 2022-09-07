@@ -1,7 +1,7 @@
 import { constants } from 'fs';
 import { access, rename } from 'node:fs/promises';
 
-import { BadRequestError } from '../modules/error';
+import { NotFoundError } from '../modules/error';
 
 async function moveFile(file: string, moveTo: string): Promise<void> {
   try {
@@ -9,7 +9,7 @@ async function moveFile(file: string, moveTo: string): Promise<void> {
 
     return rename(file, moveTo);
   } catch (err) {
-    throw new BadRequestError('Файл не найден.');
+    throw new NotFoundError('Файл не найден.');
   }
 }
 

@@ -5,7 +5,6 @@ import { BadRequestError } from '../modules/error';
 
 async function deleteFile(file: string): Promise<void> {
   try {
-    console.log(file);
     await access(file, constants.F_OK);
 
     return rm(file);

@@ -1,19 +1,13 @@
-import path = require('path');
-
 import express = require('express');
 import fileUpload from 'express-fileupload';
 
 import config from './config';
 import { pingController } from './controllers';
+import database, { initDatabase } from './database';
+import { errorHandler, logErrors, logRequests, security } from './middlewares';
 import {
-  errorHandler,
-  logErrors,
-  logRequests,
-  security,
-  validationErrorHandler,
-} from './middlewares';
-import { Database, initDatabase } from './models';
-import {
+  addProgramRequestRouter,
+  departmentRouter,
   licensesRouter,
   operationSystemsRouter,
   programsRouter,
@@ -26,8 +20,8 @@ const app = express();
 
 const start = async () => {
   try {
-    await Database.authenticate();
-    await initDatabase(Database);
+    await database.authenticate();
+    await initDatabase(database);
     app.listen(config.server.port, () => {
       console.log(`Server started on port ${config.server.port}.`);
     });
@@ -54,10 +48,11 @@ app.use('/api', programTypesRouter);
 app.use('/api', operationSystemsRouter);
 app.use('/api', licensesRouter);
 app.use('/api', sourcesRouter);
+app.use('/api', departmentRouter);
+app.use('/api', addProgramRequestRouter);
 
 logErrors(app);
 
-app.use(validationErrorHandler);
 app.use(errorHandler);
 
 start();

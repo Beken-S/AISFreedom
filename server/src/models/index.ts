@@ -1,51 +1,52 @@
-import Database, { initDatabase } from './Database';
+import AddProgramsRequest, {
+  AddProgramsRequestAttributes,
+  AddProgramsRequestCreationAttributes,
+} from './AddProgramRequest.model';
+import Department, {
+  DepartmentAttributes,
+  DepartmentCreationAttributes,
+} from './Department.model';
 import License, {
   LicenseAttributes,
   LicenseCreationAttributes,
-  LicenseModel,
-} from './License';
+} from './License.model';
 import OperationSystem, {
   OperationSystemAttributes,
   OperationSystemCreationAttributes,
-  OperationSystemModel,
-} from './OperationSystem';
+} from './OperationSystem.model';
 import Program, {
   ProgramAttributes,
   ProgramCreationAttributes,
-  ProgramModel,
-} from './Program';
+} from './Program.model';
 import ProgramType, {
   ProgramTypeAttributes,
   ProgramTypeCreationAttributes,
-  ProgramTypeModel,
-} from './ProgramType';
+} from './ProgramType.model';
 import Source, {
   SourceAttributes,
   SourceCreationAttributes,
-  SourceModel,
-} from './Source';
+} from './Source.model';
 
 export {
-  Database,
-  initDatabase,
+  AddProgramsRequest,
+  AddProgramsRequestAttributes,
+  AddProgramsRequestCreationAttributes,
+  Department,
+  DepartmentAttributes,
+  DepartmentCreationAttributes,
   License,
   LicenseAttributes,
   LicenseCreationAttributes,
-  LicenseModel,
   OperationSystem,
   OperationSystemAttributes,
   OperationSystemCreationAttributes,
-  OperationSystemModel,
   Program,
   ProgramAttributes,
   ProgramCreationAttributes,
-  ProgramModel,
   ProgramType,
   ProgramTypeAttributes,
   ProgramTypeCreationAttributes,
-  ProgramTypeModel,
   Source,
   SourceAttributes,
   SourceCreationAttributes,
-  SourceModel,
 };
