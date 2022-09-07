@@ -2,16 +2,12 @@ import express = require('express');
 import fileUpload from 'express-fileupload';
 
 import config from './config';
-// import { pingController } from './controllers';
+import { pingController } from './controllers';
 import database, { initDatabase } from './database';
+import { errorHandler, logErrors, logRequests, security } from './middlewares';
 import {
-  errorHandler,
-  logErrors,
-  logRequests,
-  security,
-  validationErrorHandler,
-} from './middlewares';
-import {
+  addProgramRequestRouter,
+  departmentRouter,
   licensesRouter,
   operationSystemsRouter,
   programsRouter,
@@ -46,16 +42,17 @@ app.use(
 );
 logRequests(app);
 
-// app.get('/ping', pingController.ping);
+app.get('/ping', pingController.ping);
 app.use('/api', programsRouter);
 app.use('/api', programTypesRouter);
 app.use('/api', operationSystemsRouter);
 app.use('/api', licensesRouter);
 app.use('/api', sourcesRouter);
+app.use('/api', departmentRouter);
+app.use('/api', addProgramRequestRouter);
 
 logErrors(app);
 
-app.use(validationErrorHandler);
 app.use(errorHandler);
 
 start();
