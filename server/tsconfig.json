@@ -15,7 +15,9 @@
     "noUncheckedIndexedAccess": true,
     "noImplicitReturns": true,
     "resolveJsonModule": true,
-    "downlevelIteration": true
+    "downlevelIteration": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true
   },
   "include": ["src/**/*"]
 }

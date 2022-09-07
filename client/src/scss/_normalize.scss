@@ -49,15 +49,27 @@ a {
 }
 
 @mixin noselect {
-  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-touch-callout: none;
+
+  /* iOS Safari */
   /* stylelint-disable-next-line property-no-vendor-prefix */
-  -webkit-user-select: none; /* Safari */
+  -webkit-user-select: none;
+
+  /* Safari */
   /* stylelint-disable-next-line property-no-vendor-prefix */
-  -khtml-user-select: none; /* Konqueror HTML */
+  -khtml-user-select: none;
+
+  /* Konqueror HTML */
   /* stylelint-disable-next-line property-no-vendor-prefix */
-  -moz-user-select: none; /* Old versions of Firefox */
+  -moz-user-select: none;
+
+  /* Old versions of Firefox */
   /* stylelint-disable-next-line property-no-vendor-prefix */
-  -ms-user-select: none; /* Internet Explorer/Edge */
-  user-select: none; /* Non-prefixed version, currently
-                                  supported by Chrome, Opera and Firefox */
+  -ms-user-select: none;
+
+  /* Internet Explorer/Edge */
+  user-select: none;
+
+  /* Non-prefixed version, currently
+  supported by Chrome, Opera and Firefox */
 }

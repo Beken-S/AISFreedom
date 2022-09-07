@@ -1,0 +1,24 @@
+@import "../../scss/vars";
+
+.About {
+  display: flex;
+  padding: 10px;
+  border-radius: 10px;
+  outline: 2px solid $background-color;
+
+  &__image {
+    height: 400px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+  }
+
+  &__info {
+    padding: 10px 20px;
+    font-size: 20px;
+    font-family: auto;
+    text-align: justify;
+    background-color: $background-color;
+    border-radius: 10px;
+  }
+}

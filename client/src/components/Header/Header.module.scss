@@ -1,25 +1,20 @@
-.wrap {
-  width: 1140px;
-  margin: 0 auto;
-}
+@import "../../scss/mixins";
+@import "../../scss/vars";
 
 .headerSystemName {
   height: 140px;
-  background-color: #f5f5f5;
+  background-color: #F4F4F4;
   background-image: url("../../assets/img/background.jpg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  border-bottom: 3px solid #3281e2;
+  border-bottom: 1px solid rgb(75, 185, 248);
 }
 
 .headerSystemNameWrap {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 1140px;
   height: 140px;
-  margin: 0 auto;
+
+  @include flex-position;
 }
 
 .headerSystemName a {
@@ -30,4 +25,16 @@
   margin: 0 auto;
   color: #000000;
   font-size: 28px;
+}
+
+@media (max-width: $tablet-breakpoint) {
+  .logo {
+    width: 200px;
+  }
+}
+
+@media (max-width: $mobile-breakpoint) {
+  .headerSystemNameWrap {
+    @include flex-position(center);
+  }
 }

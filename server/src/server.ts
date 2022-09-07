@@ -1,34 +1,58 @@
 import express = require('express');
+import fileUpload from 'express-fileupload';
 
-import { config } from './config';
-import * as pingController from './controllers/pingController';
-import { addConnection } from './middlewares/addConnection';
-import { errorHandler } from './middlewares/errorHandler';
-import { logErrors } from './middlewares/logErrors';
-import { logRequests } from './middlewares/logRequests';
-import { security } from './middlewares/security';
-import { programsRouter } from './routers/programsRouter';
-import { createConnection } from './services/createConnection';
+import config from './config';
+import { pingController } from './controllers';
+import database, { initDatabase } from './database';
+import { errorHandler, logErrors, logRequests, security } from './middlewares';
+import {
+  addProgramRequestRouter,
+  departmentRouter,
+  licensesRouter,
+  operationSystemsRouter,
+  programsRouter,
+  programTypesRouter,
+  sourcesRouter,
+} from './routers';
+import { clearTemp } from './utils';
 
 const app = express();
-const connection = createConnection(config.database);
+
+const start = async () => {
+  try {
+    await database.authenticate();
+    await initDatabase(database);
+    app.listen(config.server.port, () => {
+      console.log(`Server started on port ${config.server.port}.`);
+    });
+    clearTemp.start();
+  } catch (err) {
+    console.log(err);
+  }
+};
 
 security(app);
 
-app.use(addConnection(connection));
-
 app.use(express.json());
-app.use(logRequests());
-app.use(logRequests(config.logs.write));
+app.use(
+  fileUpload({
+    useTempFiles: true,
+    tempFileDir: config.database.filesPath.temp,
+  })
+);
+logRequests(app);
 
 app.get('/ping', pingController.ping);
+app.use('/api', programsRouter);
+app.use('/api', programTypesRouter);
+app.use('/api', operationSystemsRouter);
+app.use('/api', licensesRouter);
+app.use('/api', sourcesRouter);
+app.use('/api', departmentRouter);
+app.use('/api', addProgramRequestRouter);
 
-app.use('/api/programs', programsRouter);
+logErrors(app);
 
-app.use(logErrors());
-app.use(logErrors(config.logs.write));
 app.use(errorHandler);
 
-app.listen(config.server.port, () => {
-  console.log(`Server started on port ${config.server.port}.`);
-});
+start();

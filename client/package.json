@@ -10,11 +10,14 @@
     "antd": "^4.20.4",
     "bootstrap": "^5.1.3",
     "classnames": "^2.3.1",
+    "formik": "^2.2.9",
+    "html-react-parser": "^3.0.4",
     "node-sass": "^7.0.1",
     "react": "^18.1.0",
     "react-content-loader": "^6.2.0",
     "react-cool-onclickoutside": "^1.7.0",
     "react-dom": "^18.1.0",
+    "react-icons": "^4.4.0",
     "react-redux": "^8.0.1",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
@@ -31,112 +34,8 @@
     "start:api": "concurrently \"cd ../server && npm start\" \"npm start \"",
     "build": "react-app-rewired build",
     "eject": "react-scripts eject",
-    "lint": "npx eslint src && npx stylelint 'src/**/*.scss'"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest",
-      "plugin:import/recommended",
-      "plugin:prettier/recommended"
-    ],
-    "plugins": [
-      "import"
-    ],
-    "rules": {
-      "import/order": [
-        "error",
-        {
-          "newlines-between": "always",
-          "alphabetize": {
-            "order": "asc",
-            "caseInsensitive": true
-          }
-        }
-      ]
-    },
-    "settings": {
-      "import/resolver": {
-        "node": {
-          "extensions": [
-            ".js",
-            ".jsx"
-          ]
-        },
-        "alias": {
-          "map": [
-            [
-              "@src",
-              "./src"
-            ],
-            [
-              "@components",
-              "./src/components"
-            ],
-            [
-              "@ui",
-              "./src/components/UI"
-            ],
-            [
-              "@containers",
-              "./src/containers"
-            ],
-            [
-              "@constants",
-              "./src/constants"
-            ],
-            [
-              "@services",
-              "./src/services"
-            ],
-            [
-              "@utils",
-              "./src/utils"
-            ],
-            [
-              "@static",
-              "./src/static"
-            ],
-            [
-              "@styles",
-              "./src/styles"
-            ],
-            [
-              "@routes",
-              "./src/routes"
-            ],
-            [
-              "@hooks",
-              "./src/hooks"
-            ],
-            [
-              "@store",
-              "./src/store"
-            ],
-            [
-              "@context",
-              "./src/context"
-            ],
-            [
-              "@assets",
-              "./src/assets"
-            ],
-            [
-              "@scss",
-              "./src/scss"
-            ],
-            [
-              "@pages",
-              "./src/pages"
-            ],
-            [
-              "@modules",
-              "./src/modules"
-            ]
-          ]
-        }
-      }
-    }
+    "lint": "npx eslint src && npx stylelint 'src/**/*.scss'",
+    "fix": "node_modules\\.bin\\eslint src --fix"
   },
   "browserslist": {
     "production": [

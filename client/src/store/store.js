@@ -1,6 +1,7 @@
-import { combineReducers, legacy_createStore } from 'redux';
+import { combineReducers, legacy_createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
 
-import searchReducer from '@store/reducers/searchReducer';
+import catalogReducer from './reducers/Catalog-reducer';
 
-const reducers = combineReducers({ soft: searchReducer });
-export const store = legacy_createStore(reducers);
+const rootReducer = combineReducers({ catalog: catalogReducer });
+export const store = legacy_createStore(rootReducer, applyMiddleware(thunk));

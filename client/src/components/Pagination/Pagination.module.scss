@@ -1,19 +1,62 @@
+@import "../../scss/mixins";
+@import "../../scss/vars";
+
 .pagination {
-  display: flex;
-  justify-content: center;
-  margin: 20px;
+  padding-top: 40px;
+
+  @include flex-position(center);
+
+  &__wrap {
+    gap: 5px;
+    width: 180px;
+    height: 30px;
+    padding: 5px 0;
+    list-style: none;
+    border-radius: 5px;
+
+    @include flex-position;
+  }
+
+  &__arrow {
+    color: $btn-color;
+    font-size: 20px;
+    cursor: pointer;
+  }
 }
 
 .pagination button {
-  padding: 10px;
+  background: transparent;
   border: none;
-  border-radius: 20px;
+}
+
+.page {
+  font-size: 20px;
+  font-style: normal;
+  line-height: 19px;
+  text-decoration: none;
+  cursor: pointer;
+  color: $btn-color;
+}
+
+.page:hover {
+  // text-decoration: underline;
+  // background-color: $btn-color;
+  // border-radius: 50%;
+  // transition-duration: 0.3s;
+  // color: $btn-color;
+
+  @include flex-position(center);
 }
 
 .active {
-  padding: 10px;
-  color: #ffffff;
-  background-color: #3281e2;
-  border: none;
-  border-radius: 20px;
+  font-size: 26px;
+  font-style: normal;
+  line-height: 19px;
+  text-decoration: none;
+  background-color: rgb(75, 185, 248);
+  border-radius: 50%;
+  cursor: pointer;
+  color: rgb(75, 185, 248);
+
+  @include flex-position(center);
 }

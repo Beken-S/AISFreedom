@@ -1,35 +1,35 @@
 import React from 'react';
 
+import { CatalogItem } from '../CatalogItem';
 import Pagination from '../Pagination';
 
 import style from './Catalog.module.scss';
 
-export const Catalog = ({ freeSoft }) => {
+export const Catalog = ({
+  programs,
+  typeOs,
+  totalCountPages,
+  changePage,
+  currentPage,
+}) => {
   return (
-    <>
+    <section className={style.Catalog}>
       <ul className={style.programsList}>
-        {freeSoft.map((el, i) => {
-          return (
-            <a key={i} href="#0" className={style.programLink}>
-              <li className={style.programItem}>
-                <img
-                  src={el.img}
-                  alt="screenshot"
-                  className={style.programImg}
-                />
-                <div className={style.programInfo}>
-                  <h4 className={style.programName}>{el.name}</h4>
-                  <p>
-                    {el.os}
-                    <span> {el.downloads}&darr;</span>{' '}
-                  </p>
-                </div>
-              </li>
-            </a>
-          );
-        })}
+        {programs.length === 0 ? (
+          <div className={style.err}>Ничего не найдено :(</div>
+        ) : (
+          programs.map((el, i) => {
+            return <CatalogItem program={el} key={i} typeOs={typeOs} />;
+          })
+        )}
       </ul>
-      <Pagination />
-    </>
+      {programs.length !== 0 && (
+        <Pagination
+          pages={totalCountPages}
+          changePage={changePage}
+          currentPage={currentPage}
+        />
+      )}
+    </section>
   );
 };

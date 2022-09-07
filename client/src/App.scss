@@ -1,42 +1,29 @@
+@import "./scss/vars";
+
 * {
   margin: 0;
   padding: 0;
 }
 
-.contentWrapper {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+@font-face {
+  font-family: "services";
+  src: url("./assets/fonts/Spectral/Spectral-Medium.ttf") format("truetype");
 }
 
-.topContent {
-  flex-grow: 1;
-}
-
-.services {
-  padding: 20px 0;
-}
-
-.servicesWrap {
-  display: flex;
-  flex-direction: column;
-  gap: 50px;
+//  Центровщик
+.wrap {
   width: 1140px;
   margin: 0 auto;
 }
 
-.mainService {
-  width: 760px;
-  margin: 0 auto;
-  padding: 0 16px;
+@media (max-width: $tablet-breakpoint) {
+  .wrap {
+    width: $tablet-width;
+  }
 }
 
-.mainService h2 {
-  margin-bottom: 24px;
-  text-align: center;
-}
-
-.mainService h3 {
-  margin-bottom: 24px;
-  text-align: center;
+@media (max-width: $mobile-breakpoint) {
+  .wrap {
+    width: $mobile-width;
+  }
 }

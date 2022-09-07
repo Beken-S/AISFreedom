@@ -1,18 +1,13 @@
-import { IParams } from '../modules/params';
+import { PaginationOptions } from '../types';
 
-interface IPaginationParams {
-  limit: number;
-  offset: number;
-}
-
-function getPaginationOptions(params: IParams): IPaginationParams {
-  const pageNumber = Number(params.page);
-  const itemsOnPageNumber = Number(params.items_on_page);
-
+function getPaginationOptions(
+  page: number,
+  items_on_page: number
+): PaginationOptions {
   return {
-    limit: itemsOnPageNumber,
-    offset: itemsOnPageNumber * (pageNumber - 1),
+    limit: items_on_page,
+    offset: items_on_page * (page - 1),
   };
 }
 
-export { getPaginationOptions };
+export default getPaginationOptions;

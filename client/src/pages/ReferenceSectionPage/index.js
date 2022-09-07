@@ -1,10 +1,12 @@
-// import styles from './ReferenceSectionPage.module.scss';
+import React from 'react';
+
+import styles from './ReferenceSectionPage.module.scss';
 
 const ReferenceSectionPage = () => {
   return (
-    <>
-      <div>СПРАВОЧНЫЙ РАЗДЕЛ</div>
-    </>
+    <div className={styles.ReferenceSectionPage}>
+      <h2>СПРАВОЧНЫЙ РАЗДЕЛ</h2>
+    </div>
   );
 };
 

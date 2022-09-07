@@ -1,6 +1,5 @@
 import cn from 'classnames';
 import React, { useState } from 'react';
-import useOnclickOutside from 'react-cool-onclickoutside';
 import { NavLink } from 'react-router-dom';
 
 import style from './Menu.module.scss';
@@ -9,7 +8,6 @@ const Menu = () => {
   const [menuItemsToggle, setMenuItemsToggle] = useState(false);
   const handleBtnClick = () => setMenuItemsToggle(!menuItemsToggle);
   const closeActiveBlock = () => setMenuItemsToggle(false);
-  const ref = useOnclickOutside(() => closeActiveBlock());
 
   return (
     <div className={style.container}>
@@ -26,19 +24,19 @@ const Menu = () => {
               )}
             >
               <span
-                class={cn(
+                className={cn(
                   style.burger__item__line,
                   style.burger__item__line__first
                 )}
               ></span>
               <span
-                class={cn(
+                className={cn(
                   style.burger__item__line,
                   style.burger__item__line__second
                 )}
               ></span>
               <span
-                class={cn(
+                className={cn(
                   style.burger__item__line,
                   style.burger__item__line__third
                 )}
@@ -46,7 +44,6 @@ const Menu = () => {
             </div>
           </div>
           <div
-            ref={ref}
             className={`style.header__container__inner ${
               !menuItemsToggle ? style.burger__non__active : ''
             }`}
@@ -55,9 +52,9 @@ const Menu = () => {
               <NavLink
                 to="/"
                 style={({ isActive }) => ({
-                  color: isActive ? '#3281e2' : '',
-                  borderLeft: isActive ? 'solid 3.5px #3281e2' : '',
-                  background: isActive ? '#fcfcfc' : '',
+                  color: isActive ? 'rgb(50, 129, 226)' : '',
+                  transitionDuration: isActive ? '0.6s' : '',
+                  textDecoration: isActive ? 'underline' : '',
                 })}
                 className={
                   window.location.pathname.indexOf('/', 0) === -1
@@ -70,13 +67,13 @@ const Menu = () => {
               >
                 О ПРОЕКТЕ
               </NavLink>
-
+              <span className={style.slash}>/</span>
               <NavLink
-                to="/analog"
+                to="/catalog"
                 style={({ isActive }) => ({
-                  color: isActive ? '#3281e2' : '',
-                  borderLeft: isActive ? 'solid 3.5px #3281e2' : '',
-                  background: isActive ? '#fcfcfc' : '',
+                  color: isActive ? 'rgb(50, 129, 226)' : '',
+                  transitionDuration: isActive ? '0.6s' : '',
+                  textDecoration: isActive ? 'underline' : '',
                 })}
                 className={
                   window.location.pathname.indexOf('/analog', 0) === -1
@@ -89,30 +86,13 @@ const Menu = () => {
               >
                 КАТАЛОГ
               </NavLink>
-              <NavLink
-                to="/analogs"
-                style={({ isActive }) => ({
-                  color: isActive ? '#3281e2' : '',
-                  borderLeft: isActive ? 'solid 3.5px #3281e2' : '',
-                  background: isActive ? '#fcfcfc' : '',
-                })}
-                className={
-                  window.location.pathname.indexOf('/analogs', 0) === -1
-                    ? style.header__menu__item
-                    : cn(
-                        style.header__menu__item,
-                        style.header__menu__item__active
-                      )
-                }
-              >
-                ПОИСК АЛЬТЕРНАТИВ
-              </NavLink>
+              <span className={style.slash}>/</span>
               <NavLink
                 to="/reference"
                 style={({ isActive }) => ({
-                  color: isActive ? '#3281e2' : '',
-                  borderLeft: isActive ? 'solid 3.5px #3281e2' : '',
-                  background: isActive ? '#fcfcfc' : '',
+                  color: isActive ? 'rgb(50, 129, 226)' : '',
+                  transitionDuration: isActive ? '0.6s' : '',
+                  textDecoration: isActive ? 'underline' : '',
                 })}
                 className={
                   window.location.pathname.indexOf('/reference', 0) === -1
@@ -125,12 +105,13 @@ const Menu = () => {
               >
                 СПРАВОЧНЫЙ РАЗДЕЛ
               </NavLink>
+              <span className={style.slash}>/</span>
               <NavLink
                 to="/applications"
                 style={({ isActive }) => ({
-                  color: isActive ? '#3281e2' : '',
-                  borderLeft: isActive ? 'solid 3.5px #3281e2' : '',
-                  background: isActive ? '#fcfcfc' : '',
+                  color: isActive ? 'rgb(50, 129, 226)' : '',
+                  transitionDuration: isActive ? '0.6s' : '',
+                  textDecoration: isActive ? 'underline' : '',
                 })}
                 className={
                   window.location.pathname.indexOf('/applications', 0) === -1
@@ -152,14 +133,3 @@ const Menu = () => {
 };
 
 export default Menu;
-
-// {
-//   /* <div className={style.servicesMenu}>
-//       <h3>МЕНЮ</h3>
-//       <a href="#1" className={style.changeServicesMenu}> О ПРОЕКТЕ </a>
-//       <a href="#2" className={style.changeServicesMenu}> КАТАЛОГ </a>
-//       <a href="#3" className={style.changeServicesMenu}> ПОИСК АЛЬТЕРНАТИВ </a>
-//       <a href="#4" className={style.changeServicesMenu}> СПРАВОЧНЫЙ РАЗДЕЛ </a>
-//       <a href="#5" className={style.changeServicesMenu}> ПРИЕМ ЗАЯВОК </a>
-//     </div> */
-// }

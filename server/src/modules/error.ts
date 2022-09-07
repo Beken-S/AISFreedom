@@ -1,3 +1,5 @@
+import { ValidationError } from 'express-validator';
+
 class BaseError extends Error {
   public status: number;
 
@@ -20,4 +22,14 @@ class NotFoundError extends BaseError {
   }
 }
 
-export { BaseError, BadRequestError, NotFoundError };
+class UnprocessableEntityError extends BaseError {
+  public errors?: ValidationError[] | ValidationError;
+
+  constructor(message?: string, errors?: ValidationError | ValidationError[]) {
+    super(422, message);
+
+    this.errors = errors;
+  }
+}
+
+export { BaseError, BadRequestError, NotFoundError, UnprocessableEntityError };

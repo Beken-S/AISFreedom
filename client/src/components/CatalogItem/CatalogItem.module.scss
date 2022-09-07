@@ -1,0 +1,76 @@
+@import "../../scss/vars";
+@import "../../scss/mixins";
+
+.programLink {
+  text-decoration: none;
+  color: #222222;
+}
+
+.programItem {
+  width: 200px;
+  height: 280px;
+  padding: 15px 15px 0;
+  color: $font-color;
+  text-decoration: none;
+  background-color: $background-color;
+  border-radius: 20px;
+  outline: 1px solid $btn-color;
+  transition-duration: 0.3s;
+
+  @include flex-direction-column;
+
+  &:hover {
+    box-shadow: $shadow;
+    transform: scale(1.05);
+    cursor: pointer;
+  }
+}
+
+.programImg {
+  width: 150px;
+  height: 150px;
+  background-color: rgb(176, 194, 214);
+  border-radius: 20px;
+}
+
+.programInfo {
+  padding: 15px 0 10px;
+  text-align: center;
+}
+
+.programInfo h2 {
+  margin-bottom: 10px;
+  font-size: 30px;
+  font-family: "services";
+}
+
+.programInfo p {
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.programRaiting {
+  color: rgb(176, 194, 214);
+  font-weight: bold;
+}
+
+.programOs {
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+@media (max-width: $tablet-breakpoint) {
+  .programsList {
+    gap: 20px;
+  }
+}
+
+@media (max-width: $mobile-breakpoint) {
+  .programItem {
+    flex-direction: row;
+    justify-content: space-around;
+    width: 300px;
+    height: 220px;
+    padding-top: 0;
+  }
+}

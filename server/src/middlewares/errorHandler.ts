@@ -1,6 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
+import { ValidationError } from 'sequelize';
 
-import { BaseError } from '../modules/error';
+import { BaseError, UnprocessableEntityError } from '../modules/error';
 
 async function errorHandler(
   error: BaseError | Error,
@@ -9,10 +10,26 @@ async function errorHandler(
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   next: NextFunction
 ): Promise<void> {
-  if (error instanceof BaseError) {
+  if (error instanceof UnprocessableEntityError) {
     response.status(error.status).send({
       status: error.status,
       message: error.message,
+      cause: error.errors,
+    });
+  } else if (error instanceof BaseError) {
+    response.status(error.status).send({
+      status: error.status,
+      message: error.message,
+    });
+  } else if (error instanceof SyntaxError) {
+    response.status(400).send({
+      status: 400,
+      message: 'Ошибка. Неверный синтаксис запроса.',
+    });
+  } else if (error instanceof ValidationError) {
+    response.status(422).send({
+      status: 422,
+      message: 'Ошибка. Проверьте правильность введенных данных.',
     });
   } else {
     response.status(500).send({
@@ -22,4 +39,4 @@ async function errorHandler(
   }
 }
 
-export { errorHandler };
+export default errorHandler;

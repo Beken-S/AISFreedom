@@ -1,0 +1,25 @@
+
+
+.checkboxInput {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  input{
+      appearance: none;
+      width: auto;
+      padding: 0 0 0 15px;
+      height: 15px;
+      margin-right: 20px;
+      box-sizing: content-box;
+      border: 1px solid #DADADA;
+      border-radius: 3px;
+      background: #f3f3f3;
+      &:checked {
+          background: url('../../assets/img/check.png');
+      }
+  }
+  span{
+      color: red;
+  }
+}

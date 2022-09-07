@@ -1,19 +1,22 @@
+import cn from 'classnames';
 import React from 'react';
+import { NavLink } from 'react-router-dom';
+
+import Menu from '../Menu';
 
 import style from './Header.module.scss';
 
+import '../../App.scss';
 import logo from '@assets/img/Logo.png';
 
 const Header = () => {
   return (
     <header className={style.headerSystemName}>
-      <div className={style.headerSystemNameWrap}>
-        <a href="index.html">
-          <img src={logo} alt="logo" />
-        </a>
-        <h1 className={style.systemNameText}>
-          АВТОМАТИЗИРОВАННАЯ ИНФОРМАЦИОННАЯ СИСТЕМА
-        </h1>
+      <div className={cn(style.headerSystemNameWrap, 'wrap')}>
+        <NavLink to="/">
+          <img className={style.logo} src={logo} alt="logo" />
+        </NavLink>
+        <Menu />
       </div>
     </header>
   );
