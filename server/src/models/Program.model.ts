@@ -33,7 +33,10 @@ type ProgramAttributes = {
   sources: Source[];
 };
 
-type ProgramCreationAttributes = Optional<ProgramAttributes, 'id' | 'rating'>;
+type ProgramCreationAttributes = Optional<
+  ProgramAttributes,
+  'id' | 'rating' | 'sources'
+>;
 
 @Scopes(() => ({
   orderById: {
