@@ -1,26 +1,56 @@
-import { query } from 'express-validator';
+import { Schema, checkSchema } from 'express-validator';
+
+const SCHEMA: Schema = {
+  page: {
+    optional: true,
+    custom: {
+      options: (value, { req }) => {
+        if (req.query != null) {
+          const pageExist = 'page' in req.query;
+          const itemsOnPageExist = 'items_on_page' in req.query;
+
+          return pageExist == itemsOnPageExist;
+        }
+
+        return true;
+      },
+      errorMessage: 'Не может использоваться без параметра items_on_page.',
+    },
+    isInt: {
+      options: {
+        min: 1,
+      },
+      errorMessage: 'Должен быть натуральным числом.',
+    },
+    toInt: true,
+  },
+  items_on_page: {
+    optional: true,
+    custom: {
+      options: (value, { req }) => {
+        if (req.query != null) {
+          const pageExist = 'page' in req.query;
+          const itemsOnPageExist = 'items_on_page' in req.query;
+
+          return pageExist == itemsOnPageExist;
+        }
+
+        return true;
+      },
+      errorMessage: 'Не может использоваться без параметра page.',
+    },
+    isInt: {
+      options: {
+        min: 1,
+      },
+      errorMessage: 'Должен быть натуральным числом.',
+    },
+    toInt: true,
+  },
+};
 
 function validatePaginationQuery() {
-  return [
-    query('page')
-      .if(query('items_on_page').exists())
-      .exists()
-      .withMessage('Не может использоваться без параметра items_on_page.')
-      .bail()
-      .isInt({ min: 1 })
-      .withMessage('Должен быть натуральным числом.')
-      .bail()
-      .toInt(),
-    query('items_on_page')
-      .if(query('page').exists())
-      .exists()
-      .withMessage('Не может использоваться без параметра page.')
-      .bail()
-      .isInt({ min: 1 })
-      .withMessage('Должен быть натуральным числом.')
-      .bail()
-      .toInt(),
-  ];
+  return checkSchema(SCHEMA, ['query']);
 }
 
 export default validatePaginationQuery;
