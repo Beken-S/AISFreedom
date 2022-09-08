@@ -6,7 +6,6 @@ import { Loader } from '../../components/Loader';
 import {
   filterProgramsThunk,
   getPrograms,
-  search,
   setCurrentPageThunk,
 } from '../../store/thunks/Catalog-thunks';
 
@@ -20,7 +19,6 @@ const CatalogContainer = ({
   isSearch,
   setCurrentPageThunk,
   isFilter,
-  search,
   filterProgramsThunk,
   isLoading,
   typeOs,
@@ -33,9 +31,6 @@ const CatalogContainer = ({
 
   const changePage = (page) => {
     setCurrentPageThunk(page);
-    if (isSearch) {
-      search(page);
-    }
     if (isFilter) {
       filterProgramsThunk(page);
     }
@@ -73,6 +68,5 @@ const mapStateToProps = (state) => ({
 export default connect(mapStateToProps, {
   getPrograms,
   setCurrentPageThunk,
-  search,
   filterProgramsThunk,
 })(CatalogContainer);
