@@ -1,3 +1,4 @@
+import cn from 'classnames';
 import React from 'react';
 
 import style from './FilterSettings.module.scss';
@@ -43,7 +44,7 @@ const FilterSettings = ({
         </div>
       </div>
 
-      <select className="form-select" name="class">
+      <select className={cn(style.select, 'form-select')} name="class">
         <option value="">Выберете класс программного обеспечения</option>
         <option defaultValue="1" value="1">
           Редакторы мультимедиа (редакторы графики)

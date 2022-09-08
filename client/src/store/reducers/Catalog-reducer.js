@@ -18,7 +18,6 @@ const initialState = {
   isLoading: false,
   isSearch: false,
   isFilter: false,
-  searchText: '',
   filterData: {},
   itemsOnPage: 4,
   error: '',
@@ -77,11 +76,6 @@ const catalogReducer = (state = initialState, action) => {
       return {
         ...state,
         isLoading: action.isLoading,
-      };
-    case SET_SEARCH_TEXT:
-      return {
-        ...state,
-        searchText: action.text,
       };
     case SET_ERROR: {
       return { ...state, error: action.error };
