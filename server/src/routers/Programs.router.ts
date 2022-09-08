@@ -40,6 +40,11 @@ programsRouter.put(
   ...validateProgram.updateRequest(),
   programsController.update
 );
+programsRouter.put(
+  '/programs/:id/rate',
+  ...validateProgram.rateRequest(),
+  programsController.rate
+);
 programsRouter.delete(
   '/programs/:id',
   ...validateProgram.destroyRequest(),

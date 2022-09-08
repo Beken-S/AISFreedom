@@ -123,6 +123,30 @@ async function update(
   }
 }
 
+async function rate(
+  req: Request,
+  res: Response,
+  next: NextFunction
+): Promise<void> {
+  try {
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+      throw new UnprocessableEntityError(
+        'Неверные параметры или значения в теле запроса.',
+        errors.array()
+      );
+    }
+
+    const { id } = req.params as unknown as IdParam;
+    const rateablePrograms = await programsService.rate(id, req.body);
+
+    res.json(rateablePrograms);
+  } catch (err) {
+    next(err);
+  }
+}
+
 async function destroy(
   req: Request,
   res: Response,
@@ -160,4 +184,4 @@ async function saveImages(req: Request, res: Response, next: NextFunction) {
   }
 }
 
-export { create, getAll, getById, search, update, destroy, saveImages };
+export { create, getAll, getById, search, update, rate, destroy, saveImages };
