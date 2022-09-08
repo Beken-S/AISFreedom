@@ -30,6 +30,7 @@ type ProgramAttributes = {
   images?: string[] | null;
   manual_url?: string | null;
   rating: number;
+  number_of_ratings: number;
   sources: Source[];
 };
 
@@ -159,14 +160,26 @@ class Program extends Model<ProgramAttributes, ProgramCreationAttributes> {
   manual_url?: string | null;
 
   @Column({
-    type: DataType.FLOAT(5),
+    type: DataType.BIGINT,
     allowNull: false,
     defaultValue: 0,
-    validate: {
-      max: 5,
+    get() {
+      const rating = this.getDataValue('rating');
+      const numberOfRatings = this.getDataValue('number_of_ratings');
+
+      return numberOfRatings !== 0
+        ? Number((rating / numberOfRatings).toFixed(1))
+        : rating;
     },
   })
   rating!: number;
+
+  @Column({
+    type: DataType.BIGINT,
+    allowNull: false,
+    defaultValue: 0,
+  })
+  number_of_ratings!: number;
 
   @BelongsTo(() => ProgramType)
   program_type!: ProgramType;

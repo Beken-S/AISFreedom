@@ -8,6 +8,7 @@ import {
   PaginateOutput,
   PaginationParams,
   ProgramSearchOptions,
+  Grade,
 } from '../types';
 import { getPageCount } from '../utils';
 
@@ -171,6 +172,14 @@ async function update(
   return program.save();
 }
 
+async function rate(id: number, { grade }: Grade): Promise<Program> {
+  const program = await getById(id);
+
+  await program.increment({ rating: grade, number_of_ratings: 1 });
+
+  return program.reload();
+}
+
 async function destroy(id: number): Promise<void> {
   const program = await getById(id);
 
@@ -187,4 +196,4 @@ async function destroy(id: number): Promise<void> {
   return program.destroy();
 }
 
-export { create, getAll, getById, search, update, destroy };
+export { create, getAll, getById, search, update, destroy, rate };
