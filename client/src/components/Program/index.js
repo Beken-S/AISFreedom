@@ -4,6 +4,7 @@ import React from 'react';
 import '../../App.scss';
 
 import style from './Program.module.scss';
+import './Bootstrap.scss';
 
 export const Program = ({ item, license, classProgram, typeOs }) => {
   const os = [];
@@ -58,27 +59,38 @@ export const Program = ({ item, license, classProgram, typeOs }) => {
               <span className={style.description__text}>
                 {parse(item.description + ' ')}
               </span>
-              <div className={style.flex}>
-                <div className={style.platform}>
+              <div className="input-group description-os">
+                <select
+                  className="form-select"
+                  id="inputGroupSelect04"
+                  aria-label="Example select with button addon"
+                >
+                  <option>Выберите операционную систему</option>
                   {item.sources.map((el, i) => {
                     return (
-                      <div key={i}>
-                        <a href={el.distrib_url}>
+                      <>
+                        <option
+                          key={i}
+                          defaultValue={el.operation_system_id}
+                          value={el.operation_system_id}
+                        >
                           {typeOs.map((type) => {
                             return (
                               el.operation_system_id === type.id && type.name
                             );
                           })}
-                        </a>
-                      </div>
+                        </option>
+                      </>
                     );
                   })}
-                </div>
-                <div>|</div>
-                <a href={item.manual_url} className={style.manual}>
-                  Инструкция пользователя
+                </select>
+                <a href="1#" className="btn btn-outline-secondary">
+                  <i className="fas fa-download"></i>
                 </a>
               </div>
+              <a href={item.manual_url} className={style.manual}>
+                <i className="far fa-eye"></i>Инструкция пользователя
+              </a>
             </div>
           )}
         </div>

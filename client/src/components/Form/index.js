@@ -39,7 +39,7 @@ const Form = ({ search, filter }) => {
     <form id="formDataf" onSubmit={handleSubmit} className={cn(style.form)}>
       <div className={cn('wrap')}>
         <div className={style.form__Filter}>
-          <div className="input-group">
+          <div className={cn(style.form__input, 'input-group')}>
             <input
               ref={ref}
               type="text"

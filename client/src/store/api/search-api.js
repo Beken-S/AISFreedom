@@ -8,8 +8,6 @@ export const SearchAPI = {
     itemsOnPage,
     page = 1
   ) {
-    console.log(os);
-    debugger;
     const response = await fetch(
       `/api/programs/search/?q=${text}&_in=name&_in=description${
         analog ? `&_in=proprietary_counterparts` : ''
