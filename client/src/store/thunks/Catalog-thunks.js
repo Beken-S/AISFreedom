@@ -1,11 +1,8 @@
 import {
   isLoading,
   reset,
-  searchPrograms,
   setItem,
   setProgram,
-  setSearchText,
-  setError,
   filterPrograms,
   setCurrentPage,
 } from '../actions/Catalog-actions';
@@ -46,20 +43,6 @@ export const getProgram = (id) => async (dispatch) => {
   dispatch(isLoading(false));
 };
 
-export const search =
-  (page = 1) =>
-  async (dispatch, getState) => {
-    dispatch(isLoading(true));
-    const text = getState().catalog.searchText;
-    if (text !== '') {
-      const data = await SearchAPI.search(text, page);
-      dispatch(setSearchText(text));
-      dispatch(searchPrograms(data.items, data.page_count, 1));
-      dispatch(setCurrentPage(page));
-    }
-    dispatch(isLoading(false));
-  };
-
 export const resetSearch = () => async (dispatch, getState) => {
   dispatch(isLoading(true));
   dispatch(reset());
@@ -86,11 +69,8 @@ export const filterProgramsThunk =
       itemsOnPage,
       page
     );
-    if (typeof data === 'string') {
-      dispatch(setError(data));
-    } else {
-      dispatch(filterPrograms(data.items, data.page_count, page));
-    }
+    dispatch(setCurrentPage(page));
+    dispatch(filterPrograms(data.items, data.page_count, page));
     dispatch(isLoading(false));
   };
 

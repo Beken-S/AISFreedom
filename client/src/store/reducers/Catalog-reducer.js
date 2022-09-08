@@ -3,8 +3,6 @@ import {
   SET_PROGRAM,
   SET_ITEM,
   IS_LOADING,
-  SEARCH_PROGRAM,
-  SET_SEARCH_TEXT,
   SET_ERROR,
   FILTER_PROGRAM,
   SET_CURRENT_PAGE,
@@ -16,7 +14,6 @@ const initialState = {
   programs: [],
   item: {},
   isLoading: false,
-  isSearch: false,
   isFilter: false,
   filterData: {},
   itemsOnPage: 4,
@@ -32,9 +29,8 @@ const catalogReducer = (state = initialState, action) => {
       return {
         ...state,
         filtered: [],
-        isSearch: false,
         isFilter: false,
-        searchText: '',
+        filterData: {},
         error: '',
         currentPage: 1,
         typeOs: null,
@@ -55,14 +51,6 @@ const catalogReducer = (state = initialState, action) => {
         license: action.license,
         classProgram: action.classProgram,
         typeOs: action.typeOs,
-      };
-    case SEARCH_PROGRAM:
-      return {
-        ...state,
-        filtered: action.programs,
-        totalCountPages: action.totalCountPages,
-        isSearch: true,
-        error: '',
       };
     case FILTER_PROGRAM:
       return {

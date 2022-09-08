@@ -3,7 +3,6 @@ export const SET_PROGRAM = 'CATALOG::SET_PROGRAM';
 export const SET_ITEM = 'CATALOG::SET_ITEM';
 export const IS_LOADING = 'CATALOG::IS_LOADING';
 export const SEARCH_PROGRAM = 'CATALOG::SEARCH_PROGRAM';
-export const SET_SEARCH_TEXT = 'CATALOG::SET_SEARCH_TEXT';
 export const SET_ERROR = 'CATALOG::SET_ERROR';
 export const FILTER_PROGRAM = 'CATALOG::FILTER_PROGRAM';
 export const SET_CURRENT_PAGE = 'CATALOG::SET_CURRENT_PAGE';
@@ -44,12 +43,6 @@ export const isLoading = (isLoading) => ({
   isLoading,
 });
 
-export const searchPrograms = (programs, totalCountPages, currentPage) => ({
-  type: SEARCH_PROGRAM,
-  programs,
-  totalCountPages,
-  currentPage,
-});
 export const filterPrograms = (programs, totalCountPages, currentPage) => ({
   type: FILTER_PROGRAM,
   programs,
@@ -57,10 +50,6 @@ export const filterPrograms = (programs, totalCountPages, currentPage) => ({
   currentPage,
 });
 
-export const setSearchText = (text) => ({
-  type: SET_SEARCH_TEXT,
-  text,
-});
 export const setError = (error) => ({
   type: SET_ERROR,
   error,
