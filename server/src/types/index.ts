@@ -91,6 +91,10 @@ type AddProgramRequestFilterParams = {
   processed_to: Date;
 } & PaginationParams;
 
+type Grade = {
+  grade: number;
+};
+
 export {
   PaginateOutput,
   PaginationOptions,
@@ -105,4 +109,5 @@ export {
   AddProgramRequestFilterParams,
   AddProgramRequestStatus,
   isAddProgramRequestStatus,
+  Grade,
 };
