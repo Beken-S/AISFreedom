@@ -18,10 +18,6 @@ const Form = ({ search, filter }) => {
     ref.current.focus();
   });
 
-  const onSearch = () => {
-    search(ref.current.value);
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
     const fields = Array.prototype.slice
@@ -57,9 +53,9 @@ const Form = ({ search, filter }) => {
             >
               <span className="material-symbols-outlined"> tune </span>
             </span>
-            <span className="input-group-text" onClick={onSearch}>
+            <button className="input-group-text">
               <span className="material-symbols-outlined"> search </span>
-            </span>
+            </button>
           </div>
           {isFilter && (
             <FilterSettingsContainer
