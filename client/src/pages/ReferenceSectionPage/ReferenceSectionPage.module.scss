@@ -1,1 +1,36 @@
 // TODO
+.reference__table {
+  display: flex;
+  flex-direction: column;
+  // padding: 0 140px 26px 140px;
+  width: calc(100% - 4px - 4px);
+}
+
+.tables__switch {
+  display: flex;
+  flex-direction: row;
+  margin: 10px 0 0;
+  box-sizing: border-box;
+  //padding: 0 0 0 20px;
+  &__button {
+    width: 142px;
+    height: 43px;
+    background: #ffffff;
+    border-radius: 7px 7px 0 0;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+    display: flex;
+    align-items: center;
+    color: grren;
+    justify-content: center;
+    margin: 0 0 0 3px;
+    cursor: pointer;
+    &__active {
+      background: rgb(50, 129, 226);
+      color: white;
+    }
+  }
+}
