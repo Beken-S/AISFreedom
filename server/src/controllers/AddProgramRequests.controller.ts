@@ -2,7 +2,7 @@ import { Request, Response, NextFunction } from 'express';
 import { validationResult } from 'express-validator';
 
 import { UnprocessableEntityError } from '../modules/error';
-import { addProgramRequestService } from '../services';
+import { addProgramRequestsService } from '../services';
 import {
   IdParam,
   PaginationParams,
@@ -24,7 +24,7 @@ async function create(
       );
     }
 
-    const createdAddProgramRequest = await addProgramRequestService.create(
+    const createdAddProgramRequest = await addProgramRequestsService.create(
       req.body
     );
 
@@ -46,7 +46,7 @@ async function getAll(
       throw new UnprocessableEntityError('Неверные параметры.', errors.array());
     }
 
-    const addProgramRequests = await addProgramRequestService.getAll(
+    const addProgramRequests = await addProgramRequestsService.getAll(
       req.query as unknown as PaginationParams
     );
 
@@ -69,7 +69,7 @@ async function getById(
     }
 
     const { id } = req.params as unknown as IdParam;
-    const addProgramRequest = await addProgramRequestService.getById(id);
+    const addProgramRequest = await addProgramRequestsService.getById(id);
 
     res.json(addProgramRequest);
   } catch (err) {
@@ -93,7 +93,7 @@ async function reject(
     }
 
     const { id } = req.params as unknown as IdParam;
-    const rejectedAddProgramRequest = await addProgramRequestService.reject(
+    const rejectedAddProgramRequest = await addProgramRequestsService.reject(
       id,
       req.body
     );
@@ -117,7 +117,7 @@ async function complete(
     }
 
     const { id } = req.params as unknown as IdParam;
-    const completedAddProgramRequest = await addProgramRequestService.complete(
+    const completedAddProgramRequest = await addProgramRequestsService.complete(
       id
     );
 
@@ -140,7 +140,7 @@ async function reset(
     }
 
     const { id } = req.params as unknown as IdParam;
-    const resetAddProgramRequest = await addProgramRequestService.reset(id);
+    const resetAddProgramRequest = await addProgramRequestsService.reset(id);
 
     res.json(resetAddProgramRequest);
   } catch (err) {
@@ -160,7 +160,7 @@ async function filter(
       throw new UnprocessableEntityError('Неверные параметры.', errors.array());
     }
 
-    const addProgramRequests = await addProgramRequestService.filter(
+    const addProgramRequests = await addProgramRequestsService.filter(
       req.query as unknown as AddProgramRequestFilterParams
     );
 
