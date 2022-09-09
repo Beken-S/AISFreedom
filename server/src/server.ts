@@ -7,12 +7,14 @@ import database, { initDatabase } from './database';
 import { errorHandler, logErrors, logRequests, security } from './middlewares';
 import {
   addProgramRequestRouter,
+  articleRouter,
   departmentRouter,
   licensesRouter,
   operationSystemsRouter,
   programsRouter,
   programTypesRouter,
   sourcesRouter,
+  normativeDocumentRouter,
 } from './routers';
 import { clearTemp } from './utils';
 
@@ -50,6 +52,8 @@ app.use('/api', licensesRouter);
 app.use('/api', sourcesRouter);
 app.use('/api', departmentRouter);
 app.use('/api', addProgramRequestRouter);
+app.use('/api', normativeDocumentRouter);
+app.use('/api', articleRouter);
 
 logErrors(app);
 

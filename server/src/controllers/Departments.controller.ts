@@ -2,7 +2,7 @@ import { Request, Response, NextFunction } from 'express';
 import { validationResult } from 'express-validator';
 
 import { UnprocessableEntityError } from '../modules/error';
-import { departmentService } from '../services';
+import { departmentsService } from '../services';
 import { IdParam } from '../types';
 
 async function create(
@@ -20,7 +20,7 @@ async function create(
       );
     }
 
-    const createdDepartment = await departmentService.create(req.body);
+    const createdDepartment = await departmentsService.create(req.body);
 
     res.json(createdDepartment);
   } catch (err) {
@@ -34,7 +34,7 @@ async function getAll(
   next: NextFunction
 ): Promise<void> {
   try {
-    const department = await departmentService.getAll();
+    const department = await departmentsService.getAll();
 
     res.json(department);
   } catch (err) {
@@ -55,7 +55,7 @@ async function getById(
     }
 
     const { id } = req.params as unknown as IdParam;
-    const department = await departmentService.getById(id);
+    const department = await departmentsService.getById(id);
 
     res.json(department);
   } catch (err) {
@@ -79,7 +79,7 @@ async function update(
     }
 
     const { id } = req.params as unknown as IdParam;
-    const modifiedDepartment = await departmentService.update(id, req.body);
+    const modifiedDepartment = await departmentsService.update(id, req.body);
 
     res.json(modifiedDepartment);
   } catch (err) {
@@ -101,7 +101,7 @@ async function destroy(
 
     const { id } = req.params as unknown as IdParam;
 
-    await departmentService.destroy(id);
+    await departmentsService.destroy(id);
 
     res.json({
       message: `Подразделение с id=${id} был успешно уделено.`,
