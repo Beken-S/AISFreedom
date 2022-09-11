@@ -4,6 +4,7 @@ import path = require('path');
 import { Sequelize } from 'sequelize-typescript';
 
 import {
+  Article,
   License,
   OperationSystem,
   ProgramType,
@@ -11,6 +12,7 @@ import {
   Source,
   Department,
   AddProgramsRequest,
+  NormativeDocument,
 } from '../models';
 import { isDevMode } from '../utils';
 
@@ -28,6 +30,8 @@ async function initDatabase(db: Sequelize): Promise<void> {
       SOURCES,
       DEPARTMENTS,
       REQUESTS,
+      NORMATIVE_DOCUMENTS,
+      ARTICLES,
     ] = await Promise.all([
       fs
         .readFile(DATA_PATH + '/licenses.json', 'utf-8')
@@ -50,6 +54,12 @@ async function initDatabase(db: Sequelize): Promise<void> {
       fs
         .readFile(DATA_PATH + '/requests.json', 'utf-8')
         .then((res) => JSON.parse(res)),
+      fs
+        .readFile(DATA_PATH + '/normative_documents.json', 'utf-8')
+        .then((res) => JSON.parse(res)),
+      fs
+        .readFile(DATA_PATH + '/articles.json', 'utf-8')
+        .then((res) => JSON.parse(res)),
     ]);
 
     await License.bulkCreate(LICENSES);
@@ -59,6 +69,8 @@ async function initDatabase(db: Sequelize): Promise<void> {
     await Source.bulkCreate(SOURCES);
     await Department.bulkCreate(DEPARTMENTS);
     await AddProgramsRequest.bulkCreate(REQUESTS);
+    await NormativeDocument.bulkCreate(NORMATIVE_DOCUMENTS);
+    await Article.bulkCreate(ARTICLES);
   }
 }
 
