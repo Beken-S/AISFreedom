@@ -23,6 +23,7 @@ const CatalogContainer = ({
   isLoading,
   typeOs,
   currentPage,
+  portionPage,
 }) => {
   // console.log(store.getState().catalog);
   useEffect(() => {
@@ -49,6 +50,7 @@ const CatalogContainer = ({
         changePage={changePage}
         typeOs={typeOs}
         currentPage={currentPage}
+        portionPage={portionPage}
       />
     );
   }
@@ -63,6 +65,7 @@ const mapStateToProps = (state) => ({
   isLoading: state.catalog.isLoading,
   typeOs: state.catalog.typeOs,
   currentPage: state.catalog.currentPage,
+  portionPage: state.catalog.portionPage,
 });
 
 export default connect(mapStateToProps, {

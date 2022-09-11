@@ -7,6 +7,8 @@ export const SET_ERROR = 'CATALOG::SET_ERROR';
 export const FILTER_PROGRAM = 'CATALOG::FILTER_PROGRAM';
 export const SET_CURRENT_PAGE = 'CATALOG::SET_CURRENT_PAGE';
 export const SET_FILTER_DATA = 'CATALOG::SET_FILTER_DATA';
+export const SET_TYPES_PROGRAMS = 'CATALOG::SET_TYPES_PROGRAMS';
+export const SET_OS_PROGRAMS = 'CATALOG::SET_OS_PROGRAMS';
 
 export const reset = () => ({
   type: RESET_SEARCH,
@@ -53,4 +55,14 @@ export const filterPrograms = (programs, totalCountPages, currentPage) => ({
 export const setError = (error) => ({
   type: SET_ERROR,
   error,
+});
+
+export const setTypesPrograms = (typesPrograms) => ({
+  type: SET_TYPES_PROGRAMS,
+  typesPrograms,
+});
+
+export const setAllOsPrograms = (os) => ({
+  type: SET_OS_PROGRAMS,
+  os,
 });

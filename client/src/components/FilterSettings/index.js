@@ -1,7 +1,8 @@
 import cn from 'classnames';
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import style from './FilterSettings.module.scss';
+
 import '../../App.scss';
 import './Bootstrap.scss';
 
@@ -12,7 +13,14 @@ const FilterSettings = ({
   setCheckedAnalog,
   resetSearch,
   error,
+  typesPrograms,
+  allOs,
 }) => {
+  useEffect(() => {
+    if (!isCheckedPO && !isCheckedAnalog) {
+      setCheckedPO(true);
+    }
+  }, [isCheckedPO, isCheckedAnalog]);
   return (
     <>
       <div className="checkbox">
@@ -22,7 +30,7 @@ const FilterSettings = ({
             type="checkbox"
             role="switch"
             id="flexSwitchCheckChecked"
-            defaultChecked={isCheckedPO}
+            checked={isCheckedPO}
             onChange={() => setCheckedPO((prev) => !prev)}
           />
           <label className="form-check-label" htmlFor="flexSwitchCheckChecked">
@@ -46,33 +54,25 @@ const FilterSettings = ({
 
       <select className={cn(style.select, 'form-select')} name="class">
         <option value="">Выберете класс программного обеспечения</option>
-        <option defaultValue="1" value="1">
-          Редакторы мультимедиа (редакторы графики)
-        </option>
-        <option defaultValue="2" value="2">
-          Текстовые редакторы
-        </option>
-        <option defaultValue="3" value="3">
-          Архиваторы файлов
-        </option>
+        {typesPrograms.map((el) => {
+          return (
+            <option key={el.id} defaultValue={el.id} value={el.id}>
+              {el.name}
+            </option>
+          );
+        })}
       </select>
-
       <select className="form-select" name="os">
         <option defaultValue="selected" value="">
           Выберите операционную систему
         </option>
-        <option defaultValue="1" value="1">
-          Windows 32-bit (x86)
-        </option>
-        <option defaultValue="2" value="2">
-          Windows 64-bit (x64)
-        </option>
-        <option defaultValue="3" value="3">
-          Windows (x86-x64)
-        </option>
-        <option defaultValue="4" value="4">
-          Linux
-        </option>
+        {allOs.map((el) => {
+          return (
+            <option key={el.id} defaultValue={el.id} value={el.id}>
+              {el.name}
+            </option>
+          );
+        })}
       </select>
       {error && <div className={style.error}>{error}</div>}
       <div className="service-form-submit">

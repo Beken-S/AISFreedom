@@ -7,7 +7,7 @@ import '../../App.scss';
 
 import FilterSettingsContainer from '@containers/FilterSettingsContainer/FilterSettingsContainer';
 
-const Form = ({ search, filter }) => {
+const Form = ({ filter }) => {
   const [isCheckedPO, setCheckedPO] = useState(true);
   const [isCheckedAnalog, setCheckedAnalog] = useState(false);
   const [isFilter, setFilter] = useState(false);

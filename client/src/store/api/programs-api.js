@@ -31,4 +31,9 @@ export const PromramsAPI = {
     const result = await response.json();
     return result;
   },
+  async getAllTypesProgram() {
+    const response = await fetch(`/api/program/types/`);
+    const result = await response.json();
+    return result;
+  },
 };
