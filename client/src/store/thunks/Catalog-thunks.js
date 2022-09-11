@@ -5,6 +5,8 @@ import {
   setProgram,
   filterPrograms,
   setCurrentPage,
+  setTypesPrograms,
+  setAllOsPrograms,
 } from '../actions/Catalog-actions';
 import { PromramsAPI } from '../api/programs-api';
 import { SearchAPI } from '../api/search-api';
@@ -18,7 +20,11 @@ export const getPrograms =
     // получение типа os
     const os = await PromramsAPI.getAllOsProgram();
     dispatch(setProgram(data.items, os, data.page_count, 1));
+    dispatch(setAllOsPrograms(os));
     dispatch(setCurrentPage(page));
+    // получение всех типов программ
+    const typesPrograms = await PromramsAPI.getAllTypesProgram();
+    dispatch(setTypesPrograms(typesPrograms));
     dispatch(isLoading(false));
   };
 

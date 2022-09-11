@@ -9,7 +9,7 @@ export const SearchAPI = {
     page = 1
   ) {
     const response = await fetch(
-      `/api/programs/search/?q=${text}&_in=name&_in=description${
+      `/api/programs/search/?q=${text}&_in=name${
         analog ? `&_in=proprietary_counterparts` : ''
       }${os !== '' ? `&operation_system_id=${os}` : ''}${
         type !== '' ? `&program_type_id=${type}` : ''

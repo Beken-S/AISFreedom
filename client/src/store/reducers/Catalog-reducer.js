@@ -7,6 +7,8 @@ import {
   FILTER_PROGRAM,
   SET_CURRENT_PAGE,
   SET_FILTER_DATA,
+  SET_TYPES_PROGRAMS,
+  SET_OS_PROGRAMS,
 } from '../actions/Catalog-actions';
 
 const initialState = {
@@ -22,6 +24,8 @@ const initialState = {
   license: null,
   classProgram: null,
   typeOs: null,
+  typesPrograms: null,
+  allOs: null,
 };
 const catalogReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -75,6 +79,16 @@ const catalogReducer = (state = initialState, action) => {
       return {
         ...state,
         currentPage: action.currentPage,
+      };
+    case SET_TYPES_PROGRAMS:
+      return {
+        ...state,
+        typesPrograms: action.typesPrograms,
+      };
+    case SET_OS_PROGRAMS:
+      return {
+        ...state,
+        allOs: action.os,
       };
     default:
       return state;

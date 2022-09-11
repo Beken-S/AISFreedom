@@ -10,7 +10,9 @@ const FilterSettingsContainer = ({
   setCheckedPO,
   isCheckedAnalog,
   setCheckedAnalog,
+  typesPrograms,
   error,
+  allOs,
 }) => {
   return (
     <FilterSettings
@@ -20,11 +22,15 @@ const FilterSettingsContainer = ({
       setCheckedAnalog={setCheckedAnalog}
       resetSearch={resetSearch}
       error={error}
+      typesPrograms={typesPrograms}
+      allOs={allOs}
     />
   );
 };
 const mapStateToProps = (state) => ({
   error: state.catalog.error,
+  typesPrograms: state.catalog.typesPrograms,
+  allOs: state.catalog.allOs,
 });
 
 export default connect(mapStateToProps, { resetSearch })(
