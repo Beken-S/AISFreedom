@@ -1,14 +1,29 @@
 import cn from 'classnames';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import '../../App.scss';
 import style from './Pagination.module.scss';
 
-const Pagination = ({ pages = 1, changePage, currentPage }) => {
+const Pagination = ({
+  pages = 1,
+  changePage,
+  currentPage,
+  portionPage = 5,
+}) => {
   const numberOfPages = [];
   for (let i = 1; i <= pages; i++) {
     numberOfPages.push(i);
   }
+
+  const portionCount = Math.ceil(pages / portionPage);
+  const [portionNumber, setPortionNumber] = useState(1);
+  const leftPortionPageNumber = (portionNumber - 1) * portionPage + 1;
+  const rightPortionPageNumber = portionNumber * portionPage;
+
+  useEffect(
+    () => setPortionNumber(Math.ceil(currentPage / portionPage)),
+    [currentPage]
+  );
 
   const onChangePage = (page) => {
     changePage(page);
@@ -38,17 +53,65 @@ const Pagination = ({ pages = 1, changePage, currentPage }) => {
         <button className={style.pagination__arrow} onClick={onChangePageBack}>
           <i className="fas fa-angle-left" aria-hidden="true"></i>
         </button>
-        {numberOfPages.map((page, index) => {
-          return (
+        {portionNumber > 1 && (
+          <>
             <button
-              className={currentPage === page ? style.active : style.page}
-              onClick={() => onChangePage(page)}
-              key={index}
+              className={
+                currentPage === numberOfPages[0] ? style.active : style.page
+              }
+              onClick={() => {
+                changePage(numberOfPages[0]);
+              }}
             >
-              {page}
+              {numberOfPages[0]}
             </button>
-          );
-        })}
+            <span
+              className={style.page}
+              onClick={() => {
+                setPortionNumber(portionNumber - 1);
+              }}
+            >
+              ...
+            </span>
+          </>
+        )}
+        {numberOfPages
+          .filter(
+            (p) => p >= leftPortionPageNumber && p <= rightPortionPageNumber
+          )
+          .map((page, index) => {
+            return (
+              <button
+                className={currentPage === page ? style.active : style.page}
+                onClick={() => onChangePage(page)}
+                key={index}
+              >
+                {page}
+              </button>
+            );
+          })}
+        {portionCount > portionNumber && (
+          <>
+            <span
+              className={style.page}
+              onClick={() => {
+                setPortionNumber(portionNumber + 1);
+              }}
+            >
+              ...
+            </span>
+            <button
+              className={
+                currentPage === numberOfPages.length ? style.active : style.page
+              }
+              onClick={() => {
+                onChangePage(numberOfPages.length);
+              }}
+            >
+              {numberOfPages.length}
+            </button>
+          </>
+        )}
         <button
           className={style.pagination__arrow}
           onClick={onChangePageForward}

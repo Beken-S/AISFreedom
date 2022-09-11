@@ -11,6 +11,7 @@ export const Catalog = ({
   totalCountPages,
   changePage,
   currentPage,
+  portionPage,
 }) => {
   return (
     <section className={style.Catalog}>
@@ -28,6 +29,7 @@ export const Catalog = ({
           pages={totalCountPages}
           changePage={changePage}
           currentPage={currentPage}
+          portionPage={portionPage}
         />
       )}
     </section>

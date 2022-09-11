@@ -21,6 +21,7 @@ const initialState = {
   itemsOnPage: 4,
   error: '',
   currentPage: 1,
+  portionPage: 5,
   license: null,
   classProgram: null,
   typeOs: null,
