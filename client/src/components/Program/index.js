@@ -1,6 +1,6 @@
 import cn from 'classnames';
 import parse from 'html-react-parser';
-import React from 'react';
+import React, { useState } from 'react';
 import '../../App.scss';
 
 import style from './Program.module.scss';
@@ -8,6 +8,10 @@ import './Bootstrap.scss';
 
 export const Program = ({ item, license, classProgram, typeOs }) => {
   const os = [];
+  const [url, setUrl] = useState('');
+  const onSetLink = (e) => {
+    setUrl(e.target.value);
+  };
   if (typeOs) {
     typeOs.map((el) => os.push(el.name));
   }
@@ -24,6 +28,7 @@ export const Program = ({ item, license, classProgram, typeOs }) => {
                   alt="logo"
                 />
                 <h1>{item.name}</h1>
+                {/* Рейтинг ниже ==> */}
                 <span>{item.rating}</span>
               </div>
               <ul className={style.description__header}>
@@ -61,6 +66,7 @@ export const Program = ({ item, license, classProgram, typeOs }) => {
               </span>
               <div className="input-group description-os">
                 <select
+                  onChange={onSetLink}
                   className="form-select"
                   id="inputGroupSelect04"
                   aria-label="Example select with button addon"
@@ -68,23 +74,22 @@ export const Program = ({ item, license, classProgram, typeOs }) => {
                   <option>Выберите операционную систему</option>
                   {item.sources.map((el, i) => {
                     return (
-                      <>
-                        <option
-                          key={i}
-                          defaultValue={el.operation_system_id}
-                          value={el.operation_system_id}
-                        >
-                          {typeOs.map((type) => {
-                            return (
-                              el.operation_system_id === type.id && type.name
-                            );
-                          })}
-                        </option>
-                      </>
+                      <option
+                        onChange={() => onSetLink(el)}
+                        key={i}
+                        defaultValue={el.operation_system_id}
+                        value={el.distrib_url}
+                      >
+                        {typeOs.map((type) => {
+                          return (
+                            el.operation_system_id === type.id && type.name
+                          );
+                        })}
+                      </option>
                     );
                   })}
                 </select>
-                <a href="1#" className="btn btn-outline-secondary">
+                <a href={url} className="btn btn-outline-secondary">
                   <i className="fas fa-download"></i>
                 </a>
               </div>
