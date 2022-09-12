@@ -19,7 +19,7 @@ export const getPrograms =
     const data = await PromramsAPI.getPrograms(itemsOnPage, page);
     // получение типа os
     const os = await PromramsAPI.getAllOsProgram();
-    dispatch(setProgram(data.items, os, data.page_count, 1));
+    dispatch(setProgram(data.items, os, data.page_count));
     dispatch(setAllOsPrograms(os));
     dispatch(setCurrentPage(page));
     // получение всех типов программ
@@ -57,7 +57,7 @@ export const resetSearch = () => async (dispatch, getState) => {
   dispatch(setCurrentPage(1));
   // получение типа os
   const os = await PromramsAPI.getAllOsProgram();
-  dispatch(setProgram(data.items, os, data.page_count, 1));
+  dispatch(setProgram(data.items, os, data.page_count));
   dispatch(isLoading(false));
 };
 export const filterProgramsThunk =
