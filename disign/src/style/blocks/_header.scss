@@ -41,6 +41,14 @@
   &:hover {
     color: $color-hover;
     text-decoration: underline;
-    transition-duration: 0.6s;
+    transition-duration: 0.4s;
+  }
+}
+
+.fa-user-circle {
+  font-size: 24px;
+
+  @media (max-width: $tablet-breakpoint) {
+    font-size: 18px;
   }
 }
