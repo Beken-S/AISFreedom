@@ -170,4 +170,27 @@ async function filter(
   }
 }
 
-export { create, getAll, getById, reject, complete, reset, filter };
+async function report(
+  req: Request,
+  res: Response,
+  next: NextFunction
+): Promise<void> {
+  try {
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+      throw new UnprocessableEntityError('Неверные параметры.', errors.array());
+    }
+
+    const report = await addProgramRequestsService.report(
+      req.query as unknown as AddProgramRequestFilterParams
+    );
+
+    res.setHeader('Content-Type', 'application/pdf');
+    res.send(report);
+  } catch (err) {
+    next(err);
+  }
+}
+
+export { create, getAll, getById, reject, complete, reset, filter, report };

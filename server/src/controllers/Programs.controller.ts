@@ -174,7 +174,7 @@ async function destroy(
 async function saveImages(req: Request, res: Response, next: NextFunction) {
   try {
     const imagesNames = await imagesService.save(
-      config.database.filesPath.temp,
+      config.server.temp,
       req.files as unknown as ProgramImages
     );
 

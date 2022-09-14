@@ -161,9 +161,9 @@ const CREATION_SCHEMA: Schema = {
   },
 };
 
-const REJECTION_ATTRIBUTE: Attributes[] = ['rejection_reason'];
+const REJECTION_ATTRIBUTE: Attributes[] = ['comment'];
 const REJECTION_SCHEMA: Schema = {
-  rejection_reason: {
+  comment: {
     optional: { options: { nullable: true } },
     isString: {
       errorMessage: 'Должно быть строкой.',
@@ -232,6 +232,40 @@ const FILTER_SCHEMA: Schema = {
   },
 };
 
+const REPORT_ATTRIBUTE: FilterAttributes[] = [
+  'status',
+  'created_to',
+  'created_from',
+];
+const REPORT_SCHEMA: Schema = {
+  status: {
+    optional: true,
+    trim: true,
+    custom: {
+      options: (value) => {
+        return isAddProgramRequestStatus(value);
+      },
+      errorMessage: 'Недопустимое значение.',
+    },
+  },
+  created_from: {
+    optional: true,
+    isISO8601: {
+      errorMessage: 'Должно быть строкой с датой в формате ISO8601.',
+      bail: true,
+    },
+    toDate: true,
+  },
+  created_to: {
+    optional: true,
+    isISO8601: {
+      errorMessage: 'Должно быть строкой с датой в формате ISO8601.',
+      bail: true,
+    },
+    toDate: true,
+  },
+};
+
 function createRequest() {
   return [
     checkValidKey(CREATION_ATTRIBUTES, 'body'),
@@ -274,6 +308,13 @@ function filterRequest() {
   ];
 }
 
+function reportRequest() {
+  return [
+    checkValidKey(REPORT_ATTRIBUTE, 'query', 'Недопустимый параметр'),
+    checkSchema(REPORT_SCHEMA, ['query']),
+  ];
+}
+
 export {
   createRequest,
   getAllRequest,
@@ -282,4 +323,5 @@ export {
   completeRequest,
   resetRequest,
   filterRequest,
+  reportRequest,
 };

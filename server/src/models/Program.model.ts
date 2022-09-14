@@ -1,4 +1,4 @@
-import { Optional, Op } from 'sequelize';
+import { Optional, Op, Sequelize } from 'sequelize';
 import {
   Table,
   Model,
@@ -58,9 +58,43 @@ type ProgramCreationAttributes = Optional<
     if (Array.isArray(options)) {
       return {
         where: {
-          [Op.or]: options.map((option) => ({
-            [option]: { [Op.substring]: query },
-          })),
+          [Op.or]: options.map((option) => {
+            if (option === 'proprietary_counterparts') {
+              return {
+                where: {
+                  [Op.or]: Sequelize.where(
+                    Sequelize.fn(
+                      'JSON_SEARCH',
+                      Sequelize.fn('LOWER', Sequelize.col(option)),
+                      'one',
+                      Sequelize.literal(`"%${query}%"`)
+                    ),
+                    Op.ne,
+                    null
+                  ),
+                },
+              };
+            }
+            return {
+              [option]: { [Op.substring]: query },
+            };
+          }),
+        },
+      };
+    }
+    if (options === 'proprietary_counterparts') {
+      return {
+        where: {
+          [Op.or]: Sequelize.where(
+            Sequelize.fn(
+              'JSON_SEARCH',
+              Sequelize.fn('LOWER', Sequelize.col(options)),
+              'one',
+              Sequelize.literal(`"%${query}%"`)
+            ),
+            Op.ne,
+            null
+          ),
         },
       };
     }

@@ -21,21 +21,26 @@ addProgramRequestRouter.get(
   addProgramRequestController.filter
 );
 addProgramRequestRouter.get(
+  '/requests/report',
+  ...validateAddProgramRequest.reportRequest(),
+  addProgramRequestController.report
+);
+addProgramRequestRouter.get(
   '/requests/:id',
   ...validateAddProgramRequest.getByIdRequest(),
   addProgramRequestController.getById
 );
-addProgramRequestRouter.put(
+addProgramRequestRouter.patch(
   '/requests/:id/reject',
   ...validateAddProgramRequest.rejectRequest(),
   addProgramRequestController.reject
 );
-addProgramRequestRouter.put(
+addProgramRequestRouter.patch(
   '/requests/:id/complete',
   ...validateAddProgramRequest.completeRequest(),
   addProgramRequestController.complete
 );
-addProgramRequestRouter.put(
+addProgramRequestRouter.patch(
   '/requests/:id/reset',
   ...validateAddProgramRequest.resetRequest(),
   addProgramRequestController.reset
