@@ -53,6 +53,7 @@ const SEARCH_SCHEMA: Schema = {
     exists: {
       errorMessage: 'Отсутствует обязательный параметр.',
     },
+    toLowerCase: true,
   },
   _in: {
     customSanitizer: {

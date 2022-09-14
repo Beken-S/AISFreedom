@@ -16,7 +16,7 @@ async function create(attributes: ProgramCreationAttributes): Promise<Program> {
   if (attributes.images != null) {
     await imagesService.move(
       attributes.images,
-      config.database.filesPath.temp,
+      config.server.temp,
       config.database.filesPath.images
     );
   }
@@ -24,7 +24,7 @@ async function create(attributes: ProgramCreationAttributes): Promise<Program> {
   if (attributes.logo != null) {
     await imagesService.move(
       attributes.logo,
-      config.database.filesPath.temp,
+      config.server.temp,
       config.database.filesPath.logos
     );
   }
@@ -112,7 +112,7 @@ async function update(
   if (createLogo) {
     await imagesService.move(
       currentLogo,
-      config.database.filesPath.temp,
+      config.server.temp,
       config.database.filesPath.logos
     );
   }
@@ -122,7 +122,7 @@ async function update(
       imagesService.destroy(prevLogo, config.database.filesPath.logos),
       imagesService.move(
         currentLogo,
-        config.database.filesPath.temp,
+        config.server.temp,
         config.database.filesPath.logos
       ),
     ]);
@@ -139,7 +139,7 @@ async function update(
   if (createImages) {
     await imagesService.move(
       currentImages,
-      config.database.filesPath.temp,
+      config.server.temp,
       config.database.filesPath.images
     );
   }
@@ -155,7 +155,7 @@ async function update(
         if (!prevImages.includes(image)) {
           imagesService.move(
             image,
-            config.database.filesPath.temp,
+            config.server.temp,
             config.database.filesPath.images
           );
         }
