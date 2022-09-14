@@ -19,7 +19,7 @@ operationSystemsRouter.get(
   ...validateOperationSystem.getByIdRequest(),
   operationSystemsController.getById
 );
-operationSystemsRouter.put(
+operationSystemsRouter.patch(
   '/operation_systems/:id',
   ...validateOperationSystem.updateRequest(),
   operationSystemsController.update

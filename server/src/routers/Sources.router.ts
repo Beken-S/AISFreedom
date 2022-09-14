@@ -16,7 +16,7 @@ sourcesRouter.get(
   ...validateSource.getByIdRequest(),
   sourcesController.getById
 );
-sourcesRouter.put(
+sourcesRouter.patch(
   '/sources/:id',
   ...validateSource.updateRequest(),
   sourcesController.update

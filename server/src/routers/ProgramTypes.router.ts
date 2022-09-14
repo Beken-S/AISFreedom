@@ -16,7 +16,7 @@ programTypesRouter.get(
   ...validateProgramType.getByIdRequest(),
   programTypesController.getById
 );
-programTypesRouter.put(
+programTypesRouter.patch(
   '/program/types/:id',
   ...validateProgramType.updateRequest(),
   programTypesController.update

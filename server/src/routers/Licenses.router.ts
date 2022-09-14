@@ -20,7 +20,7 @@ licensesRouter.get(
   ...validateLicense.getByIdRequest(),
   licensesController.getById
 );
-licensesRouter.put(
+licensesRouter.patch(
   '/licenses/:id',
   ...validateLicense.updateRequest(),
   licensesController.update

@@ -35,12 +35,12 @@ programsRouter.get(
   ...validateProgram.getByIdRequest(),
   programsController.getById
 );
-programsRouter.put(
+programsRouter.patch(
   '/programs/:id',
   ...validateProgram.updateRequest(),
   programsController.update
 );
-programsRouter.put(
+programsRouter.patch(
   '/programs/:id/rate',
   ...validateProgram.rateRequest(),
   programsController.rate

@@ -16,7 +16,7 @@ departmentRouter.get(
   ...validateDepartment.getByIdRequest(),
   departmentController.getById
 );
-departmentRouter.put(
+departmentRouter.patch(
   '/departments/:id',
   ...validateDepartment.updateRequest(),
   departmentController.update
