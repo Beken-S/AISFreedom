@@ -991,7 +991,7 @@ Source;
   user_email: string;
   user_phone: string | null;
   is_rejected: boolean;
-  rejection_reason: string | null;
+  comment: string | null;
   is_completed: boolean;
   creation_date: Date;
   consider_before_date: Date;
