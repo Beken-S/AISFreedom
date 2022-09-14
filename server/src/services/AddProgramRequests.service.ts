@@ -2,6 +2,7 @@ import {
   AddProgramsRequest,
   AddProgramsRequestAttributes,
   AddProgramsRequestCreationAttributes,
+  Department,
 } from '../models';
 import { BadRequestError, NotFoundError } from '../modules/error';
 import {
@@ -9,7 +10,7 @@ import {
   PaginationParams,
   AddProgramRequestFilterParams,
 } from '../types';
-import { getPageCount } from '../utils';
+import { getPageCount, getReport } from '../utils';
 
 async function create(
   attributes: AddProgramsRequestCreationAttributes
@@ -49,7 +50,7 @@ async function getById(id: number): Promise<AddProgramsRequest> {
 
 async function reject(
   id: number,
-  { rejection_reason }: AddProgramsRequestAttributes
+  { comment }: AddProgramsRequestAttributes
 ): Promise<AddProgramsRequest> {
   const addProgramRequest = await getById(id);
 
@@ -67,7 +68,7 @@ async function reject(
   addProgramRequest.set({
     is_rejected: true,
     processed_date: new Date(),
-    rejection_reason,
+    comment,
   });
 
   return addProgramRequest.save();
@@ -102,7 +103,7 @@ async function reset(id: number): Promise<AddProgramsRequest> {
     is_rejected: false,
     is_completed: false,
     processed_date: null,
-    rejection_reason: null,
+    comment: null,
   });
 
   return addProgramRequest.save();
@@ -121,7 +122,8 @@ async function filter({
 > {
   if (page != null && items_on_page != null) {
     const addProgramRequest = await AddProgramsRequest.scope([
-      'orderById',
+      'orderByStatus',
+      'orderByCreationDate',
       { method: ['filterByStatus', status] },
       { method: ['filterByCreationDate', created_from, created_to] },
       { method: ['filterByProcessingDate', processed_from, processed_to] },
@@ -134,11 +136,25 @@ async function filter({
     };
   }
   return AddProgramsRequest.scope([
-    'orderById',
+    'orderByStatus',
+    'orderByCreationDate',
     { method: ['filterByStatus', status] },
     { method: ['filterByCreationDate', created_from, created_to] },
     { method: ['filterByProcessingDate', processed_from, processed_to] },
   ]).findAll();
 }
 
-export { create, getAll, getById, reject, complete, reset, filter };
+async function report(filterParams: AddProgramRequestFilterParams) {
+  const [requests, departments] = await Promise.all([
+    filter(filterParams),
+    Department.findAll(),
+  ]);
+
+  if (!Array.isArray(requests)) {
+    throw new Error('requests должен быть массивом.');
+  }
+
+  return getReport(requests, departments, filterParams);
+}
+
+export { create, getAll, getById, reject, complete, reset, filter, report };
