@@ -33,6 +33,7 @@ interface IServerConfig {
   mode: Mods;
   port: number;
   logs: ILogsConfig;
+  temp: string;
 }
 
 interface ILogsConfig {
@@ -50,7 +51,6 @@ interface IDataBaseConfig {
   password: string;
   options: SequelizeOptions;
   filesPath: {
-    temp: string;
     images: string;
     logos: string;
   };
@@ -77,6 +77,7 @@ const serverConfig: IServerConfig = {
   mode: isDevMode() ? Mods.Dev : Mods.Prod,
   port: Number(process.env[Envs.PORT]) || 3001,
   logs: serverLogsConfig,
+  temp: path.resolve(__dirname, '../../temp'),
 };
 
 const prettifySettings = {
@@ -125,7 +126,6 @@ const databaseConfig: IDataBaseConfig = {
     models: [path.resolve(__dirname, '../models') + '/*.model.js'],
   },
   filesPath: {
-    temp: path.resolve(__dirname, '../../db/temp'),
     images: path.resolve(__dirname, '../../db/images'),
     logos: path.resolve(__dirname, '../../db/logos'),
   },

@@ -10,10 +10,10 @@ const clearTemp = new CronJob(
   async function () {
     const currentDate = Date.now();
     const maxFileLifetime = 18e5;
-    const files = await readdir(config.database.filesPath.temp);
+    const files = await readdir(config.server.temp);
 
     files.forEach(async (file) => {
-      const filePath = path.resolve(config.database.filesPath.temp, file);
+      const filePath = path.resolve(config.server.temp, file);
       const fileStat = await stat(filePath);
 
       const fileLifetime = currentDate - fileStat.ctimeMs;

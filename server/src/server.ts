@@ -39,7 +39,7 @@ app.use(express.json());
 app.use(
   fileUpload({
     useTempFiles: true,
-    tempFileDir: config.database.filesPath.temp,
+    tempFileDir: config.server.temp,
   })
 );
 logRequests(app);
