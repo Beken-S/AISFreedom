@@ -60,20 +60,16 @@ type ProgramCreationAttributes = Optional<
         where: {
           [Op.or]: options.map((option) => {
             if (option === 'proprietary_counterparts') {
-              return {
-                where: {
-                  [Op.or]: Sequelize.where(
-                    Sequelize.fn(
-                      'JSON_SEARCH',
-                      Sequelize.fn('LOWER', Sequelize.col(option)),
-                      'one',
-                      Sequelize.literal(`"%${query}%"`)
-                    ),
-                    Op.ne,
-                    null
-                  ),
-                },
-              };
+              return Sequelize.where(
+                Sequelize.fn(
+                  'JSON_SEARCH',
+                  Sequelize.fn('LOWER', Sequelize.col(option)),
+                  'one',
+                  Sequelize.literal(`"%${query}%"`)
+                ),
+                Op.ne,
+                null
+              );
             }
             return {
               [option]: { [Op.substring]: query },
