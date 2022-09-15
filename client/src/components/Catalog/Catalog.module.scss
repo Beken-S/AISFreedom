@@ -1,3 +1,5 @@
+@import "../../scss/vars";
+
 .Catalog {
   padding-top: 40px;
   padding-bottom: 20px;
@@ -13,4 +15,10 @@
 
 .err {
   font-size: 25px;
+}
+
+@media (max-width: $tablet-breakpoint) {
+  .programsList {
+    gap: 20px;
+  }
 }
