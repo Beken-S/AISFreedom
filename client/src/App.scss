@@ -21,9 +21,3 @@
     width: $tablet-width;
   }
 }
-
-@media (max-width: $mobile-breakpoint) {
-  .wrap {
-    width: $mobile-width;
-  }
-}

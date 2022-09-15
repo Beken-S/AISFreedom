@@ -64,13 +64,3 @@
     gap: 20px;
   }
 }
-
-@media (max-width: $mobile-breakpoint) {
-  .programItem {
-    flex-direction: row;
-    justify-content: space-around;
-    width: 300px;
-    height: 220px;
-    padding-top: 0;
-  }
-}
