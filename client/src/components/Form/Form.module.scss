@@ -61,23 +61,3 @@
     }
   }
 }
-
-@media (max-width: $mobile-breakpoint) {
-  .form {
-    &__Filter {
-      @include flex-direction-column;
-    }
-
-    &__field {
-      width: 300px;
-    }
-
-    &__settings {
-      right: 10px;
-    }
-  }
-
-  .buttons {
-    width: 100%;
-  }
-}

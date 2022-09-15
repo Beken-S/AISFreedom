@@ -2,19 +2,19 @@
 @import "../../scss/mixins";
 
 .programLink {
-  text-decoration: none;
   color: #222222;
+  text-decoration: none;
 }
 
 .programItem {
+  justify-content: center;
   width: 200px;
-  height: 280px;
-  padding: 15px 15px 0;
-  color: $font-color;
+  min-height: 280px;
+  padding: 20px;
   text-decoration: none;
   background-color: $background-color;
+  border: 1px solid $btn-color;
   border-radius: 20px;
-  outline: 1px solid $btn-color;
   transition-duration: 0.3s;
 
   @include flex-direction-column;
@@ -29,48 +29,30 @@
 .programImg {
   width: 150px;
   height: 150px;
-  background-color: rgb(176, 194, 214);
+  background-color: #b0c2d6;
   border-radius: 20px;
 }
 
 .programInfo {
-  padding: 15px 0 10px;
+  padding-top: 15px;
+  color: $font-color;
   text-align: center;
 }
 
-.programInfo h2 {
+.programName {
   margin-bottom: 10px;
-  font-size: 30px;
-  font-family: "services";
-}
 
-.programInfo p {
-  margin-bottom: 10px;
-  font-size: 14px;
-}
-
-.programRaiting {
-  color: rgb(176, 194, 214);
-  font-weight: bold;
+  @include h2;
 }
 
 .programOs {
-  margin-bottom: 10px;
-  font-size: 14px;
+  margin-bottom: 5px;
+
+  @include p-item;
 }
 
-@media (max-width: $tablet-breakpoint) {
-  .programsList {
-    gap: 20px;
-  }
-}
-
-@media (max-width: $mobile-breakpoint) {
-  .programItem {
-    flex-direction: row;
-    justify-content: space-around;
-    width: 300px;
-    height: 220px;
-    padding-top: 0;
-  }
+.programRaiting {
+  margin: 0;
+  color: #b0c2d6;
+  font-weight: bold;
 }

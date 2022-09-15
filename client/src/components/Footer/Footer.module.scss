@@ -36,9 +36,3 @@
     transition-duration: 0.5s;
   }
 }
-
-@media (max-width: $mobile-breakpoint) {
-  .team {
-    display: none;
-  }
-}

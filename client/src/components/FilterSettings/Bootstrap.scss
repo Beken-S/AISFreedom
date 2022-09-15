@@ -17,10 +17,6 @@
   width: 90%;
 
   @include flex-position(space-around);
-
-  @media (max-width: $mobile-breakpoint) {
-    width: 100%;
-  }
 }
 
 .form-switch label,
