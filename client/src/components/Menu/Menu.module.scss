@@ -76,7 +76,7 @@
       &:hover {
         color: $color-hover;
         text-decoration: underline;
-        transition-duration: 0.6s;
+        transition-duration: 0.4s;
       }
     }
   }
@@ -151,6 +151,7 @@
       height: 48px;
 
       &__burger {
+        left: 200px;
         z-index: 9999;
         display: block;
       }
