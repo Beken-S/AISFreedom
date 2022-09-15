@@ -87,8 +87,11 @@ async function getDataRows(
           (${consider_before_date.toLocaleDateString('ru-Ru')})
         </td>
         <td>${programs_names.join(',')}</td>
-        <td>${departmentsMap[department_id]}</td>
-        <td>${username};<br/>${user_position};<br/>${user_phone};<br/>${user_email}</td>
+        <td>
+          ${departmentsMap[department_id]}
+          <hr/>
+          ${username};<br/>${user_position};<br/>${user_phone};<br/>${user_email}
+        </td>
         <td>${adding_reason}</td>
         <td>${status}</td>
         <td>
@@ -268,6 +271,38 @@ async function getReportMarkup(
           break-after: auto;
         }
 
+        tr th:nth-child(1) {
+          width: 5%;
+        }
+
+        tr th:nth-child(2) {
+          width: 8%;
+        }
+
+        tr th:nth-child(3) {
+          width: 8%;
+        }
+
+        tr th:nth-child(4) {
+          width: 30%;
+        }
+
+        tr th:nth-child(5) {
+          width: 18%;
+        }
+
+        tr th:nth-child(6) {
+          width: 8%;
+        }
+
+        tr th:nth-child(7) {
+          width: 8%;
+        }
+
+        tr th:nth-child(8) {
+          width: 15%;
+        }
+
         ul,
         li {
           display: inline;
@@ -316,8 +351,11 @@ async function getReportMarkup(
             (срок исполнения)
           </th>
           <th>Наименование программы</th>
-          <th>Объект информатизации</th>
-          <th>Пользователь</th>
+          <th>
+            Объект информатизации
+            <hr/>
+            Пользователь
+          </th>
           <th>Основание</th>
           <th>Статус</th>
           <th>Дата выполнения</th>
@@ -332,7 +370,6 @@ async function getReportMarkup(
           <td>6</td>
           <td>7</td>
           <td>8</td>
-          <td>9</td>
           ${dataRows}
           ${results}
         </tr>
@@ -353,7 +390,6 @@ async function getReportMarkup(
             <td>6</td>
             <td>7</td>
             <td>8</td>
-            <td>9</td>
           </tr>
         \`;
           const maxPageHeight = 679;
