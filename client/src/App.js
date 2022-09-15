@@ -9,6 +9,7 @@ import CatalogPage from '@pages/CatalogPage';
 import LoginPage from '@pages/LoginPage';
 import ReferenceSectionPage from '@pages/ReferenceSectionPage';
 import RegistrationPage from '@pages/RegistrationPage';
+import Glossary from './components/Glossary';
 
 import './App.scss';
 
@@ -28,6 +29,7 @@ function App() {
           <Route path="*" element={<p>404</p>} />
         </Route>
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/glossary" element={<Glossary />} />
         <Route path="/registration" element={<RegistrationPage />} />
       </Routes>
     </div>

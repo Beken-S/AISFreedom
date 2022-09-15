@@ -6,6 +6,10 @@
   width: calc(100% - 4px - 4px);
 }
 
+.reference__content {
+  display: flex;
+}
+
 .tables__switch {
   display: flex;
   flex-direction: row;
