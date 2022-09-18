@@ -1,0 +1,12 @@
+@import "../../scss/vars";
+
+.material-symbols-outlined {
+  margin-left: 10px;
+  color: #000000;
+  text-decoration: none;
+  cursor: pointer;
+
+  &:hover {
+    color: $color-hover;
+  }
+}
