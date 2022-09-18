@@ -1,5 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 
+import Glossary from './components/Glossary';
 import ProgramContainer from './containers/ProgramContainer';
 
 import Layout from '@components/Layout';
@@ -9,7 +10,7 @@ import CatalogPage from '@pages/CatalogPage';
 import LoginPage from '@pages/LoginPage';
 import ReferenceSectionPage from '@pages/ReferenceSectionPage';
 import RegistrationPage from '@pages/RegistrationPage';
-import Glossary from './components/Glossary';
+
 
 import './App.scss';
 

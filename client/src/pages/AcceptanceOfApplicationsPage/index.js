@@ -1,17 +1,26 @@
 import cn from 'classnames';
 import { useFormik } from 'formik';
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 
+import openNotification from '../../components/MessagePopup';
 import Input from '../../UI/Input/index';
+import Select from '../../UI/Select/index';
 
 import styles from './AcceptanceOfApplicationsPage.module.scss';
 
 const AcceptanceOfApplicationsPage = () => {
   const phone_REG_EXP = /^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$/;
-  const navigate = useNavigate();
 
+  function addMonths(date, months) {
+    var d = date.getDate();
+    date.setMonth(date.getMonth() + +months);
+    if (date.getDate() != d) {
+      date.setDate(0);
+    }
+    return date;
+  }
+  const dateNow = new Date();
   const formikCreate = useFormik({
     initialValues: {
       department_id: '',
@@ -19,78 +28,87 @@ const AcceptanceOfApplicationsPage = () => {
       adding_reason: '',
       username: '',
       user_position: '',
-      email: '',
-      phone_number: '',
+      user_email: '',
+      user_phone: '',
+      consider_before_date: addMonths(dateNow, 2).toISOString(),
     },
     validationSchema: Yup.object({
-      programs_names: Yup.string().required('Введите наименования программ'),
+      programs_names: Yup.mixed()
+        .when('isArray', {
+          is: Array.isArray,
+          then: Yup.array().of(Yup.string()),
+          otherwise: Yup.string(),
+        })
+        .required('Введите наименования программ'),
       adding_reason: Yup.string().required(
         'Введите основание для включения в базу'
       ),
       username: Yup.string().required('Введите имя'),
       user_position: Yup.string().required('Введите должность'),
-      email: Yup.string()
-        .email('Введите корректный email')
+      user_email: Yup.string()
+        // .email('Введите корректный email')
         .required('Введите email'),
-      phone_number: Yup.string()
+      user_phone: Yup.string()
         .matches(phone_REG_EXP, 'Введите правильный номер')
         .required('Укажите номер телефона'),
+      department_id: Yup.string().required('Выберите объект информатизации'),
     }),
-    onSubmit: async (values) => {
-      console.log(values);
+    onSubmit: async (values, { resetForm }) => {
       await setSubmitInfo(values);
-      // const responce = await HTTP.getLogin(REQUEST_URL.login, values);
-      // if (responce.auth_token) {
-      //   await setToken(responce.auth_token);
-      //   navigate('/');
-      // } else {
-      //   setErrors([...responce.non_field_errors]);
-      // }
+      resetForm(values);
     },
   });
 
+  async function createUser(data) {
+    const responce = await fetch('/api/requests/', {
+      method: 'POST',
+      body: data,
+    })
+      .then((r) => {
+        return r.json();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    return responce;
+  }
+
   async function setSubmitInfo(values) {
-    //console.log('values', values)
     const formData = new FormData();
-    console.log('new user', formData);
     for (let item of Object.entries(values)) {
+      if (item[0] === 'programs_names') {
+        formData.append(item[0], [formikCreate.values.programs_names]);
+      }
       formData.append(item[0], item[1]);
     }
-    //const responce = await HTTP.createUser(REQUEST_URL.createUser, formData);
-    console.log('formData', formData);
-    // console.log('responce', responce);
-    // if (responce.id) {
-    // //   openNotification({
-    // //     title: 'Регистрация',
-    // //     text: 'Регистрация успешно выполнена',
-    // //     type: 'success',
-    // //   });
-    // //   navigate('/');
-    // // } else {
-    // //   // console.log(responce)
-    // //   openNotification({
-    // //     title: 'Регистрация',
-    // //     text: 'Регистрация не выполнена',
-    // //     type: 'error',
-    // //   });
-    // //   setRegistrationErrors(responce);
-    // }
+    const responce = await createUser(formData);
+    if (responce.id) {
+      openNotification({
+        title: 'Создание новой заявки',
+        text: 'Ваша заявка успешно отправлена',
+        type: 'success',
+      });
+    } else {
+      openNotification({
+        title: 'Создание новой заявки',
+        text: 'Отправка заявки не выполнена',
+        type: 'error',
+      });
+    }
   }
 
   return (
     <div className={styles.AcceptanceOfApplicationsPage}>
       <h2>ПРИЕМ ЗАЯВОК</h2>
       <form onSubmit={formikCreate.handleSubmit}>
-        <select
+        <Select
+          mode="default"
+          id="department_id"
           class="form-select"
+          required={true}
           {...formikCreate.getFieldProps('department_id')}
           formError={formikCreate}
-        >
-          <option selected>Выберете объект информатизации</option>
-          <option value="1">Кафедра № 1 Математики</option>
-          <option value="2">Кафедра № 2 Физики</option>
-          <option value="3">Кафедра № 3 Химии</option>
-        </select>
+        />
         <br />
         <div className={cn(styles.input__item)}>
           <Input
@@ -140,11 +158,11 @@ const AcceptanceOfApplicationsPage = () => {
         <div className={cn(styles.input__item)}>
           <Input
             mode="ask"
-            id="email"
+            id="user_email"
             type="email"
             class="form-control"
             placeholder="ВведитеE-mail"
-            {...formikCreate.getFieldProps('email')}
+            {...formikCreate.getFieldProps('user_email')}
             formError={formikCreate}
           />
         </div>
@@ -153,8 +171,8 @@ const AcceptanceOfApplicationsPage = () => {
           <Input
             mode="ask"
             type="text"
-            id="phone_number"
-            {...formikCreate.getFieldProps('phone_number')}
+            id="user_phone"
+            {...formikCreate.getFieldProps('user_phone')}
             formError={formikCreate}
             placeholder="Введите контактный номер телефона"
             mask={'+7(999) 999-99-99'}
@@ -162,8 +180,17 @@ const AcceptanceOfApplicationsPage = () => {
         </div>
         <br />
         <div class="service-form-submit">
-          <input type="submit" class="form-submit" value="Отправить" />
-          <input type="submit" class="form-submit" value="Сбросить" />
+          <button type="submit" class="form-submit" text="Отправить">
+            Отправить
+          </button>
+          <button
+            class="form-submit"
+            text="Сбросить"
+            onClick={(e) => formikCreate.resetForm()}
+            type="reset"
+          >
+            Сбросить
+          </button>
         </div>
       </form>
     </div>

@@ -1,0 +1,89 @@
+.programLink {
+  text-decoration: none;
+  color: #222222;
+}
+
+.programItem {
+  width: 200px;
+  height: 280px;
+  padding: 15px 15px 0;
+  color: #222222;
+  text-decoration: none;
+  background-color: #dee7f2;
+  border-radius: 20px;
+  outline: 1px solid #56baed;
+  -webkit-transition-duration: 0.3s;
+          transition-duration: 0.3s;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.programItem:hover {
+  -webkit-box-shadow: 10px 5px 5px #3281e236;
+          box-shadow: 10px 5px 5px #3281e236;
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
+  cursor: pointer;
+}
+
+.programImg {
+  width: 150px;
+  height: 150px;
+  background-color: #b0c2d6;
+  border-radius: 20px;
+}
+
+.programInfo {
+  padding: 15px 0 10px;
+  text-align: center;
+}
+
+.programInfo h2 {
+  margin-bottom: 10px;
+  font-size: 30px;
+  font-family: "services";
+}
+
+.programInfo p {
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.programRaiting {
+  color: #b0c2d6;
+  font-weight: bold;
+}
+
+.programOs {
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+@media (max-width: 1172px) {
+  .programsList {
+    gap: 20px;
+  }
+}
+
+@media (max-width: 767px) {
+  .programItem {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    width: 300px;
+    height: 220px;
+    padding-top: 0;
+  }
+}
+/*# sourceMappingURL=CatalogItem.module.css.map */

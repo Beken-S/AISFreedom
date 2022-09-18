@@ -1,4 +1,6 @@
-import style from './Select.module.scss';
+import ShowError from '../ShowError';
+
+// import style from './Select.module.scss';
 
 export default function Select({
   list,
@@ -9,30 +11,46 @@ export default function Select({
   onBlur = () => {},
   onChange = () => {},
   text = '',
+  formError,
   refInput = null,
 }) {
-  const setOptions = () => {
-    return list.map((item, index) => {
-      return (
-        <option
-          key={index}
-          selected={defaultValue === item.title ? true : false}
-          value={item.title ? item.id : item.title}
-        >
-          {item.title}
-        </option>
-      );
-    });
-  };
-
   return (
     <>
       {mode === 'default' && (
-        <div className={style.select__wrapper}>
+        <div>
           <label htmlFor="">{text}</label>
-          <select id={id} onChange={onChange} onBlur={onBlur} ref={refInput}>
-            {setOptions()}
+          <select
+            class="form-select"
+            id={id}
+            onChange={onChange}
+            onBlur={onBlur}
+          >
+            <option key={0} value="Выберите объект информатизации">
+              Выберите объект информатизации
+            </option>
+            <option
+              key={1}
+              value="1"
+              defaultValue={defaultValue === '1' ? true : false}
+            >
+              Кафедра № 2 Математики
+            </option>
+            <option
+              key={2}
+              defaultValue={defaultValue === '2' ? true : false}
+              value="2"
+            >
+              Кафедра № 2 Физики
+            </option>
+            <option
+              key={3}
+              defaultValue={defaultValue === '3' ? true : false}
+              value="3"
+            >
+              Кафедра № 3 Химии
+            </option>
           </select>
+          <ShowError form={formError} name={id} />
         </div>
       )}
     </>

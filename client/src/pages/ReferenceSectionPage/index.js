@@ -2,10 +2,8 @@ import cn from 'classnames';
 import MUIDataTable from 'mui-datatables';
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
 
 import Glossary from '../../components/Glossary/index';
-
 import {
   getLicenses,
   getNormative,
@@ -117,7 +115,7 @@ const ReferenceSectionPage = () => {
         displayDetailInfo(cellMeta.dataIndex);
       }
     },
-    selectableRowsOnClick: false,
+    // selectableRowsOnClick: false,
   };
 
   const setNormative = async (items) => {
@@ -288,8 +286,9 @@ const ReferenceSectionPage = () => {
               >
                 Статьи
               </div>
-              <Link
-                to="/glossary"
+              <a
+                target="_blank"
+                href="/"
                 className={
                   activeTab === 'glossary'
                     ? cn(
@@ -303,7 +302,7 @@ const ReferenceSectionPage = () => {
                 }}
               >
                 Глоссарий
-              </Link>
+              </a>
             </div>
             <MUIDataTable
               title=""

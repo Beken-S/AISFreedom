@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,MAAM,CAAC;EACL,MAAM,EAAE,IAAI;EACZ,KAAK,EAAE,GAAG;EACV,SAAS,EAAE,IAAI;CAChB",
+    "sources": [
+        "FilterSettings.module.scss"
+    ],
+    "names": [],
+    "file": "FilterSettings.module.css"
+}
