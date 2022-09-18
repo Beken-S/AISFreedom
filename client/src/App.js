@@ -1,6 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 
 import ProgramContainer from './containers/ProgramContainer';
+import ModeratorPage from './pages/ModeratorPage';
 
 import Layout from '@components/Layout';
 import AboutProjectPage from '@pages/AboutProjectPage';
@@ -29,6 +30,7 @@ function App() {
         </Route>
         <Route path="/login" element={<LoginPage />} />
         <Route path="/registration" element={<RegistrationPage />} />
+        <Route path="/moderator" element={<ModeratorPage />} />
       </Routes>
     </div>
   );
