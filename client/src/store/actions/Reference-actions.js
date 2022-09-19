@@ -24,9 +24,9 @@ export const setNormativeDoc = (normativedoc) => ({
   normativedoc,
 });
 
-export const setArticles = (artdoc) => ({
+export const setArticles = (articles) => ({
   type: SET_ARTICLES,
-  artdoc,
+  articles,
 });
 
 export const setArticlesADoc = (articles) => ({

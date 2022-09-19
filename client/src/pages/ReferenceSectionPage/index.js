@@ -19,7 +19,6 @@ const ReferenceSectionPage = () => {
   const dispatch = useDispatch();
 
   const licenses = useSelector(({ reference }) => reference.licenses);
-
   const normative = useSelector(({ reference }) => reference.normative);
   const articles = useSelector(({ reference }) => reference.articles);
   const [activeTab, setActiveTab] = useState('documents');

@@ -21,7 +21,7 @@ export const getLicenses = () => async (dispatch) => {
 export const getArticles = () => async (dispatch) => {
   dispatch(isLoading(true));
   const data = await ArticleAPI.getArticle();
-  dispatch(setArticles(data.items));
+  dispatch(setArticles(data));
   //console.log('art', data.items);
   dispatch(isLoading(false));
 };
