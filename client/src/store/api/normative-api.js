@@ -6,6 +6,13 @@ export const NormativeAPI = {
     const result = await response.json();
     return result;
   },
+  async getNormativeDoc(file_name) {
+    const response = await fetch(
+      `/api/programs/normative_documents/${file_name}`
+    );
+    const result = await response.json();
+    return result;
+  },
 };
 
 // export const NormativeAPI = {
@@ -15,11 +22,3 @@ export const NormativeAPI = {
 //     return result;
 //   },
 // };
-
-export const NormativeDocumetsAPI = {
-  async getNormativeDoc() {
-    const response = await fetch(`/api/programs/normative_documents/`);
-    const result = await response.json();
-    return result;
-  },
-};

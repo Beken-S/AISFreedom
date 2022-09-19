@@ -2,6 +2,7 @@ export const SET_LICENSES = 'REFERENCE::SET_LICENSES';
 export const SET_NORMATIVE = 'REFERENCE::SET_NORMATIVE';
 export const SET_NORMATIVE_DOC = 'REFERENCE::SET_NORMATIVE_DOC';
 export const SET_ARTICLES = 'REFERENCE::SET_ARTICLES';
+export const SET_ARTICLES_DOC = 'REFERENCE::SET_ARTICLES_DOC';
 export const SET_ITEM = 'REFERENCE::SET_ITEM';
 export const IS_LOADING = 'REFERENCE::IS_LOADING';
 export const SET_ERROR = 'REFERENCE::SET_ERROR';
@@ -18,16 +19,22 @@ export const setNormative = (normative, totalCountPages, currentPage) => ({
   currentPage,
 });
 
-export const setNormativeDoc = (docnormative, file_name) => ({
+export const setNormativeDoc = (normativedoc) => ({
   type: SET_NORMATIVE_DOC,
-  docnormative,
-  file_name,
+  normativedoc,
 });
 
-export const setArticles = (articles) => ({
+export const setArticles = (artdoc) => ({
   type: SET_ARTICLES,
+  artdoc,
+});
+
+export const setArticlesADoc = (articles) => ({
+  type: SET_ARTICLES_DOC,
   articles,
 });
+
+
 
 export const setItem = (item) => ({
   type: SET_ITEM,

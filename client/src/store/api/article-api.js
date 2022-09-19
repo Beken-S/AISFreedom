@@ -7,6 +7,11 @@ export const ArticleAPI = {
     console.log(result);
     return result;
   },
+  async getArticleDoc(file_name) {
+    const response = await fetch(`/api/programs/articles/${file_name}`);
+    const result = await response.json();
+    return result;
+  },
 };
 
 // export const ArticleAPI = {

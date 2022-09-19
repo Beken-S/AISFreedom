@@ -6,6 +6,7 @@ import {
   SET_NORMATIVE,
   SET_ARTICLES,
   SET_NORMATIVE_DOC,
+  SET_ARTICLES_DOC,
 } from '../actions/Reference-actions';
 
 const initialState = {
@@ -77,13 +78,18 @@ const referenceReducer = (state = initialState, action) => {
       return {
         ...state,
         normativedoc: action.normativedoc,
-        file_name: action.file_name,
         error: '',
       };
     case SET_ARTICLES:
       return {
         ...state,
         articles: action.articles,
+        error: '',
+      };
+    case SET_ARTICLES_DOC:
+      return {
+        ...state,
+        artdoc: action.artdoc,
         error: '',
       };
 
