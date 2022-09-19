@@ -1,3 +1,4 @@
+import cookieParser = require('cookie-parser');
 import express = require('express');
 import fileUpload from 'express-fileupload';
 
@@ -15,6 +16,7 @@ import {
   programTypesRouter,
   sourcesRouter,
   normativeDocumentRouter,
+  usersRouter,
 } from './routers';
 import { clearTemp } from './utils';
 
@@ -36,15 +38,18 @@ const start = async () => {
 security(app);
 
 app.use(express.json());
+app.use(cookieParser());
 app.use(
   fileUpload({
     useTempFiles: true,
     tempFileDir: config.server.temp,
   })
 );
+
 logRequests(app);
 
 app.get('/ping', pingController.ping);
+app.use('/api', usersRouter);
 app.use('/api', programsRouter);
 app.use('/api', programTypesRouter);
 app.use('/api', operationSystemsRouter);

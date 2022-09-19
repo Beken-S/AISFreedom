@@ -8,6 +8,7 @@ import * as pingController from './Ping.controller';
 import * as programsController from './Programs.controller';
 import * as programTypesController from './ProgramTypes.controller';
 import * as sourcesController from './Sources.controller';
+import * as usersController from './Users.controller';
 
 export {
   addProgramRequestController,
@@ -20,4 +21,5 @@ export {
   programTypesController,
   sourcesController,
   normativeDocumentsController,
+  usersController,
 };

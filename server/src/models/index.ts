@@ -30,10 +30,18 @@ import ProgramType, {
   ProgramTypeAttributes,
   ProgramTypeCreationAttributes,
 } from './ProgramType.model';
+import Role, { RoleAttributes, RoleCreationAttributes } from './Role.model';
 import Source, {
   SourceAttributes,
   SourceCreationAttributes,
 } from './Source.model';
+import Token, { TokenAttributes, TokenCreationAttributes } from './Token.model';
+import User, {
+  UserAttributes,
+  UserCreationAttributes,
+  UserData,
+  LoginAttributes,
+} from './User.model';
 
 export {
   AddProgramsRequest,
@@ -60,7 +68,18 @@ export {
   ProgramType,
   ProgramTypeAttributes,
   ProgramTypeCreationAttributes,
+  Role,
+  RoleAttributes,
+  RoleCreationAttributes,
   Source,
   SourceAttributes,
   SourceCreationAttributes,
+  User,
+  UserAttributes,
+  UserCreationAttributes,
+  UserData,
+  LoginAttributes,
+  Token,
+  TokenAttributes,
+  TokenCreationAttributes,
 };
