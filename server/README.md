@@ -6,6 +6,10 @@
 - [Запуск](#%D0%B7%D0%B0%D0%BF%D1%83%D1%81%D0%BA)
   - [Первый запуск](#%D0%BF%D0%B5%D1%80%D0%B2%D1%8B%D0%B9-%D0%B7%D0%B0%D0%BF%D1%83%D1%81%D0%BA)
   - [Команды запуска](#%D0%BA%D0%BE%D0%BC%D0%B0%D0%BD%D0%B4%D1%8B-%D0%B7%D0%B0%D0%BF%D1%83%D1%81%D0%BA%D0%B0)
+- [Аутентификация](#%D0%B0%D1%83%D1%82%D0%B5%D0%BD%D1%82%D0%B8%D1%84%D0%B8%D0%BA%D0%B0%D1%86%D0%B8%D1%8F)
+  - [Вход](#%D0%B2%D1%85%D0%BE%D0%B4)
+  - [Выход](#%D0%B2%D1%8B%D1%85%D0%BE%D0%B4)
+  - [Обновление токена](#%D0%BE%D0%B1%D0%BD%D0%BE%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5-%D1%82%D0%BE%D0%BA%D0%B5%D0%BD%D0%B0)
 - [Программы](#%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D1%8B)
   - [Получение всех программ](#%D0%BF%D0%BE%D0%BB%D1%83%D1%87%D0%B5%D0%BD%D0%B8%D0%B5-%D0%B2%D1%81%D0%B5%D1%85-%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC)
   - [Получение программы по id](#%D0%BF%D0%BE%D0%BB%D1%83%D1%87%D0%B5%D0%BD%D0%B8%D0%B5-%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D1%8B-%D0%BF%D0%BE-id)
@@ -87,6 +91,78 @@ DB_DIALECT = mysql
 ```sh
  npm start  # запуск сервера.
  npm run dev # запуск сервера в режиме разработки.
+```
+
+## Аутентификация
+
+Реализована с помощью JWT токенов.
+
+### Вход
+
+| Метод  | URI               |
+| ------ | ----------------- |
+| `POST` | `/api/user/login` |
+
+#### Тело запроса
+
+JSON строка (должен быть указан или login или email)
+
+```typescript
+{
+  login: string | undefined;
+  email: string | undefined;
+  password: string;
+}
+```
+
+#### Ответ
+
+```typescript
+{
+  message: "Вход выполнен успешно.";
+  user: User;
+  access_token: string;
+}
+```
+
+где `User`:
+
+```typescript
+{
+  id: number;
+  role: string;
+  name: string;
+  email: string;
+}
+```
+
+### Выход
+
+| Метод  | URI                |
+| ------ | ------------------ |
+| `POST` | `/api/user/logout` |
+
+#### Ответ
+
+```typescript
+{
+  message: "Выход выполнен успешно.";
+}
+```
+
+### Обновление токена
+
+| Метод  | URI                 |
+| ------ | ------------------- |
+| `POST` | `/api/user/refresh` |
+
+#### Ответ
+
+```typescript
+{
+  message: "Токен успешно обновлен.";
+  access_token: string;
+}
 ```
 
 ## Программы
@@ -222,6 +298,14 @@ Program;
 | ------ | ---------------- |
 | `POST` | `/api/programs/` |
 
+#### Заголовки
+
+| Заголовок       | Значение                |
+| --------------- | ----------------------- |
+| `Authorization` | `Bearer [access_token]` |
+
+> Пример: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImFkbWluIiwibmFtZSI6ImFkbWluIiwiZW1haWwiOiJhZG1pbkBhZG1pbi5jb20iLCJpYXQiOjE2NjM2MjEwOTcsImV4cCI6MTY2MzYyMTE1N30.FDHMS6mgFlFcMIySE4057maAFAEg5UuBUr6Vwglah8Q`
+
 #### Тело запроса
 
 JSON строка
@@ -254,6 +338,14 @@ Program;
 | Метод   | URI              |
 | ------- | ---------------- |
 | `PATCH` | `/api/programs/` |
+
+#### Заголовки
+
+| Заголовок       | Значение                |
+| --------------- | ----------------------- |
+| `Authorization` | `Bearer [access_token]` |
+
+> Пример: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImFkbWluIiwibmFtZSI6ImFkbWluIiwiZW1haWwiOiJhZG1pbkBhZG1pbi5jb20iLCJpYXQiOjE2NjM2MjEwOTcsImV4cCI6MTY2MzYyMTE1N30.FDHMS6mgFlFcMIySE4057maAFAEg5UuBUr6Vwglah8Q`
 
 #### Параметры
 
@@ -332,6 +424,14 @@ JSON строка
 | -------- | ---------------- |
 | `DELETE` | `/api/programs/` |
 
+#### Заголовки
+
+| Заголовок       | Значение                |
+| --------------- | ----------------------- |
+| `Authorization` | `Bearer [access_token]` |
+
+> Пример: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImFkbWluIiwibmFtZSI6ImFkbWluIiwiZW1haWwiOiJhZG1pbkBhZG1pbi5jb20iLCJpYXQiOjE2NjM2MjEwOTcsImV4cCI6MTY2MzYyMTE1N30.FDHMS6mgFlFcMIySE4057maAFAEg5UuBUr6Vwglah8Q`
+
 #### Параметры
 
 | Параметр | Значение | Описание                                   |
@@ -395,6 +495,14 @@ JSON строка
 | Метод  | URI                     |
 | ------ | ----------------------- |
 | `POST` | `/api/programs/images/` |
+
+#### Заголовки
+
+| Заголовок       | Значение                |
+| --------------- | ----------------------- |
+| `Authorization` | `Bearer [access_token]` |
+
+> Пример: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImFkbWluIiwibmFtZSI6ImFkbWluIiwiZW1haWwiOiJhZG1pbkBhZG1pbi5jb20iLCJpYXQiOjE2NjM2MjEwOTcsImV4cCI6MTY2MzYyMTE1N30.FDHMS6mgFlFcMIySE4057maAFAEg5UuBUr6Vwglah8Q`
 
 #### Тело запроса
 
@@ -461,6 +569,14 @@ ProgramType;
 | ------ | --------------------- |
 | `POST` | `/api/program/types/` |
 
+#### Заголовки
+
+| Заголовок       | Значение                |
+| --------------- | ----------------------- |
+| `Authorization` | `Bearer [access_token]` |
+
+> Пример: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImFkbWluIiwibmFtZSI6ImFkbWluIiwiZW1haWwiOiJhZG1pbkBhZG1pbi5jb20iLCJpYXQiOjE2NjM2MjEwOTcsImV4cCI6MTY2MzYyMTE1N30.FDHMS6mgFlFcMIySE4057maAFAEg5UuBUr6Vwglah8Q`
+
 #### Тело запроса
 
 JSON строка
@@ -484,6 +600,14 @@ ProgramType;
 | Метод   | URI                   |
 | ------- | --------------------- |
 | `PATCH` | `/api/program/types/` |
+
+#### Заголовки
+
+| Заголовок       | Значение                |
+| --------------- | ----------------------- |
+| `Authorization` | `Bearer [access_token]` |
+
+> Пример: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImFkbWluIiwibmFtZSI6ImFkbWluIiwiZW1haWwiOiJhZG1pbkBhZG1pbi5jb20iLCJpYXQiOjE2NjM2MjEwOTcsImV4cCI6MTY2MzYyMTE1N30.FDHMS6mgFlFcMIySE4057maAFAEg5UuBUr6Vwglah8Q`
 
 #### Параметры
 
@@ -516,6 +640,14 @@ ProgramType;
 | Метод    | URI                   |
 | -------- | --------------------- |
 | `DELETE` | `/api/program/types/` |
+
+#### Заголовки
+
+| Заголовок       | Значение                |
+| --------------- | ----------------------- |
+| `Authorization` | `Bearer [access_token]` |
+
+> Пример: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImFkbWluIiwibmFtZSI6ImFkbWluIiwiZW1haWwiOiJhZG1pbkBhZG1pbi5jb20iLCJpYXQiOjE2NjM2MjEwOTcsImV4cCI6MTY2MzYyMTE1N30.FDHMS6mgFlFcMIySE4057maAFAEg5UuBUr6Vwglah8Q`
 
 #### Параметры
 
@@ -595,6 +727,14 @@ License;
 | ------ | ---------------- |
 | `POST` | `/api/licenses/` |
 
+#### Заголовки
+
+| Заголовок       | Значение                |
+| --------------- | ----------------------- |
+| `Authorization` | `Bearer [access_token]` |
+
+> Пример: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImFkbWluIiwibmFtZSI6ImFkbWluIiwiZW1haWwiOiJhZG1pbkBhZG1pbi5jb20iLCJpYXQiOjE2NjM2MjEwOTcsImV4cCI6MTY2MzYyMTE1N30.FDHMS6mgFlFcMIySE4057maAFAEg5UuBUr6Vwglah8Q`
+
 #### Тело запроса
 
 JSON строка
@@ -623,6 +763,14 @@ License;
 | Метод   | URI              |
 | ------- | ---------------- |
 | `PATCH` | `/api/licenses/` |
+
+#### Заголовки
+
+| Заголовок       | Значение                |
+| --------------- | ----------------------- |
+| `Authorization` | `Bearer [access_token]` |
+
+> Пример: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImFkbWluIiwibmFtZSI6ImFkbWluIiwiZW1haWwiOiJhZG1pbkBhZG1pbi5jb20iLCJpYXQiOjE2NjM2MjEwOTcsImV4cCI6MTY2MzYyMTE1N30.FDHMS6mgFlFcMIySE4057maAFAEg5UuBUr6Vwglah8Q`
 
 #### Параметры
 
@@ -660,6 +808,14 @@ License;
 | Метод    | URI              |
 | -------- | ---------------- |
 | `DELETE` | `/api/licenses/` |
+
+#### Заголовки
+
+| Заголовок       | Значение                |
+| --------------- | ----------------------- |
+| `Authorization` | `Bearer [access_token]` |
+
+> Пример: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImFkbWluIiwibmFtZSI6ImFkbWluIiwiZW1haWwiOiJhZG1pbkBhZG1pbi5jb20iLCJpYXQiOjE2NjM2MjEwOTcsImV4cCI6MTY2MzYyMTE1N30.FDHMS6mgFlFcMIySE4057maAFAEg5UuBUr6Vwglah8Q`
 
 #### Параметры
 
@@ -734,6 +890,14 @@ OperationSystem;
 | ------ | ------------------------- |
 | `POST` | `/api/operation_systems/` |
 
+#### Заголовки
+
+| Заголовок       | Значение                |
+| --------------- | ----------------------- |
+| `Authorization` | `Bearer [access_token]` |
+
+> Пример: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImFkbWluIiwibmFtZSI6ImFkbWluIiwiZW1haWwiOiJhZG1pbkBhZG1pbi5jb20iLCJpYXQiOjE2NjM2MjEwOTcsImV4cCI6MTY2MzYyMTE1N30.FDHMS6mgFlFcMIySE4057maAFAEg5UuBUr6Vwglah8Q`
+
 #### Тело запроса
 
 JSON строка
@@ -757,6 +921,14 @@ OperationSystem;
 | Метод   | URI                       |
 | ------- | ------------------------- |
 | `PATCH` | `/api/operation_systems/` |
+
+#### Заголовки
+
+| Заголовок       | Значение                |
+| --------------- | ----------------------- |
+| `Authorization` | `Bearer [access_token]` |
+
+> Пример: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImFkbWluIiwibmFtZSI6ImFkbWluIiwiZW1haWwiOiJhZG1pbkBhZG1pbi5jb20iLCJpYXQiOjE2NjM2MjEwOTcsImV4cCI6MTY2MzYyMTE1N30.FDHMS6mgFlFcMIySE4057maAFAEg5UuBUr6Vwglah8Q`
 
 #### Параметры
 
@@ -789,6 +961,14 @@ OperationSystem;
 | Метод    | URI                       |
 | -------- | ------------------------- |
 | `DELETE` | `/api/operation_systems/` |
+
+#### Заголовки
+
+| Заголовок       | Значение                |
+| --------------- | ----------------------- |
+| `Authorization` | `Bearer [access_token]` |
+
+> Пример: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImFkbWluIiwibmFtZSI6ImFkbWluIiwiZW1haWwiOiJhZG1pbkBhZG1pbi5jb20iLCJpYXQiOjE2NjM2MjEwOTcsImV4cCI6MTY2MzYyMTE1N30.FDHMS6mgFlFcMIySE4057maAFAEg5UuBUr6Vwglah8Q`
 
 #### Параметры
 
@@ -865,6 +1045,14 @@ Source;
 | ------ | --------------- |
 | `POST` | `/api/sources/` |
 
+#### Заголовки
+
+| Заголовок       | Значение                |
+| --------------- | ----------------------- |
+| `Authorization` | `Bearer [access_token]` |
+
+> Пример: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImFkbWluIiwibmFtZSI6ImFkbWluIiwiZW1haWwiOiJhZG1pbkBhZG1pbi5jb20iLCJpYXQiOjE2NjM2MjEwOTcsImV4cCI6MTY2MzYyMTE1N30.FDHMS6mgFlFcMIySE4057maAFAEg5UuBUr6Vwglah8Q`
+
 #### Тело запроса
 
 JSON строка
@@ -890,6 +1078,14 @@ Source;
 | Метод   | URI             |
 | ------- | --------------- |
 | `PATCH` | `/api/sources/` |
+
+#### Заголовки
+
+| Заголовок       | Значение                |
+| --------------- | ----------------------- |
+| `Authorization` | `Bearer [access_token]` |
+
+> Пример: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImFkbWluIiwibmFtZSI6ImFkbWluIiwiZW1haWwiOiJhZG1pbkBhZG1pbi5jb20iLCJpYXQiOjE2NjM2MjEwOTcsImV4cCI6MTY2MzYyMTE1N30.FDHMS6mgFlFcMIySE4057maAFAEg5UuBUr6Vwglah8Q`
 
 #### Параметры
 
@@ -924,6 +1120,14 @@ Source;
 | -------- | --------------- |
 | `DELETE` | `/api/sources/` |
 
+#### Заголовки
+
+| Заголовок       | Значение                |
+| --------------- | ----------------------- |
+| `Authorization` | `Bearer [access_token]` |
+
+> Пример: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImFkbWluIiwibmFtZSI6ImFkbWluIiwiZW1haWwiOiJhZG1pbkBhZG1pbi5jb20iLCJpYXQiOjE2NjM2MjEwOTcsImV4cCI6MTY2MzYyMTE1N30.FDHMS6mgFlFcMIySE4057maAFAEg5UuBUr6Vwglah8Q`
+
 #### Параметры
 
 | Параметр | Значение | Описание                                   |
@@ -951,6 +1155,14 @@ Source;
 | `GET` | `/api/requests/` |
 
 > Пример: `https://localhost:3000/api/requests/`
+
+#### Заголовки
+
+| Заголовок       | Значение                |
+| --------------- | ----------------------- |
+| `Authorization` | `Bearer [access_token]` |
+
+> Пример: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImFkbWluIiwibmFtZSI6ImFkbWluIiwiZW1haWwiOiJhZG1pbkBhZG1pbi5jb20iLCJpYXQiOjE2NjM2MjEwOTcsImV4cCI6MTY2MzYyMTE1N30.FDHMS6mgFlFcMIySE4057maAFAEg5UuBUr6Vwglah8Q`
 
 #### Параметры
 
@@ -1008,6 +1220,14 @@ Source;
 | ----- | ---------------- |
 | `GET` | `/api/requests/` |
 
+#### Заголовки
+
+| Заголовок       | Значение                |
+| --------------- | ----------------------- |
+| `Authorization` | `Bearer [access_token]` |
+
+> Пример: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImFkbWluIiwibmFtZSI6ImFkbWluIiwiZW1haWwiOiJhZG1pbkBhZG1pbi5jb20iLCJpYXQiOjE2NjM2MjEwOTcsImV4cCI6MTY2MzYyMTE1N30.FDHMS6mgFlFcMIySE4057maAFAEg5UuBUr6Vwglah8Q`
+
 #### Параметры
 
 | Параметр | Значение | Описание                                |
@@ -1061,6 +1281,14 @@ Request;
 | ----- | ----------------------- |
 | `GET` | `/api/requests/filter/` |
 
+#### Заголовки
+
+| Заголовок       | Значение                |
+| --------------- | ----------------------- |
+| `Authorization` | `Bearer [access_token]` |
+
+> Пример: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImFkbWluIiwibmFtZSI6ImFkbWluIiwiZW1haWwiOiJhZG1pbkBhZG1pbi5jb20iLCJpYXQiOjE2NjM2MjEwOTcsImV4cCI6MTY2MzYyMTE1N30.FDHMS6mgFlFcMIySE4057maAFAEg5UuBUr6Vwglah8Q`
+
 #### Параметры
 
 | Параметр         | Значение                                      | Описание                                                            |
@@ -1100,6 +1328,14 @@ Request;
 | ----- | ----------------------- |
 | `GET` | `/api/requests/report/` |
 
+#### Заголовки
+
+| Заголовок       | Значение                |
+| --------------- | ----------------------- |
+| `Authorization` | `Bearer [access_token]` |
+
+> Пример: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImFkbWluIiwibmFtZSI6ImFkbWluIiwiZW1haWwiOiJhZG1pbkBhZG1pbi5jb20iLCJpYXQiOjE2NjM2MjEwOTcsImV4cCI6MTY2MzYyMTE1N30.FDHMS6mgFlFcMIySE4057maAFAEg5UuBUr6Vwglah8Q`
+
 #### Параметры
 
 | Параметр       | Значение                                      | Описание                                                 |
@@ -1128,6 +1364,14 @@ Request;
 | ------- | ---------------------------- |
 | `PATCH` | `/api/requests/:id/complete` |
 
+#### Заголовки
+
+| Заголовок       | Значение                |
+| --------------- | ----------------------- |
+| `Authorization` | `Bearer [access_token]` |
+
+> Пример: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImFkbWluIiwibmFtZSI6ImFkbWluIiwiZW1haWwiOiJhZG1pbkBhZG1pbi5jb20iLCJpYXQiOjE2NjM2MjEwOTcsImV4cCI6MTY2MzYyMTE1N30.FDHMS6mgFlFcMIySE4057maAFAEg5UuBUr6Vwglah8Q`
+
 #### Параметры
 
 | Параметр | Значение | Описание                                |
@@ -1149,6 +1393,14 @@ Request;
 | Метод   | URI                        |
 | ------- | -------------------------- |
 | `PATCH` | `/api/requests/:id/reject` |
+
+#### Заголовки
+
+| Заголовок       | Значение                |
+| --------------- | ----------------------- |
+| `Authorization` | `Bearer [access_token]` |
+
+> Пример: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImFkbWluIiwibmFtZSI6ImFkbWluIiwiZW1haWwiOiJhZG1pbkBhZG1pbi5jb20iLCJpYXQiOjE2NjM2MjEwOTcsImV4cCI6MTY2MzYyMTE1N30.FDHMS6mgFlFcMIySE4057maAFAEg5UuBUr6Vwglah8Q`
 
 #### Тело запроса
 
@@ -1181,6 +1433,14 @@ Request;
 | Метод   | URI                       |
 | ------- | ------------------------- |
 | `PATCH` | `/api/requests/:id/reset` |
+
+#### Заголовки
+
+| Заголовок       | Значение                |
+| --------------- | ----------------------- |
+| `Authorization` | `Bearer [access_token]` |
+
+> Пример: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImFkbWluIiwibmFtZSI6ImFkbWluIiwiZW1haWwiOiJhZG1pbkBhZG1pbi5jb20iLCJpYXQiOjE2NjM2MjEwOTcsImV4cCI6MTY2MzYyMTE1N30.FDHMS6mgFlFcMIySE4057maAFAEg5UuBUr6Vwglah8Q`
 
 #### Параметры
 

@@ -7,6 +7,7 @@ import operationSystemsRouter from './OperationSystems.router';
 import programsRouter from './Programs.router';
 import programTypesRouter from './ProgramTypes.router';
 import sourcesRouter from './Sources.router';
+import usersRouter from './Users.router';
 
 export {
   addProgramRequestRouter,
@@ -18,4 +19,5 @@ export {
   programTypesRouter,
   sourcesRouter,
   normativeDocumentRouter,
+  usersRouter,
 };

@@ -9,6 +9,7 @@ import * as validateOperationSystem from './OperationSystem.validators';
 import * as validateProgram from './Programs.validators';
 import * as validateProgramType from './ProgramTypes.validators';
 import * as validateSource from './Sources.validators';
+import * as validateUser from './Users.validator';
 import validateIdParam from './validateIdParams';
 import validatePaginationQuery from './validatePaginationQuery';
 
@@ -26,4 +27,5 @@ export {
   validateAddProgramRequest,
   validateNormativeDocument,
   validateArticle,
+  validateUser,
 };

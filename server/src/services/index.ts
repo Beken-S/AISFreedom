@@ -8,6 +8,8 @@ import * as operationSystemsService from './OperationSystems.service';
 import * as programsService from './Programs.service';
 import * as programTypesService from './ProgramTypes.service';
 import * as sourcesService from './Sources.service';
+import * as tokenService from './Tokens.service';
+import * as usersService from './Users.service';
 
 export {
   addProgramRequestsService,
@@ -20,4 +22,6 @@ export {
   programTypesService,
   programsService,
   sourcesService,
+  tokenService,
+  usersService,
 };

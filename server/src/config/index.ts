@@ -24,6 +24,8 @@ enum Envs {
   DB_USER = 'DB_USER',
   DB_PASSWORD = 'DB_PASSWORD',
   DB_DIALECT = 'DB_DIALECT',
+  JWT_ACCESS_SECRET = 'JWT_ACCESS_SECRET',
+  JWT_REFRESH_SECRET = 'JWT_REFRESH_SECRET',
 }
 
 type ErrorsFileName = 'errors.log' | string;
@@ -34,6 +36,10 @@ interface IServerConfig {
   port: number;
   logs: ILogsConfig;
   temp: string;
+  jwtSecret: {
+    access: string;
+    refresh: string;
+  };
 }
 
 interface ILogsConfig {
@@ -62,7 +68,7 @@ interface IConfig {
 }
 
 dotenv.config({ path: path.resolve(__dirname, '.env') });
-dotenv.config({ path: path.resolve(__dirname, '../../secrets/db.env') });
+dotenv.config({ path: path.resolve(__dirname, '../../secrets/.env') });
 
 const serverLogsConfig: ILogsConfig = {
   write: process.env[Envs.WRITE_LOG] === 'true' ? true : false,
@@ -78,6 +84,10 @@ const serverConfig: IServerConfig = {
   port: Number(process.env[Envs.PORT]) || 3001,
   logs: serverLogsConfig,
   temp: path.resolve(__dirname, '../../temp'),
+  jwtSecret: {
+    access: process.env[Envs.JWT_ACCESS_SECRET] || 'access',
+    refresh: process.env[Envs.JWT_REFRESH_SECRET] || 'refresh',
+  },
 };
 
 const prettifySettings = {
