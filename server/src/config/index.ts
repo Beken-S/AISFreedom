@@ -13,6 +13,7 @@ enum Mods {
 }
 
 enum Envs {
+  API_URL = 'API_URL',
   PORT = 'PORT',
   WRITE_LOG = 'WRITE_LOG',
   LOGS_PATH = 'LOGS_PATH',
@@ -33,6 +34,7 @@ type RequestsFileName = 'requests.log' | string;
 
 interface IServerConfig {
   mode: Mods;
+  url: string;
   port: number;
   logs: ILogsConfig;
   temp: string;
@@ -81,6 +83,7 @@ const serverLogsConfig: ILogsConfig = {
 
 const serverConfig: IServerConfig = {
   mode: isDevMode() ? Mods.Dev : Mods.Prod,
+  url: process.env[Envs.API_URL] || 'http://localhost:3001',
   port: Number(process.env[Envs.PORT]) || 3001,
   logs: serverLogsConfig,
   temp: path.resolve(__dirname, '../../temp'),
