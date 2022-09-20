@@ -2,11 +2,7 @@ import cn from 'classnames';
 import React from 'react';
 
 const Glossary = () => {
-  return (
-    <>
-
-    </>
-  );
+  return <></>;
 };
 
 export default Glossary;

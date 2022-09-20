@@ -44,12 +44,7 @@ const LoginPage = () => {
       <div className={styles.container}>
         <div className={styles.wrapper}>
           <div className={styles.formContent}>
-            <p className={styles.text}> Войти </p>
-            <p className={styles.text}>
-              <NavLink className={styles.link} to="/registration">
-                Регистрация
-              </NavLink>
-            </p>
+            <p className={styles.text}> Авторизация </p>
 
             <form onSubmit={formik.handleSubmit}>
               <Input

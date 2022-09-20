@@ -16,7 +16,6 @@ const ModeratorPage = () => {
   const dispatch = useDispatch();
   const row = useSelector((state) => state.moderator.row);
   const data = [];
-  console.log(data);
   row.forEach((el) => el.forEach((elem) => data.push(elem)));
   const setColumns = () => {
     setActiveColums([
@@ -72,7 +71,7 @@ const ModeratorPage = () => {
                 На главную
               </NavLink>
               <span> / </span>
-              <NavLink to="/" className={styles.headerService}>
+              <NavLink to="/moderator" className={styles.headerService}>
                 Потребности
               </NavLink>
             </nav>

@@ -34,8 +34,6 @@ export const setArticlesADoc = (articles) => ({
   articles,
 });
 
-
-
 export const setItem = (item) => ({
   type: SET_ITEM,
   item,
