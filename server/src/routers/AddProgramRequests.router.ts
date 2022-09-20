@@ -1,7 +1,7 @@
 import express = require('express');
 
 import { addProgramRequestController } from '../controllers';
-import { auth, admin } from '../middlewares';
+// import { auth, admin } from '../middlewares';
 import { validateAddProgramRequest } from '../validators';
 
 const addProgramRequestRouter = express.Router();
@@ -13,50 +13,50 @@ addProgramRequestRouter.post(
 );
 addProgramRequestRouter.get(
   '/requests',
-  auth,
-  admin,
+  // auth,
+  // admin,
   ...validateAddProgramRequest.getAllRequest(),
   addProgramRequestController.getAll
 );
 addProgramRequestRouter.get(
   '/requests/filter',
-  auth,
-  admin,
+  // auth,
+  // admin,
   ...validateAddProgramRequest.filterRequest(),
   addProgramRequestController.filter
 );
 addProgramRequestRouter.get(
   '/requests/report',
-  auth,
-  admin,
+  // auth,
+  // admin,
   ...validateAddProgramRequest.reportRequest(),
   addProgramRequestController.report
 );
 addProgramRequestRouter.get(
   '/requests/:id',
-  auth,
-  admin,
+  // auth,
+  // admin,
   ...validateAddProgramRequest.getByIdRequest(),
   addProgramRequestController.getById
 );
 addProgramRequestRouter.patch(
   '/requests/:id/reject',
-  auth,
-  admin,
+  // auth,
+  // admin,
   ...validateAddProgramRequest.rejectRequest(),
   addProgramRequestController.reject
 );
 addProgramRequestRouter.patch(
   '/requests/:id/complete',
-  auth,
-  admin,
+  // auth,
+  // admin,
   ...validateAddProgramRequest.completeRequest(),
   addProgramRequestController.complete
 );
 addProgramRequestRouter.patch(
   '/requests/:id/reset',
-  auth,
-  admin,
+  // auth,
+  // admin,
   ...validateAddProgramRequest.resetRequest(),
   addProgramRequestController.reset
 );
