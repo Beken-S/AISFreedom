@@ -6,22 +6,23 @@ import StarReating from '../../components/StarReating';
 import style from './CatalogItem.module.scss';
 
 export const CatalogItem = ({ program, typeOs }) => {
-  const set = new Set();
-  const filter = program.sources.map((source) =>
-    typeOs.filter((el) => el.id === source.operation_system_id)
-  );
-  filter.forEach((el) =>
-    el.forEach((elem) => {
-      if (elem.name.includes('windows')) {
-        set.add('Windows');
-      }
-      if (elem.name.includes('linux')) {
-        set.add('Linux');
-      }
-    })
-  );
+  if (typeOs) {
+    const set = new Set();
+    const filter = program.sources.map((source) =>
+      typeOs.filter((el) => el.id === source.operation_system_id)
+    );
+    filter.forEach((el) =>
+      el.forEach((elem) => {
+        if (elem.name.includes('windows')) {
+          set.add('Windows');
+        }
+        if (elem.name.includes('linux')) {
+          set.add('Linux');
+        }
+      })
+    );
 
-  const os = [...set];
+    const os = [...set];
 
   return (
     <>

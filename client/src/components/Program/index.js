@@ -1,14 +1,19 @@
 import cn from 'classnames';
 import parse from 'html-react-parser';
-import React from 'react';
+import React, { useState } from 'react';
 import '../../App.scss';
 
 import StarReating from '../../components/StarReating';
 
 import style from './Program.module.scss';
+import './Bootstrap.scss';
 
 export const Program = ({ item, license, classProgram, typeOs }) => {
   const os = [];
+  const [url, setUrl] = useState('');
+  const onSetLink = (e) => {
+    setUrl(e.target.value);
+  };
   if (typeOs) {
     typeOs.map((el) => os.push(el.name));
   }
@@ -61,27 +66,38 @@ export const Program = ({ item, license, classProgram, typeOs }) => {
               <span className={style.description__text}>
                 {parse(item.description + ' ')}
               </span>
-              <div className={style.flex}>
-                <div className={style.platform}>
+              <div className="input-group description-os">
+                <select
+                  onChange={onSetLink}
+                  className="form-select"
+                  id="inputGroupSelect04"
+                  aria-label="Example select with button addon"
+                >
+                  <option>Выберите операционную систему</option>
                   {item.sources.map((el, i) => {
                     return (
-                      <div key={i}>
-                        <a href={el.distrib_url}>
-                          {typeOs.map((type) => {
-                            return (
-                              el.operation_system_id === type.id && type.name
-                            );
-                          })}
-                        </a>
-                      </div>
+                      <option
+                        onChange={() => onSetLink(el)}
+                        key={i}
+                        defaultValue={el.operation_system_id}
+                        value={el.distrib_url}
+                      >
+                        {typeOs.map((type) => {
+                          return (
+                            el.operation_system_id === type.id && type.name
+                          );
+                        })}
+                      </option>
                     );
                   })}
-                </div>
-                <div>|</div>
-                <a href={item.manual_url} className={style.manual}>
-                  Инструкция пользователя
+                </select>
+                <a href={url} className="btn btn-outline-secondary">
+                  <i className="fas fa-download"></i>
                 </a>
               </div>
+              <a href={item.manual_url} className={style.manual}>
+                <i className="far fa-eye"></i>Инструкция пользователя
+              </a>
             </div>
           )}
         </div>

@@ -10,6 +10,9 @@
 // Шапка сайта
 @import "blocks/header";
 
+// Шапка сайта модератора
+@import "blocks/header_moderator";
+
 // Описание системы
 @import "blocks/system-info";
 
@@ -21,6 +24,12 @@
 
 // Описание атернативы
 @import "blocks/description";
+
+// Страница обработки заявок модератором (админом)
+@import "blocks/time-filter";
+
+// Бланк для печати отчета по завкам
+@import "blocks/application-form";
 
 // Подвал
 @import "blocks/footer";

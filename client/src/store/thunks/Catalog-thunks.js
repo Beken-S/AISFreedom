@@ -1,13 +1,12 @@
 import {
   isLoading,
   reset,
-  searchPrograms,
   setItem,
   setProgram,
-  setSearchText,
-  setError,
   filterPrograms,
   setCurrentPage,
+  setTypesPrograms,
+  setAllOsPrograms,
 } from '../actions/Catalog-actions';
 import { PromramsAPI } from '../api/programs-api';
 import { SearchAPI } from '../api/search-api';
@@ -20,8 +19,12 @@ export const getPrograms =
     const data = await PromramsAPI.getPrograms(itemsOnPage, page);
     // получение типа os
     const os = await PromramsAPI.getAllOsProgram();
-    dispatch(setProgram(data.items, os, data.page_count, 1));
+    dispatch(setProgram(data.items, os, data.page_count));
+    dispatch(setAllOsPrograms(os));
     dispatch(setCurrentPage(page));
+    // получение всех типов программ
+    const typesPrograms = await PromramsAPI.getAllTypesProgram();
+    dispatch(setTypesPrograms(typesPrograms));
     dispatch(isLoading(false));
   };
 
@@ -46,20 +49,6 @@ export const getProgram = (id) => async (dispatch) => {
   dispatch(isLoading(false));
 };
 
-export const search =
-  (page = 1) =>
-  async (dispatch, getState) => {
-    dispatch(isLoading(true));
-    const text = getState().catalog.searchText;
-    if (text !== '') {
-      const data = await SearchAPI.search(text, page);
-      dispatch(setSearchText(text));
-      dispatch(searchPrograms(data.items, data.page_count, 1));
-      dispatch(setCurrentPage(page));
-    }
-    dispatch(isLoading(false));
-  };
-
 export const resetSearch = () => async (dispatch, getState) => {
   dispatch(isLoading(true));
   dispatch(reset());
@@ -68,7 +57,7 @@ export const resetSearch = () => async (dispatch, getState) => {
   dispatch(setCurrentPage(1));
   // получение типа os
   const os = await PromramsAPI.getAllOsProgram();
-  dispatch(setProgram(data.items, os, data.page_count, 1));
+  dispatch(setProgram(data.items, os, data.page_count));
   dispatch(isLoading(false));
 };
 export const filterProgramsThunk =
@@ -86,11 +75,8 @@ export const filterProgramsThunk =
       itemsOnPage,
       page
     );
-    if (typeof data === 'string') {
-      dispatch(setError(data));
-    } else {
-      dispatch(filterPrograms(data.items, data.page_count, page));
-    }
+    dispatch(setCurrentPage(page));
+    dispatch(filterPrograms(data.items, data.page_count, page));
     dispatch(isLoading(false));
   };
 

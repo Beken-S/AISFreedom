@@ -1,10 +1,14 @@
 @import "../../scss/vars";
+@import "../../scss/mixins";
 
 .About {
   display: flex;
+  align-items: center;
   padding: 10px;
-  border-radius: 10px;
-  outline: 2px solid $background-color;
+
+  @media (max-width: $tablet-breakpoint) {
+    flex-direction: column;
+  }
 
   &__image {
     height: 400px;
@@ -15,10 +19,15 @@
 
   &__info {
     padding: 10px 20px;
-    font-size: 20px;
-    font-family: auto;
-    text-align: justify;
     background-color: $background-color;
     border-radius: 10px;
+
+    @include p-main-bg;
+  }
+
+  &__textCenter {
+    display: flex;
+    justify-content: center;
+    text-decoration: underline;
   }
 }

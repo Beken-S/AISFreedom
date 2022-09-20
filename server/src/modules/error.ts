@@ -16,9 +16,21 @@ class BadRequestError extends BaseError {
   }
 }
 
+class UnauthorizedError extends BaseError {
+  constructor(message = 'Пользователь не авторизован.') {
+    super(401, message);
+  }
+}
+
 class NotFoundError extends BaseError {
   constructor(message?: string) {
     super(404, message);
+  }
+}
+
+class ForbiddenError extends BaseError {
+  constructor(message = 'Отказано в доступе.') {
+    super(403, message);
   }
 }
 
@@ -32,4 +44,11 @@ class UnprocessableEntityError extends BaseError {
   }
 }
 
-export { BaseError, BadRequestError, NotFoundError, UnprocessableEntityError };
+export {
+  BaseError,
+  BadRequestError,
+  NotFoundError,
+  UnprocessableEntityError,
+  UnauthorizedError,
+  ForbiddenError,
+};

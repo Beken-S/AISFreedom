@@ -4,6 +4,7 @@ import path = require('path');
 import { Sequelize } from 'sequelize-typescript';
 
 import {
+  Article,
   License,
   OperationSystem,
   ProgramType,
@@ -11,7 +12,10 @@ import {
   Source,
   Department,
   AddProgramsRequest,
+  NormativeDocument,
+  Role,
 } from '../models';
+import { usersService } from '../services';
 import { isDevMode } from '../utils';
 
 const DATA_PATH = path.resolve(__dirname, '../../db/data');
@@ -28,6 +32,9 @@ async function initDatabase(db: Sequelize): Promise<void> {
       SOURCES,
       DEPARTMENTS,
       REQUESTS,
+      NORMATIVE_DOCUMENTS,
+      ARTICLES,
+      ROLES,
     ] = await Promise.all([
       fs
         .readFile(DATA_PATH + '/licenses.json', 'utf-8')
@@ -50,6 +57,15 @@ async function initDatabase(db: Sequelize): Promise<void> {
       fs
         .readFile(DATA_PATH + '/requests.json', 'utf-8')
         .then((res) => JSON.parse(res)),
+      fs
+        .readFile(DATA_PATH + '/normative_documents.json', 'utf-8')
+        .then((res) => JSON.parse(res)),
+      fs
+        .readFile(DATA_PATH + '/articles.json', 'utf-8')
+        .then((res) => JSON.parse(res)),
+      fs
+        .readFile(DATA_PATH + '/roles.json', 'utf-8')
+        .then((res) => JSON.parse(res)),
     ]);
 
     await License.bulkCreate(LICENSES);
@@ -59,6 +75,16 @@ async function initDatabase(db: Sequelize): Promise<void> {
     await Source.bulkCreate(SOURCES);
     await Department.bulkCreate(DEPARTMENTS);
     await AddProgramsRequest.bulkCreate(REQUESTS);
+    await NormativeDocument.bulkCreate(NORMATIVE_DOCUMENTS);
+    await Article.bulkCreate(ARTICLES);
+    await Role.bulkCreate(ROLES);
+    await usersService.create({
+      role: 'admin',
+      name: 'admin',
+      login: 'admin',
+      email: 'admin@admin.com',
+      password: 'password',
+    });
   }
 }
 

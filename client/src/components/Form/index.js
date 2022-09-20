@@ -7,7 +7,7 @@ import '../../App.scss';
 
 import FilterSettingsContainer from '@containers/FilterSettingsContainer/FilterSettingsContainer';
 
-const Form = ({ search, filter }) => {
+const Form = ({ filter }) => {
   const [isCheckedPO, setCheckedPO] = useState(true);
   const [isCheckedAnalog, setCheckedAnalog] = useState(false);
   const [isFilter, setFilter] = useState(false);
@@ -17,10 +17,6 @@ const Form = ({ search, filter }) => {
   useEffect(() => {
     ref.current.focus();
   });
-
-  const onSearch = () => {
-    search(ref.current.value);
-  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -43,7 +39,7 @@ const Form = ({ search, filter }) => {
     <form id="formDataf" onSubmit={handleSubmit} className={cn(style.form)}>
       <div className={cn('wrap')}>
         <div className={style.form__Filter}>
-          <div className="input-group">
+          <div className={cn(style.form__input, 'input-group')}>
             <input
               ref={ref}
               type="text"
@@ -57,9 +53,9 @@ const Form = ({ search, filter }) => {
             >
               <span className="material-symbols-outlined"> tune </span>
             </span>
-            <span className="input-group-text" onClick={onSearch}>
+            <button className="input-group-text">
               <span className="material-symbols-outlined"> search </span>
-            </span>
+            </button>
           </div>
           {isFilter && (
             <FilterSettingsContainer

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Заявки на СПО</title>
+    <link rel="stylesheet" href="style/style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://kit.fontawesome.com/5f205eccf1.js" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div class="content-wrapper">
+      <div class="top-content">
+        <header class="header">
+          <div class="wrap header-wrap">
+            <h2 class="moderator-name">
+              <span>Фамилия И.О.</span>
+             <a href="signIn.html" class="material-symbols-outlined"> logout </span>
+            </h2>
+            <nav class="header-menu-moderator">
+            <a href="#" class="header-service"> ПОТРЕБНОСТИ </a>
+            <span> / </span>
+            <a href="#" class="header-service"> СТАТИСТИКА</a>
+            </nav>
+          </div>
+        </header>
+
+        <section class="services">
+          <div class="wrap services-wrap">
+            <h1>ЗАЯВКИ НА СПО</h1>
+            <select class="form-select">
+              <option selected>Выбирите статус заявки</option>
+              <option value="1">Актуальные</option>
+              <option value="2">Не выполенные</option>
+              <option value="3">Исполненные</option>
+              <option value="4">Отмененные</option>
+              <option value="5">Все</option>
+            </select>
+
+            <div class="period-choices">
+              <span class="b-history__period-type-groupby">Группировать по:</span>
+              <div class="form_radio_btn">
+                <input id="radio-1" type="radio" name="radio" value="1" checked />
+                <label for="radio-1">Неделя</label>
+              </div>
+
+              <div class="form_radio_btn">
+                <input id="radio-2" type="radio" name="radio" value="2" />
+                <label for="radio-2"> Месяц</label>
+              </div>
+
+              <div class="form_radio_btn">
+                <input id="radio-3" type="radio" name="radio" value="3" />
+                <label for="radio-3"> Год </label>
+              </div>
+
+              <div class="form_radio_btn">
+                <input id="radio-4" type="radio" name="radio" value="4" />
+                <label for="radio-4"> Всё время </label>
+              </div>
+              <input
+                type="text"
+                id="dates"
+                name="dates"
+                autocomplete="off"
+                class="data-range"
+                value="2.05.22 – 20.05.22"
+                data-start-date="2000-11-10"
+              />
+            </div>
+
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>
+                    <span class="material-symbols-outlined"> delete </span>
+                  </th>
+                  <th>Номер заявки</th>
+                  <th>Дата создания</th>
+                  <th>Срок исполнения</th>
+                  <th>Наименование программы</th>
+                  <th>Объект информатизации</th>
+                  <th>ФИО пользователя</th>
+                  <th>Должность</th>
+                  <th>Контактные данные</th>
+                  <th>Основание</th>
+                  <th>Статус</th>
+                  <th>Исполнена</th>
+                  <th>Комментарий</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th>
+                    <span class="material-symbols-outlined"> check_box_outline_blank </span>
+                  </th>
+                  <td>1</td>
+                  <td>10.05.2022</td>
+                  <td>20.05.2022</td>
+                  <td>Maxima</td>
+                  <td>Кафедра 206 (математики)</td>
+                  <td>Сидоркин А.И.</td>
+                  <td>Начальник кафедры</td>
+                  <td>25-57, name@mail.ru</td>
+                  <td>Рабочие программы учебных дисцилин</td>
+                  <td>Актуальна</td>
+                  <td>-</td>
+                  <td>-</td>
+                </tr>
+                <tr>
+                  <th>
+                    <span class="material-symbols-outlined"> check_box_outline_blank </span>
+                  </th>
+                  <td>2</td>
+                  <td>12.05.2022</td>
+                  <td>-</td>
+                  <td>StarDisk, LibreOffice</td>
+                  <td>Кафедра 77 (иностанных языков)</td>
+                  <td>Сидоров Е.И.</td>
+                  <td>Преподаватель</td>
+                  <td>25-77, name@mail.ru</td>
+                  <td>На всякий случай</td>
+                  <td>Отменена</td>
+                  <td>17.05.2022</td>
+                  <td>Отсутсвует основание</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="service-form-submit">
+              <input type="submit" class="form-submit" value="Сбрость" />
+              <input type="submit" class="form-submit" value="Закрыть" />
+              <input type="submit" class="form-submit" value="Отменить" />
+              <input type="submit" class="form-submit" value="Скачать отчёт" />
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <footer class="page-footer">
+        <div class="wrap footer-wrap">
+          <span>© 2022. АИС &laquo;Свобода&raquo;</span>
+          <span class="team"> Created by: Geekbrains students team.</span>
+          <nav class="footer-nav">
+            <a href="#" class="social-network" target="_blank"><i class="fab fa-vk"></i></a>
+            <a href="#" class="social-network" target="_blank"><i class="fab fa-odnoklassniki"></i></a>
+            <a href="#" class="social-network" target="_blank"><i class="fab fa-twitter"></i></a>
+          </nav>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

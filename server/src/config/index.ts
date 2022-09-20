@@ -24,6 +24,8 @@ enum Envs {
   DB_USER = 'DB_USER',
   DB_PASSWORD = 'DB_PASSWORD',
   DB_DIALECT = 'DB_DIALECT',
+  JWT_ACCESS_SECRET = 'JWT_ACCESS_SECRET',
+  JWT_REFRESH_SECRET = 'JWT_REFRESH_SECRET',
 }
 
 type ErrorsFileName = 'errors.log' | string;
@@ -33,6 +35,11 @@ interface IServerConfig {
   mode: Mods;
   port: number;
   logs: ILogsConfig;
+  temp: string;
+  jwtSecret: {
+    access: string;
+    refresh: string;
+  };
 }
 
 interface ILogsConfig {
@@ -50,7 +57,6 @@ interface IDataBaseConfig {
   password: string;
   options: SequelizeOptions;
   filesPath: {
-    temp: string;
     images: string;
     logos: string;
   };
@@ -62,7 +68,7 @@ interface IConfig {
 }
 
 dotenv.config({ path: path.resolve(__dirname, '.env') });
-dotenv.config({ path: path.resolve(__dirname, '../../secrets/db.env') });
+dotenv.config({ path: path.resolve(__dirname, '../../secrets/.env') });
 
 const serverLogsConfig: ILogsConfig = {
   write: process.env[Envs.WRITE_LOG] === 'true' ? true : false,
@@ -77,6 +83,11 @@ const serverConfig: IServerConfig = {
   mode: isDevMode() ? Mods.Dev : Mods.Prod,
   port: Number(process.env[Envs.PORT]) || 3001,
   logs: serverLogsConfig,
+  temp: path.resolve(__dirname, '../../temp'),
+  jwtSecret: {
+    access: process.env[Envs.JWT_ACCESS_SECRET] || 'access',
+    refresh: process.env[Envs.JWT_REFRESH_SECRET] || 'refresh',
+  },
 };
 
 const prettifySettings = {
@@ -125,7 +136,6 @@ const databaseConfig: IDataBaseConfig = {
     models: [path.resolve(__dirname, '../models') + '/*.model.js'],
   },
   filesPath: {
-    temp: path.resolve(__dirname, '../../db/temp'),
     images: path.resolve(__dirname, '../../db/images'),
     logos: path.resolve(__dirname, '../../db/logos'),
   },

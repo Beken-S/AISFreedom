@@ -2,6 +2,7 @@ import { Route, Routes } from 'react-router-dom';
 
 import Glossary from './components/Glossary';
 import ProgramContainer from './containers/ProgramContainer';
+import ModeratorPage from './pages/ModeratorPage';
 
 import Layout from '@components/Layout';
 import AboutProjectPage from '@pages/AboutProjectPage';
@@ -35,6 +36,7 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/glossary" element={<Glossary />} />
         <Route path="/registration" element={<RegistrationPage />} />
+        <Route path="/moderator" element={<ModeratorPage />} />
       </Routes>
     </div>
   );

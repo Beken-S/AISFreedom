@@ -7,8 +7,13 @@
   &__control {
     height: 50px;
   }
+
   &__Filter {
     position: relative;
+  }
+
+  &__input {
+    margin-bottom: 5px;
   }
 
   &__field {
@@ -54,25 +59,5 @@
       background-color: $color-hover;
       transition-duration: 0.5s;
     }
-  }
-}
-
-@media (max-width: $mobile-breakpoint) {
-  .form {
-    &__Filter {
-      @include flex-direction-column;
-    }
-
-    &__field {
-      width: 300px;
-    }
-
-    &__settings {
-      right: 10px;
-    }
-  }
-
-  .buttons {
-    width: 100%;
   }
 }

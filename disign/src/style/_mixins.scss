@@ -46,10 +46,12 @@
 // заголовок h2
 @mixin h2 {
   color: $font-color;
-  font-size: 24px;
+  font-weight: bold;
+  font-size: 19px;
   font-family: "services", "Georgia", serif;
 }
 
+// параграф для карточек
 @mixin p-item {
   font-size: 14px;
   font-family: "Rubik", "Helvetica", sans-serif;

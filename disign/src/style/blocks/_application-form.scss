@@ -1,0 +1,52 @@
+.title-report {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.container {
+  max-width: 1000px;
+  margin-right: auto;
+  margin-bottom: 50px;
+  margin-left: auto;
+  padding-right: 10px;
+  padding-left: 10px;
+  font-family: "lato", sans-serif;
+}
+
+.type-applications {
+  margin: 0;
+  font-size: 20px;
+  text-align: center;
+}
+
+.data-applications {
+  font-style: italic;
+  text-align: center;
+}
+
+.status-applications {
+  margin-left: 5px;
+}
+
+.table {
+  text-align: center;
+}
+
+.text-alignment {
+  vertical-align: middle;
+}
+
+.applications-total {
+  font-weight: bold;
+  font-size: 18px;
+  text-align: end;
+}
+
+.applications-total-all {
+  padding-top: 20px;
+  font-weight: bold;
+  font-size: 20px;
+  text-align: end;
+}

@@ -8,6 +8,7 @@ import {
   PaginateOutput,
   PaginationParams,
   ProgramSearchOptions,
+  Grade,
 } from '../types';
 import { getPageCount } from '../utils';
 
@@ -15,7 +16,7 @@ async function create(attributes: ProgramCreationAttributes): Promise<Program> {
   if (attributes.images != null) {
     await imagesService.move(
       attributes.images,
-      config.database.filesPath.temp,
+      config.server.temp,
       config.database.filesPath.images
     );
   }
@@ -23,7 +24,7 @@ async function create(attributes: ProgramCreationAttributes): Promise<Program> {
   if (attributes.logo != null) {
     await imagesService.move(
       attributes.logo,
-      config.database.filesPath.temp,
+      config.server.temp,
       config.database.filesPath.logos
     );
   }
@@ -111,7 +112,7 @@ async function update(
   if (createLogo) {
     await imagesService.move(
       currentLogo,
-      config.database.filesPath.temp,
+      config.server.temp,
       config.database.filesPath.logos
     );
   }
@@ -121,7 +122,7 @@ async function update(
       imagesService.destroy(prevLogo, config.database.filesPath.logos),
       imagesService.move(
         currentLogo,
-        config.database.filesPath.temp,
+        config.server.temp,
         config.database.filesPath.logos
       ),
     ]);
@@ -138,7 +139,7 @@ async function update(
   if (createImages) {
     await imagesService.move(
       currentImages,
-      config.database.filesPath.temp,
+      config.server.temp,
       config.database.filesPath.images
     );
   }
@@ -154,7 +155,7 @@ async function update(
         if (!prevImages.includes(image)) {
           imagesService.move(
             image,
-            config.database.filesPath.temp,
+            config.server.temp,
             config.database.filesPath.images
           );
         }
@@ -169,6 +170,14 @@ async function update(
   program.set(attributes);
 
   return program.save();
+}
+
+async function rate(id: number, { grade }: Grade): Promise<Program> {
+  const program = await getById(id);
+
+  await program.increment({ rating: grade, number_of_ratings: 1 });
+
+  return program.reload();
 }
 
 async function destroy(id: number): Promise<void> {
@@ -187,4 +196,4 @@ async function destroy(id: number): Promise<void> {
   return program.destroy();
 }
 
-export { create, getAll, getById, search, update, destroy };
+export { create, getAll, getById, search, update, destroy, rate };

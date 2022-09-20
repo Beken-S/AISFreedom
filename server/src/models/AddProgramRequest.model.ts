@@ -24,7 +24,7 @@ type AddProgramsRequestAttributes = {
   user_email: string;
   user_phone?: string | null;
   is_rejected: boolean;
-  rejection_reason?: string | null;
+  comment?: string | null;
   is_completed: boolean;
   creation_date: Date;
   consider_before_date: Date;
@@ -46,6 +46,37 @@ type AddProgramsRequestCreationAttributes = Optional<
   orderById: {
     order: ['id'],
   },
+  orderByCreationDate: {
+    order: ['creation_date'],
+  },
+  orderByStatus: {
+    order: [
+      Sequelize.fn(
+        'if',
+        Sequelize.where(
+          Sequelize.fn(
+            'datediff',
+            Sequelize.col('consider_before_date'),
+            new Date()
+          ),
+          Op.gt,
+          0
+        ),
+        1,
+        Sequelize.fn(
+          'if',
+          Sequelize.where(Sequelize.col('is_completed'), Op.eq, true),
+          2,
+          Sequelize.fn(
+            'if',
+            Sequelize.where(Sequelize.col('is_rejected'), Op.eq, true),
+            3,
+            4
+          )
+        )
+      ),
+    ],
+  },
   filterByStatus: (status: string) => {
     switch (status) {
       case 'current':
@@ -58,9 +89,8 @@ type AddProgramsRequestCreationAttributes = Optional<
                   Sequelize.col('consider_before_date'),
                   new Date()
                 ),
-                {
-                  [Op.gt]: 0,
-                }
+                Op.gt,
+                0
               ),
               {
                 is_completed: false,
@@ -81,9 +111,8 @@ type AddProgramsRequestCreationAttributes = Optional<
                   Sequelize.col('consider_before_date'),
                   new Date()
                 ),
-                {
-                  [Op.lte]: 0,
-                }
+                Op.lte,
+                0
               ),
               {
                 is_completed: false,
@@ -236,7 +265,7 @@ class AddProgramsRequest extends Model<
       notEmpty: true,
     },
   })
-  rejection_reason?: string | null;
+  comment?: string | null;
 
   @Column({
     type: DataType.BOOLEAN,

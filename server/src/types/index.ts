@@ -1,4 +1,7 @@
+import { Request } from 'express';
 import { UploadedFile } from 'express-fileupload';
+
+import { UserData } from '../models';
 
 type PaginateOutput<T> = {
   items: T[];
@@ -91,6 +94,19 @@ type AddProgramRequestFilterParams = {
   processed_to: Date;
 } & PaginationParams;
 
+type Grade = {
+  grade: number;
+};
+
+type Tokens = {
+  accessToken: string;
+  refreshToken: string;
+};
+
+interface AuthRequest extends Request {
+  user?: UserData;
+}
+
 export {
   PaginateOutput,
   PaginationOptions,
@@ -105,4 +121,7 @@ export {
   AddProgramRequestFilterParams,
   AddProgramRequestStatus,
   isAddProgramRequestStatus,
+  Grade,
+  Tokens,
+  AuthRequest,
 };

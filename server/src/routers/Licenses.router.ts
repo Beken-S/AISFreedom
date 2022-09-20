@@ -1,12 +1,15 @@
 import express = require('express');
 
 import { licensesController } from '../controllers';
+import { auth, admin } from '../middlewares';
 import { validateLicense } from '../validators';
 
 const licensesRouter = express.Router();
 
 licensesRouter.post(
   '/licenses',
+  auth,
+  admin,
   ...validateLicense.createRequest(),
   licensesController.create
 );
@@ -20,13 +23,17 @@ licensesRouter.get(
   ...validateLicense.getByIdRequest(),
   licensesController.getById
 );
-licensesRouter.put(
+licensesRouter.patch(
   '/licenses/:id',
+  auth,
+  admin,
   ...validateLicense.updateRequest(),
   licensesController.update
 );
 licensesRouter.delete(
   '/licenses/:id',
+  auth,
+  admin,
   ...validateLicense.destroyRequest(),
   licensesController.destroy
 );

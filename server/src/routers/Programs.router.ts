@@ -3,6 +3,7 @@ import path = require('path');
 import express = require('express');
 
 import { programsController } from '../controllers';
+import { auth, admin } from '../middlewares';
 import { validateProgram } from '../validators';
 
 const programsRouter = express.Router();
@@ -17,6 +18,8 @@ programsRouter.use(
 );
 programsRouter.post(
   '/programs',
+  auth,
+  admin,
   ...validateProgram.createRequest(),
   programsController.create
 );
@@ -35,18 +38,29 @@ programsRouter.get(
   ...validateProgram.getByIdRequest(),
   programsController.getById
 );
-programsRouter.put(
+programsRouter.patch(
   '/programs/:id',
+  auth,
+  admin,
   ...validateProgram.updateRequest(),
   programsController.update
 );
+programsRouter.patch(
+  '/programs/:id/rate',
+  ...validateProgram.rateRequest(),
+  programsController.rate
+);
 programsRouter.delete(
   '/programs/:id',
+  auth,
+  admin,
   ...validateProgram.destroyRequest(),
   programsController.destroy
 );
 programsRouter.post(
   '/programs/images',
+  auth,
+  admin,
   ...validateProgram.saveImagesRequest(),
   programsController.saveImages
 );

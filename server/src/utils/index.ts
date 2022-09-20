@@ -6,6 +6,8 @@ import getImageExtension from './getImageExtension';
 import getOptionalSchema from './getOptionalSchema';
 import getPageCount from './getPageCount';
 import getPaginationOptions from './getPaginationOptions';
+import getReport from './getReport';
+import getUserData from './getUserData';
 import imageLoader from './imageLoader';
 import isDevMode from './isDevMode';
 import isEmpty from './isEmpty';
@@ -28,4 +30,6 @@ export {
   isNumberString,
   getOptionalSchema,
   isKey,
+  getReport,
+  getUserData,
 };

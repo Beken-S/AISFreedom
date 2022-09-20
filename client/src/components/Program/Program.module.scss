@@ -72,5 +72,20 @@
 }
 
 .manual {
-  padding-left: 10px;
+  margin: 15px 0;
+  padding: 10px;
+  color: $font-color;
+  font-size: 14px;
+  font-family: "Manrope", "Helvetica", sans-serif;
+  text-align: center;
+  text-decoration: none;
+  background-color: #ffffff;
+  border: 1px solid #6c757d;
+  border-radius: 10px;
+
+  &:hover {
+    color: #ffffff;
+    background-color: #6c757d;
+    transition-duration: 0.4s;
+  }
 }

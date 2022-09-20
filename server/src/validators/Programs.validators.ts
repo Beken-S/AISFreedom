@@ -10,6 +10,7 @@ import {
   ProgramSearchOptions,
   isProgramSearchInOption,
   PaginationParams,
+  Grade,
 } from '../types';
 import { getOptionalSchema } from '../utils';
 
@@ -52,6 +53,7 @@ const SEARCH_SCHEMA: Schema = {
     exists: {
       errorMessage: 'Отсутствует обязательный параметр.',
     },
+    toLowerCase: true,
   },
   _in: {
     customSanitizer: {
@@ -264,6 +266,21 @@ const CREATION_SCHEMA: Schema = {
   },
 };
 
+type RateAttributes = keyof Grade;
+const RATE_ATTRIBUTES: RateAttributes[] = ['grade'];
+const RATE_SCHEMA: Schema = {
+  grade: {
+    exists: {
+      errorMessage: 'Отсутствует обязательное поле.',
+      bail: true,
+    },
+    isInt: {
+      options: { min: 1, max: 5 },
+      errorMessage: 'Должно быть целым числом от 1 до 5.',
+    },
+  },
+};
+
 function createRequest() {
   return [
     checkValidKey(CREATION_ATTRIBUTES, 'body'),
@@ -305,6 +322,14 @@ function updateRequest() {
   ];
 }
 
+function rateRequest() {
+  return [
+    validateIdParam(),
+    checkValidKey(RATE_ATTRIBUTES, 'body'),
+    checkSchema(RATE_SCHEMA, ['body']),
+  ];
+}
+
 function destroyRequest() {
   return [validateIdParam()];
 }
@@ -320,5 +345,6 @@ export {
   searchRequest,
   updateRequest,
   destroyRequest,
+  rateRequest,
   saveImagesRequest,
 };

@@ -3,12 +3,12 @@ import {
   SET_PROGRAM,
   SET_ITEM,
   IS_LOADING,
-  SEARCH_PROGRAM,
-  SET_SEARCH_TEXT,
   SET_ERROR,
   FILTER_PROGRAM,
   SET_CURRENT_PAGE,
   SET_FILTER_DATA,
+  SET_TYPES_PROGRAMS,
+  SET_OS_PROGRAMS,
 } from '../actions/Catalog-actions';
 
 const initialState = {
@@ -16,16 +16,17 @@ const initialState = {
   programs: [],
   item: {},
   isLoading: false,
-  isSearch: false,
   isFilter: false,
-  searchText: '',
   filterData: {},
   itemsOnPage: 4,
   error: '',
   currentPage: 1,
+  portionPage: 5,
   license: null,
   classProgram: null,
   typeOs: null,
+  typesPrograms: null,
+  allOs: null,
 };
 const catalogReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -33,9 +34,8 @@ const catalogReducer = (state = initialState, action) => {
       return {
         ...state,
         filtered: [],
-        isSearch: false,
         isFilter: false,
-        searchText: '',
+        filterData: {},
         error: '',
         currentPage: 1,
         typeOs: null,
@@ -57,14 +57,6 @@ const catalogReducer = (state = initialState, action) => {
         classProgram: action.classProgram,
         typeOs: action.typeOs,
       };
-    case SEARCH_PROGRAM:
-      return {
-        ...state,
-        filtered: action.programs,
-        totalCountPages: action.totalCountPages,
-        isSearch: true,
-        error: '',
-      };
     case FILTER_PROGRAM:
       return {
         ...state,
@@ -78,11 +70,6 @@ const catalogReducer = (state = initialState, action) => {
         ...state,
         isLoading: action.isLoading,
       };
-    case SET_SEARCH_TEXT:
-      return {
-        ...state,
-        searchText: action.text,
-      };
     case SET_ERROR: {
       return { ...state, error: action.error };
     }
@@ -93,6 +80,16 @@ const catalogReducer = (state = initialState, action) => {
       return {
         ...state,
         currentPage: action.currentPage,
+      };
+    case SET_TYPES_PROGRAMS:
+      return {
+        ...state,
+        typesPrograms: action.typesPrograms,
+      };
+    case SET_OS_PROGRAMS:
+      return {
+        ...state,
+        allOs: action.os,
       };
     default:
       return state;

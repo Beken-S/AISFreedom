@@ -6,14 +6,16 @@ const logsDir = path.resolve(__dirname, '../logs');
 const secretsDir = path.resolve(__dirname, '../secrets');
 const dbImagesDir = path.resolve(__dirname, '../db/images');
 const dbLogosDir = path.resolve(__dirname, '../db/logos');
-const dbTempDir = path.resolve(__dirname, '../db/temp');
+const dbFilesDir = path.resolve(__dirname, '../db/files');
+const tempDir = path.resolve(__dirname, '../temp');
 
 const isConfigDir = fs.existsSync(configDir);
 const isLogsDir = fs.existsSync(logsDir);
 const isSecretsDir = fs.existsSync(secretsDir);
 const isDbImagesDir = fs.existsSync(dbImagesDir);
 const isDbLogosDir = fs.existsSync(dbLogosDir);
-const isDbTempDir = fs.existsSync(dbTempDir);
+const isDbFilesDir = fs.existsSync(dbFilesDir);
+const isTempDir = fs.existsSync(tempDir);
 
 if (!isConfigDir) {
   fs.mkdirSync(configDir, { recursive: true });
@@ -35,8 +37,12 @@ if (!isDbLogosDir) {
   fs.mkdirSync(dbLogosDir, { recursive: true });
 }
 
-if (!isDbTempDir) {
-  fs.mkdirSync(dbTempDir, { recursive: true });
+if (!isTempDir) {
+  fs.mkdirSync(tempDir, { recursive: true });
+}
+
+if (!isDbFilesDir) {
+  fs.mkdirSync(dbFilesDir, { recursive: true });
 }
 
 fs.copyFileSync(
