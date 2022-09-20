@@ -3,6 +3,8 @@ import parse from 'html-react-parser';
 import React from 'react';
 import '../../App.scss';
 
+import StarReating from '../../components/StarReating';
+
 import style from './Program.module.scss';
 
 export const Program = ({ item, license, classProgram, typeOs }) => {
@@ -23,7 +25,8 @@ export const Program = ({ item, license, classProgram, typeOs }) => {
                   alt="logo"
                 />
                 <h1>{item.name}</h1>
-                <span>{item.rating}</span>
+                <StarReating reiting={item.rating} />
+                {/* <span>{item.rating}</span> */}
               </div>
               <ul className={style.description__header}>
                 <li className={style.article}>

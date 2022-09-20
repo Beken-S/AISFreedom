@@ -113,7 +113,7 @@
 .rating {
 	display: flex;
 	align-items: flex-end;
-	font-size: 40px;
+	font-size: 30px;
 	line-height: 0.75;
 	transition: opacity 0.3s ease 0s;
 }
@@ -167,4 +167,5 @@
 	font-size: 50%;
 	line-height: 1;
 	padding: 0px 0px 0px 10px;
+  opacity: 1;
 }

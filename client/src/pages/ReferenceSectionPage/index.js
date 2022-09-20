@@ -9,7 +9,6 @@ import {
   getNormative,
   getArticles,
 } from '../../store/thunks/Reference-thunks';
-import StarReating from '../../components/StarReating';
 
 import styles from './ReferenceSectionPage.module.scss';
 
@@ -238,7 +237,6 @@ const ReferenceSectionPage = () => {
     <>
       <div className={styles.ReferenceSectionPage}>
         <h2>СПРАВОЧНЫЙ РАЗДЕЛ</h2>
-        <StarReating />
         <div className={styles.reference__content}>
           <div className={styles.reference__table}>
             <div className={styles.tables__switch}>

@@ -1,10 +1,10 @@
 import cn from 'classnames';
 import React, { useState } from 'react';
-import { FaStar } from 'react-icons/fa';
 
 import './StarReating.scss';
 
-const StarReating = () => {
+const StarReating = ({ reiting }) => {
+  console.log(reiting)
   const ratings = document.querySelectorAll('.rating');
   if (ratings.length > 0) {
     initRatings();
@@ -109,50 +109,6 @@ const StarReating = () => {
   }
 
   return (
-    // <div className={style.simple__reating}>
-    //   <div className={style.simple__reating__items}>
-    //     <input
-    //       id="simple__5"
-    //       type="radio"
-    //       className={style.simple__reating__item}
-    //       name="simple"
-    //       value="5"
-    //     ></input>
-    //     <label for="simple__5" className={style.simple__reating__label}></label>
-    //     <input
-    //       id="simple__4"
-    //       type="radio"
-    //       className={style.simple__reating__item}
-    //       name="simple"
-    //       value="4"
-    //     ></input>
-    //     <label for="simple__4" className={style.simple__reating__label}></label>
-    //     <input
-    //       id="simple__3"
-    //       type="radio"
-    //       className={style.simple__reating__item}
-    //       name="simple"
-    //       value="3"
-    //     ></input>
-    //     <label for="simple__3" className={style.simple__reating__label}></label>
-    //     <input
-    //       id="simple__2"
-    //       type="radio"
-    //       className={style.simple__reating__item}
-    //       name="simple"
-    //       value="2"
-    //     ></input>
-    //     <label for="simple__2" className={style.simple__reating__label}></label>
-    //     <input
-    //       id="simple__1"
-    //       type="radio"
-    //       className={style.simple__reating__item}
-    //       name="simple"
-    //       value="1"
-    //     ></input>
-    //     <label for="simple__1" className={style.simple__reating__label}></label>
-    //   </div>
-    // </div>
     <div class="form__item">
       <div class="form">
         <div data-ajax="true" class="rating rating_set">
@@ -191,7 +147,7 @@ const StarReating = () => {
               />
             </div>
           </div>
-          <div class="rating__value">1.6</div>
+          <div class="rating__value">{reiting}</div>
         </div>
       </div>
     </div>
