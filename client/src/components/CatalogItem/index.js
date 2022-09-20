@@ -24,23 +24,23 @@ export const CatalogItem = ({ program, typeOs }) => {
 
     const os = [...set];
 
-  return (
-    <>
-      <NavLink to={`${program.id}`} className={style.programLink}>
-        <li className={style.programItem}>
-          <img
-            src={`http://localhost:3000/api/programs/logos/${program.logo}`}
-            alt="logo_program"
-            className={style.programImg}
-          />
-          <div className={style.programInfo}>
-            <h2 className={style.programName}>{program.name}</h2>
-            <p className={style.programOs}>{os.join(', ')}</p>
-            <StarReating reiting={program.rating} />
-            {/* <p className={style.programRaiting}>{program.rating}</p> */}
-          </div>
-        </li>
-      </NavLink>
-    </>
-  );
+    return (
+      <>
+        <NavLink to={`${program.id}`} className={style.programLink}>
+          <li className={style.programItem}>
+            <img
+              src={`http://localhost:3000/api/programs/logos/${program.logo}`}
+              alt="logo_program"
+              className={style.programImg}
+            />
+            <div className={style.programInfo}>
+              <h2 className={style.programName}>{program.name}</h2>
+              <p className={style.programOs}>{os.join(', ')}</p>
+              <StarReating reiting={program.rating} />
+            </div>
+          </li>
+        </NavLink>
+      </>
+    );
+  }
 };
