@@ -25,7 +25,7 @@ export const Program = ({ item, license, classProgram, typeOs }) => {
                   alt="logo"
                 />
                 <h1>{item.name}</h1>
-                <StarReating reiting={item.rating} />
+                <StarReating reiting={item.rating} id={item.id} />
                 {/* <span>{item.rating}</span> */}
               </div>
               <ul className={style.description__header}>

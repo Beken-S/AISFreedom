@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 
 import './StarReating.scss';
 
-const StarReating = ({ reiting }) => {
+const StarReating = ({ reiting, id }) => {
   console.log(reiting)
   const ratings = document.querySelectorAll('.rating');
   if (ratings.length > 0) {
@@ -74,17 +74,17 @@ const StarReating = ({ reiting }) => {
     async function setRatingValue(value, rating) {
       if (!rating.classList.contains('rating_sending')) {
         rating.classList.add('rating_sending');
-
+console.log('id', id)
         // Отправика данных (value) на сервер
-        let response = await fetch('./rating.json', {
-          method: 'GET',
+        let response = await fetch(`/api/programs/${id}/rate`, {
+          method: 'PATCH',
 
-          //body: JSON.stringify({
-          //	userRating: value
-          //}),
-          //headers: {
-          //	'content-type': 'application/json'
-          //}
+          body: JSON.stringify({
+          	userRating: value
+          }),
+          // headers: {
+          // 	'content-type': 'application/json'
+          // }
         });
         if (response.ok) {
           const result = await response.json();
