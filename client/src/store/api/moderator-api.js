@@ -1,4 +1,5 @@
 export const ModeratorAPI = {
+  // получение заявок
   async getApplicationsAPI(page, itemsOnPage) {
     const response = await fetch(
       `/api/requests/?page=${page}&items_on_page=${itemsOnPage}`
@@ -6,18 +7,24 @@ export const ModeratorAPI = {
     const result = await response.json();
     return result;
   },
-  async filter() {
+  async filter(
+    status,
+    created_from,
+    created_to,
+    processed_from,
+    processed_to,
+    page,
+    itemsOnPage
+  ) {
     const response = await fetch(
-      `/api/requests/filter/?status=current&created_from=2021-03-11&created_to=2021-10-22&processed_from=2021-01-01&processed_to=2021-11-08&page=1&items_on_page=1`
+      `/api/requests/filter/?status=${status}&page=${page}&items_on_page=${itemsOnPage}`
     );
     const result = await response.json();
     return result;
   },
   // Получение отчета
-  async report() {
-    const response = await fetch(
-      `/api/requests/report/?status=current&created_from=2021-03-11&created_to=2021-10-22`
-    );
+  async report(status) {
+    const response = await fetch(`/api/requests/report/?status=${status}`);
     const result = await response.json();
     return result;
   },
