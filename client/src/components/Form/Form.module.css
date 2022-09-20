@@ -1,0 +1,124 @@
+.form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.form__control {
+  height: 50px;
+}
+
+.form__Filter {
+  position: relative;
+}
+
+.form__field {
+  width: 500px;
+  height: 30px;
+  padding: 12px 30px 12px 16px;
+  font-size: 16px;
+  background-color: #dee7f2;
+  border: none;
+  border-radius: 10px;
+}
+
+.form__settings {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  fill: #56baed;
+}
+
+.form__settings:hover {
+  -webkit-transition-duration: 0.5s;
+          transition-duration: 0.5s;
+  fill: #39ace7;
+}
+
+.form__checkbox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 10px;
+}
+
+.buttons {
+  width: 530px;
+  padding: 16px 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.buttons__submit {
+  display: inline-block;
+  margin: 10px 20px 15px;
+  padding: 15px 80px;
+  color: #ffffff;
+  font-size: 13px;
+  text-align: center;
+  text-transform: uppercase;
+  text-decoration: none;
+  background-color: #56baed;
+  border: none;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 10px 30px 0 #5fbae966;
+          box-shadow: 0 10px 30px 0 #5fbae966;
+}
+
+.buttons__submit:hover {
+  background-color: #39ace7;
+}
+
+.buttons__submit:active {
+  -webkit-transform: scale(0.95);
+          transform: scale(0.95);
+}
+
+.buttons__submit:hover {
+  background-color: #39ace7;
+  -webkit-transition-duration: 0.5s;
+          transition-duration: 0.5s;
+}
+
+@media (max-width: 767px) {
+  .form__Filter {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .form__field {
+    width: 300px;
+  }
+  .form__settings {
+    right: 10px;
+  }
+  .buttons {
+    width: 100%;
+  }
+}
+/*# sourceMappingURL=Form.module.css.map */

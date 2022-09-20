@@ -59,6 +59,19 @@ export default function Input({
           {showError && <ShowError form={formError} name={id} />}
         </>
       )}
+      {mode === 'ask' && (
+        <>
+          <input
+            type={type}
+            className="form-control"
+            placeholder={placeholder}
+            onBlur={onBlur}
+            onChange={onChange}
+            id={id}
+          />
+          {showError && <ShowError form={formError} name={id} />}
+        </>
+      )}
     </>
   );
 }

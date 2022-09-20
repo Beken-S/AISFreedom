@@ -1,5 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 
+import Glossary from './components/Glossary';
 import ProgramContainer from './containers/ProgramContainer';
 import ModeratorPage from './pages/ModeratorPage';
 
@@ -23,12 +24,17 @@ function App() {
           <Route path="/catalog/:id" element={<ProgramContainer />} />
           <Route path="/reference" element={<ReferenceSectionPage />} />
           <Route
+            path="/reference/:file_name"
+            element={<ReferenceSectionPage />}
+          />
+          <Route
             path="/applications"
             element={<AcceptanceOfApplicationsPage />}
           />
           <Route path="*" element={<p>404</p>} />
         </Route>
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/glossary" element={<Glossary />} />
         <Route path="/registration" element={<RegistrationPage />} />
         <Route path="/moderator" element={<ModeratorPage />} />
       </Routes>

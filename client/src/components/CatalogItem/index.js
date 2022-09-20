@@ -1,6 +1,8 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
+import StarReating from '../../components/StarReating';
+
 import style from './CatalogItem.module.scss';
 
 export const CatalogItem = ({ program, typeOs }) => {
@@ -34,8 +36,7 @@ export const CatalogItem = ({ program, typeOs }) => {
             <div className={style.programInfo}>
               <h2 className={style.programName}>{program.name}</h2>
               <p className={style.programOs}>{os.join(', ')}</p>
-              {/* Рейтинг ниже ==> */}
-              <p className={style.programRaiting}>{program.rating}</p>
+              <StarReating reiting={program.rating} />
             </div>
           </li>
         </NavLink>
