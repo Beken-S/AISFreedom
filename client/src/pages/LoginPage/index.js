@@ -1,6 +1,7 @@
 import { useFormik } from 'formik';
-import { useState } from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 import * as Yup from 'yup';
 
 import Button from '../../UI/Button';
@@ -8,15 +9,12 @@ import Input from '../../UI/Input';
 
 import styles from './LoginPage.module.scss';
 
+import { selectAuthErrors } from '@store/selectors/Auth-selectors';
+import { fetchLogin } from '@store/thunks/Auth-thunks';
+
 const LoginPage = () => {
-  const navigate = useNavigate();
-  const [errors, setErrors] = useState([]);
-
-  // const tokenDispatch = useDispatch()
-
-  //   const setToken = async (tokenItem) =>{
-  //       tokenDispatch(token(tokenItem))
-  //   }
+  const dispatch = useDispatch();
+  const errors = useSelector(selectAuthErrors);
 
   const formik = useFormik({
     initialValues: {
@@ -25,19 +23,21 @@ const LoginPage = () => {
     },
     validationSchema: Yup.object({
       email: Yup.string().email().required('Неверный адрес электронной почты'),
-      password: Yup.string().required('Введите пароль'),
+      password: Yup.string()
+        .test('len', 'Пароль не может быть меньше 8 символов', (value) => {
+          if (value == null) return true;
+          return value.length >= 8;
+        })
+        .required('Введите пароль'),
     }),
     onSubmit: async (values) => {
-      console.log(values);
-      // const responce = await HTTP.getLogin(REQUEST_URL.login, values);
-      // if (responce.auth_token) {
-      //   await setToken(responce.auth_token);
-      //   navigate('/');
-      // } else {
-      //   setErrors([...responce.non_field_errors]);
-      // }
+      dispatch(fetchLogin(values));
     },
   });
+
+  useEffect(() => {
+    formik.setErrors(errors);
+  }, [errors]);
 
   return (
     <>
