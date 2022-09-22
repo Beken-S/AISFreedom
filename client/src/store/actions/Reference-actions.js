@@ -1,4 +1,5 @@
 export const SET_LICENSES = 'REFERENCE::SET_LICENSES';
+export const SET_DEPARTMENTS = 'REFERENCE::SET_DEPARTMENTS';
 export const SET_NORMATIVE = 'REFERENCE::SET_NORMATIVE';
 export const SET_NORMATIVE_DOC = 'REFERENCE::SET_NORMATIVE_DOC';
 export const SET_ARTICLES = 'REFERENCE::SET_ARTICLES';
@@ -12,11 +13,20 @@ export const setLicenses = (licenses) => ({
   licenses,
 });
 
-export const setNormative = (normative, totalCountPages, currentPage) => ({
+export const setDepartments = (departments) => ({
+  type: SET_DEPARTMENTS,
+  departments,
+});
+
+export const setNormative = (
+  normative
+  //  totalCountPages,
+  //  currentPage
+) => ({
   type: SET_NORMATIVE,
   normative,
-  totalCountPages,
-  currentPage,
+  // totalCountPages,
+  // currentPage,
 });
 
 export const setNormativeDoc = (normativedoc) => ({

@@ -1,13 +1,14 @@
 import {
   isLoading,
-  setItem,
   setLicenses,
   setNormative,
   setArticles,
   setNormativeDoc,
   setArticlesADoc,
+  setDepartments,
 } from '../actions/Reference-actions';
 import { ArticleAPI } from '../api/article-api';
+import { DepartmentsAPI } from '../api/departments-api';
 import { LicensesAPI } from '../api/licenses-api';
 import { NormativeAPI } from '../api/normative-api';
 
@@ -23,6 +24,13 @@ export const getArticles = () => async (dispatch) => {
   const data = await ArticleAPI.getArticle();
   dispatch(setArticles(data));
   //console.log('art', data.items);
+  dispatch(isLoading(false));
+};
+
+export const getDepartments = () => async (dispatch) => {
+  dispatch(isLoading(true));
+  const data = await DepartmentsAPI.getDepartments();
+  dispatch(setDepartments(data));
   dispatch(isLoading(false));
 };
 
