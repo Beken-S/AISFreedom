@@ -31,7 +31,7 @@ export default function Select({
         <div>
           <label htmlFor="">{text}</label>
           <select
-            class="form-select"
+            className="form-select"
             id={id}
             onChange={onChange}
             onBlur={onBlur}

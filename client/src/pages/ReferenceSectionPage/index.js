@@ -30,7 +30,7 @@ const ReferenceSectionPage = () => {
   const [fileNameNormative, setFileNameNormative] = useState('');
   const [fileNameArticle, setFileNameArticle] = useState('');
   const [linkIcon, setLinkIcon] = useState('');
-  console.log('linkIcon', linkIcon);
+  // console.log('linkIcon', linkIcon);
 
   const setColumns = (activeTab) => {
     if (activeTab === 'documents') {
