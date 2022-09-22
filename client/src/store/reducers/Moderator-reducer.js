@@ -2,6 +2,10 @@ import formatDate from '../../utils/formatDate';
 import {
   IS_LOADING,
   SET_APPLICATIONS,
+  SET_CREATED_FROM,
+  SET_CREATED_TO,
+  SET_DEPARTMENTS,
+  SET_ID,
   SET_ROW,
   SET_STATUS,
 } from '../actions/Moderator-actions';
@@ -12,6 +16,10 @@ const initialState = {
   itemsOnPage: 10,
   isLoading: false,
   status: 'all',
+  created_from: '',
+  created_to: '',
+  id: null,
+  departments: [],
 };
 const moderatorReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -21,7 +29,11 @@ const moderatorReducer = (state = initialState, action) => {
         isLoading: action.isLoading,
       };
     case SET_APPLICATIONS:
-      return { ...state, applications: action.applications };
+      return {
+        ...state,
+        applications: action.applications,
+        departments: action.departments,
+      };
     case SET_ROW:
       return {
         ...state,
@@ -36,7 +48,12 @@ const moderatorReducer = (state = initialState, action) => {
               ? item.programs_names.join(' ,')
               : '-',
 
-            'Объект информатизации': item.programs_names ? '' : '-',
+            'Объект информатизации': item.department_id
+              ? state.departments
+                  .filter((el) => el.id === item.department_id)
+                  .map((e) => e.name)
+                  .join('')
+              : '-',
 
             'Данные пользователя': item.username
               ? `${item.username}
@@ -47,7 +64,9 @@ const moderatorReducer = (state = initialState, action) => {
               : '',
             Основание: item.adding_reason ? item.adding_reason : '-',
             Статус: item.status ? item.status : '-',
-            Исполнена: item.status ? `${formatDate(item.processed_date)}` : '-',
+            Исполнена: item.processed_date
+              ? `${formatDate(item.processed_date)}`
+              : '-',
 
             Комментарий: item.comment ? item.comment : '-',
           },
@@ -55,6 +74,14 @@ const moderatorReducer = (state = initialState, action) => {
       };
     case SET_STATUS:
       return { ...state, status: action.status };
+    case SET_CREATED_FROM:
+      return { ...state, created_from: action.date };
+    case SET_CREATED_TO:
+      return { ...state, created_to: action.date };
+    case SET_ID:
+      return { ...state, id: action.id };
+    case SET_DEPARTMENTS:
+      return { ...state, departments: action.departments };
     default:
       return state;
   }

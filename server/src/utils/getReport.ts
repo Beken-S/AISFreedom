@@ -463,10 +463,12 @@ async function getReport(
       product: 'firefox',
       headless: true,
       args: minimal_args,
+      timeout: 0,
     }),
   ]);
 
   const page = await browser.newPage();
+  await page.setDefaultNavigationTimeout(0);
   await page.setContent(report.toString(), { waitUntil: 'domcontentloaded' });
 
   return page.pdf({

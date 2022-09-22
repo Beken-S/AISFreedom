@@ -99,12 +99,12 @@ const AcceptanceOfApplicationsPage = () => {
 
   return (
     <div className={styles.AcceptanceOfApplicationsPage}>
-      <h2>ПРИЕМ ЗАЯВОК</h2>
+      <h1>ПРИЕМ ЗАЯВОК</h1>
       <form onSubmit={formikCreate.handleSubmit}>
         <Select
           mode="default"
           id="department_id"
-          class="form-select"
+          className="form-select"
           required={true}
           {...formikCreate.getFieldProps('department_id')}
           formError={formikCreate}
@@ -148,7 +148,7 @@ const AcceptanceOfApplicationsPage = () => {
             mode="ask"
             id="user_position"
             type="text"
-            class="form-control"
+            className="form-control"
             placeholder="Введите должность"
             {...formikCreate.getFieldProps('user_position')}
             formError={formikCreate}
@@ -160,7 +160,7 @@ const AcceptanceOfApplicationsPage = () => {
             mode="ask"
             id="user_email"
             type="email"
-            class="form-control"
+            className="form-control"
             placeholder="ВведитеE-mail"
             {...formikCreate.getFieldProps('user_email')}
             formError={formikCreate}
@@ -179,12 +179,12 @@ const AcceptanceOfApplicationsPage = () => {
           />
         </div>
         <br />
-        <div class="service-form-submit">
-          <button type="submit" class="form-submit" text="Отправить">
+        <div className="service-form-submit">
+          <button type="submit" className="form-submit" text="Отправить">
             Отправить
           </button>
           <button
-            class="form-submit"
+            className="form-submit"
             text="Сбросить"
             onClick={(e) => formikCreate.resetForm()}
             type="reset"

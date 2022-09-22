@@ -30,6 +30,7 @@ const ReferenceSectionPage = () => {
   const [fileNameNormative, setFileNameNormative] = useState('');
   const [fileNameArticle, setFileNameArticle] = useState('');
   const [linkIcon, setLinkIcon] = useState('');
+
   const [linkIconTwo, setLinkIconTwo] = useState('');
   //console.log('linkIcon', linkIcon);
 
@@ -316,7 +317,7 @@ const ReferenceSectionPage = () => {
   return (
     <>
       <div className={styles.ReferenceSectionPage}>
-        <h2>СПРАВОЧНЫЙ РАЗДЕЛ</h2>
+        <h1>СПРАВОЧНЫЙ РАЗДЕЛ</h1>
         <div className={styles.reference__content}>
           <div className={styles.reference__table}>
             <div className={styles.tables__switch}>

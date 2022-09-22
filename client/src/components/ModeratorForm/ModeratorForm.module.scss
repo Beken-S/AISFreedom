@@ -15,17 +15,9 @@
   text-align: right;
 }
 
-.dataRange {
-  display: inline-block;
-  margin: 10px;
-  margin-right: 0%;
-  padding: 0 10px;
-  line-height: 20px;
-  text-align: center;
-  border: 1px solid #999999;
-  border-radius: 6px;
-  cursor: pointer;
-  user-select: none;
+.datepicker {
+  margin-right: 6px;
+  padding: 2px;
 }
 
 .form_radio_btn {

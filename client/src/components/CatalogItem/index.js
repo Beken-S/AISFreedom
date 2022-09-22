@@ -1,6 +1,6 @@
-import { Rating } from '@smastrom/react-rating';
 import '@smastrom/react-rating/style.css';
 
+import { Rating } from '@smastrom/react-rating';
 import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 
