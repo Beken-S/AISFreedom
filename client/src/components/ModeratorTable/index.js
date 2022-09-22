@@ -7,6 +7,7 @@ import { Loader } from '../Loader';
 
 import styles from './ModeratorTable.module.scss';
 
+import { setId } from '@store/actions/Moderator-actions';
 import { getApplications } from '@store/thunks/Moderator-thunks';
 
 export const ModeratorTable = () => {
@@ -15,8 +16,10 @@ export const ModeratorTable = () => {
   const dispatch = useDispatch();
   const isLoading = useSelector((state) => state.moderator.isLoading);
   const row = useSelector((state) => state.moderator.row);
+
   const data = [];
   row.forEach((el) => el.forEach((elem) => data.push(elem)));
+
   const setColumns = () => {
     setActiveColums([
       'Номер заявки',
@@ -46,7 +49,14 @@ export const ModeratorTable = () => {
     selectableRowsOnClick: true,
     responsive: 'standard',
     onTableChange: (action, tableState) => {
-      // функция при выборе ячейки
+      const index = tableState.previousSelectedRow?.index;
+      const data = tableState.data;
+      let filter;
+      if (index !== undefined && index !== null) {
+        filter = data.filter((el) => el.index === index);
+        const [obj] = filter;
+        dispatch(setId(obj.data[0]));
+      }
     },
   };
 

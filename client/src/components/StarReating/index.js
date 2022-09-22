@@ -1,7 +1,6 @@
 import cn from 'classnames';
 import React, { useState } from 'react';
 
-
 import './StarReating.scss';
 
 const StarReating = ({ reiting, id }) => {
@@ -113,39 +112,39 @@ const StarReating = ({ reiting, id }) => {
   }
 
   return (
-    <div class="form__item">
-      <div class="form">
-        <div data-ajax="true" class="rating rating_set">
-          <div class="rating__body">
-            <div class="rating__active"></div>
-            <div class="rating__items">
+    <div className="form__item">
+      <div className="form">
+        <div data-ajax="true" className="rating rating_set">
+          <div className="rating__body">
+            <div className="rating__active"></div>
+            <div className="rating__items">
               <input
                 type="radio"
-                class="rating__item"
+                className="rating__item"
                 value="1"
                 name="rating"
               />
               <input
                 type="radio"
-                class="rating__item"
+                className="rating__item"
                 value="2"
                 name="rating"
               />
               <input
                 type="radio"
-                class="rating__item"
+                className="rating__item"
                 value="3"
                 name="rating"
               />
               <input
                 type="radio"
-                class="rating__item"
+                className="rating__item"
                 value="4"
                 name="rating"
               />
               <input
                 type="radio"
-                class="rating__item"
+                className="rating__item"
                 value="5"
                 name="rating"
               />

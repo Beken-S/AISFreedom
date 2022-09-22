@@ -1,20 +1,36 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import '../../App.scss';
 import {
-  getApplications,
-  reportApplications,
+  completeApplication,
+  rejectApplication,
+  resetApplication,
 } from '../../store/thunks/Moderator-thunks';
 
 export const ModeratorActions = () => {
   const dispatch = useDispatch();
+
+  const status = useSelector((state) => state.moderator.status);
+  const created_from = useSelector((state) => state.moderator.created_from);
+  const created_to = useSelector((state) => state.moderator.created_to);
+
+  const reportUrl = `/api/requests/report/${
+    status && status !== 'all' ? `?status=${status}` : '?status=current'
+  }${created_from !== '' ? `&created_from=${created_from}` : ''}${
+    created_to !== '' ? `&created_to=${created_to}` : ''
+  }`;
+
   const reset = () => {
-    dispatch(getApplications());
+    dispatch(resetApplication());
   };
-  const report = () => {
-    dispatch(reportApplications());
+  const complete = () => {
+    dispatch(completeApplication());
   };
+  const reject = () => {
+    dispatch(rejectApplication());
+  };
+
   return (
     <div className="wrap">
       <div className="service-form-submit">
@@ -24,14 +40,28 @@ export const ModeratorActions = () => {
           value="Сбросить"
           onClick={reset}
         />
-        <input type="submit" className="form-submit" value="Закрыть" />
-        <input type="submit" className="form-submit" value="Отменить" />
         <input
+          onClick={complete}
           type="submit"
           className="form-submit"
-          value="Скачать отчёт"
-          onClick={report}
+          value="Закрыть"
         />
+        <input
+          onClick={reject}
+          type="submit"
+          className="form-submit"
+          value="Отменить"
+        />
+        <a
+          style={{ color: 'white' }}
+          target="_blank"
+          rel="noreferrer"
+          href={`http://localhost:3001${reportUrl}`}
+        >
+          <button className="form-submit" type="button">
+            Отчёт
+          </button>{' '}
+        </a>
       </div>
     </div>
   );
