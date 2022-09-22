@@ -14,7 +14,7 @@ import {
 
 import styles from './ReferenceSectionPage.module.scss';
 
-//import iconDowland from '@assets/icon/dowland.png';
+import iconDowland from '@assets/icon/dowland.png';
 import dowland from '@assets/icon/free.png';
 
 const ReferenceSectionPage = () => {
@@ -30,7 +30,8 @@ const ReferenceSectionPage = () => {
   const [fileNameNormative, setFileNameNormative] = useState('');
   const [fileNameArticle, setFileNameArticle] = useState('');
   const [linkIcon, setLinkIcon] = useState('');
-  console.log('linkIcon', linkIcon);
+  const [linkIconTwo, setLinkIconTwo] = useState('');
+  //console.log('linkIcon', linkIcon);
 
   const setColumns = (activeTab) => {
     if (activeTab === 'documents') {
@@ -74,27 +75,46 @@ const ReferenceSectionPage = () => {
         'Аббревиатура',
         'Автор лицензии',
         'Год создания',
-        'Текст лицензии на оригинальном языке',
-        //   options: {
-        //     customBodyRender: () => {
-        //       return (
-        //         <div>
-        //           <a href={linkIcon} target="_blank">
-        //             <img
-        //               src={iconDowland}
-        //               width="50"
-        //               height="50"
-        //               align="right"
-        //               alt="W3Schools"
-        //             />
-        //           </a>
-        //         </div>
-        //       );
-        //     },
-        //   },
-        // },
-
-        'Текст лицензии на русском языке (перевод)',
+        {
+          name: 'Текст лицензии на оригинальном языке',
+          options: {
+            customBodyRender: (value) => {
+              return (
+                <div>
+                  <a href={value} target="_blank">
+                    <img
+                      src={iconDowland}
+                      width="50"
+                      height="50"
+                      align="right"
+                      alt="W3Schools"
+                    />
+                  </a>
+                </div>
+              );
+            },
+          },
+        },
+        {
+          name: 'Текст лицензии на русском языке (перевод)',
+          options: {
+            customBodyRender: (value) => {
+              return (
+                <div>
+                  <a href={value} target="_blank">
+                    <img
+                      src={iconDowland}
+                      width="50"
+                      height="50"
+                      align="right"
+                      alt="W3Schools"
+                    />
+                  </a>
+                </div>
+              );
+            },
+          },
+        },
       ]);
     }
     if (activeTab === 'articles') {
@@ -143,7 +163,7 @@ const ReferenceSectionPage = () => {
       },
     },
     caseSensitive: false,
-    download: 'disabled',
+    //download: 'disabled',
     filterType: 'multiselect',
     selectableRowsOnClick: false,
     selectToolbarPlacement: 'above',
@@ -195,11 +215,11 @@ const ReferenceSectionPage = () => {
     if (requestList) {
       switch (activeTab) {
         case 'documents':
-          setNormative(requestList);
+          // setNormative(requestList);
           setUsersList(setTableArray(requestList));
           break;
         case 'licenses':
-          setLicenses(requestList);
+          //setLicenses(requestList);
           setUsersList(setTableArray(requestList));
           break;
         case 'articles':
@@ -231,20 +251,8 @@ const ReferenceSectionPage = () => {
           item.acronym ? item.acronym : 'Нет данных',
           item.author ? item.author : 'Нет данных',
           item.year_of_creation ? item.year_of_creation : 'Нет данных',
-          item.text_url_eng ? (
-            <a target="_blank" href={item.text_url_eng}>
-              {item.text_url_eng}
-            </a>
-          ) : (
-            'Нет данных'
-          ),
-          item.text_url_ru ? (
-            <a target="_blank" href={item.text_url_ru}>
-              {item.text_url_ru}
-            </a>
-          ) : (
-            'Нет данных'
-          ),
+          item.text_url_eng ? item.text_url_eng : 'Нет данных',
+          item.text_url_ru ? item.text_url_ru : 'Нет данных',
         ];
         break;
       case 'articles':
@@ -265,16 +273,18 @@ const ReferenceSectionPage = () => {
   };
 
   const setTableArray = (arrayList) => {
-    return arrayList.map((item) => {
-      return setItem(item);
-    });
+    if (arrayList !== [])
+      return arrayList.map((item) => {
+        return setItem(item);
+      });
   };
 
   const displayDetailInfo = (dataIndex) => {
     const file_name = usersList[dataIndex][4];
     const file_name_article = usersList[dataIndex][3];
     const text_url_eng = usersList[dataIndex][4];
-    console.log('text_url_eng', text_url_eng);
+    const text_url_ru = usersList[dataIndex][4];
+    //console.log('text_url_eng', text_url_eng);
     switch (activeTab) {
       case 'documents':
         dispatch(getNormativedoc(file_name));
@@ -287,7 +297,8 @@ const ReferenceSectionPage = () => {
         //navigate(`/api/articles/${file_name_article}`);
         break;
       case 'articles':
-        // setLinkIcon(text_url_eng);
+        setLinkIcon(text_url_eng);
+        setLinkIconTwo(text_url_ru);
         break;
       default:
         break;
