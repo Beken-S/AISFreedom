@@ -46,6 +46,8 @@ export const CatalogItem = ({ program, typeOs }) => {
                 style={{ maxWidth: 250 }}
                 value={program.rating}
                 onChange={() => setRatingValue(program.rating)}
+                readOnly
+                items={5}
               />
             </div>
           </li>
