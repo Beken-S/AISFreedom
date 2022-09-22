@@ -8,10 +8,13 @@ import {
   getLicenses,
   getNormative,
   getArticles,
+  getArticlesdoc,
+  getNormativedoc,
 } from '../../store/thunks/Reference-thunks';
 
 import styles from './ReferenceSectionPage.module.scss';
 
+//import iconDowland from '@assets/icon/dowland.png';
 import dowland from '@assets/icon/free.png';
 
 const ReferenceSectionPage = () => {
@@ -24,6 +27,10 @@ const ReferenceSectionPage = () => {
 
   const [columns, setActiveColums] = useState([]);
   const [usersList, setUsersList] = useState([normative]);
+  const [fileNameNormative, setFileNameNormative] = useState('');
+  const [fileNameArticle, setFileNameArticle] = useState('');
+  const [linkIcon, setLinkIcon] = useState('');
+  console.log('linkIcon', linkIcon);
 
   const setColumns = (activeTab) => {
     if (activeTab === 'documents') {
@@ -38,13 +45,21 @@ const ReferenceSectionPage = () => {
             customBodyRender: () => {
               return (
                 <div>
-                  <img
-                    src={dowland}
-                    width="50"
-                    height="50"
-                    align="right"
-                    alt=""
-                  />
+                  <a
+                    href={`http://localhost:3000/api/normative_documents/${fileNameNormative}`}
+                    //target="_blank"
+                    download
+                    // href="http://localhost:3000/api/normative_documents/8bbd8b22-bbe5-46a9-b8c5-77396034f1bc.pdf"
+                  >
+                    <img
+                      src={dowland}
+                      //src="/images/myw3schoolsimage.jpg"
+                      width="50"
+                      height="50"
+                      align="right"
+                      alt="W3Schools"
+                    />
+                  </a>
                 </div>
               );
             },
@@ -52,6 +67,7 @@ const ReferenceSectionPage = () => {
         },
       ]);
     }
+
     if (activeTab === 'licenses') {
       setActiveColums([
         'Полное название',
@@ -59,6 +75,25 @@ const ReferenceSectionPage = () => {
         'Автор лицензии',
         'Год создания',
         'Текст лицензии на оригинальном языке',
+        //   options: {
+        //     customBodyRender: () => {
+        //       return (
+        //         <div>
+        //           <a href={linkIcon} target="_blank">
+        //             <img
+        //               src={iconDowland}
+        //               width="50"
+        //               height="50"
+        //               align="right"
+        //               alt="W3Schools"
+        //             />
+        //           </a>
+        //         </div>
+        //       );
+        //     },
+        //   },
+        // },
+
         'Текст лицензии на русском языке (перевод)',
       ]);
     }
@@ -73,13 +108,20 @@ const ReferenceSectionPage = () => {
             customBodyRender: () => {
               return (
                 <div>
-                  <img
-                    src={dowland}
-                    width="50"
-                    height="50"
-                    align="right"
-                    alt=""
-                  />
+                  <a
+                    href={`http://localhost:3000/api/articles/${fileNameArticle}`}
+                    //target="_blank"
+                    download
+                  >
+                    <img
+                      src={dowland}
+                      //src="/images/myw3schoolsimage.jpg"
+                      width="50"
+                      height="50"
+                      align="right"
+                      alt="W3Schools"
+                    />
+                  </a>
                 </div>
               );
             },
@@ -103,7 +145,7 @@ const ReferenceSectionPage = () => {
     caseSensitive: false,
     download: 'disabled',
     filterType: 'multiselect',
-    selectableRowsOnClick: true,
+    selectableRowsOnClick: false,
     selectToolbarPlacement: 'above',
     responsive: 'standard',
     // onRowSelectionChange: (rowsSelected) => {
@@ -138,6 +180,7 @@ const ReferenceSectionPage = () => {
         break;
       case 'licenses':
         dispatch(getLicenses());
+
         requestList = licenses;
         break;
       case 'articles':
@@ -188,8 +231,20 @@ const ReferenceSectionPage = () => {
           item.acronym ? item.acronym : 'Нет данных',
           item.author ? item.author : 'Нет данных',
           item.year_of_creation ? item.year_of_creation : 'Нет данных',
-          item.text_url_eng ? item.text_url_eng : 'Нет данных',
-          item.text_url_ru ? item.text_url_ru : 'Нет данных',
+          item.text_url_eng ? (
+            <a target="_blank" href={item.text_url_eng}>
+              {item.text_url_eng}
+            </a>
+          ) : (
+            'Нет данных'
+          ),
+          item.text_url_ru ? (
+            <a target="_blank" href={item.text_url_ru}>
+              {item.text_url_ru}
+            </a>
+          ) : (
+            'Нет данных'
+          ),
         ];
         break;
       case 'articles':
@@ -216,7 +271,27 @@ const ReferenceSectionPage = () => {
   };
 
   const displayDetailInfo = (dataIndex) => {
-    // getDetailUserFetch(usersList[dataIndex].id);
+    const file_name = usersList[dataIndex][4];
+    const file_name_article = usersList[dataIndex][3];
+    const text_url_eng = usersList[dataIndex][4];
+    console.log('text_url_eng', text_url_eng);
+    switch (activeTab) {
+      case 'documents':
+        dispatch(getNormativedoc(file_name));
+        setFileNameNormative(file_name);
+        //navigate(`/api/normative_documents/${file_name}`);
+        break;
+      case 'articles':
+        dispatch(getArticlesdoc(file_name_article));
+        setFileNameArticle(file_name_article);
+        //navigate(`/api/articles/${file_name_article}`);
+        break;
+      case 'articles':
+        // setLinkIcon(text_url_eng);
+        break;
+      default:
+        break;
+    }
   };
 
   useEffect(() => {
@@ -224,7 +299,6 @@ const ReferenceSectionPage = () => {
     dispatch(getArticles());
     usersListRequest();
     dispatch(getLicenses());
-    //console.log(1, usersList);
     //dispatch(getLicenses());
   }, []);
 

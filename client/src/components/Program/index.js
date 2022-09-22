@@ -1,9 +1,13 @@
+// import { Rating } from '@smastrom/react-rating';
+// import '@smastrom/react-rating/style.css';
+
 import cn from 'classnames';
 import parse from 'html-react-parser';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../../App.scss';
 
 import StarReating from '../../components/StarReating';
+import Star from '../../components/Star';
 
 import style from './Program.module.scss';
 import './Bootstrap.scss';
@@ -11,12 +15,38 @@ import './Bootstrap.scss';
 export const Program = ({ item, license, classProgram, typeOs }) => {
   const os = [];
   const [url, setUrl] = useState('');
+  // const [ratingValue, setRatingValue] = useState(item.rating);
   const onSetLink = (e) => {
     setUrl(e.target.value);
   };
   if (typeOs) {
     typeOs.map((el) => os.push(el.name));
   }
+
+  // const setNewRaiting = async () => {
+  //   let response = await fetch(`/api/programs/${item.id}/rate`, {
+  //     method: 'PATCH',
+  //     body: JSON.stringify({
+  //       grade: ratingValue,
+  //     }),
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //     },
+  //   });
+  //   if (response.ok) {
+  //     const result = await response.json();
+  //     //return result;
+  //   } else {
+  //     //alert('Ошибка');
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   if (ratingValue !== '' && item.rating !== ratingValue) {
+  //     setNewRaiting();
+  //   }
+  // }, [ratingValue]);
+
   return (
     <>
       <section className={style.description}>
@@ -30,7 +60,17 @@ export const Program = ({ item, license, classProgram, typeOs }) => {
                   alt="logo"
                 />
                 <h1>{item.name}</h1>
-                <StarReating reiting={item.rating} id={item.id} />
+                <span>
+                  <Star id={item.id} reiting={item.rating}/>
+                </span>
+                {/* <span>
+                  <StarReating reiting={item.rating} id={item.id} />
+                </span> */}
+                {/* <Rating
+                  style={{ maxWidth: 250 }}
+                  value={item.rating}
+                  onChange={(selectedValue) => setRatingValue(selectedValue)}
+                /> */}
                 {/* <span>{item.rating}</span> */}
               </div>
               <ul className={style.description__header}>
