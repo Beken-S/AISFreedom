@@ -46,10 +46,10 @@ export const ModeratorForm = () => {
       <h1 className={styles.heading}>ЗАЯВКИ НА СПО</h1>
       <select onChange={filter} className="form-select">
         <option value="all">Выберите статус заявки</option>
-        <option value="current">Актуальные</option>
-        <option value="expired">Не выполненные</option>
-        <option value="completed">Исполненные</option>
-        <option value="rejected">Отмененные</option>
+        <option value="current">На рассмотрении</option>
+        <option value="expired">Просрочено исполнение</option>
+        <option value="completed">Выполненные</option>
+        <option value="rejected">Отклоненные</option>
         <option value="all">Все</option>
       </select>
       <div className={styles.periodChoices}>

@@ -16,9 +16,11 @@ export const ModeratorActions = () => {
   const created_to = useSelector((state) => state.moderator.created_to);
 
   const reportUrl = `/api/requests/report/${
-    status && status !== 'all' ? `?status=${status}` : '?status=current'
-  }${created_from !== '' ? `&created_from=${created_from}` : ''}${
-    created_to !== '' ? `&created_to=${created_to}` : ''
+    status === 'all'
+      ? ''
+      : `${status !== 'all' ? `?status=${status}` : ''}${
+          created_from !== '' ? `&created_from=${created_from}` : ''
+        }${created_to !== '' ? `&created_to=${created_to}` : ''}`
   }`;
 
   const reset = () => {
