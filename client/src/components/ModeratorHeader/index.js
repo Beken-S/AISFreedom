@@ -1,16 +1,18 @@
 import cn from 'classnames';
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import '../../App.scss';
 import './Material.scss';
 import { NavLink } from 'react-router-dom';
 
 import styles from './ModeratorHeader.module.scss';
 
+import { selectAuthUser } from '@store/selectors/Auth-selectors';
 import { fetchLogout } from '@store/thunks/Auth-thunks';
 
 export const ModeratorHeader = () => {
   const dispatch = useDispatch();
+  const auth = useSelector((state) => selectAuthUser(state));
 
   const handleOnClick = () => {
     dispatch(fetchLogout());
@@ -19,7 +21,7 @@ export const ModeratorHeader = () => {
     <header className={styles.headerSystemName}>
       <div className={cn(styles.headerSystemNameWrap, 'wrap')}>
         <h2 className={styles.moderatorName}>
-          <span>Фамилия И.О.</span>
+          <span>{auth?.name || 'admin'}</span>
           <button className="material-symbols-outlined" onClick={handleOnClick}>
             logout
           </button>

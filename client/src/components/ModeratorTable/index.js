@@ -48,6 +48,8 @@ export const ModeratorTable = () => {
     filterType: 'multiselect',
     selectableRowsOnClick: true,
     responsive: 'standard',
+    rowsPerPage: 5,
+    rowsPerPageOptions: [5, 10, 15, 100],
     onTableChange: (action, tableState) => {
       const index = tableState.previousSelectedRow?.index;
       const data = tableState.data;

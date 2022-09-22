@@ -99,7 +99,7 @@ const AcceptanceOfApplicationsPage = () => {
 
   return (
     <div className={styles.AcceptanceOfApplicationsPage}>
-      <h2>ПРИЕМ ЗАЯВОК</h2>
+      <h1>ПРИЕМ ЗАЯВОК</h1>
       <form onSubmit={formikCreate.handleSubmit}>
         <Select
           mode="default"
