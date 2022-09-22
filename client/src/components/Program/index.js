@@ -6,8 +6,8 @@ import parse from 'html-react-parser';
 import React, { useState, useEffect } from 'react';
 import '../../App.scss';
 
-import StarReating from '../../components/StarReating';
 import Star from '../../components/Star';
+import StarReating from '../../components/StarReating';
 
 import style from './Program.module.scss';
 import './Bootstrap.scss';
@@ -61,7 +61,7 @@ export const Program = ({ item, license, classProgram, typeOs }) => {
                 />
                 <h1>{item.name}</h1>
                 <span>
-                  <Star id={item.id} reiting={item.rating}/>
+                  <Star id={item.id} reiting={item.rating} />
                 </span>
                 {/* <span>
                   <StarReating reiting={item.rating} id={item.id} />

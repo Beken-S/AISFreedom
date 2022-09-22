@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { FaStar } from 'react-icons/fa';
 
 import './Star.scss';
@@ -78,7 +78,9 @@ const Star = (id, reiting) => {
           </label>
         );
       })}
-      <div>{rating}</div>
+      <div>
+        Поставьте рейтинг программе <span>{rating}</span>
+      </div>
     </div>
   );
 };
