@@ -187,10 +187,6 @@ const ReferenceSectionPage = () => {
     dispatch(getLicenses(items));
   };
 
-  // const setUsersListAdminAppl = async (users) => {
-  //   dispatch(getUsersListAPPL(users));
-  // };
-
   async function usersListRequest() {
     let requestList;
     switch (activeTab) {
