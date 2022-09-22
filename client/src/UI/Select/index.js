@@ -1,3 +1,7 @@
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { getDepartments } from '../../store/thunks/Reference-thunks';
 import ShowError from '../ShowError';
 
 // import style from './Select.module.scss';
@@ -14,6 +18,13 @@ export default function Select({
   formError,
   refInput = null,
 }) {
+  const dispatch = useDispatch();
+  const departments = useSelector(({ reference }) => reference.departments);
+
+  useEffect(() => {
+    dispatch(getDepartments());
+  }, []);
+
   return (
     <>
       {mode === 'default' && (
@@ -28,27 +39,17 @@ export default function Select({
             <option key={0} value="Выберите объект информатизации">
               Выберите объект информатизации
             </option>
-            <option
-              key={1}
-              value="1"
-              defaultValue={defaultValue === '1' ? true : false}
-            >
-              Кафедра № 2 Математики
-            </option>
-            <option
-              key={2}
-              defaultValue={defaultValue === '2' ? true : false}
-              value="2"
-            >
-              Кафедра № 2 Физики
-            </option>
-            <option
-              key={3}
-              defaultValue={defaultValue === '3' ? true : false}
-              value="3"
-            >
-              Кафедра № 3 Химии
-            </option>
+
+            {departments &&
+              departments.map((item) => (
+                <option
+                  key={item.id}
+                  value={item.id}
+                  defaultValue={defaultValue === item.id ? true : false}
+                >
+                  {item.name}
+                </option>
+              ))}
           </select>
           <ShowError form={formError} name={id} />
         </div>

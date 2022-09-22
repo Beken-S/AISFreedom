@@ -4,7 +4,9 @@ import React, { useState } from 'react';
 import './StarReating.scss';
 
 const StarReating = ({ reiting, id }) => {
-  // console.log(reiting);
+  const [rait, setRait] = useState(reiting);
+  console.log('reiting передача в компонент', reiting);
+  console.log('rait в компонент', rait);
   const ratings = document.querySelectorAll('.rating');
   if (ratings.length > 0) {
     initRatings();
@@ -49,7 +51,9 @@ const StarReating = ({ reiting, id }) => {
           // Обновление переменных
           initRatingVars(rating);
           // Обновление активных звезд
-          setRatingActiveWidth(ratingItem.value);
+          console.log('value', ratingItem.value);
+          setRait(ratingItem.value);
+          setRatingActiveWidth(rait);
         });
         ratingItem.addEventListener('mouseleave', function (e) {
           // Обновление активных звезд
@@ -78,13 +82,12 @@ const StarReating = ({ reiting, id }) => {
         // Отправика данных (value) на сервер
         let response = await fetch(`/api/programs/${id}/rate`, {
           method: 'PATCH',
-
           body: JSON.stringify({
-            userRating: value,
+            grade: value,
           }),
-          // headers: {
-          // 	'content-type': 'application/json'
-          // }
+          headers: {
+            'Content-Type': 'application/json',
+          },
         });
         if (response.ok) {
           const result = await response.json();
@@ -147,7 +150,7 @@ const StarReating = ({ reiting, id }) => {
               />
             </div>
           </div>
-          <div className="rating__value">{reiting}</div>
+          <div class="rating__value">{rait}</div>
         </div>
       </div>
     </div>

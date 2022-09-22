@@ -5,7 +5,7 @@ export const ArticleAPI = {
     return result;
   },
   async getArticleDoc(file_name) {
-    const response = await fetch(`/api/programs/articles/${file_name}`);
+    const response = await fetch(`/api/articles/${file_name}`);
     const result = await response.json();
     return result;
   },

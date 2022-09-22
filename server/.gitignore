@@ -7,3 +7,4 @@
 /temp
 *.log
 *.logs
+package-lock.json

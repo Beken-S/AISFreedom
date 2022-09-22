@@ -7,10 +7,12 @@ import {
   SET_ARTICLES,
   SET_NORMATIVE_DOC,
   SET_ARTICLES_DOC,
+  SET_DEPARTMENTS,
 } from '../actions/Reference-actions';
 
 const initialState = {
   licenses: [],
+  departments: [],
   normativedoc: [],
   normative: [
     {
@@ -97,11 +99,17 @@ const referenceReducer = (state = initialState, action) => {
         licenses: action.licenses,
         error: '',
       };
+    case SET_DEPARTMENTS:
+      return {
+        ...state,
+        departments: action.departments,
+        error: '',
+      };
     case SET_NORMATIVE:
       return {
         ...state,
         normative: action.normative,
-        totalCountPages: action.totalCountPages,
+        // totalCountPages: action.totalCountPages,
         error: '',
       };
     case SET_NORMATIVE_DOC:
