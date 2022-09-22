@@ -463,6 +463,7 @@ async function getReport(
       product: 'firefox',
       headless: true,
       args: minimal_args,
+      timeout: 0,
     }),
   ]);
 
