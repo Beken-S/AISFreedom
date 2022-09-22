@@ -467,6 +467,7 @@ async function getReport(
   ]);
 
   const page = await browser.newPage();
+  await page.setDefaultNavigationTimeout(0);
   await page.setContent(report.toString(), { waitUntil: 'domcontentloaded' });
 
   return page.pdf({
