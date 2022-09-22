@@ -42,11 +42,11 @@ const ReferenceSectionPage = () => {
         {
           name: 'Содержание',
           options: {
-            customBodyRender: () => {
+            customBodyRender: (value) => {
               return (
                 <div>
                   <a
-                    href={`http://localhost:3000/api/normative_documents/${fileNameNormative}`}
+                    href={`http://localhost:3000/api/normative_documents/${value}`}
                     //target="_blank"
                     download
                     // href="http://localhost:3000/api/normative_documents/8bbd8b22-bbe5-46a9-b8c5-77396034f1bc.pdf"
@@ -105,11 +105,11 @@ const ReferenceSectionPage = () => {
         {
           name: 'Содержание',
           options: {
-            customBodyRender: () => {
+            customBodyRender: (value) => {
               return (
                 <div>
                   <a
-                    href={`http://localhost:3000/api/articles/${fileNameArticle}`}
+                    href={`http://localhost:3000/api/articles/${value}`}
                     //target="_blank"
                     download
                   >
