@@ -310,7 +310,6 @@ const ReferenceSectionPage = () => {
     dispatch(getArticles());
     usersListRequest();
     dispatch(getLicenses());
-    //dispatch(getLicenses());
   }, []);
 
   useEffect(() => {
