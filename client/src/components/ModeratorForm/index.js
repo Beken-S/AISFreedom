@@ -1,7 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 
-import 'react-dates/lib/css/_datepicker.css';
 import '../../App.scss';
 import {
   setCreatedFrom,
