@@ -9,11 +9,5 @@ export default function formatDate(date) {
   return `${formatedDate.toLocaleDateString('default', {
     month: 'numeric',
     day: 'numeric', // 26 августа
-  })}.${formatedDate.getFullYear()} ${formatedDate.toLocaleTimeString(
-    'default',
-    {
-      hour: 'numeric',
-      minute: 'numeric',
-    } //2022 в 01:14
-  )}`;
+  })}.${formatedDate.getFullYear()}`;
 }

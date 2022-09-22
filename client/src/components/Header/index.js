@@ -17,7 +17,7 @@ const Header = () => {
           <img className={style.logo} src={logo} alt="logo" />
         </NavLink>
         <Menu />
-        <NavLink to="/login" className={style.headerService}>
+        <NavLink to="/admin/login" className={style.headerService}>
           <i className="far fa-user-circle"></i>
         </NavLink>
       </div>
