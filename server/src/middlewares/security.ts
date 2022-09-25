@@ -2,7 +2,7 @@ import cors = require('cors');
 import { Express } from 'express';
 import helmet = require('helmet');
 
-import config, { Mods } from '../config';
+import config from '../config';
 
 function security(app: Express): void {
   app.use(

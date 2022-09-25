@@ -3,14 +3,12 @@
   "name": "AISFreedom-server",
   "version": "0.1.0",
   "scripts": {
-    "preparation": "node ./scripts/preparation",
-    "build": "tsc --build",
-    "clean": "tsc --build --clean",
-    "serve": "node build/server",
-    "start": "npm run preparation && npm run clean && npm run build && npm run serve",
-    "dev": "npm run preparation && npm run clean && npm run build && concurrently -k -c 'blue,green' --names 'TS,API' -p '[{name}]' npm:dev:build npm:dev:serve",
-    "dev:build": "tsc -p tsconfig-dev.json",
-    "dev:serve": "nodemon ./build/server development",
+    "clean": "n-clean build",
+    "copy": "n-copy -s src -d build -i '**/*.ts' '**/*.*' '**/.*'",
+    "build": "npm run clean && npm run copy && tsc --build",
+    "build:dev": "npm run clean && npm run copy && tsc -p tsconfig-dev.json",
+    "start": "NODE_ENV=production node server",
+    "dev": "nodemon src/server.ts",
     "lint": "eslint src --ext .js --ext .ts"
   },
   "devDependencies": {
@@ -34,8 +32,10 @@
     "eslint-import-resolver-typescript": "^3.4.0",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-prettier": "^4.2.1",
+    "npm-build-tools": "^2.2.5",
     "prettier": "^2.7.1",
     "sql-log-prettifier": "^0.1.2",
+    "ts-node": "^10.9.1",
     "typescript": "^4.7.4"
   },
   "dependencies": {

@@ -21,13 +21,12 @@ import {
 import { clearTemp } from './utils';
 
 const app = express();
-
 const start = async () => {
   try {
     await database.authenticate();
     await initDatabase(database);
-    app.listen(config.server.port, () => {
-      console.log(`Server started on port ${config.server.port}.`);
+    app.listen(3000, () => {
+      console.log(`Server started on port ${3000}.`);
     });
     clearTemp.start();
   } catch (err) {
