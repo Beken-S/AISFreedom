@@ -1,9 +1,0 @@
-{
-  "private": true,
-  "name": "AISFreedom",
-  "version": "0.1.0",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "d1": "docker build -t ais_freedom/mysql ."
-  }
-}
