@@ -17,7 +17,7 @@ async function create(attributes: ProgramCreationAttributes): Promise<Program> {
     await imagesService.move(
       attributes.images,
       config.server.temp,
-      config.database.filesPath.images
+      config.database.assets.images
     );
   }
 
@@ -25,7 +25,7 @@ async function create(attributes: ProgramCreationAttributes): Promise<Program> {
     await imagesService.move(
       attributes.logo,
       config.server.temp,
-      config.database.filesPath.logos
+      config.database.assets.logos
     );
   }
   return Program.create(attributes);
@@ -113,23 +113,23 @@ async function update(
     await imagesService.move(
       currentLogo,
       config.server.temp,
-      config.database.filesPath.logos
+      config.database.assets.logos
     );
   }
 
   if (updateLogo) {
     await Promise.all([
-      imagesService.destroy(prevLogo, config.database.filesPath.logos),
+      imagesService.destroy(prevLogo, config.database.assets.logos),
       imagesService.move(
         currentLogo,
         config.server.temp,
-        config.database.filesPath.logos
+        config.database.assets.logos
       ),
     ]);
   }
 
   if (deleteLogo) {
-    await imagesService.destroy(prevLogo, config.database.filesPath.logos);
+    await imagesService.destroy(prevLogo, config.database.assets.logos);
   }
 
   const createImages = currentImages != null && prevImages == null;
@@ -140,7 +140,7 @@ async function update(
     await imagesService.move(
       currentImages,
       config.server.temp,
-      config.database.filesPath.images
+      config.database.assets.images
     );
   }
 
@@ -148,7 +148,7 @@ async function update(
     await Promise.all([
       ...prevImages.map((image) => {
         if (!currentImages.includes(image)) {
-          imagesService.destroy(image, config.database.filesPath.images);
+          imagesService.destroy(image, config.database.assets.images);
         }
       }),
       ...currentImages.map((image) => {
@@ -156,7 +156,7 @@ async function update(
           imagesService.move(
             image,
             config.server.temp,
-            config.database.filesPath.images
+            config.database.assets.images
           );
         }
       }),
@@ -164,7 +164,7 @@ async function update(
   }
 
   if (deleteImages) {
-    await imagesService.destroy(prevImages, config.database.filesPath.images);
+    await imagesService.destroy(prevImages, config.database.assets.images);
   }
 
   program.set(attributes);
@@ -186,11 +186,11 @@ async function destroy(id: number): Promise<void> {
   const { images, logo } = program.get({ plain: true });
 
   if (images != null) {
-    await imagesService.destroy(images, config.database.filesPath.images);
+    await imagesService.destroy(images, config.database.assets.images);
   }
 
   if (logo != null) {
-    await imagesService.destroy(logo, config.database.filesPath.logos);
+    await imagesService.destroy(logo, config.database.assets.logos);
   }
 
   return program.destroy();

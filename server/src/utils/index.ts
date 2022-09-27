@@ -9,7 +9,6 @@ import getPaginationOptions from './getPaginationOptions';
 import getReport from './getReport';
 import getUserData from './getUserData';
 import imageLoader from './imageLoader';
-import isDevMode from './isDevMode';
 import isEmpty from './isEmpty';
 import isKey from './isKey';
 import isNumberString from './isNumberString';
@@ -20,7 +19,6 @@ export {
   getId,
   getPageCount,
   getPaginationOptions,
-  isDevMode,
   isEmpty,
   deleteFile,
   getImageExtension,

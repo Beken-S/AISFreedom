@@ -6,10 +6,10 @@ import { NotFoundError } from '../modules/error';
 import { Tokens } from '../types';
 
 async function generateTokens(payload: UserData): Promise<Tokens> {
-  const accessToken = jwt.sign(payload, config.server.jwtSecret.access, {
+  const accessToken = jwt.sign(payload, config.server.jwt.secrets.access, {
     expiresIn: '10m',
   });
-  const refreshToken = jwt.sign(payload, config.server.jwtSecret.refresh, {
+  const refreshToken = jwt.sign(payload, config.server.jwt.secrets.refresh, {
     expiresIn: '1d',
   });
 
@@ -45,7 +45,7 @@ async function removeToken(refreshToken: string): Promise<void> {
 
 async function validateAccessToken(token: string): Promise<UserData | null> {
   try {
-    const user = jwt.verify(token, config.server.jwtSecret.access);
+    const user = jwt.verify(token, config.server.jwt.secrets.access);
     return user as UserData;
   } catch (e) {
     return null;
@@ -54,7 +54,7 @@ async function validateAccessToken(token: string): Promise<UserData | null> {
 
 async function validateRefreshToken(token: string): Promise<UserData | null> {
   try {
-    const user = jwt.verify(token, config.server.jwtSecret.refresh);
+    const user = jwt.verify(token, config.server.jwt.secrets.refresh);
 
     return user as UserData;
   } catch (e) {
