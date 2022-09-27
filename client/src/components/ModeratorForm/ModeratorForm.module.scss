@@ -1,0 +1,52 @@
+@import "../../scss/mixins";
+@import "../../scss/vars";
+
+.heading {
+  margin-top: 20px;
+  margin-bottom: 30px;
+  text-align: center;
+
+  @include h1;
+}
+
+.periodChoices {
+  width: 100%;
+  padding-top: 30px;
+  text-align: right;
+}
+
+.datepicker {
+  margin-right: 6px;
+  padding: 2px;
+}
+
+.form_radio_btn {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.form_radio_btn input[type="radio"] {
+  display: none;
+}
+
+.form_radio_btn label {
+  display: inline-block;
+  padding: 0 10px;
+  line-height: 20px;
+  border: 1px solid #999999;
+  border-radius: 6px;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* Checked */
+.form_radio_btn input[type="radio"]:checked + label {
+  color: #ffffff;
+  background: #56baed;
+  border-color: #56baed;
+}
+
+/* Hover */
+.form_radio_btn label:hover {
+  color: #000000;
+}

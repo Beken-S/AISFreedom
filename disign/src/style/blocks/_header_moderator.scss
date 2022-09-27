@@ -1,0 +1,30 @@
+.moderator-name {
+  display: flex;
+  align-items: center;
+
+  @include h1;
+}
+
+.material-symbols-outlined {
+  margin-left: 10px;
+  color: #000000;
+  text-decoration: none;
+  cursor: pointer;
+
+  &:hover {
+    color: $color-hover;
+  }
+}
+
+.header-menu-moderator {
+  width: 400px;
+  font-weight: bold;
+  font-size: 20px;
+
+  @include flex-position;
+
+  @media (max-width: $tablet-breakpoint) {
+    width: 480px;
+    font-size: 14px;
+  }
+}

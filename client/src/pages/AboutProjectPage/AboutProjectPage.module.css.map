@@ -1,0 +1,10 @@
+{
+    "version": 3,
+    "mappings": "AAGG,AAAD,eAAU,CAAC;EACT,cAAc,EAAE,IAAI;EACpB,KAAK,ECFI,OAAO;EDGhB,SAAS,EAAE,IAAI;EACf,WAAW,EAAE,4CAA4C;CAC1D",
+    "sources": [
+        "AboutProjectPage.module.scss",
+        "../../scss/_vars.scss"
+    ],
+    "names": [],
+    "file": "AboutProjectPage.module.css"
+}

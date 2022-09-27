@@ -1,0 +1,41 @@
+.select__wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-bottom: 15px;
+}
+
+.select__wrapper label {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 13px;
+  line-height: 16px;
+  color: rgba(0, 0, 0, 0.38);
+  margin-bottom: 5px;
+}
+
+.select__wrapper label span {
+  color: #ff4e43;
+}
+
+.select__wrapper select {
+  width: 290px;
+  height: 35px;
+  background: #F2F3F5;
+  border: 1px solid #A9AAC2;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-radius: 6px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 24px;
+  color: #000000;
+}
+/*# sourceMappingURL=Select.module.css.map */

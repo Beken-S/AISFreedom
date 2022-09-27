@@ -1,0 +1,62 @@
+@import "../../scss/mixins";
+@import "../../scss/vars";
+
+.pagination {
+  padding-top: 40px;
+
+  @include flex-position(center);
+
+  &__wrap {
+    gap: 5px;
+    width: 180px;
+    height: 30px;
+    padding: 5px 0;
+    list-style: none;
+    border-radius: 5px;
+
+    @include flex-position;
+  }
+
+  &__arrow {
+    color: $btn-color;
+    font-size: 20px;
+    cursor: pointer;
+  }
+}
+
+.pagination button {
+  background: transparent;
+  border: none;
+}
+
+.page {
+  font-size: 20px;
+  font-style: normal;
+  line-height: 19px;
+  text-decoration: none;
+  cursor: pointer;
+  color: $btn-color;
+}
+
+.page:hover {
+  // text-decoration: underline;
+  // background-color: $btn-color;
+  // border-radius: 50%;
+  // transition-duration: 0.3s;
+  // color: $btn-color;
+
+  @include flex-position(center);
+}
+
+.active {
+  font-size: 26px;
+  font-style: normal;
+  line-height: 19px;
+  text-decoration: none;
+  background-color: rgb(75, 185, 248);
+  border-radius: 50%;
+  cursor: pointer;
+  color: rgb(75, 185, 248);
+
+  @include flex-position(center);
+}

@@ -1,0 +1,61 @@
+@import "../../scss/mixins";
+@import "../../scss/vars";
+
+.input__item {
+  display: flex;
+  flex-direction: column;
+}
+
+.ReferenceSectionPage {
+  @include flex-direction-column;
+
+  & h1 {
+    margin-bottom: 30px;
+
+    @include h1;
+  }
+}
+
+.reference__table {
+  display: flex;
+  flex-direction: column;
+
+  // padding: 0 140px 26px 140px;
+  width: calc(100% - 4px - 4px);
+}
+
+.reference__content {
+  display: flex;
+}
+
+.tables__switch {
+  display: flex;
+  flex-direction: row;
+  box-sizing: border-box;
+  margin: 10px 0 0;
+
+  // padding: 0 0 0 20px;
+  &__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 142px;
+    height: 43px;
+    margin: 0 0 0 3px;
+    color: grren;
+    font-weight: normal;
+    font-size: 14px;
+    font-family: Roboto;
+    font-style: normal;
+    line-height: 16px;
+    background: #ffffff;
+    border-radius: 7px 7px 0 0;
+    cursor: pointer;
+
+    &__active {
+      padding: 10px;
+      color: #ffffff;
+      background: #56baed;
+    }
+  }
+}

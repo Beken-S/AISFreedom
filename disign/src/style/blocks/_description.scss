@@ -1,0 +1,78 @@
+.description {
+  padding: 20px 0;
+}
+
+.description-wrap {
+  @include flex-direction-column;
+
+  // outline: 1px solid red;
+}
+
+.description-title {
+  padding-bottom: 30px;
+
+  @include flex-position;
+
+  & h1 {
+    margin: 0 10px;
+
+    @include h1;
+  }
+
+  & svg {
+    fill: #bcbec0;
+  }
+}
+
+.description-header {
+  padding-bottom: 25px;
+  list-style: none;
+}
+
+.article {
+  font-size: 18px;
+  font-family: "services", "Arial", "Helvetica", sans-serif;
+}
+
+.description-screenshot {
+  width: 100%;
+  margin-bottom: 20px;
+  border-radius: 20px;
+}
+
+.description-text {
+  padding-bottom: 15px;
+
+  @include p-main;
+}
+
+.description-os {
+  padding: 0 100px;
+}
+
+.manual {
+  margin: 15px 0;
+  padding: 10px;
+  color: $font-color;
+  font-size: 14px;
+  font-family: "Manrope", "Helvetica", sans-serif;
+  text-align: center;
+  text-decoration: none;
+  background-color: #ffffff;
+  border: 1px solid #6c757d;
+  border-radius: 10px;
+
+  &:hover {
+    color: #ffffff;
+    background-color: #6c757d;
+    transition-duration: 0.4s;
+  }
+}
+
+.fa-download {
+  font-size: 25px;
+}
+
+.fa-eye {
+  margin-right: 5px;
+}

@@ -1,0 +1,34 @@
+.checkboxInput {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 15px;
+}
+
+.checkboxInput input {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  width: auto;
+  padding: 0 0 0 15px;
+  height: 15px;
+  margin-right: 20px;
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
+  border: 1px solid #DADADA;
+  border-radius: 3px;
+  background: #f3f3f3;
+}
+
+.checkboxInput input:checked {
+  background: url("../../assets/img/check.png");
+}
+
+.checkboxInput span {
+  color: red;
+}
+/*# sourceMappingURL=Checbox.module.css.map */

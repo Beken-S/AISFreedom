@@ -1,0 +1,22 @@
+.Catalog {
+  padding-top: 40px;
+  padding-bottom: 20px;
+}
+
+.programsList {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  gap: 60px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  list-style: none;
+}
+
+.err {
+  font-size: 25px;
+}
+/*# sourceMappingURL=Catalog.module.css.map */

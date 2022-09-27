@@ -1,0 +1,17 @@
+@import "../../scss/mixins";
+@import "../../scss/vars";
+
+.input__item {
+  display: flex;
+  flex-direction: column;
+}
+
+.AcceptanceOfApplicationsPage {
+  @include flex-direction-column;
+
+  & h1 {
+    margin-bottom: 30px;
+
+    @include h1;
+  }
+}

@@ -1,0 +1,58 @@
+@import "../../scss/vars";
+@import "../../scss/mixins";
+
+.programLink {
+  color: #222222;
+  text-decoration: none;
+}
+
+.programItem {
+  justify-content: center;
+  width: 200px;
+  min-height: 280px;
+  padding: 20px;
+  text-decoration: none;
+  background-color: $background-color;
+  border: 1px solid $btn-color;
+  border-radius: 20px;
+  transition-duration: 0.3s;
+
+  @include flex-direction-column;
+
+  &:hover {
+    box-shadow: $shadow;
+    transform: scale(1.05);
+    cursor: pointer;
+  }
+}
+
+.programImg {
+  width: 150px;
+  height: 150px;
+  background-color: #b0c2d6;
+  border-radius: 20px;
+}
+
+.programInfo {
+  padding-top: 15px;
+  color: $font-color;
+  text-align: center;
+}
+
+.programName {
+  margin-bottom: 10px;
+
+  @include h2;
+}
+
+.programOs {
+  margin-bottom: 5px;
+
+  @include p-item;
+}
+
+.programRaiting {
+  margin: 0;
+  color: #b0c2d6;
+  font-weight: bold;
+}

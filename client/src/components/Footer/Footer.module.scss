@@ -1,0 +1,38 @@
+@import "../../scss/mixins";
+@import "../../scss/vars";
+
+.pageFooter {
+  background-color: #dee7f2;
+}
+
+.footerWrap {
+  padding: 12px 0;
+  font-weight: 400;
+  font-size: 14px;
+  font-family: "Roboto", sans-serif;
+
+  @include flex-position;
+}
+
+.footerNav {
+  width: 150px;
+
+  @include flex-position;
+}
+
+.socialNetwork {
+  width: 32px;
+  height: 32px;
+  color: #ffffff;
+  font-size: 20px;
+  text-decoration: none;
+  background-color: #4bb9f8;
+  border-radius: 8px;
+
+  @include flex-position(center);
+
+  &:hover {
+    background-color: $color-hover;
+    transition-duration: 0.5s;
+  }
+}

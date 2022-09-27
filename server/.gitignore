@@ -1,1 +1,9 @@
 /node_modules
+src/database/data
+/build
+# /src/database/data/*
+# /src/logs/
+# /src/temp/
+*.log
+*.logs
+package-lock.json

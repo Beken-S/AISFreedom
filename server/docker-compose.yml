@@ -1,0 +1,19 @@
+version: "3.8"
+
+services:
+  db:
+    extends:
+      file: docker-compose.base.yml
+      service: db
+
+  api:
+    extends:
+      file: docker-compose.base.yml
+      service: api
+    environment:
+      - NODE_PATH=./build
+      - NODE_ENV=prodaction
+    command: sh -c "npm run build && npm run start"
+
+networks:
+  shared-network:

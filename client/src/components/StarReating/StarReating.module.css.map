@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "StarReating.module.scss"
+    ],
+    "names": [],
+    "file": "StarReating.module.css"
+}

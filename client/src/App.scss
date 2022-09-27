@@ -1,0 +1,23 @@
+@import "./scss/vars";
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+@font-face {
+  font-family: "services";
+  src: url("./assets/fonts/Spectral/Spectral-Medium.ttf") format("truetype");
+}
+
+//  Центровщик
+.wrap {
+  width: 1140px;
+  margin: 0 auto;
+}
+
+@media (max-width: $tablet-breakpoint) {
+  .wrap {
+    width: $tablet-width;
+  }
+}

@@ -1,0 +1,34 @@
+// Обнуление отступов для всех элементов
+* {
+  margin: 0;
+  padding: 0;
+}
+
+// подключение офф-лайн шрифта
+@font-face {
+  font-family: "services";
+  src: // local('services'),
+    url("../fonts/Spectral/Spectral-Medium.ttf") format("truetype");
+}
+
+//  Прижатие подвала к низу экрана
+.content-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.top-content {
+  flex-grow: 1;
+}
+
+//  Центровщик
+.wrap {
+  // outline: 1px solid #ff6347;
+  width: 1140px;
+  margin: 0 auto;
+
+  @media (max-width: $tablet-breakpoint) {
+    width: $tablet-width;
+  }
+}

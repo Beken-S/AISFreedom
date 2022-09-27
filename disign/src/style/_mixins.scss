@@ -1,0 +1,74 @@
+// Выравнивание по горизонтали
+@mixin flex-position($justify-content: space-between) {
+  display: flex;
+  align-items: center;
+  justify-content: $justify-content;
+}
+
+// Выравнивание в клонну
+@mixin flex-direction-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+// кнопка
+@mixin btn {
+  display: inline-block;
+  margin: 10px 20px 15px;
+  padding: 15px 80px;
+  color: #ffffff;
+  font-size: 13px;
+  text-align: center;
+  text-transform: uppercase;
+  text-decoration: none;
+  background-color: $btn-color;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 10px 30px 0 #5fbae966;
+
+  &:hover {
+    background-color: #39ace7;
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+}
+
+// заголовок h1
+@mixin h1 {
+  color: $font-color;
+  font-size: 30px;
+  font-family: "services", "Georgia", serif;
+}
+
+// заголовок h2
+@mixin h2 {
+  color: $font-color;
+  font-weight: bold;
+  font-size: 19px;
+  font-family: "services", "Georgia", serif;
+}
+
+// параграф для карточек
+@mixin p-item {
+  font-size: 14px;
+  font-family: "Rubik", "Helvetica", sans-serif;
+}
+
+@mixin p-main-bg {
+  color: $font-color;
+  font-size: 20px;
+  font-family: "Manrope", "Helvetica", sans-serif;
+  text-align: justify;
+  text-indent: 30px;
+}
+
+@mixin p-main {
+  color: $font-color;
+  font-size: 18px;
+  font-family: "Manrope", "Helvetica", sans-serif;
+  text-align: justify;
+  text-indent: 30px;
+}

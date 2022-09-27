@@ -1,0 +1,127 @@
+.programs-items {
+  padding-top: 40px;
+  padding-bottom: 20px;
+}
+
+.programs-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 60px;
+  justify-content: center;
+  list-style: none;
+
+  @media (max-width: $tablet-breakpoint) {
+    gap: 20px;
+  }
+}
+
+.program-item {
+  justify-content: center;
+  width: 200px;
+  min-height: 280px;
+  padding: 20px;
+  text-decoration: none;
+  background-color: $background-color;
+  border: 1px solid $btn-color;
+  border-radius: 20px;
+  transition-duration: 0.3s;
+
+  @include flex-direction-column;
+
+  &:hover {
+    box-shadow: $shadow;
+    transform: scale(1.05);
+    cursor: pointer;
+  }
+}
+
+.program-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+}
+
+.program-img {
+  width: 150px;
+  height: 150px;
+  background-color: #b0c2d6;
+  border-radius: 20px;
+}
+
+.program-info {
+  padding-top: 15px;
+  color: $font-color;
+  text-align: center;
+}
+
+.program-name {
+  margin-bottom: 10px;
+
+  @include h2;
+}
+
+.os {
+  margin-bottom: 5px;
+
+  @include p-item;
+}
+
+.raiting {
+  margin: 0;
+  color: #b0c2d6;
+  font-weight: bold;
+}
+
+.page-center {
+  margin: 20px 0;
+
+  @include flex-position(center);
+}
+
+.pagination {
+  gap: 10px;
+  height: 44px;
+  padding: 5px 15px;
+  list-style: none;
+  border-radius: 5px;
+
+  @include flex-position(center);
+}
+
+.pagination-link {
+  color: #c4c4c4;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  text-decoration: none;
+
+  &:hover {
+    color: $font-color;
+    text-decoration: underline;
+  }
+}
+
+.pagination-link-active {
+  color: $font-color;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 19px;
+  text-decoration: none;
+}
+
+.fa-angle-left {
+  color: $font-color;
+
+  &:hover {
+    color: $color-hover;
+  }
+}
+
+.fa-angle-right {
+  color: $font-color;
+
+  &:hover {
+    color: $color-hover;
+  }
+}

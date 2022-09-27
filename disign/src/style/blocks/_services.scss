@@ -1,0 +1,52 @@
+.services {
+  padding: 20px 0;
+}
+
+.services-wrap {
+  @include flex-direction-column;
+
+  & h1 {
+    margin-bottom: 30px;
+
+    @include h1;
+  }
+}
+
+.form-control {
+  height: 50px;
+  border: none;
+}
+
+.services-margin-bottom {
+  margin-bottom: 5px;
+}
+
+.input-group-text {
+  cursor: pointer;
+
+  &:hover {
+    background-color: $background-color;
+  }
+}
+
+.checkbox {
+  gap: 20px;
+  margin-bottom: 20px;
+
+  @include flex-position(space-around);
+}
+
+.form-select-service {
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+.service-form-submit {
+  width: 90%;
+
+  @include flex-position(space-around);
+}
+
+.form-submit {
+  @include btn;
+}

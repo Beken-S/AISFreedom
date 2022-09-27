@@ -1,0 +1,33 @@
+@import "../../scss/vars";
+@import "../../scss/mixins";
+
+.About {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+
+  @media (max-width: $tablet-breakpoint) {
+    flex-direction: column;
+  }
+
+  &__image {
+    height: 400px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+  }
+
+  &__info {
+    padding: 10px 20px;
+    background-color: $background-color;
+    border-radius: 10px;
+
+    @include p-main-bg;
+  }
+
+  &__textCenter {
+    display: flex;
+    justify-content: center;
+    text-decoration: underline;
+  }
+}

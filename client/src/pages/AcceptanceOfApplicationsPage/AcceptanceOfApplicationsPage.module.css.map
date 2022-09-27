@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AACA,AAAA,YAAY,CAAC;EACX,OAAO,EAAE,IAAI;EACb,cAAc,EAAE,MAAM;CACvB",
+    "sources": [
+        "AcceptanceOfApplicationsPage.module.scss"
+    ],
+    "names": [],
+    "file": "AcceptanceOfApplicationsPage.module.css"
+}

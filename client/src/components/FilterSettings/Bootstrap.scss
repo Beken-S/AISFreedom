@@ -1,0 +1,29 @@
+@import "../../scss/vars";
+@import "../../scss/mixins";
+
+.checkbox {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.form-select {
+  cursor: pointer;
+}
+
+.service-form-submit {
+  width: 90%;
+
+  @include flex-position(space-around);
+}
+
+.form-switch label,
+.form-switch input {
+  cursor: pointer;
+}
+
+.form-submit {
+  @include btn;
+}

@@ -1,0 +1,35 @@
+// Переменные
+@import "vars";
+
+// Примеси
+@import "mixins";
+
+// Общие настройки
+@import "main";
+
+// Шапка сайта
+@import "blocks/header";
+
+// Шапка сайта модератора
+@import "blocks/header_moderator";
+
+// Описание системы
+@import "blocks/system-info";
+
+// Блок поиска
+@import "blocks/services";
+
+// Аналоги и пагинация
+@import "blocks/programs-items";
+
+// Описание атернативы
+@import "blocks/description";
+
+// Страница обработки заявок модератором (админом)
+@import "blocks/time-filter";
+
+// Бланк для печати отчета по завкам
+@import "blocks/application-form";
+
+// Подвал
+@import "blocks/footer";
