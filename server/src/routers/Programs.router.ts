@@ -1,7 +1,6 @@
-import path = require('path');
-
 import express = require('express');
 
+import config from '../config';
 import { programsController } from '../controllers';
 import { auth, admin } from '../middlewares';
 import { validateProgram } from '../validators';
@@ -10,11 +9,11 @@ const programsRouter = express.Router();
 
 programsRouter.use(
   '/programs/logos',
-  express.static(path.resolve(__dirname, '../../db/logos'))
+  express.static(config.database.assets.logos)
 );
 programsRouter.use(
   '/programs/images',
-  express.static(path.resolve(__dirname, '../../db/images'))
+  express.static(config.database.assets.images)
 );
 programsRouter.post(
   '/programs',

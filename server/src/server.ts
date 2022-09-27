@@ -26,7 +26,7 @@ const start = async () => {
     await database.authenticate();
     await initDatabase(database);
     app.listen(3000, () => {
-      console.log(`Server started on port ${3000}.`);
+      console.log(`Server started on port test ${3000}.`);
     });
     clearTemp.start();
   } catch (err) {

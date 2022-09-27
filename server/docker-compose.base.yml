@@ -1,0 +1,32 @@
+version: "3.8"
+
+services:
+  db:
+    image: ais_freedom_db
+    restart: always
+    build:
+      context: ./src/database
+      dockerfile: Dockerfile
+    ports:
+      - 6033:3306
+    networks:
+      - shared-network
+    volumes:
+      - ./src/database/data:/var/lib/mysql:rw
+
+  api:
+    image: ais_freedom_api
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 3001:3000
+    networks:
+      - shared-network
+    depends_on:
+      - db
+    links:
+      - db
+
+networks:
+  shared-network:

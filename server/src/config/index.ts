@@ -27,6 +27,7 @@ const {
 } = process.env;
 
 const ROOT_DIR = path.resolve(__dirname, '../');
+console.log(ROOT_DIR);
 const LOGS_DIR = path.resolve(ROOT_DIR, 'logs');
 const TEMP_DIR = path.resolve(ROOT_DIR, 'temp');
 const CLIENT_DIR = path.resolve(ROOT_DIR, 'client');
@@ -90,7 +91,7 @@ const config: Config = {
         charset: 'utf8',
         collate: 'utf8_general_ci',
       },
-      models: [MODELS_DIR + '/*.model.js'],
+      models: [MODELS_DIR + '/*.model.*'],
     },
   },
 };

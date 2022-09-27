@@ -1,15 +1,17 @@
 {
   "private": true,
-  "name": "AISFreedom-server",
+  "name": "ais_freedom_api",
   "version": "0.1.0",
   "scripts": {
-    "clean": "n-clean build",
-    "copy": "n-copy -s src -d build -i '**/*.ts' '**/*.*' '**/.*'",
-    "build": "npm run clean && npm run copy && tsc --build",
-    "build:dev": "npm run clean && npm run copy && tsc -p tsconfig-dev.json",
-    "start": "NODE_ENV=production node server",
+    "build": "tsc --build",
+    "start": "node build/server",
     "dev": "nodemon src/server.ts",
-    "lint": "eslint src --ext .js --ext .ts"
+    "lint": "eslint src --ext .js --ext .ts",
+    "api:build": "docker compose build",
+    "api:up": "docker compose up -d",
+    "api:down": "docker compose down",
+    "api-dev:up": "docker compose -f docker-compose.dev.yml up -d",
+    "api-dev:down": "docker compose -f docker-compose.dev.yml down"
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.0",
@@ -32,7 +34,6 @@
     "eslint-import-resolver-typescript": "^3.4.0",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-prettier": "^4.2.1",
-    "npm-build-tools": "^2.2.5",
     "prettier": "^2.7.1",
     "sql-log-prettifier": "^0.1.2",
     "ts-node": "^10.9.1",

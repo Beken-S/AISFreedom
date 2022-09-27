@@ -1,0 +1,38 @@
+version: "3.8"
+
+services:
+  db:
+    extends:
+      file: docker-compose.base.yml
+      service: db
+
+  api:
+    extends:
+      file: docker-compose.base.yml
+      service: api
+    volumes:
+      - ./src:/usr/api/src
+      - ./package.json:/usr/api/package.json
+      - ./package-lock.json:/usr/api/package-lock.json
+      - ./nodemon.json:/usr/api/nodemon.json
+    environment:
+      - NODE_ENV=development
+    command: npm run dev
+
+  phpmyadmin:
+    image: phpmyadmin
+    container_name: pma
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 3306
+      PMA_ARBITRARY: 1
+    restart: always
+    ports:
+      - 8082:80
+    depends_on:
+      - db
+    links:
+      - db
+
+networks:
+  shared-network:

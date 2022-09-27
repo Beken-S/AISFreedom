@@ -36,7 +36,7 @@
   },
   "scripts": {
     "start": "react-app-rewired start",
-    "start:api": "concurrently \"cd ../server && npm start\" \"npm start \"",
+    "start:api": "concurrently \"cd ../server && npm run api:up\" \"npm start \"",
     "build": "react-app-rewired build",
     "eject": "react-scripts eject",
     "lint": "npx eslint src && npx stylelint 'src/**/*.scss'",
